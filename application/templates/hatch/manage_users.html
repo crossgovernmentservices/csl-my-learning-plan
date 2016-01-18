@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User management</title>
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/javascripts/vendor/jsrender.min.js"></script>
+  <script id="add-objectives-form" type="text/x-jsrender">
+    {% raw %}
+      <form action="/add-objective" method="POST" class="add-form">
+        <textarea name="what" id="what" rows="25" placeholder="What are you going to do?" required></textarea>
+        <textarea name="how" id="how" rows="25" placeholder="How are you going to do it?" required></textarea>
+        <p class="actions">
+          <input class="button" type="submit" name="add" value="Add">
+          <a class="button" href="#" class="cancel">Cancel</a>
+        </p>
+      </form>
+    {% endraw %}
+  </script>
+  {% assets "css_govuk_elements" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+  <link rel="stylesheet" href="/static/stylesheets/govuk-template.css">
+  <link rel="stylesheet" href="/static/stylesheets/hatch.css">
+</head>
+<body>
+   <main id="wrapper" role="main">
+    <div id="content">
+      <div class="grid-row">
+        <p><a href="{{url_for('hatch.open')}}">The hatch</a></p>
+
+        {% include "_messages.html" %}
+        <div id="message"></div>
+
+        {% for user in users %}
+          <div class="user-account">
+            <p>User email: {{user.email}}</p>
+            <p>Full name: {{user.full_name}}</p>
+            <p><a href="#" class="show-objective-form">Add an objective</a></p>
+
+            {% if user.objectives.objectives|count > 0 %}
+              <p><a href="/the-hatch/delete-objectives/{{user.email}}">Remove all objectives</a></p>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    var showObjectiveForm = function(event){
+      event.preventDefault();
+      var link = event.currentTarget,
+                  template = $.templates("#add-objectives-form"),
+                    html = template.render();
+      $(link).parent().append(html);
+      $('.add-form').submit(submitAddForm);
+      $('.cancel').click(removeSubmitForm);
+      $('#message').hide();
+    };
+
+    var submitAddForm = function(event){
+      event.preventDefault();
+      var self = this,
+        formFields = $(self).serialize();
+      $.ajax({
+        type: 'POST',
+        url: '/the-hatch/add-objective',
+        data: formFields,
+        success: function(data) {
+          self.remove();
+          $('#message').html(data);
+          $('#message').show();
+        },
+        error: function(xhr, options, error) {
+          console.log(error);
+        }
+      });
+    };
+
+    var removeSubmitForm = function(event){
+      event.preventDefault();
+      $('.add-form').remove();
+    };
+
+    $(document).ready(function(){
+      $('.show-objective-form').click(showObjectiveForm);
+    });
+
+  </script>
+
+</body>
+</html>

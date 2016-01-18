@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+  {% from "_macros.html" import render_field, render_hidden %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li><a href="/feedback">Requested feedback</a></li>
+          <li>View feedback</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+
+  <h1 class="heading-large">Your feedback</h1>
+
+  <p>Your request from {{feedback_request.entry.requested_from_name}}</p>
+
+  <h2 class="heading-medium">Message from {{feedback_request.entry.requested_by_name}}</h2>
+
+  <div class="text feedback-message">
+    {{feedback_request.entry.template|markdown}}
+  </div>
+
+  <h2 class="heading-medium">Their Feedback</h2>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+      {% if feedback_request.entry.replied %}
+        {{ feedback_request.entry.details }}
+      {% else %}
+        <p>No reply yet</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if feedback_request.share_objectives %}
+    <h2 class="heading-medium">Your objectives shared</h2>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <section class="objectives">
+          <ul>
+            {% for objective in feedback_request.requested_by.objectives.objectives %}
+              <li class="objective">
+                <header class="objective-header">{{objective.what|markdown}} <span class="toggle"><a href="#">Show</a><a href="#" style="display: none;">Hide</a></span></header>
+                <div class="details" style="display: none;">
+                  {{objective.how|markdown}}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+      </section>
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/app.js"></script>
+{% endblock %}

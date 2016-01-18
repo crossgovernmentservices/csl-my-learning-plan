@@ -1,0 +1,39 @@
+{% extends "3colbase.html" %}
+
+{% block endhead %}
+    <link rel="stylesheet" href="/static/stylesheets/selectize.css">
+{% endblock %}
+
+{% from "_macros.html" import render_field, render_hidden %}
+
+{% block content_nav %}
+  {% include "notes/_note-nav.html" %}
+{% endblock %}
+
+{% block content %}
+  <h1 class="heading-large">Give Your Note a Title</h1>
+  <form action="{{ url_for('notes.create') }}" method="POST" class="new-note">
+    {{ render_hidden(form) }}
+    {{ render_field(form.content, rows=10) }}
+    <div class="form-group">
+      <label class="form-label" for="tags">Tags</label>
+      {{ form.tags.data }}
+      {{ form.tags(class_="demo-default selectized input-tags") }}
+     </div>
+    <input class="button"  type="submit" value="Add note">
+  </form>
+
+  <div class="panel-indent">
+    <p>Don't forget you can also email notes to: <strong class="bold-small"><a href="mailto:{{current_user.inbox_email}}" target="_blank">{{current_user.inbox_email}}</a></strong></p>
+  </div>
+{% endblock %}
+
+{% block content_links %}
+  {% include "notes/_link_note_with.html" %}
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/selectize.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/newEntryTagging.js"></script>
+{% endblock %}

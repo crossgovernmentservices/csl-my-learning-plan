@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block body_content %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li>Performance</li>
+          <li>Write performance review</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-large">Write performance review</h1>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <p class="lede">Start your writing your performance review</p>
+    </div>
+
+   <div class="column-third">
+      <section class="status">
+        <h2 class="heading-small">Started</h2>
+        <p>
+          {% if current_user.objectives %}
+            {{current_user.objectives.started_on | format_date}}
+          {% endif %}
+        </p>
+        <h2 class="heading-small">Due</h2>
+        <p>
+          {% if current_user.objectives %}
+            {{current_user.objectives.due_by | format_date}}
+          {% endif %}
+        </p>
+        <h2 class="heading-small">Status</h2>
+        <p>
+          {% if current_user.objectives %}
+          {{current_user.objectives.status}}
+          {% endif %}
+        </p>
+      </section>
+
+      <section class="related">
+        <h2>Useful resources</h2>
+        <nav>
+          <ul>
+            <li><a href="https://civilservicelearning.civilservice.gov.uk/sites/default/files/resources/cscf_fulla4potrait_2013-2017_v2e.pdf">Competency framework</a></li>
+            <li><a href="https://civilservicelearning.civilservice.gov.uk/competency-framework/how-use-competency-framework">How to use the competency framework</a></li>
+            <li><a href="https://civilservicelearning.civilservice.gov.uk/competency-framework/case-study-1">A case study</a></li>
+            <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/performance-objectives-and-competency-e-learning">Competency and objective training</a></li>
+            <li><a href="https://civilservicelearning.civilservice.gov.uk/sites/default/files/howtosetsmartobjectivescfindicatorstr230513fvissue3.doc">How to set SMART objectives</a></li>
+          </ul>
+        </nav>
+      </section>
+
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/app.js"></script>
+{% endblock %}

@@ -1,0 +1,10 @@
+<label class="form-label">Competencies</label>
+<select id="competencies" name="competencies" class="form-control">
+  {% for cluster in competencies|groupby('cluster.name') %}
+  <optgroup label="{{ cluster.grouper }}">
+    {% for competency in cluster.list %}
+    <option value="{{ competency.id }}">{{ competency.name }}</option>
+    {% endfor %}
+  </optgroup>
+  {% endfor %}
+</select>

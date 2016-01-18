@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block body_content %}
+
+{% from "_macros.html" import render_field, render_hidden %}
+
+  <h1 class="heading-large">CSL My Learning Plan</h1>
+
+  <p class="text">I learn, he learns, she learns, they learn ... what about you</p>
+
+  <div class="panel-indent panel-indent-info">
+    <p>
+      If this is your first time here you will need to log in using your government email address.
+    </p>
+  </div>
+
+  <form action="{{url_for('security.login')}}" method="post" class="form">
+    {{ render_field(form.email) }}
+    <div class="form-group">
+      <button class="button">Sign in</button>
+    </div>
+    {{ render_hidden(form) }}
+  </form>
+
+{% endblock %}

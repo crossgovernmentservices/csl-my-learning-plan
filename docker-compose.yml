@@ -1,0 +1,13 @@
+web:
+  build: .
+  env_file: docker-local.env
+  links:
+    - mongo
+  ports:
+    - "8002:8000"
+  volumes:
+    - ".:/usr/src/app"
+  command: "python manage.py server"
+mongo:
+  image: mongo:3.2
+

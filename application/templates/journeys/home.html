@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if gt IE 8]><!--><html lang="en">
+<!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <!--[if IE 8]>
+    <script type="text/javascript">
+      (function(){if(window.opera){return;}
+       setTimeout(function(){var a=document,g,b={families:(g=
+       ["nta"]),urls:["../../assets/css/fonts-ie8.css"]},
+       c="assets/govuk_template/javascripts/vendor/goog/webfont-debug.js",d="script",
+       e=a.createElement(d),f=a.getElementsByTagName(d)[0],h=g.length;WebFontConfig
+       ={custom:b},e.src=c,f.parentNode.insertBefore(e,f);for(;h=h-1;a.documentElement
+       .className+=' wf-'+g[h].replace(/\s/g,'').toLowerCase()+'-n4-loading');},0)
+      })()
+    </script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+
+    <!-- The stylesheets-->
+    {% assets "css_journeys" %}
+      <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+  <title>CSL screenshots & journeys</title>
+
+  {% block head %}{% endblock %}
+
+</head>
+<body>
+
+{% block body_content %}
+<p class="app-header"></p>
+
+<h1>CSL & CSD screenshots/journeys <small class="app-status">Alpha</small></h1>
+
+<div id="content">
+
+  <p class="intro">Browse screenshots of the various CSL journeys we are reimagining during this alpha</p>
+
+  <h2>The journeys</h2>
+
+<ul class="exemplar-list">
+  <li><a href="/journeys/csl">1. CSL booking journey</a></li>
+  <li><a href="/journeys/csl_create_plan">1. CSL Create a learning plan</a></li>
+</ul>
+
+</div>
+{% endblock %}
+
+{% block body_end %}{% endblock %}
+</body>
+</html>

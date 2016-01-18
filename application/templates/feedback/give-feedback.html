@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+  {% from "_macros.html" import render_field, render_hidden %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li><a href="{{url_for('feedback.give_feedback')}}">Give feedback</a></li>
+          <li>Feedback for {{feedback_request.entry.requested_by_name}}</li>
+        </ol>
+      </div>
+    </div>
+    <div class="column-third">
+      {% include "_logout.html" %}
+    </div>
+  </div>
+
+  <h1 class="heading-large">Give feedback</h1>
+
+  <p class="lede">Please provide feedback for <strong class="bold-medium">{{feedback_request.entry.requested_by_name}}</strong></p>
+
+  <h2 class="heading-medium">Message from {{feedback_request.entry.requested_by_name}}</h2>
+  <div class="text feedback-message">
+    {{feedback_request.entry.template|markdown}}
+  </div>
+
+
+  <h2 class="heading-medium">{% if feedback_request.replied %}Your{% else %}Write{% endif%} Feedback</h2>
+  <form action="{{url}}" method="post" class="form add-feedback">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        {% if feedback_request.entry.replied %}
+          {{ feedback_request.entry.details }}
+        {% else %}
+          {{ render_field(form.feedback, rows=10) }}
+        {% endif %}
+      </div>
+      <div class="column-third">
+        <h2 class="heading-medium guidance-heading">Giving good feedback</h2>
+        <p>Feedback can be really important when helping each one of us work as effectively as possible for the taxpayer. Remember to be constructive - what can someone do to improve a behaviour?</p>
+        <p>Be specific. Was there a particular task or situation? What did they do? What was the result of them acting the way they did? If they've included their objectives when asking for feedback, it may be useful to think first about examples related to those.</p>
+      </div>
+    </div>
+
+    {% if not feedback_request.entry.replied %}
+      <div class="form-group">
+        <button class="button">Send feedback</button>
+      </div>
+    {% endif %}
+
+  {{ render_hidden(form) }}
+  </form>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <section class="objectives">
+        {% if feedback_request.entry.share_objectives %}
+          <h2 class="heading-medium">Objectives for {{feedback_request.entry.requested_by}}</h2>
+           <ul>
+              {% for objective in feedback_request.requested_by.objectives.objectives %}
+                <li class="objective">
+                  <header class="objective-header">{{objective.what|markdown}} <span class="toggle"><a href="#">Show</a><a href="#" style="display: none;">Hide</a></span></header>
+                  <div class="details" style="display: none;">
+                    {{objective.how|markdown}}
+                  </div>
+                </li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/app.js"></script>
+{% endblock %}

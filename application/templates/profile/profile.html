@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+  {% include "_logout.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li>Your details</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <header class="user-details">
+    <p>Signed in as:</p>
+    <h1 class="heading-large">{{current_user.full_name}}</h1>
+      <p>Email: {{current_user.email}}</p>
+
+    <p><a href="{{url_for('profile.add_email')}}">Add another email</a></p>
+    <!-- Colm what is the disclosure-triangle class? -->
+    <details>
+      <summary class="font-xsmall">Why do I need another email address?</summary>
+      <p class="font-xsmall text">No you actually don't need it, you want it but you don't need it :P</p>
+    </details>
+  </header>
+
+  <div class="summary-section summary-section__editable">
+    <a href="#" class="btn-edit">Update your details</a>
+    <h2 class="heading-medium summary-section-heading">Your details</h2>
+    <dl class="summary-list-inline">
+      <dt>Grade</dt>
+      <dd>{{current_user.grade}}</dd>
+      <dt>Profession</dt>
+      <dd>{{current_user.profession}}</dd>
+    </dl>
+  </div>
+
+  <div class="summary-section summary-section__editable">
+    <a href="#" class="btn-edit">Update your skills</a>
+    <h2 class="heading-medium summary-section-heading">Your skills</h2>
+    <p class="text">Let us know your current skills - so we can make sure the Civil Service is ready for the next changes in our society or the way we work.</p>
+    <p><a href="">Update skills</a></p>
+
+  </div>
+
+{% endblock %}

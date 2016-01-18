@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>This is for people with knowledge, power and skill</title>
+  {% assets "css_govuk_elements" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+  <link rel="stylesheet" href="/static/stylesheets/govuk-template.css">
+  <link rel="stylesheet" href="/static/stylesheets/hatch.css">
+</head>
+<body>
+ <main id="wrapper" role="main">
+    <div id="content">
+      <div class="grid-row">
+        <h1 class="heading-large">This is where the plumbing lives</h1>
+        {% include "_messages.html" %}
+
+        <section>
+          <h2 class="heading-small">Create ordinary user accounts for research</h2>
+          <form action="/the-hatch/add-user" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-control" id="email" name="email" type="email">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="full-name">Full name</label>
+              <input class="form-control" id="full-name" name="full-name" type="text">
+            </div>
+            <input class="button" type="submit" value="Save and continue">
+          </form>
+        </section>
+        <section>
+          <h2 class="heading-small">Once a user has been created you can add objectives for them or other existing users (including yourself)</h2>
+          <p><a href="{{url_for('hatch.manage_users')}}">Add objectives</a></p>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

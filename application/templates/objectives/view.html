@@ -1,0 +1,37 @@
+{% extends "objectives/base.html" %}
+
+{% block content %}
+  {% if objective %}
+    <h1 class="heading-large">{{ objective.entry.title|default("Objective") }}</h1>
+
+    <h3 class="heading-small">What</h3>
+    <div>{{ objective.entry.what|markdown }}</div>
+
+    <h3 class="heading-small">How</h3>
+    <div class="rendered-markdown">{{ objective.entry.how|markdown }}</div>
+
+    <a class="button" href="{{ url_for('objectives.edit', id=objective.id) }}">Edit</a>
+
+    {{ linked_with(objective.links) }}
+
+  {% else %}
+    <h1 class="heading-large">Your objectives</h1>
+
+    <p class="lede">Select one of your objectives from the list</p>
+
+    <section class="related">
+      <h2>Useful resources</h2>
+      <nav>
+        <ul>
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/sites/default/files/resources/cscf_fulla4potrait_2013-2017_v2e.pdf">Competency framework</a></li>
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/competency-framework/how-use-competency-framework">How to use the competency framework</a></li>
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/competency-framework/case-study-1">A case study</a></li>
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/performance-objectives-and-competency-e-learning">Competency and objective training</a></li>
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/sites/default/files/howtosetsmartobjectivescfindicatorstr230513fvissue3.doc">How to set SMART objectives</a></li>
+        </ul>
+      </nav>
+    </section>
+
+  {% endif %}
+
+{% endblock %}

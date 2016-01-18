@@ -1,0 +1,57 @@
+{% extends "3colbase.html" %}
+{% from "_macros.html" import linked_with %}
+
+{% block content_nav %}
+  {% include "notes/_note-nav.html" %}
+{% endblock %}
+
+{% block content %}
+
+  {% if note %}
+    <h1 class="heading-large">
+    {%- if note and note.entry.title -%}
+      {{ note.entry.title }}
+    {%- else -%}
+      Note title
+    {%- endif -%}
+    </h1>
+
+    <section class="note-content text">
+      {% if note -%}
+        {{ note.entry.content }}
+      {%- else -%}
+      <p>Write your note here</p>
+      {%- endif %}
+    </section>
+
+    <section class="note-tags">
+      <h3 class="heading-small">Tags:</h3>
+      <ul class="tags-list">
+      {% if note %}
+      {% for tag in note.tags %}
+        <li><a href="">{{ tag.name }}</a></li>
+      {% endfor %}
+      {% endif %}
+      </ul>
+    </section>
+
+    <a class="button" href="{{ request.path }}/edit">Edit</a>
+
+    <section>
+      {% if note %}
+      {{ linked_with(note.links) }}
+      {% endif %}
+    </section>
+
+  {% else %}
+    <h1 class="heading-large">Your notes</h1>
+
+    <p class="lede">Select a recently captured note from the list to view.</p>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block content_links %}
+  {% include "notes/_link_note_with.html" %}
+{% endblock %}

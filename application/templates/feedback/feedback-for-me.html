@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+  {% from "_macros.html" import render_field, render_hidden %}
+
+    <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li>Requested feedback</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  {% if feedback_request %}
+    <h1 class="heading-large">Your feedback from {{feedback_request.entry.requested_by_name}}</h1>
+  {% elif feedback_requests %}
+    <h1 class="heading-large">Your feedback</h1>
+  {% endif  %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <table>
+        <thead>
+          <tr><th>Requested from</th><th>Sent</th><th>Replied</th></tr>
+        </thead>
+        <tbody>
+          {% for feedback in feedback_requests %}
+            <tr>
+              <td>{{feedback.entry.requested_from}}</td>
+              <td>{{feedback.entry.sent}}</td>
+              <td>{% if feedback.entry.replied %}<a href="{{url_for('feedback.view_requested_feedback', id=feedback.id)}}">Yes</a>{% else %}No{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

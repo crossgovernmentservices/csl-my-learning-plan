@@ -1,0 +1,41 @@
+.related-container {
+  margin-top: 40px;
+}
+.related {
+  border-top: 10px solid $link-colour;
+  padding-top: 5px;
+  font-size: 16px;
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.25em;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+
+  nav {
+    margin-bottom: 1.25em;
+  }
+
+  ul {
+    font-size: 16px;
+    line-height: 1.25;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 0.75em;
+    padding-left: 0;
+  }
+}
+
+.status {
+  border-top: 5px solid $link-colour;
+  padding-top: 15px;
+  font-size: 16px;
+
+  h2 {
+    margin-top: 5px;
+  }
+}

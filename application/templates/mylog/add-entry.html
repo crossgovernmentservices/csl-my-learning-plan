@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block endhead %}
+    <link rel="stylesheet" href="/static/stylesheets/selectize.css">
+{% endblock %}
+
+{% block body_content %}
+
+{% from "_macros.html" import render_field, render_hidden %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li>My evidence/clerical log</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  <div class="grid-row">
+
+    <div class="column-one-quarter">
+      <h1 class="heading">Recent Notes</h1>
+      <p><a href="">+ create note</a></p>
+      <ul>
+        {% for note in ['note1', 'note2'] %}
+        <li><a href="">{{ note }}</a></li>
+        {% endfor %}
+      </ul>
+      <p><a href="">see more</a></p>
+    </div>
+
+    <div class="column-one-half">
+      <h1 class="heading-large">Give Your Note a Title</h1>
+      <form action="{{url_for('mylog.add_log_entry')}}" method="POST">
+         <div class="form-group">
+          <label class="form-label" for="tags">Tags</label>
+          <input type="text" id="tags" name="tags" class="demo-default selectized input-tags" style="display: block;">
+         </div>
+        {{ render_field(form.content, rows=10) }}
+        {{ render_hidden(form) }}
+        <input class="button"  type="submit" value="Add log entry">
+      </form>
+
+      <div>
+        Tags:
+      </div>
+
+      <div>
+        Linked to
+      </div>
+    </div>
+
+    <div class="column-one-quarter">
+      <h1 class="heading">Link your note with</h1>
+      <form>
+        <fieldset>
+          <label>Competencies</label>
+          <select>
+            {% for cluster in competencies|groupby('cluster.name') %}
+            <optgroup label="{{ cluster.grouper }}">
+              {% for competency in cluster.list %}
+              <option>{{ competency.name }}</option>
+              {% endfor %}
+            </optgroup>
+            {% endfor %}
+          </select>
+          <button>add</button>
+        </fieldset>
+      </form>
+      <form>
+        <fieldset>
+          <label>Objectives</label>
+          <select>
+            {% for objective in objectives %}
+            <option>{{ objective }}</option>
+            {% endfor %}
+          </select>
+          <button>add</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel-indent">
+    <p>You can also email log entries to: <strong class="bold-small"><a href="mailto:{{current_user.inbox_email}}" target="_blank">{{current_user.inbox_email}}</a></strong></p>
+  </div>
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/selectize.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/newEntryTagging.js"></script>
+{% endblock %}

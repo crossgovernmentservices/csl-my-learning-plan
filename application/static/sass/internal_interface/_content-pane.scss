@@ -1,0 +1,10 @@
+.content-pane {
+  margin-left: 300px;
+  padding: $gutter-half $gutter-half $gutter-half $gutter;
+}
+
+.content-link-pane {
+  .form-control {
+    width: 75%;
+  }
+}

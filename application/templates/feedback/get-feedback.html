@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block endhead %}
+
+ <script id="search-results-template" type="text/x-jsrender">
+    {% raw %}
+    <li>
+      <span>{{:userEmail}}</span><a href="#">Add</a>
+    </li>
+    {% endraw %}
+  </script>
+
+{% endblock %}
+
+{% block body_content %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li>Request feedback</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  <h1 class="heading-large">Request feedback</h1>
+
+  <p class="lede">Use the form to request feedback from your colleagues.</p>
+
+  <details>
+    <summary>Why request feedback?</summary>
+    <div class="text">
+      <p>Regular information on how you're doing can help you improve, work more effectively as a team, or make the most of new skills you are picking up.</p>
+      <p>You should be getting regular feedback anyway - from you manager at one to one meetings and through reports on business processes you're part of.</p>
+      <p>Don't wait until it's mid-year or annual review time - feedback can help at any point. And do take a few minutes to reflect on feedback when it arrives - this is one of the most important parts of the process.</p>
+    </div>
+  </details>
+
+  <form action="{{url_for('feedback.get_feedback')}}" method="post" >
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="feedback">
+          <h2 class="heading-medium">Template</h2>
+          <p>This will be sent to your colleague. Click in the textarea to edit it.</p>
+          <textarea style="width: 100%" rows="14" class="feedback-template" name="feedback-template" id="feedback-template">{% include "feedback/_feedback-template.html" %}
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <h2 class="heading-medium">Share your objectives</h2>
+          <label class="block-label" for="share-objectives">
+          Share objectives
+          <span class="form-hint">You can share your objectives with colleagues at the time you request feedback. If they know what you were asked to achieve, it can help them give feedback that's more useful when preparing for your performance review.</span>
+          <input id="share-objectives" name="share-objectives" type="checkbox" value="share-objectives">
+          </label>
+        </div>
+      </div>
+
+     <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="recipients">
+          <h2 class="heading-medium">Who are you asking for feedback?</h2>
+            <ul id="recipient-list">
+            </ul>
+            <input type="submit" id="submit-request" class="button" style="display:none" value="Send request">
+            <label for="search" class="form-label">Find email</label>
+            <input class="form-control" type="search" name="q" id="search" title="Search">
+            <input class="search-button submit" type="submit" value="Search">
+            <ul id="search-results">
+            </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/app.js"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block endhead %}
+    <link rel="stylesheet" href="/static/stylesheets/selectize.css">
+{% endblock %}
+
+{% block body_content %}
+
+{% from "_macros.html" import render_field, render_hidden %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li><a href="{{url_for('mylog.view_mylog')}}">My log</a></li>
+          <li>Log entry</li>
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-large">View log entry</h1>
+    </div>
+  </div>
+
+  {% if entry.editable %}
+    {% include "mylog/_editable-entry.html" %}
+  {% else %}
+    {% include "mylog/_locked-entry.html" %}
+  {% endif %}
+
+  <div>
+    Linked to
+    <ul>
+      {% for link in entry.links() %}
+      <li>
+        {%- if link.__class__.__name__ == 'Competency' -%}
+          Competency: {{ link.name }}
+        {%- elif link.entry_type == 'objective' -%}
+          Objective: {{ link.entry.what|markdown }}
+        {%- endif %}
+        <a href="remove-link?link={{ link.id }}">remove</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% endblock %}

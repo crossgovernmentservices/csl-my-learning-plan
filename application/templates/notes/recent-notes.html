@@ -1,0 +1,53 @@
+{% extends "3colbase.html" %}
+
+{% block content_nav %}
+  {% include "notes/_note-nav.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="heading-large">Your note title</h1>
+
+  {% if not entry %}
+  <p>Select a recent note from the list</p>
+  {% else %}
+  <section class="note-content text">
+    {{entry.entry.content}}
+  </section>
+
+  <section class="note-tags">
+    <h3 class="heading-small">Tags:</h3>
+    <p>{% for tag in entry.tags %}{{tag.name}}{% if not loop.last%}, {% endif %}{% endfor %}</p>
+    <!--<ul class="tags-list">
+      <li><a href="">test</a></li>
+      <li><a href="">tags</a></li>
+      <li><a href="">foo</a></li>
+      <li><a href="">bar</a></li>
+      <li><a href="">perf</a></li>
+    </ul>-->
+  </section>
+
+  <button class="button">Edit</button>
+
+  <section>
+    <h3 class="heading-small">Linked to:</h3>
+    <ul class="linked-list">
+      {% for link in entry.links() %}
+      <li class="linked-item">
+        {%- if link.__class__.__name__ == 'Competency' -%}
+          Competency: <a href="/">{{ link.name }}</a>
+        {%- elif link.entry_type == 'objective' -%}
+          Objective: <a href="/">{{ link.entry.what|truncate(40)|markdown }}</a>
+        {%- endif %}
+        <span class="remove-link"><a href="remove-link?link={{ link.id }}">remove</a></span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+{% endblock %}
+
+{% block content_links %}
+  {% include "notes/_link_note_with.html" %}
+{% endblock %}

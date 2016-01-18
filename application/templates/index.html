@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% block body_content %}
+
+{% from "_macros.html" import render_field, render_hidden %}
+
+  {% include "_logout.html" %}
+
+  <h1 class="heading-large">CSL - My Learning Plan</h1>
+  <p class="lede">Learn to be a better Civil Servant.</p>
+
+  <div class="grid-row section">
+    <div class="column-two-thirds">
+      <div class="text">
+        <a href="{{url_for('profile.view_profile')}}">View and edit information about me</a>
+      </div>
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="column-half">
+      <div class="text">
+        <h2 class="heading-small">Test</h2>
+        <ul>
+          <li><a href="#">test item</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="column-half">
+      <div class="text">
+        <h2 class="heading-small">Something else</h2>
+        <ul>
+          <li><a href="#">Test 1</a></li>
+          <li><a href="#">Test 2</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="column-half">
+      <div class="text">
+        <h2 class="heading-small">Another</h2>
+        <ul>
+          <li><a href="Test 2">Somehting</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

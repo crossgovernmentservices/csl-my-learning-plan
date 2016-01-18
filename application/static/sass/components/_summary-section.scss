@@ -1,0 +1,38 @@
+.summary-section {
+  padding-top: 45px;
+
+  .summary-section-heading {
+    margin-top: 0;
+  }
+}
+
+.summary-section__editable {
+  position: relative;
+
+  .btn-edit {
+    position: absolute;
+    top: 45px;
+    right: 15px;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+
+.summary-list-inline {
+  @extend %contain-floats;
+  dt, dd {
+    float: left;
+    margin-bottom: 10px;
+  }
+  dt {
+    clear: left;
+    margin-right: $gutter-half;
+    width: 200px;
+  }
+  dd {
+    font-weight: bold;
+  }
+  .info-highlight {
+    @extend .heading-large;
+  }
+}

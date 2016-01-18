@@ -1,0 +1,14 @@
+language: python
+python:
+- '3.5'
+install: pip install -r requirements.txt
+script: py.test tests
+services:
+  - mongodb
+
+before_install:
+  - gem install sass
+
+env:
+  global:
+    - AWS_DEFAULT_REGION=eu-west-1

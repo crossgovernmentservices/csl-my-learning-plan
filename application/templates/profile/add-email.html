@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+  {% include "_logout.html" %}
+
+  {% from "_macros.html" import render_field, render_hidden %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          <li><a href="{{url_for('profile.view_profile')}}">Profile</a></li>
+          <li>Add email</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <form action="{{url_for('profile.add_email')}}" method="post" class="form">
+  {{ render_field(form.email) }}
+  <div class="form-group">
+    <button class="button">Add email</button>
+  </div>
+  {{ render_hidden(form) }}
+  </form>
+
+
+{% endblock %}

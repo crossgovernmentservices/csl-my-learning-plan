@@ -1,0 +1,59 @@
+.content-nav-container {
+  position: fixed;
+  width: 300px; /* subject to change */
+  height: 100%;
+  overflow-y: auto;
+  background: $border-colour;
+  z-index: 1;
+  top: 0;
+  padding-top: 50px;
+
+  &::before {
+    content: 'Civil Service Digital';
+    top: 0;
+    line-height: 50px;
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+    padding-left: 15px;
+    color: $secondary-text-colour;
+  }
+}
+
+.link-back-container {
+  background: darken($border-colour, 10%);
+  padding: 5px 15px;
+}
+
+.content-nav-main {
+  padding: 5px 0;
+
+  h2 {
+    margin: 15px 15px;
+  }
+}
+
+.content-nav-list {
+  list-style: none;
+
+  li a {
+    display: block;
+    width: 100%;
+    padding: 5px 15px;
+    color: $text-colour;
+    text-decoration: none;
+
+    &:hover {
+      background: $panel-colour;
+      color: $link-colour;
+    }
+
+    &.current {
+      background: $page-colour;
+    }
+  }
+}
+
+.content-nav-action {
+  padding: 5px 15px;
+}

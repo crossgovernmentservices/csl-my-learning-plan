@@ -1,0 +1,56 @@
+{% extends "3colbase.html" %}
+
+{% from "_macros.html" import linked_with %}
+
+{% block content_nav %}
+  <div class="content-nav-main">
+    <h2 class="heading-medium">
+      Your objectives
+    </h2>
+
+    {% with sort=request.args.get('sort', 'oldest-first') %}
+    <div class="content-nav-action">
+      <a href="{{ request.path }}{% if sort != 'newest-first' %}?sort=newest-first{% endif %}">
+        {%- if sort == 'newest-first' -%}
+          {# up arrow #}&#8593;
+        {%- else -%}
+          {# down arrow #}&#8595;
+        {%- endif %} sort</a></div>
+    {% endwith %}
+
+    <ul class="content-nav-list">
+    {% for obj in current_user.objectives|sort(attribute='created_date', reverse=(request.args.get('sort', 'oldest-first') == 'newest-first')) %}
+      <li>
+        <a {% if objective and objective == obj %}class="current"{% endif %} href="{{ url_for('objectives.view', id=obj.id) }}">
+          {{ obj.entry.title|default('Objective #' + loop.index|string)|truncate(40) }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="content-nav-action"><a href="{{ url_for('objectives.edit') }}">+ add objective</a></div>
+  </div>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block content_links %}
+
+  {% if objective %}
+  <h2 class="heading-medium">Link your objective with</h2>
+  <form class="form" method="post" action="{{ url_for('objectives.link', id=objective.id) }}">
+    <div class="form-group">
+      {% include "competency/select.html" %}
+      <button>add</button>
+    </div>
+  </form>
+
+  <p><a href="{{ url_for('competency.view') }}">View competencies</a></p>
+  {% endif %}
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/app.js"></script>
+{% endblock %}

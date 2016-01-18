@@ -1,0 +1,59 @@
+
+{% extends "3col_template.html" %}
+
+{% block head %}
+
+  <!-- gov uk elements stylesheet -->
+  {% assets "css_govuk_elements" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+
+  <!-- internal interface stylesheet -->
+  {% assets "css_internal_interface" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+
+  <!-- this application main stylesheet -->
+  {% assets "css_main" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+
+  <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/vendor/jsrender.min.js"></script>
+
+  {% block endhead %}
+  {% endblock %}
+
+{% endblock %}
+
+{% block inside_header %}
+{% include "_logout.html" %}
+{% endblock %}
+
+{% block content_nav %}
+{% endblock %}
+
+{% block content_pane %}
+
+  <div class="content-pane">
+
+    {% include "_messages.html" %}
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        {% block content %}
+        some content
+        {% endblock %}
+      </div>
+      <div class="column-third">
+        <div class="column-one-quarter content-link-pane">
+          {% block content_links %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}
+

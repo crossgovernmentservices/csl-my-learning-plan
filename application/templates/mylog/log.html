@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block endhead %}
+    <link rel="stylesheet" href="/static/stylesheets/selectize.css">
+{% endblock %}
+
+{% block body_content %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div id="global-breadcrumb" class="header-context">
+        <ol role="breadcrumbs" class="group">
+          <li><a href="/">Home</a></li>
+          {% if filtered %}
+            <li><a href="{{url_for('mylog.view_mylog')}}">My log</a></li>
+          {% else %}
+            <li>My Log</li>
+          {% endif %}
+        </ol>
+      </div>
+      </div>
+      <div class="column-third">
+        {% include "_logout.html" %}
+      </div>
+  </div>
+
+  {% if filtered %}
+  <div class="filter">
+    Filtered by tag: <span class="bold-small">{{request.args.get('tag')}}</span>
+    <a href="{{url_for('mylog.view_mylog')}}" class="filter-off-btn">x</a>
+  </div>
+  {% endif %}
+
+  <h1 class="heading-large">My log</h1>
+  <details>
+    <summary>About logging</summary>
+    <p>Use this to store your achievements. These could be appointments or meetings that went well, challenges you overcame, feedback you were given, or where you helped with a challenge outside the day to day of your job. You can also save data from a clerical log if you work in an operational role. Remember, you can always edit items later.</p>
+  </details>
+
+  <div class="grid-row section">
+    <div class="column-third">
+      <label class="form-label" for="search-log">Search my log</label>
+      <input class="form-control" id="search-log" type="text">
+    </div>
+  </div>
+
+  <div class="section">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>ID</th><th>Type</th><th>Content</th><th>From</th><th>Tags</th></tr>
+      </thead>
+      <tbody>
+        {% for entry in log_entries %}
+          <tr>
+            <td>{{entry.created_date|format_date}}</td>
+            <td>
+              {% if entry.entry_type == 'log' %}
+                <a href="/notes/entry/{{entry.id}}">{{entry.id}}</a>
+              {% else %}
+                <a href="{{entry.entry_type}}/{{entry.id}}">
+                  {{entry.id}}
+                </a>
+              {% endif %}
+            </td>
+            <td>{{entry.entry_type}}</td>
+            <td class="content">
+              {% if entry.entry_type == 'log' %}
+                {{entry.entry.content|truncate(50)}}
+              {% else %}
+                {{entry.entry|format_entry|truncate(50)}}
+              {% endif %}
+            </td>
+            <td>{% if entry.entry_from %}{{entry.entry_from}}{% else %}You{% endif %}</td>
+            <td>
+              <input type="text" value="{% for tag in entry.tags %}{{tag.name}},{% endfor %}" class="demo-default selectized input-tags"data-entry-id="{{entry.id}}">
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-row section">
+    <div class="column-two-thirds">
+      <a href="{{url_for('mylog.add_log_entry')}}" class="button">Add log entry</a>
+      <div class="panel-indent">
+        <p>You can also email items to: <strong class="bold-small"><a href="mailto:{{current_user.inbox_email}}" target="_blank">{{current_user.inbox_email}}</a></strong> which will create a new log entry. You'll still be able to edit it later.</p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block body_end %}
+  <script type="text/javascript" src="/static/javascripts/vendor/selectize.min.js">
+  </script>
+  <script type="text/javascript" src="/static/javascripts/tags.js"></script>
+{% endblock %}
