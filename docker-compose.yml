@@ -1,8 +1,14 @@
+restore:
+   build: ./dockerllrestore/
+   command: mongorestore -h lrs /tmp/dump/
+   links:
+      - lrs
 web:
   build: .
   env_file: docker-local.env
   links:
     - mongo
+    - lrs
   ports:
     - "8002:8000"
   volumes:
@@ -10,4 +16,8 @@ web:
   command: "python manage.py server"
 mongo:
   image: mongo:3.2
-
+lrs:
+  image: cmorandikainos/learninglocker:v0.0.1
+  ports:
+    - "8010:80"
+    - "445:443"
