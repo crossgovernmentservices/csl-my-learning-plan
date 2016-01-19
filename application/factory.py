@@ -34,11 +34,17 @@ def register_errorhandlers(app):
 
 
 def register_blueprints(app):
-    from application.frontend.views import frontend
-    app.register_blueprint(frontend)
+    from application.mylearning.views import mylearning
+    app.register_blueprint(mylearning)
 
     from application.profile.views import profile
     app.register_blueprint(profile)
+
+    from application.learningrecord.views import learningrecord
+    app.register_blueprint(learningrecord)
+
+    from application.learningplan.views import learningplan
+    app.register_blueprint(learningplan)
 
 
 def register_extensions(app):

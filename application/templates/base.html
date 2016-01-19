@@ -23,6 +23,22 @@
 
 {% endblock %}
 
+{% block header_class %}with-proposition{% endblock %}
+
+{% block proposition_header %}
+<div class='header-proposition'>
+  <div class='content'>
+    <nav id='proposition-menu'>
+      <a href='/' id='proposition-name'>Civil Service Learning</a>
+      <ul id="proposition-links">
+        <li><a href="{{ url_for('mylearning.index') }}">My learning plan</a></li>
+        <li><a href="{{ url_for('profile.view_profile') }}">Profile</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock %}
+
 
 {% block content %}
   <main id="wrapper" role="main">

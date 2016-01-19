@@ -14,23 +14,23 @@ from flask import (
 from flask.ext.security import login_required
 from flask.ext.security.utils import login_user
 
-from application.frontend.forms import LoginForm
+from application.mylearning.forms import LoginForm
 
 from application.models import User
 
 from application.extensions import user_datastore
 
 
-frontend = Blueprint('frontend', __name__, template_folder='templates')
+mylearning = Blueprint('mylearning', __name__, template_folder='templates')
 
 
-@frontend.route('/', methods=['GET', 'POST'])
+@mylearning.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     return render_template('index.html')
 
 
-@frontend.route('/login', methods=['GET', 'POST'])
+@mylearning.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if request.args.get('next'):
@@ -41,7 +41,7 @@ def login():
         user = user_datastore.get_user(email)
         if not user:
             flash("You don't have a user account yet")
-            return redirect(url_for('frontend.index'))
+            return redirect(url_for('mylearning.index'))
         login_user(user)
 
         # TODO check next is valid
@@ -49,7 +49,7 @@ def login():
     return render_template('login.html', form=form)
 
 
-@frontend.route('/users.json')
+@mylearning.route('/users.json')
 @login_required
 def users():
     email = request.args.get('email', '')
