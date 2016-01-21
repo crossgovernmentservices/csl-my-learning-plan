@@ -37,17 +37,17 @@ css_main = Bundle(
 )
 
 css_learning = Bundle(
-  'sass/learning.scss',
-  filters='scss',
-  output='stylesheets/learning.css',
-  depends="**/*.scss"
+    'sass/learning.scss',
+    filters='scss',
+    output='stylesheets/learning.css',
+    depends="**/*.scss"
 )
 
 css_rebrand = Bundle(
-  'sass/rebrand/rebrand.scss',
-  filters='scss',
-  output='stylesheets/rebrand.css',
-  depends='**/*.scss'
+    'sass/rebrand/rebrand.scss',
+    filters='scss',
+    output='stylesheets/rebrand.css',
+    depends='**/*.scss'
 )
 
 # js_rebrand = Bundle(

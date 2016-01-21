@@ -53,7 +53,15 @@
             <p class="info"><span class="numofresults">{{courses|length}}</span> courses found</p>
           </div>
           <div class="column-two-thirds ta-right">
-            {% include "partials/search/sort-results.html" ignore missing %}
+            <form action="get" class="sort-results">
+              <label for="">order by</label>
+              <select name="" id="">
+                <option value="relevance">Relevance</option>
+                <option value="rating">Rating</option>
+                <option value="editor">CSL recommended</option>
+              </select>
+            </form>
+
           </div>
         </div>
 
