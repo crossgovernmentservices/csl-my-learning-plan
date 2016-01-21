@@ -2,7 +2,9 @@
 {% block body_content %}
 
   {% include "_logout.html" %}
+  <h2 class="heading-medium">Learning records JSON from LRS</h2>
+  <a href="{{ url_for('learningrecord.view_record_json',record_id=123) }}">see this as a real JSON</a>
+  <p>{{learning_records}}</p>
 
-  <p>this is a spaceholder for a record {{record_id}}</p>
 
 {% endblock %}

@@ -12,7 +12,7 @@
   <div class="grid-row section">
     <div class="column-two-thirds">
       <div class="text">
-        <a href="{{url_for('profile.view_profile')}}">View and edit information about me</a>
+        <a href="{{ url_for('profile.view_profile') }}">View and edit information about me</a>
       </div>
     </div>
   </div>
@@ -21,30 +21,32 @@
       <div class="text">
         <h2 class="heading-small">Learning items</h2>
         <ul>
-          <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">view some random learning record</a></li>
-          <li><a href="{{ url_for('learningplan.view_plan',plan_id=1234) }}">view some random learning plan</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="column-half">
-      <div class="text">
-        <h2 class="heading-small">Something else</h2>
-        <ul>
-          <li><a href="#">Test 1</a></li>
-          <li><a href="#">Test 2</a></li>
+          <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">view learning records as JSON</a></li>
+          <li><a href="{{ url_for('learningplan.view_plan',plan_id=1234) }}">view learning plan placeholder page</a></li>
         </ul>
       </div>
     </div>
 
     <div class="column-half">
       <div class="text">
-        <h2 class="heading-small">Another</h2>
+        <h2 class="heading-small">Test section</h2>
         <ul>
-          <li><a href="Test 2">Somehting</a></li>
+          <li><a href="#">some test url</a></li>
         </ul>
       </div>
     </div>
-
   </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <div class="text">
+        <h2 class="heading-small">Search for somink</h2>
+        <ul>
+          <li><a href="#">Course search</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    
 
 {% endblock %}

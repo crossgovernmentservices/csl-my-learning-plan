@@ -18,10 +18,9 @@ class Config(object):
 
     LRS_HOST = os.environ.get('LRS_HOST')
     LRS_PORT = os.environ.get('LRS_PORT')
-    LRS_HTTPS_ENABLED = os.environ.get('LRS_HTTPS_ENABLED')
+    LRS_HTTPS_ENABLED = json.loads(os.environ.get('LRS_HTTPS_ENABLED', 'false'))
     LRS_USER = os.environ.get('LRS_USER')
     LRS_PASS = os.environ.get('LRS_PASS')
-
     LRS_QUERY_URL = os.environ.get('LRS_QUERY_URL')
 
 class DevelopmentConfig(Config):

@@ -10,6 +10,7 @@ from flask import (
 from flask.ext.security import login_required
 from flask.ext.login import current_user
 
+import application.modules.lrs_service as lrs_service
 
 learningplan = Blueprint('learningplan', __name__, url_prefix='/learning-plan')
 
@@ -18,4 +19,3 @@ learningplan = Blueprint('learningplan', __name__, url_prefix='/learning-plan')
 @login_required
 def view_plan(plan_id):
     return render_template('learningplan/view_plan.html', plan_id=plan_id)
-
