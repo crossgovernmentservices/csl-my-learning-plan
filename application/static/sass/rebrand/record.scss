@@ -1,0 +1,88 @@
+// See assets.py
+// Even though govuk.css is built for all views, we
+// still include it here for access to SASS variables.
+@import 'govuk';
+
+@import 'common/all';
+
+@import 'components/search';
+
+
+.info {
+  margin: 0 0 $gutter-half;
+}
+
+.filters-content {
+  @extend %contain-floats;
+  background: $panel-colour;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.filter-field {
+  margin: $gutter-half 0;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.sort-results {
+  select {
+    font-size: 19px;
+    line-height: 1.5em;
+    border: 1px solid $border-colour;
+    padding: 2px;
+    margin-left: 5px;
+  }
+}
+
+.top-search {
+  padding-bottom: $gutter-half;
+  margin-bottom: 10px;
+}
+
+.course-result {
+  border-bottom: 1px solid $border-colour;
+  padding: $gutter-half 0;
+}
+
+.course-result__meta {
+  color: $secondary-text-colour;
+}
+
+.course-result__title {
+  margin: 5px 0 $gutter-half;
+}
+
+.provider-link {
+  display: block;
+  color: $secondary-text-colour;
+  font-size: 16px;
+
+  em {
+    color: $text-colour;
+  }
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+.skills li {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 4px 8px;
+  border: 1px solid $border-colour;
+  border-radius: 1em;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    border-color: $text-colour;
+  }
+}

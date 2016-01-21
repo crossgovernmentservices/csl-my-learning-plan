@@ -1,0 +1,96 @@
+// Accordion
+// ==========================================================================
+.accordion {
+  border: 1px solid $csl-dark-blue;
+  margin: 0 0 10px;
+  list-style: none;
+}
+
+.accordion-head {
+  padding: 3px $gutter-half 0;
+  line-height: 2em;
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  .highlight {
+    font-weight: bold;
+  }
+
+  &:hover {
+    background: lighten( $csl-light-grey, 10% );
+    cursor: pointer;
+
+    .highlight {
+      text-decoration: underline;
+    }
+  }
+}
+
+.accordion-content {
+  display: none;
+
+  .panel-indent {
+    margin-bottom: $gutter;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.accordion--open {
+  .accordion-head {
+    border-bottom: 1px solid $csl-light-grey;
+  }
+  .accordion-content {
+    display: block;
+    padding: $gutter-half;
+  }
+
+  .btn-less {
+    display: block;
+  }
+
+  .btn-more {
+    display: none;
+  }
+}
+
+.btn-less {
+  display: none;
+}
+
+.btn-more {
+  display: block;
+}
+
+.more-group {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  line-height: 41px;
+
+  .btn-less, .btn-more {
+    line-height: inherit;
+  }
+}
+
+.btn-more, .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: $link-colour;
+
+  &:hover {
+    color: $link-hover-colour;
+    cursor: pointer;
+  }
+
+  img {
+    margin-bottom: -2px;
+  }
+}

@@ -1,0 +1,83 @@
+.column-three-quarters {
+  @include grid-column( 3/4 );
+}
+
+// ra = right aligned
+.column--ra {
+  float: right;
+}
+
+.guide__header {
+  @extend %site-width-container;
+  @extend %contain-floats;
+  padding: 0 $gutter;
+  background: $link-hover-colour;
+  color: $page-colour;
+  padding-bottom: 1px;
+  margin-top: 45px;
+
+  h1 {
+    margin: 5px 0 2*$gutter;
+  }
+  h2, li {
+    font-weight: bold;
+  }
+  ol {
+    padding-left: $gutter;
+  }
+  nav {
+    width: 70%;
+    margin-bottom: $gutter;
+  }
+  a, a:hover, a:visited {
+    color: $page-colour;
+    text-decoration: none;
+    font-weight: normal;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.headings {
+  overflow: hidden;
+}
+
+.guide__header__contents {
+  @extend %contain-floats;
+}
+
+.document__type {
+  font-size: 27px;
+  margin: 2.5*$gutter 0 10px;
+}
+.guide__content__wrapper {
+  position: relative;
+}
+.guide__content {
+  .heading-large {
+    margin: 2.5*$gutter 0 $gutter-half;
+
+    .number {
+      @include media($min-width: 641px) {
+        font-size: 80px;
+        position: absolute;
+        left: 0;
+        padding-left: 1.5*$gutter;
+      }
+    }
+  }
+  p {
+    margin: $gutter-half 0;
+  }
+
+  img {
+    width: 100%;
+  }
+  
+}
+.guide__table {
+  td {
+    vertical-align: top;
+  }
+}

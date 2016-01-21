@@ -1,0 +1,523 @@
+// See assets.py
+// Even though govuk.css is built for all views, we
+// still include it here for access to SASS variables.
+@import 'govuk';
+@import 'common/all';
+
+@import 'guide';
+@import 'related';
+@import 'tabs';
+@import 'summary-box';
+@import 'search';
+@import 'filters';
+@import 'course-results';
+@import 'status-indicator';
+
+@import 'csl-brand';
+
+.visually-hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.feedback-footer {
+  @extend %site-width-container;
+  padding: $gutter-half 0;
+  font-size: 16px;
+
+  a,
+  a:hover,
+  a:visited {
+    color: $secondary-text-colour;
+  }
+}
+
+.text ul {
+  margin-bottom: 1em;
+}
+
+.page-header {
+  margin: $gutter 0;
+}
+
+// An inline definition list - name:value pairs for example
+/* dd */.definition-inline {
+  @extend %contain-floats;
+  dt {
+    font-weight: bold;
+    clear: left;
+    float: left;
+    margin-right: $gutter-half;
+    &:after {
+      content: ':';
+    }
+  }
+  dd {
+    float: left;
+  }
+}
+
+.summary-list-inline {
+  @extend %contain-floats;
+  dt, dd {
+    float: left;
+    margin-bottom: 10px;
+  }
+  dt {
+    clear: left;
+    margin-right: $gutter-half;
+    width: 200px;
+  }
+  dd {
+    font-weight: bold;
+  }
+  .info-highlight {
+    @extend .heading-large;
+  }
+}
+
+.course-description {
+  margin-bottom: 1.5*$gutter;
+}
+
+.course-metadata-section {
+  h3 {
+    border-top: 5px solid #0b0c0c;
+    padding: $gutter-half 0;
+    margin-bottom: 0;
+  }
+}
+
+.course-actions {
+  margin: $gutter-half 0;
+  span {
+    display: block;
+  }
+}
+
+.example-separator {
+  margin: 4*$gutter 0;
+  background: $link-colour;
+}
+
+$width: percentage(1/6);
+.gridcopy {
+  tr {
+    background: $highlight-colour;
+  }
+  tr:nth-child(even) {
+    background: $panel-colour;
+  }
+  td, th {
+    border: 2px solid $page-colour;
+    padding: 5px;
+  }
+  td {
+    width: $width;
+    height: 140px;
+  }
+  th, td.axis {
+    background: #1a2792;
+    color: $page-colour;
+    font-weight: 700;
+  }
+  th {
+    padding: 12px 5px 9px;
+  }
+  .empty {
+    background: $page-colour;
+  }
+}
+
+.callout {
+  background: $turquoise;
+  color: $page-colour;
+  padding: $gutter;
+  text-align: center;
+
+  @extend %contain-floats;
+
+  .callout__heading {
+    margin-top: 0;
+  }
+
+  .ref-number {
+    font-size: 27px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom:0.25em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.with-hr {
+  border-bottom: 1px solid $grey-2;
+  padding: $gutter-half 0;
+}
+
+.summary-section {
+  position: relative;
+  border-top: 1px dotted $grey-2;
+  padding: $gutter 0;
+
+  .summary-heading {
+    margin-top: 0;
+  }
+
+  .summary-edit-link {
+    position: absolute;
+    top: $gutter;
+    right: 0;
+    &:visited {
+      color: $link-colour;
+    }
+  }
+}
+
+.secondary-content {
+  font-size: 16px;
+}
+
+.submit-btn-group {
+  position: relative;
+  margin: $gutter 0;
+
+  .cancel-btn {
+    position: absolute;
+    right: 0;
+    line-height: 42px;
+  }
+}
+
+.booking-section {
+  margin-bottom: 2*$gutter;
+}
+
+.secondary-action {
+  display: block;
+  margin: 0; padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.button-group--stacked {
+  .button {
+    margin-bottom: 5px;
+  }
+}
+
+.icon-email {
+  padding: 0 19px 0;
+  height: 25px;
+  background-image: url(/static/images/envelope.svg);
+  background-position: 2px auto;
+  background-size: auto 25px;
+  background-repeat: no-repeat;
+}
+
+.btn--secondary {
+  background-color: $csl-dark-grey;
+  margin-bottom: 8px;
+  &:hover {
+    background-color: $csl-orange;
+  }
+}
+
+.notification--small {
+  margin: 0 10px;
+  padding: 3px 10px;
+  font-weight: bold;
+  color: #fff;
+  background: $csl-dark-blue;
+}
+
+.notification--inline {
+  padding-left: 10px;
+  border-left: 5px solid $csl-dark-blue;
+}
+
+.course-status {
+  font-size: 16px;
+  padding: 5px 5px 2px;
+  border: 2px solid $grey-2;
+  color: $grey-1;
+  line-height: 1em;
+  border-radius: 3px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.course-status--confirmed {
+  @extend .course-status;
+  color: $csl-green;
+  border-color: $csl-green;
+}
+
+.level-separator {
+  border-top: 1px solid $grey-2;
+  margin-top: 2*$gutter;
+  position: relative;
+
+  h2 {
+    margin-top: $gutter;
+  }
+}
+
+.back-to-grid {
+  position: absolute;
+  right: 0; top: 0;
+  line-height: 90px;
+}
+
+.profile_header {
+  @extend %contain-floats;
+
+  h1, .profile-search-form {
+    @include media(tablet) {
+      float: left;
+      width: 50%;
+      margin-top: $gutter;
+    }
+  }
+  .profile-search-form {
+    @extend %contain-floats;
+    margin-bottom: $gutter;
+
+    @include media(tablet) {
+      margin-top: 60px;
+    }
+  }
+}
+
+.notification-banner {
+  @extend .panel-indent;
+  border-color: $csl-dark-blue;
+  background: lighten( $csl-dark-blue, 60% );
+  margin-right: 0;
+  position: relative;
+}
+
+.notification-banner--confirmed {
+  @extend .notification-banner;
+  border-color: $csl-green;
+  background: lighten( $csl-green, 45% );
+}
+
+.check-status-link {
+  position: absolute;
+  right: 15px;
+}
+
+.course-list--profile {
+  padding-left: 0;
+
+  > li {
+    border: 1px solid $csl-dark-blue;
+    margin: 0 0 10px;
+    list-style: none;
+  }
+}
+
+%course-summary-item {
+  padding: 0 $gutter-half;
+  line-height: 2em;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.course-details {
+  @extend %contain-floats;
+  padding-top: 3px;
+
+  .course-detail {
+    margin: 0 15px 0 0;
+    float: left;
+
+    .highlight {
+      font-weight: bold;
+    }
+
+    .secondary {
+      color: $secondary-text-colour;
+    }
+  }
+}
+
+.accordian-content {
+  display: none;
+
+  .panel-indent {
+    margin-bottom: $gutter;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.accordian--open {
+  .accordian-head {
+    border-bottom: 1px solid $csl-light-grey;
+  }
+  .accordian-content {
+    display: block;
+    padding: $gutter-half;
+  }
+
+  .btn-less {
+    display: block;
+  }
+
+  .btn-more {
+    display: none;
+  }
+}
+
+.btn-less {
+  display: none;
+}
+
+.btn-more {
+  display: block;
+}
+
+.accordian-head, .course-wrapper {
+  @extend %course-summary-item;
+  position: relative;
+}
+
+.more-group {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  line-height: 41px;
+
+  .btn-less, .btn-more {
+    line-height: inherit;
+  }
+}
+
+.btn-more, .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: $link-colour;
+
+  &:hover {
+    color: $link-hover-colour;
+    cursor: pointer;
+  }
+
+  img {
+    margin-bottom: -2px;
+  }
+}
+
+.accordian-head:hover {
+  background: lighten( $csl-light-grey, 10% );
+  cursor: pointer;
+
+  .highlight {
+    text-decoration: underline;
+  }
+}
+
+dt.heading-small { margin-top: 0; }
+
+.el-hidden {
+  display: none;
+}
+
+.selected + .el-hidden {
+  display: block;
+}
+
+.time-details {
+  margin: -8px 0 12px;
+}
+
+.map-details {
+  margin-top: 8px;
+}
+
+.btn-csl {
+  @extend .button;
+  background: $csl-red;
+  &:visited {
+    background: $csl-red;
+  }
+  &:hover {
+    background: darken( $csl-red, 5% );
+  }
+}
+
+.profile-section {
+  padding-top: 45px;
+
+  .profile-section-heading {
+    margin-top: 0;
+  }
+}
+
+.profile-section__editable {
+  position: relative;
+
+  .btn-edit {
+    position: absolute;
+    top: 45px;
+    right: 15px;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+
+.course-select-table {
+  margin: 0 -15px;
+
+  tr th:first-child,
+  tr td:first-child {
+    padding-left: 15px;
+  }
+
+  tr td:last-child {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  tbody tr:not(.currently-selected) {
+    &:hover {
+      background: $grey-3;
+    }
+  }
+
+  .status-selected {
+    display: none;
+  }
+
+  .currently-selected {
+    border-left: 10px solid $turquoise;
+    td {
+      font-weight: bold;
+    }
+    .date-selection {
+      display: none;
+    }
+    .status-selected {
+      display: inline;
+    }
+  }
+}
+
+.table-strip {
+  tbody tr:nth-child(odd) {
+    background: $highlight-colour;
+  }
+}

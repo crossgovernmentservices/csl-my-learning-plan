@@ -36,7 +36,35 @@ css_main = Bundle(
              '/static/govuk_frontend_toolkit/stylesheets/**/*.scss']
 )
 
+css_learning = Bundle(
+  'sass/learning.scss',
+  filters='scss',
+  output='stylesheets/learning.css',
+  depends="**/*.scss"
+)
+
+css_rebrand = Bundle(
+  'sass/rebrand/rebrand.scss',
+  filters='scss',
+  output='stylesheets/rebrand.css',
+  depends='**/*.scss'
+)
+
+# js_rebrand = Bundle(
+#     'sass/rebrand/js/rebrand.js',
+#     filters='jsmin',
+#     output='gen/js/rebrand.js'
+# )
+
+# js_booking = Bundle(
+#     'sass/rebrand/js/booking.js',
+#     filters='jsmin',
+#     output='gen/js/booking.js'
+# )
+
 env = Environment()
 env.register('css_govuk_elements', css_govuk_elements)
 env.register('css_main', css_main)
 env.register('css_internal_interface', css_internal_interface)
+env.register('css_rebrand', css_rebrand)
+env.register('css_learning', css_learning)

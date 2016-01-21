@@ -1,0 +1,29 @@
+// CSL Brand
+// includes styles, components specific to CSL
+// ==========================================================================
+
+@import 'colours';
+
+// top banner
+#global-header-bar {
+  background-color: $csl-red;
+}
+
+// identity element
+.csl-brand--flat {
+  border-left: 3px solid $csl-red;
+  background-image: url(/static/images/org_crest_27px_x2.png);
+  background-position: 8px center;
+  background-size: auto 38px;
+  background-repeat: no-repeat;
+  font-size: 27px;
+  line-height: 1em;
+  padding: 6px 0 5px 62px;
+  margin-bottom: $gutter-half;
+}
+
+// search box
+.main-search--csl .search__submit {
+  background-color: $csl-red;
+  border-color: $csl-red;
+}

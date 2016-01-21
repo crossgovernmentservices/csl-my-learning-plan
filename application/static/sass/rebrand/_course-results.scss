@@ -1,0 +1,50 @@
+.sort-results {
+  select {
+    font-size: 19px;
+    line-height: 1.5em;
+    border: 1px solid $border-colour;
+    padding: 2px;
+    margin-left: 5px;
+  }
+}
+
+.course-result {
+  border-bottom: 1px solid $border-colour;
+  padding: $gutter-half 0;
+}
+
+.course-result__meta {
+  color: $secondary-text-colour;
+}
+
+.course-result__title {
+  margin: 5px 0 $gutter-half;
+}
+
+.provider-link {
+  display: block;
+  color: $secondary-text-colour;
+  font-size: 16px;
+
+  em {
+    color: $text-colour;
+  }
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+.skills li {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 4px 8px;
+  border: 1px solid $border-colour;
+  border-radius: 1em;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    border-color: $text-colour;
+  }
+}

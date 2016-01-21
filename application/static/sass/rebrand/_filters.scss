@@ -1,0 +1,18 @@
+.filters-content {
+  @extend %contain-floats;
+  background: $panel-colour;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.filter-field {
+  margin: $gutter-half 0;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+  }
+}

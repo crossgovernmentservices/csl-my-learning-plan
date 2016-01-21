@@ -1,0 +1,17 @@
+// should I use a placeholder class??
+.status-indicator {
+  font-size: 16px;
+  padding: 5px 5px 2px;
+  border: 2px solid $grey-2;
+  color: $grey-1;
+  line-height: 1em;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+// think about a mixin for this
+.status-selected {
+  @extend .status-indicator;
+  border-color: $turquoise;
+  color: $turquoise;
+}

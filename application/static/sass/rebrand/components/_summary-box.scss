@@ -1,0 +1,33 @@
+.summary-box {
+  border: 2px solid $turquoise;
+  margin-bottom: $gutter-half;
+
+  > p,
+  > a {
+    padding: 0 $gutter-half;
+  }
+}
+
+.summary-box__heading {
+  margin: 0;
+  background: $turquoise;
+  color: $page-colour;
+  padding: 5px 15px;
+}
+
+.summary-box__content {
+  padding: $gutter-half;
+}
+
+// ------------
+// specifics for key info box on courses
+// ------------
+.key-info-table {
+  td {
+    padding-left: 15px;
+  }
+  tr > td:first-child {
+    font-weight: bold;
+    border-right: 1px solid $panel-colour;
+  }
+}

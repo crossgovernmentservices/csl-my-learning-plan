@@ -1,0 +1,23 @@
+.related-container {
+  margin-top: 40px;
+}
+.related {
+  border-top: 10px solid $link-colour;
+  padding-top: 5px;
+  font-size: 16px;
+
+  h2 {
+    line-height: 1.25em;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+  }
+
+  nav {
+    margin-bottom: 1.25em;
+  }
+}
+.related-subsection li {
+  padding: 0;
+  margin-bottom: 0.75em;
+  list-style: none;
+}

@@ -1,0 +1,26 @@
+.quick-actions {
+  border: 2px solid $panel-colour;
+}
+
+.quick-actions__heading {
+  margin: 0 0 10px 0;
+  background: $panel-colour;
+  padding: 5px 15px;
+}
+
+.quick-action__btn {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px $gutter-half;
+  border: 1px solid $border-colour;
+  background: $highlight-colour;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+
+  &:hover {
+    cursor: pointer;
+    background: darken($highlight-colour, 10%);
+  }
+}
