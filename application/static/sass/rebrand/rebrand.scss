@@ -20,6 +20,10 @@
   visibility: hidden;
 }
 
+#global-breadcrumb {
+  display: inline-block;
+}
+
 .feedback-footer {
   @extend %site-width-container;
   padding: $gutter-half 0;
