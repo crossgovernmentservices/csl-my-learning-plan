@@ -3,14 +3,20 @@
 
 // Contents:
 //
-// 1. Helpers
-// 2. Form wrappers
-// 3. Form labels
-// 4. Form hints
-// 5. Form controls
-// 6. Form control widths
+// 1. GOV.UK front end toolkit dependencies
+// 2. Helpers
+// 3. Form wrappers
+// 4. Form labels
+// 5. Form hints
+// 6. Form controls
+// 7. Form control widths
 
-// 1. Helpers
+// 8. Errors and validation styles
+// 9. Form design patterns
+//     - Date of birth
+//     - "Chunky" radio buttons and checkboxes
+
+// 2. Helpers
 // ==========================================================================
 
 // Fieldset is used to group more than one .form-group
@@ -32,7 +38,7 @@ textarea{
 }
 
 
-// 2. Form wrappers
+// 3. Form wrappers
 // ==========================================================================
 
 // Form group is used to wrap label and input pairs
@@ -64,8 +70,18 @@ textarea{
   margin-bottom: 10px;
 }
 
+// Form title
+// TODO: Remove this (duplication of existing heading styles)
+.form-title {
+  margin-bottom: $gutter;
 
-// 3. Form labels
+  @include media(tablet) {
+    margin-bottom: ($gutter*1.5);
+  }
+}
+
+
+// 4. Form labels
 // ==========================================================================
 
 // Form labels, or for legends styled to look like labels
@@ -101,22 +117,20 @@ legend {
   }
 }
 
-// Used for the 'or' in between block label options
+// Used for paragraphs in-between form elements
 .form-block {
   @extend %contain-floats;
   float: left;
   width: 100%;
 
-  margin-top: -5px;
   margin-bottom: 5px;
 
   @include media(tablet) {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
 }
 
-// 4. Form hints
+// 5. Form hints
 // ==========================================================================
 
 // Form hints and example text are light grey and sit above a form control
@@ -129,7 +143,7 @@ legend {
 }
 
 
-// 5. Form controls
+// 6. Form controls
 // ==========================================================================
 
 // By default, form controls are 50% width for desktop,
@@ -141,7 +155,11 @@ legend {
 
   padding: 4px;
   background-color: $white;
-  border: 2px solid $grey-1;
+  border: 1px solid $border-colour;
+
+  // Disable webkit appearance and remove rounded corners
+  -webkit-appearance: none;
+  border-radius: 0;
 
   // TODO: Remove 50% width set for tablet and up
   // !! BREAKING CHANGE !!
@@ -174,7 +192,7 @@ legend {
 }
 
 
-// 6. Form control widths
+// 7. Form control widths
 // ==========================================================================
 
 // TODO: Update these
@@ -223,3 +241,20 @@ legend {
     width: 12.5%;
   }
 }
+
+
+// 8. Errors and validation styles
+// ==========================================================================
+@import "forms/form-validation";
+
+
+// 9. Form design patterns
+//    - Date of birth
+//    - "Chunky" radio buttons and checkboxes
+// ==========================================================================
+
+// Date of birth
+@import "forms/form-date";
+
+// "Chunky" radios and checkboxes
+@import "forms/form-block-labels";
