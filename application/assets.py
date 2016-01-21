@@ -50,11 +50,6 @@ css_rebrand = Bundle(
     depends='**/*.scss'
 )
 
-# js_rebrand = Bundle(
-#     'sass/rebrand/js/rebrand.js',
-#     filters='jsmin',
-#     output='gen/js/rebrand.js'
-# )
 
 # js_booking = Bundle(
 #     'sass/rebrand/js/booking.js',
