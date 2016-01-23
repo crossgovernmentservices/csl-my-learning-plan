@@ -22,8 +22,12 @@ learningresource = Blueprint('learningresource', __name__)
 @login_required
 def search():
     if request.method == 'GET':
-        courses = lr_service.get_all_courses()
-        return render_template('learningresource/search.html', courses=courses)
+        # uncomment if JS version goes tits up
+        
+        # courses = lr_service.get_all_courses()
+        # return render_template('learningresource/search.html', courses=courses)
+        return render_template('learningresource/search.html')
+
 
     if request.method == 'POST':
         current_app.logger.info(request.data)

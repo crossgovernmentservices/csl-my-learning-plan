@@ -22,6 +22,7 @@
 
     runQuery: function(filterJson){
       var that = this;
+      filterJson = filterJson || { 'filter': '' };
 
       $.ajax({
         type: 'POST',
@@ -36,7 +37,12 @@
         },
         error: function(jqXHR, textStatus, errorThrown){
           console.error(errorThrown);
-          $('.js-error').text(errorThrown);
+          console.error(jqXHR);
+          console.error(jqXHR.responseText);
+          var $jsInfoPanel = $(".js-info-panel");
+          $jsInfoPanel.removeClass("visually-hidden");
+          $jsInfoPanel.removeClass("success-summary");
+          $jsInfoPanel.html("Oops that's embarrassing (see browser logs): "+errorThrown);
         }
       });
     },
@@ -92,10 +98,11 @@
   
   };
 
+  // run on the page
   GOVUK.CSL.CourseSearch = CourseSearch;
   var search = new CourseSearch('.js-course-search-input');
   search.registerOnEvent('.js-search-form', 'submit');
-
+  search.runQuery();
 
 
 }(jQuery, window));

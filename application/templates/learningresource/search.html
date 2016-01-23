@@ -30,7 +30,7 @@
     </div>
   </section>
 
-  <div class="js-error"></div>
+  <div id="error-panel" class="error-summary js-info-panel visually-hidden"></div>
 
   <section id="results">
     <div class="grid-row">
@@ -69,7 +69,10 @@
         </div>
 
         <ul class="results js-courses-list">
-          {% for course in courses %}
+
+          <!-- uncomment if JS goes tits up -->
+
+          <!-- {% for course in courses %}
             
             <li class="course-result">
               <div class="grid-row course-result__meta">
@@ -94,7 +97,7 @@
                 {% endfor %}
               </ul>
             </li>
-          {% endfor %}
+          {% endfor %} -->
         </ul>
       </div>
     </div>
