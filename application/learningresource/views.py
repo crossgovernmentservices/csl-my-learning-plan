@@ -13,13 +13,24 @@ from flask.ext.security import login_required
 from flask.ext.login import current_user
 import json
 
+import application.modules.lr_service as lr_service
+
+
 learningresource = Blueprint('learningresource', __name__)
 
-@learningresource.route('/learning-resource/search')
+@learningresource.route('/learning-resource/search', methods=['GET', 'POST'])
 @login_required
 def search():
+    if request.method == 'GET':
+        courses = lr_service.get_all_courses()
+        return render_template('learningresource/search.html', courses=courses)
 
-    with open('application/data/courses-for-search.json') as data_file:
-        courses = json.load(data_file)
-    return render_template('learningresource/search.html', courses=courses)
+    if request.method == 'POST':
+        current_app.logger.info(request.data)
+        
+        filterJson = request.get_json()
+        courses = lr_service.get_courses(filterJson)
+
+        current_app.logger.info(json.dumps(courses))
+        return json.dumps(courses)
 

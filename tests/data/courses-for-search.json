@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Digital awareness",
+    "type": "",
+    "desc": "Explaining what ‘digital by default’ means for government and civil servants, this course explores the importance of moving services online for you, your department and the citizen.",
+    "url": "#",
+    "topics": [
+      "Core Skills",
+      "Digital & IT"
+    ]
+  },
+  {
+    "title": "Change leaders for senior management",
+    "type": "face2face",
+    "desc": "Senior leaders need to be able to articulate a compelling vision for the future in a way that motivates others.",
+    "duration": "1 day",
+    "url": "#",
+    "topics": [
+      "Leadership & Management"
+    ]
+  },
+  {
+    "title": "Communicating with customers",
+    "type": "elearning",
+    "desc": "The purpose of this e-learning",
+    "duration": "45 mins",
+    "url": "#",
+    "topics": []
+  }
+]

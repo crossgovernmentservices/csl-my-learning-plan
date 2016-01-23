@@ -16,18 +16,21 @@
     <h2 class="heading-xlarge post-sub-heading">Course search</h2>
   </header>
 
+
   {% set  search_alternative = "main-search--csl" %}
   <section class="top-search">
     <div class="grid-row">
-      <form action="" class="column-two-thirds">
+      <form action="" class="column-two-thirds js-search-form">
         <div class="form-group main-search {% if search_alternative is defined %}{{ search_alternative }}{% endif %}">
           <label class="search__label" for="">Search by keyword or course reference</label>
-          <input type="text" class="search__input" id="person-search">
+          <input type="text" class="search__input js-course-search-input" id="person-search">
           <input class="search__submit" type="submit" value="Search">
         </div>
       </form>
     </div>
   </section>
+
+  <div class="js-error"></div>
 
   <section id="results">
     <div class="grid-row">
@@ -50,7 +53,7 @@
 
         <div class="grid-row">
           <div class="column-third">
-            <p class="info"><span class="numofresults">{{courses|length}}</span> courses found</p>
+            <p class="info"><span class="numofresults js-courses-count">{{courses|length}}</span> courses found</p>
           </div>
           <div class="column-two-thirds ta-right">
             <form action="get" class="sort-results">
@@ -65,7 +68,7 @@
           </div>
         </div>
 
-        <ul class="results">
+        <ul class="results js-courses-list">
           {% for course in courses %}
             
             <li class="course-result">
@@ -73,10 +76,10 @@
                 <div class="column-two-thirds">
                   {% if course.type == 'face2face' %}
                   <i class="fa fa-book"></i>
-                  <span> Workshop</span>
+                  <span>Workshop</span>
                   {% else %}
                   <i class="fa fa-laptop"></i>
-                  <span> e-learning</span>
+                  <span>e-learning</span>
                   {% endif %}
                 </div>
                 <div class="column-third ta-right">
@@ -91,9 +94,6 @@
                 {% endfor %}
               </ul>
             </li>
-
-
-
           {% endfor %}
         </ul>
       </div>

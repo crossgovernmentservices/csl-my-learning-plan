@@ -50,13 +50,6 @@ css_rebrand = Bundle(
     depends='**/*.scss'
 )
 
-
-# js_booking = Bundle(
-#     'sass/rebrand/js/booking.js',
-#     filters='jsmin',
-#     output='gen/js/booking.js'
-# )
-
 env = Environment()
 env.register('css_govuk_elements', css_govuk_elements)
 env.register('css_main', css_main)
