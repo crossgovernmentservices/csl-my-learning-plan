@@ -30,11 +30,13 @@ def search():
 
 
     if request.method == 'POST':
-        current_app.logger.info(request.data)
-        
         filterJson = request.get_json()
-        courses = lr_service.get_courses(filterJson)
-
+        current_app.logger.info('getting items')
+        try:
+            courses = lr_service.get_courses(filterJson)    
+        except Exception as e:
+            current_app.logger.exception(e, exc_info=True)
+        current_app.logger.info('got items')
         current_app.logger.info(json.dumps(courses))
         return json.dumps(courses)
 

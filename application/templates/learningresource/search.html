@@ -80,9 +80,12 @@
                   {% if course.type == 'face2face' %}
                   <i class="fa fa-book"></i>
                   <span>Workshop</span>
+                  {% elif course.type == 'video' %}
+                  <i class="fa fa-book"></i>
+                  <span>Video</span>
                   {% else %}
                   <i class="fa fa-laptop"></i>
-                  <span>e-learning</span>
+                  <span>{{ course.type }}</span>
                   {% endif %}
                 </div>
                 <div class="column-third ta-right">

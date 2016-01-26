@@ -57,6 +57,27 @@
       });
     },
 
+    parseISO08601Duration: function(iso8601Duration){
+      var iso8601DurationRegex = /(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?(?:T)?(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?/;
+      var matches = iso8601Duration.match(iso8601DurationRegex);
+      console.log(matches);
+      console.log(iso8601Duration);
+      return {
+          sign: matches[1] === undefined ? '+' : '-',
+          years: matches[2] === undefined ? 0 : matches[2],
+          months: matches[3] === undefined ? 0 : matches[3],
+          weeks: matches[4] === undefined ? 0 : matches[4],
+          days: matches[5] === undefined ? 0 : matches[5],
+          hours: matches[6] === undefined ? 0 : matches[6],
+          minutes: matches[7] === undefined ? 0 : matches[7],
+          seconds: matches[8] === undefined ? 0 : matches[8]
+      };
+    },
+
+    formatISO08601Duration: function(dateTime){
+      return dateTime.hours + " Hours " + dateTime.minutes + " Minutes ";
+    },
+
     updateStatusLabels: function(courses){
       $('.js-courses-count').text(courses.length);
     },
@@ -68,17 +89,20 @@
     _generateCourseItemHTML: function(course){
       return $('<li/>', { 'class': 'course-result' }).html([
           $('<div/>',{ 'class': 'grid-row course-result__meta' }).html([
-            $('<div/>',{ 'class': 'column-two-thirds' }).html(
-              (course.type=='face2face')?
-              [
-                $('<i/>', { 'class': 'fa fa-book' }),
-                $('<span/>').text('Workshop')
-              ]:[
-                $('<i/>', { 'class': 'fa fa-laptop' }),
-                $('<span/>').text('e-learning')
-              ]),
+            $('<div/>',{ 'class': 'column-two-thirds' }).html(function(){
+              if (course.type=='face2face')
+                return [$('<i/>', { 'class': 'fa fa-book' }), $('<span/>').text('Workshop')]
+              else if (course.type=='video')
+                return [$('<i/>', { 'class': 'fa fa-youtube' }),$('<span/>').text('Video')]
+              else if (course.type=='website')
+                return [$('<i/>', { 'class': 'fa fa-firefox' }),$('<span/>').text('Web')]
+              else if (course.type=='document')
+                return [$('<i/>', { 'class': 'fa fa-file' }),$('<span/>').text('Document')]
+              else
+                return [$('<i/>', { 'class': 'fa fa-laptop' }),$('<span/>').text('e-Learning')];
+              }),
             $('<div/>', { 'class': 'column-third ta-right'}).html(
-              $('<span/>').text(course.duration ? course.duration : '1 hr')
+              $('<span/>').text(course.duration ? this.formatISO08601Duration(this.parseISO08601Duration(course.duration)) : 'No time specified')
             )
           ]),
 
