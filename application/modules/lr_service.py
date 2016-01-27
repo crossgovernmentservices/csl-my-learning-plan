@@ -29,12 +29,13 @@ def get_all_courses():
 def get_courses(filterDict):
     logger.info("get_courses")
     all_courses = get_all_courses_from_learning_registry()
-    filterStr = ('' if filterDict is None else filterDict.get('filter', '')).lower()
-    if filterStr:
-        return [each for each in all_courses
-                if filterStr in each.get('title','').lower()
-                or filterStr in each.get('desc','').lower()
-                or [eachTopic for eachTopic in each.get('topics', []) if filterStr in eachTopic.lower()]
-            ]
-    else:
+    if filterDict is None:    
         return all_courses
+    mainFilter = filterDict["filter"].get("main-search", '').lower()
+    typeFilter = filterDict["filter"].get("type-filter", '').lower()
+    return [each for each in all_courses
+                if (typeFilter is '' or typeFilter in each.get('type', ''))
+                and (mainFilter in each.get('title','').lower()
+                        or mainFilter in each.get('desc','').lower()
+                        or [eachTopic for eachTopic in each.get('topics', []) if mainFilter in eachTopic.lower()])
+            ]

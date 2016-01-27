@@ -31,12 +31,16 @@ def search():
 
     if request.method == 'POST':
         filterJson = request.get_json()
+        current_app.logger.info(filterJson)
+        current_app.logger.info(filterJson['filter'])
+        current_app.logger.info(type(filterJson['filter']))
+
         current_app.logger.info('getting items')
         try:
             courses = lr_service.get_courses(filterJson)    
         except Exception as e:
             current_app.logger.exception(e, exc_info=True)
+            raise
         current_app.logger.info('got items')
-        current_app.logger.info(json.dumps(courses))
         return json.dumps(courses)
 

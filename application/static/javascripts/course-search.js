@@ -13,8 +13,7 @@
       var that = this;
       var $elms = $(elmsSelector);
       $elms.on(eventName, function(){
-        var payload = { 'filter': that._getFilterString() };
-
+        var payload = { 'filter': that._getFilter() };
         that.runQuery(payload);
         event.preventDefault();
       });
@@ -22,7 +21,7 @@
 
     runQuery: function(filterJson){
       var that = this;
-      filterJson = filterJson || { 'filter': '' };
+      filterJson = filterJson || { 'filter': { 'main-search' : '', 'type-search' : ''} };
 
       $.ajax({
         type: 'POST',
@@ -82,8 +81,12 @@
       $('.js-courses-count').text(courses.length);
     },
 
-    _getFilterString: function(){
-      return this.$inputElems.val();
+    _getFilter: function(){
+      var filters = {};
+      this.$inputElems.map(function(){  filters[this.id]=this.value; });
+      console.log(JSON.stringify(filters));
+      console.log("end");
+      return filters;
     },
 
     _generateCourseItemHTML: function(course){

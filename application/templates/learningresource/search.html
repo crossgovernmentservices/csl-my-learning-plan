@@ -23,7 +23,7 @@
       <form action="" class="column-two-thirds js-search-form">
         <div class="form-group main-search {% if search_alternative is defined %}{{ search_alternative }}{% endif %}">
           <label class="search__label" for="">Search by keyword or course reference</label>
-          <input type="text" class="search__input js-course-search-input" id="person-search">
+          <input type="text" class="search__input js-course-search-input" id="main-search">
           <input class="search__submit" type="submit" value="Search">
         </div>
       </form>
@@ -39,7 +39,7 @@
 
         <div class="filters-content">
           <form action="get">
-            <div class="form-group filter-field"><label for="" class="form-label">Type</label><input type="text" class="form-control" /></div>
+            <div class="form-group filter-field"><label for="" class="form-label">Type</label><input type="text" class="form-control js-course-search-input" id="type-filter"/></div>
             <div class="form-group filter-field"><label for="" class="form-label">Skill(s)</label><input type="text" class="form-control" /></div>
             <div class="form-group filter-field"><label for="" class="form-label">Profession</label><input type="text" class="form-control" /></div>
             <div class="form-group filter-field"><label for="" class="form-label">Cost</label><input type="text" class="form-control" /></div>
