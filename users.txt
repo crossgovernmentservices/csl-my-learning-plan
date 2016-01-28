@@ -1,7 +1,12 @@
 chris.duraj@digital.cabinet-office.gov.uk, Chris Duraj
 chris.morandi@digital.cabinet-office.gov.uk, Chris Morandi
 clara.teoh@digital.cabinet-office.gov.uk,Clara Teoh
-david.heath@digital.cabinet-office.gov.uk,David Heath
 colm.britton@digital.cabinet-office.gov.uk,Colm Britton
+david.mercer@digital.cabinet-office.gov.uk, David Mercer
+neha.datt@digital.cabinet-office.gov.uk, Neha Datt
+john.fitzpatrick@digital.cabinet-office.gov.uk, John Fitzpatrick
+angela.collinsrees@digital.cabinet-office.gov.uk, Angela Collins-Rees
+david.acquet@digital.cabinet-office.gov.uk, David Acquet
+chirag.agarwal@digital.cabinet-office.gov.uk, Chirag Agarwal
 test.user@digital.cabinet-office.gov.uk, Test User
 agreatone@gmail.com, Andy Greatone
