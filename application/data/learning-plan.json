@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Induction",
+    "description": "Welcome to your new role at HMRC! These are the things you need to do to get up and running.",
+    ""
+    "moreUrl": "",
+    "from": "",
+    "addedBy": "",
+    "sections": [
+      { 
+        "title": "Before you start",
+        "items": [
+          { "title": "Read our team information" },
+          { "title": "Fill in the diversity survey" }
+        ]
+      },
+      {
+        "title": "After you start",
+        "items": [
+          { "title": "Look at our organisational chart" },
+          { "title": "Meet your manager and the team" },
+          { "title": "Meet your buddy" },
+          { "title": "Read the department guidance" }
+        ]
+      },
+      {
+        "title": "Before you start doing your job",
+        "items": [
+          { "title": "Test your project management skills" },
+          { "title": "Take the health and safety course" },
+          { "title": "Review grade 2 documents" }
+        ]
+      }
+    ],
+    "items":[]
+  },
+
+  {
+    "title": "HMRC Operations mandatory learning",
+    "description": "This training is required for all people in your role, team and department.",
+    "moreUrl": "",
+    "from": "",
+    "addedBy": "",
+    "sections": [],
+    "items":[
+      { "title": "Unconscious bias" },
+      { "title": "Health and safety 2016" },
+      { "title": "Effective performance reviews" }
+    ]
+  }
+
+]

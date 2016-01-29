@@ -2,11 +2,7 @@
 
 {% block endhead %}
 
-  {% assets "css_learning" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-  {% endassets %}
-
-  {% assets "css_rebrand" %}
+  {% assets "css_learning", "css_rebrand", "css_csl_elements" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
   {% endassets %}
 
@@ -16,7 +12,7 @@
 
 
 {% block body_end %}
-
   {{ super() }}
+  <script src="/static/javascripts/csl_elements.js"></script>
 
 {% endblock %}

@@ -21,26 +21,26 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
 }
 
 /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-#content, .guide__header, .feedback-footer {
+#content {
   max-width: 960px;
   margin: 0 15px;
 }
 @media (min-width: 641px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 30px;
   }
 }
 @media (min-width: 1020px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 auto;
   }
 }
@@ -57,7 +57,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
@@ -90,7 +90,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
@@ -109,26 +109,26 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
 }
 
 /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-#content, .guide__header, .feedback-footer {
+#content {
   max-width: 960px;
   margin: 0 15px;
 }
 @media (min-width: 641px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 30px;
   }
 }
 @media (min-width: 1020px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 auto;
   }
 }
@@ -145,7 +145,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
@@ -174,7 +174,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
@@ -193,26 +193,26 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .activity-navigation ul:after, .swatches:after {
   content: "";
   display: block;
   clear: both;
 }
 
 /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-#content, .guide__header, .feedback-footer {
+#content {
   max-width: 960px;
   margin: 0 15px;
 }
 @media (min-width: 641px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 30px;
   }
 }
 @media (min-width: 1020px) {
   /* line 18, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_grid_layout.scss */
-  #content, .guide__header, .feedback-footer {
+  #content {
     margin: 0 auto;
   }
 }
@@ -542,7 +542,7 @@ main {
 }
 
 /* line 87, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-.heading-large, .summary-list-inline .info-highlight {
+.heading-large {
   font-family: "nta", Arial, sans-serif;
   font-size: 24px;
   line-height: 1.04167;
@@ -553,20 +553,20 @@ main {
 }
 @media (min-width: 641px) {
   /* line 87, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-  .heading-large, .summary-list-inline .info-highlight {
+  .heading-large {
     font-size: 36px;
     line-height: 1.11111;
   }
 }
 @media (min-width: 641px) {
   /* line 87, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-  .heading-large, .summary-list-inline .info-highlight {
+  .heading-large {
     margin-top: 1.25em;
     margin-bottom: 0.55556em;
   }
 }
 /* line 98, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-.heading-large .heading-secondary, .summary-list-inline .info-highlight .heading-secondary {
+.heading-large .heading-secondary {
   font-family: "nta", Arial, sans-serif;
   font-size: 18px;
   line-height: 1.2;
@@ -579,14 +579,14 @@ main {
 }
 @media (min-width: 641px) {
   /* line 98, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-  .heading-large .heading-secondary, .summary-list-inline .info-highlight .heading-secondary {
+  .heading-large .heading-secondary {
     font-size: 24px;
     line-height: 1.25;
   }
 }
 @media (min-width: 641px) {
   /* line 98, /usr/src/app/application/static/govuk_elements/public/sass/elements/_elements-typography.scss */
-  .heading-large .heading-secondary, .summary-list-inline .info-highlight .heading-secondary {
+  .heading-large .heading-secondary {
     padding-top: 6px;
     padding-bottom: 4px;
   }
@@ -1489,7 +1489,7 @@ table td.numeric {
 }
 
 /* line 4, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-.button, .btn-csl {
+.button {
   background-color: #00823b;
   position: relative;
   display: -moz-inline-stack;
@@ -1517,44 +1517,44 @@ table td.numeric {
   vertical-align: top;
 }
 /* line 49, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:visited, .btn-csl:visited {
+.button:visited {
   background-color: #00823b;
 }
 /* line 52, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:hover, .btn-csl:hover, .button:focus, .btn-csl:focus {
+.button:hover, .button:focus {
   background-color: #00692f;
 }
 /* line 56, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:active, .btn-csl:active {
+.button:active {
   top: 2px;
   -webkit-box-shadow: 0 0 0 #00823b;
   -moz-box-shadow: 0 0 0 #00823b;
   box-shadow: 0 0 0 #00823b;
 }
 /* line 62, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button.disabled, .disabled.btn-csl, .button[disabled="disabled"], [disabled="disabled"].btn-csl, .button[disabled], [disabled].btn-csl {
+.button.disabled, .button[disabled="disabled"], .button[disabled] {
   zoom: 1;
   filter: alpha(opacity=50);
   opacity: 0.5;
 }
 /* line 66, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button.disabled:hover, .disabled.btn-csl:hover, .button[disabled="disabled"]:hover, [disabled="disabled"].btn-csl:hover, .button[disabled]:hover, [disabled].btn-csl:hover {
+.button.disabled:hover, .button[disabled="disabled"]:hover, .button[disabled]:hover {
   cursor: default;
   background-color: #00823b;
 }
 /* line 70, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button.disabled:active, .disabled.btn-csl:active, .button[disabled="disabled"]:active, [disabled="disabled"].btn-csl:active, .button[disabled]:active, [disabled].btn-csl:active {
+.button.disabled:active, .button[disabled="disabled"]:active, .button[disabled]:active {
   top: 0;
   -webkit-box-shadow: 0 2px 0 #003618;
   -moz-box-shadow: 0 2px 0 #003618;
   box-shadow: 0 2px 0 #003618;
 }
 /* line 82, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:link, .btn-csl:link, .button:hover, .btn-csl:hover, .button:focus, .btn-csl:focus, .button:visited, .btn-csl:visited {
+.button:link, .button:hover, .button:focus, .button:visited {
   color: #fff;
 }
 /* line 100, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:before, .btn-csl:before {
+.button:before {
   content: "";
   height: 110%;
   width: 100%;
@@ -1565,12 +1565,12 @@ table td.numeric {
   left: 0;
 }
 /* line 110, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button:active:before, .btn-csl:active:before {
+.button:active:before {
   top: -10%;
   height: 120%;
 }
 /* line 123, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/design-patterns/_buttons.scss */
-.button[rel="external"]:after, [rel="external"].btn-csl:after {
+.button[rel="external"]:after {
   display: none;
   content: none;
   margin-left: 0;
@@ -1578,29 +1578,29 @@ table td.numeric {
 }
 @media (max-width: 640px) {
   /* line 4, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-  .button, .btn-csl {
+  .button {
     width: 100%;
   }
 }
 
 /* line 16, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-.button::-moz-focus-inner, .btn-csl::-moz-focus-inner {
+.button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
 /* line 21, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-.button:focus, .btn-csl:focus {
+.button:focus {
   outline: 3px solid #ffbf47;
 }
 
 /* line 26, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-.button[disabled="disabled"], [disabled="disabled"].btn-csl {
+.button[disabled="disabled"] {
   background: #00823b;
 }
 
 /* line 30, /usr/src/app/application/static/govuk_elements/public/sass/elements/_buttons.scss */
-.button[disabled="disabled"]:focus, [disabled="disabled"].btn-csl:focus {
+.button[disabled="disabled"]:focus {
   outline: none;
 }
 
@@ -1697,21 +1697,19 @@ ol {
 }
 
 /* line 5, /usr/src/app/application/static/govuk_elements/public/sass/elements/_panels.scss */
-.panel-indent, .notification-banner, .notification-banner--confirmed {
+.panel-indent {
   clear: both;
   border-left: 5px solid #bfc1c3;
   padding: 0.78947em;
   margin-bottom: 0.78947em;
 }
 /* line 13, /usr/src/app/application/static/govuk_elements/public/sass/elements/_panels.scss */
-.panel-indent :first-child, .notification-banner :first-child, .notification-banner--confirmed :first-child {
+.panel-indent :first-child {
   margin-top: 0;
 }
 /* line 17, /usr/src/app/application/static/govuk_elements/public/sass/elements/_panels.scss */
-.panel-indent :only-child, .notification-banner :only-child, .notification-banner--confirmed :only-child,
-.panel-indent :last-child,
-.notification-banner :last-child,
-.notification-banner--confirmed :last-child {
+.panel-indent :only-child,
+.panel-indent :last-child {
   margin-bottom: 0;
 }
 
@@ -1721,7 +1719,7 @@ ol {
 }
 
 /* line 29, /usr/src/app/application/static/govuk_elements/public/sass/elements/_panels.scss */
-.form-group .panel-indent, .form-group .notification-banner, .form-group .notification-banner--confirmed {
+.form-group .panel-indent {
   padding-bottom: 0;
 }
 
@@ -2246,292 +2244,46 @@ input[type=number] {
   font-size: 16px;
 }
 
-/* line 1, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.column-three-quarters {
-  padding: 0 15px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@media (min-width: 641px) {
-  /* line 1, /usr/src/app/application/static/sass/rebrand/guide.scss */
-  .column-three-quarters {
-    float: left;
-    width: 75%;
-  }
-}
-
-/* line 6, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.column--ra {
-  float: right;
-}
-
-/* line 10, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header {
-  padding: 0 30px;
-  background: #2e8aca;
-  color: #fff;
-  padding-bottom: 1px;
-  margin-top: 45px;
-}
-/* line 19, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header h1 {
-  margin: 5px 0 60px;
-}
-/* line 22, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header h2, .guide__header li {
-  font-weight: bold;
-}
-/* line 25, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header ol {
-  padding-left: 30px;
-}
-/* line 28, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header nav {
-  width: 70%;
-  margin-bottom: 30px;
-}
-/* line 32, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header a, .guide__header a:hover, .guide__header a:visited {
-  color: #fff;
-  text-decoration: none;
-  font-weight: normal;
-}
-/* line 37, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__header a:hover {
-  text-decoration: underline;
-}
-
-/* line 42, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.headings {
-  overflow: hidden;
-}
-
-/* line 50, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.document__type {
-  font-size: 27px;
-  margin: 75px 0 10px;
-}
-
-/* line 54, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__content__wrapper {
-  position: relative;
-}
-
-/* line 58, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__content .heading-large, .guide__content .summary-list-inline .info-highlight, .summary-list-inline .guide__content .info-highlight {
-  margin: 75px 0 15px;
-}
-@media (min-width: 641px) {
-  /* line 61, /usr/src/app/application/static/sass/rebrand/guide.scss */
-  .guide__content .heading-large .number, .guide__content .summary-list-inline .info-highlight .number, .summary-list-inline .guide__content .info-highlight .number {
-    font-size: 80px;
-    position: absolute;
-    left: 0;
-    padding-left: 45px;
-  }
-}
-/* line 70, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__content p {
-  margin: 15px 0;
-}
-/* line 74, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__content img {
-  width: 100%;
-}
-
-/* line 80, /usr/src/app/application/static/sass/rebrand/guide.scss */
-.guide__table td {
-  vertical-align: top;
-}
-
-/* line 1, /usr/src/app/application/static/sass/rebrand/related.scss */
-.related-container {
-  margin-top: 40px;
-}
-
-/* line 4, /usr/src/app/application/static/sass/rebrand/related.scss */
-.related {
-  border-top: 10px solid #005ea5;
-  padding-top: 5px;
-  font-size: 16px;
-}
-/* line 9, /usr/src/app/application/static/sass/rebrand/related.scss */
-.related h2 {
-  line-height: 1.25em;
-  margin-top: 0.3em;
-  margin-bottom: 0.5em;
-}
-/* line 15, /usr/src/app/application/static/sass/rebrand/related.scss */
-.related nav {
-  margin-bottom: 1.25em;
-}
-
-/* line 19, /usr/src/app/application/static/sass/rebrand/related.scss */
-.related-subsection li {
-  padding: 0;
-  margin-bottom: 0.75em;
-  list-style: none;
-}
-
-/*
- needs:
- - to be made responsive
- - neatening up
-*/
-/* line 6, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation {
-  border-bottom: 1px solid #bfc1c3;
-  width: 100%;
-  margin: 0 -28px 2em;
-  padding: 0 28px;
-}
-/* line 12, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation ul {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-/* line 19, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation li {
-  width: 33.33%;
-  float: left;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-/* line 26, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation li a {
-  text-decoration: none;
-  display: block;
-  position: relative;
-  margin: 0 2px 4px;
-  background: #dee0e2;
-  color: black;
-  height: 2em;
-  padding: 12px 10px 18px 10px;
-}
-/* line 37, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation li a:hover {
-  text-decoration: underline;
-}
-/* line 40, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.activity-navigation li a.current {
-  background: #fff;
-  border: 1px solid #bfc1c3;
-  border-bottom: none;
-  margin-bottom: -1px;
-  padding-bottom: 22px;
-}
-
-/* line 51, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.flat-tabs {
-  border-bottom: 1px solid #bfc1c3;
-  width: 100%;
-}
-/* line 55, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.flat-tabs li {
-  display: inline-block;
-  padding: 5px 15px;
-}
-/* line 59, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.flat-tabs li.active {
-  border: 1px solid #bfc1c3;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-}
-/* line 64, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.flat-tabs li.active a {
-  text-decoration: none;
-  color: #0b0c0c;
-}
-
-/* line 72, /usr/src/app/application/static/sass/rebrand/_tabs.scss */
-.tab-pane {
-  padding: 15px;
-}
-
-/* line 1, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.summary-box {
-  border: 2px solid #28a197;
-  margin-bottom: 15px;
-}
-/* line 5, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.summary-box > p,
-.summary-box > a {
-  padding: 0 15px;
-}
-
-/* line 11, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.summary-box__heading {
-  margin: 0;
-  background: #28a197;
-  color: #fff;
-  padding: 5px 15px;
-}
-
-/* line 18, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.summary-box__content {
-  padding: 15px;
-}
-
-/* line 26, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.key-info-table td {
-  padding-left: 15px;
-}
-/* line 29, /usr/src/app/application/static/sass/rebrand/_summary-box.scss */
-.key-info-table tr > td:first-child {
-  font-weight: bold;
-  border-right: 1px solid #dee0e2;
-}
-
-/* line 1, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 1, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .main-search {
   position: relative;
 }
-/* line 3, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 3, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .main-search .search__submit {
   position: absolute;
-  top: 0;
-  right: 0;
+  right: 5px;
   width: 50px;
   height: 50px;
   background: #2b8cc4 url(/static/images/search-button-icon.png) no-repeat 6px 50%;
   border: 1px solid #2b8cc4;
   text-indent: -5000px;
 }
-/* line 13, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 12, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .main-search .search__submit:hover {
   cursor: pointer;
 }
 
-/* line 19, /usr/src/app/application/static/sass/rebrand/_search.scss */
-.search__label {
-  display: block;
-  margin-top: -1.25em;
-}
-
-/* line 25, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 22, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .search__input {
-  width: 100%;
+  width: calc(100% - 37px);
   line-height: 48px;
   border: 1px solid #bfc1c3;
-  padding: 0 65px 0 15px;
+  padding: 0 1em;
   box-sizing: border-box;
 }
 
-/* line 34, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 31, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .search--dark .search__input {
   border: none;
 }
-/* line 37, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 34, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .search--dark .search__submit {
   background-color: #0b0c0c;
   border: none;
   height: 48px;
 }
 
-/* line 44, /usr/src/app/application/static/sass/rebrand/_search.scss */
+/* line 41, /usr/src/app/application/static/sass/rebrand/components/_search.scss */
 .search__placeholder {
   position: absolute;
   top: 0;
@@ -2542,105 +2294,251 @@ input[type=number] {
   text-indent: 15px;
 }
 
-/* line 1, /usr/src/app/application/static/sass/rebrand/_filters.scss */
-.filters-content {
-  background: #dee0e2;
-  padding: 0 10px;
-  margin-bottom: 5px;
+/* line 1, /usr/src/app/application/static/sass/rebrand/components/_quick-actions.scss */
+.quick-actions {
+  border: 2px solid #dee0e2;
 }
 
-/* line 8, /usr/src/app/application/static/sass/rebrand/_filters.scss */
-.filter-field {
-  margin: 15px 0;
+/* line 5, /usr/src/app/application/static/sass/rebrand/components/_quick-actions.scss */
+.quick-actions__heading {
+  margin: 0 0 10px 0;
+  background: #dee0e2;
+  padding: 5px 15px;
 }
-/* line 11, /usr/src/app/application/static/sass/rebrand/_filters.scss */
-.filter-field label {
+
+/* line 11, /usr/src/app/application/static/sass/rebrand/components/_quick-actions.scss */
+.quick-action__btn {
+  text-align: center;
+  font-size: 16px;
   font-weight: bold;
+  padding: 10px 15px;
+  border: 1px solid #bfc1c3;
+  background: #f8f8f8;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
 }
-/* line 15, /usr/src/app/application/static/sass/rebrand/_filters.scss */
-.filter-field input {
+/* line 22, /usr/src/app/application/static/sass/rebrand/components/_quick-actions.scss */
+.quick-action__btn:hover {
+  cursor: pointer;
+  background: #dfdfdf;
+}
+
+/* line 1, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.summary-box {
+  border: 2px solid #28a197;
+  margin-bottom: 15px;
+}
+/* line 5, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.summary-box > p,
+.summary-box > a {
+  padding: 0 15px;
+}
+
+/* line 11, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.summary-box__heading {
+  margin: 0;
+  background: #28a197;
+  color: #fff;
+  padding: 5px 15px;
+}
+
+/* line 18, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.summary-box__content {
+  padding: 15px;
+}
+
+/* line 26, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.key-info-table td {
+  padding-left: 15px;
+}
+/* line 29, /usr/src/app/application/static/sass/rebrand/components/_summary-box.scss */
+.key-info-table tr > td:first-child {
+  font-weight: bold;
+  border-right: 1px solid #dee0e2;
+}
+
+/*
+ needs:
+ - to be made responsive
+ - neatening up
+*/
+/* line 6, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation {
+  border-bottom: 1px solid #bfc1c3;
+  width: 100%;
+  margin: 0 -28px 2em;
+  padding: 0 28px;
+}
+/* line 12, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation ul {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 19, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation li {
+  width: 33%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 26, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation li a {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  margin: 0 2px 4px;
+  background: #dee0e2;
+  color: black;
+  height: 2em;
+  padding: 12px 10px 18px 10px;
+}
+/* line 37, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation li a:hover {
+  text-decoration: underline;
+}
+/* line 40, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.activity-navigation li a.current {
+  background: #fff;
+  border: 1px solid #bfc1c3;
+  border-bottom: none;
+  margin-bottom: -1px;
+  padding-bottom: 22px;
+}
+
+/* line 51, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.flat-tabs {
+  border-bottom: 1px solid #bfc1c3;
   width: 100%;
 }
-
-/* line 2, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.sort-results select {
-  font-size: 19px;
-  line-height: 1.5em;
+/* line 55, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.flat-tabs li {
+  display: inline-block;
+  padding: 5px 15px;
+}
+/* line 59, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.flat-tabs li.active {
   border: 1px solid #bfc1c3;
-  padding: 2px;
-  margin-left: 5px;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
 }
-
-/* line 11, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.course-result {
-  border-bottom: 1px solid #bfc1c3;
-  padding: 15px 0;
-}
-
-/* line 16, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.course-result__meta {
-  color: #6f777b;
-}
-
-/* line 20, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.course-result__title {
-  margin: 5px 0 15px;
-}
-
-/* line 24, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.provider-link {
-  display: block;
-  color: #6f777b;
-  font-size: 16px;
-}
-/* line 29, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.provider-link em {
+/* line 64, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.flat-tabs li.active a {
+  text-decoration: none;
   color: #0b0c0c;
 }
 
-/* line 34, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.fa {
-  margin-right: 5px;
+/* line 72, /usr/src/app/application/static/sass/rebrand/components/_tabs.scss */
+.tab-pane {
+  padding: 15px;
 }
 
-/* line 38, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.skills li {
-  display: inline-block;
-  margin-right: 5px;
-  padding: 4px 8px;
-  border: 1px solid #bfc1c3;
-  border-radius: 1em;
-}
-/* line 45, /usr/src/app/application/static/sass/rebrand/_course-results.scss */
-.skills li:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  border-color: #0b0c0c;
+/* line 3, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion {
+  border: 1px solid #1a2792;
+  margin: 0 0 10px;
+  list-style: none;
 }
 
-/* line 2, /usr/src/app/application/static/sass/rebrand/_status-indicator.scss */
-.status-indicator, .status-selected {
-  font-size: 16px;
-  padding: 5px 5px 2px;
-  border: 2px solid #bfc1c3;
-  color: #6f777b;
-  line-height: 1em;
-  border-radius: 3px;
+/* line 9, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-head {
+  padding: 3px 15px 0;
+  line-height: 2em;
+  position: relative;
+}
+/* line 14, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-head a {
+  text-decoration: none;
+}
+/* line 18, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-head .highlight {
   font-weight: bold;
 }
-
-/* line 13, /usr/src/app/application/static/sass/rebrand/_status-indicator.scss */
-.status-selected {
-  border-color: #28a197;
-  color: #28a197;
+/* line 22, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-head:hover {
+  background: #e3e3e2;
+  cursor: pointer;
+}
+/* line 26, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-head:hover .highlight {
+  text-decoration: underline;
 }
 
-/* line 8, /usr/src/app/application/static/sass/rebrand/_csl-brand.scss */
+/* line 32, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-content {
+  display: none;
+}
+/* line 35, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-content .panel-indent {
+  margin-bottom: 30px;
+}
+/* line 39, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion-content img {
+  max-width: 100%;
+}
+
+/* line 45, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion--open .accordion-head {
+  border-bottom: 1px solid #cacac8;
+}
+/* line 48, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion--open .accordion-content {
+  display: block;
+  padding: 15px;
+}
+/* line 53, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion--open .btn-less {
+  display: block;
+}
+/* line 57, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.accordion--open .btn-more {
+  display: none;
+}
+
+/* line 62, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.btn-less {
+  display: none;
+}
+
+/* line 66, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.btn-more {
+  display: block;
+}
+
+/* line 70, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.more-group {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  line-height: 41px;
+}
+/* line 76, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.more-group .btn-less, .more-group .btn-more {
+  line-height: inherit;
+}
+
+/* line 81, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.btn-more, .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #005ea5;
+}
+/* line 88, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
+.btn-more:hover, .btn-less:hover {
+  color: #2e8aca;
+  cursor: pointer;
+}
+
+/* line 8, /usr/src/app/application/static/sass/rebrand/common/_csl-brand.scss */
 #global-header-bar {
   background-color: #af292e;
 }
 
-/* line 13, /usr/src/app/application/static/sass/rebrand/_csl-brand.scss */
+/* line 13, /usr/src/app/application/static/sass/rebrand/common/_csl-brand.scss */
 .csl-brand--flat {
   border-left: 3px solid #af292e;
   background-image: url(/static/images/org_crest_27px_x2.png);
@@ -2653,466 +2551,89 @@ input[type=number] {
   margin-bottom: 15px;
 }
 
-/* line 26, /usr/src/app/application/static/sass/rebrand/_csl-brand.scss */
+/* line 26, /usr/src/app/application/static/sass/rebrand/common/_csl-brand.scss */
 .main-search--csl .search__submit {
   background-color: #af292e;
   border-color: #af292e;
 }
 
-/* line 18 */
-.visually-hidden {
-  display: none;
-  visibility: hidden;
+/* line 17 */
+.sg-csl-bg {
+  background: #af292e;
 }
 
 /* line 23 */
-#global-breadcrumb {
-  display: inline-block;
+.swatch-wrapper {
+  width: 20%;
+  float: left;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* line 27 */
-.feedback-footer {
-  padding: 15px 0;
-  font-size: 16px;
+/* line 30 */
+.swatch {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  border-radius: 100%;
 }
-/* line 32 */
-.feedback-footer a,
-.feedback-footer a:hover,
-.feedback-footer a:visited {
-  color: #6f777b;
+
+/* line 37 */
+.swatch-csl-red {
+  background: #af292e;
+}
+
+/* line 38 */
+.swatch-csl-dark-grey {
+  background: #4d4e53;
 }
 
 /* line 39 */
-.text ul {
-  margin-bottom: 1em;
+.swatch-csl-light-grey {
+  background: #cacac8;
+}
+
+/* line 40 */
+.swatch-csl-dark-blue {
+  background: #1a2792;
+}
+
+/* line 41 */
+.swatch-csl-light-blue {
+  background: #6e99d4;
+}
+
+/* line 42 */
+.swatch-csl-purple {
+  background: #78256e;
 }
 
 /* line 43 */
-.page-header {
-  margin: 30px 0;
+.swatch-csl-brown {
+  background: #603526;
 }
 
-/* dd */
-/* line 50 */
-.definition-inline dt {
+/* line 44 */
+.swatch-csl-orange {
+  background: #cd5a13;
+}
+
+/* line 45 */
+.swatch-csl-green {
+  background: #2eb135;
+}
+
+/* line 46 */
+.swatch-csl-pink {
+  background: #eb99a9;
+}
+
+/* line 47 */
+.swatch-csl-yellow {
+  background: #ecac00;
+}
+
+/* line 49 */
+b {
   font-weight: bold;
-  clear: left;
-  float: left;
-  margin-right: 15px;
-}
-/* line 55 */
-.definition-inline dt:after {
-  content: ':';
-}
-/* line 59 */
-.definition-inline dd {
-  float: left;
-}
-
-/* line 66 */
-.summary-list-inline dt, .summary-list-inline dd {
-  float: left;
-  margin-bottom: 10px;
-}
-/* line 70 */
-.summary-list-inline dt {
-  clear: left;
-  margin-right: 15px;
-  width: 200px;
-}
-/* line 75 */
-.summary-list-inline dd {
-  font-weight: bold;
-}
-
-/* line 83 */
-.course-description {
-  margin-bottom: 45px;
-}
-
-/* line 88 */
-.course-metadata-section h3 {
-  border-top: 5px solid #0b0c0c;
-  padding: 15px 0;
-  margin-bottom: 0;
-}
-
-/* line 95 */
-.course-actions {
-  margin: 15px 0;
-}
-/* line 97 */
-.course-actions span {
-  display: block;
-}
-
-/* line 102 */
-.example-separator {
-  margin: 120px 0;
-  background: #005ea5;
-}
-
-/* line 109 */
-.gridcopy tr {
-  background: #f8f8f8;
-}
-/* line 112 */
-.gridcopy tr:nth-child(even) {
-  background: #dee0e2;
-}
-/* line 115 */
-.gridcopy td, .gridcopy th {
-  border: 2px solid #fff;
-  padding: 5px;
-}
-/* line 119 */
-.gridcopy td {
-  width: 16.66667%;
-  height: 140px;
-}
-/* line 123 */
-.gridcopy th, .gridcopy td.axis {
-  background: #1a2792;
-  color: #fff;
-  font-weight: 700;
-}
-/* line 128 */
-.gridcopy th {
-  padding: 12px 5px 9px;
-}
-/* line 131 */
-.gridcopy .empty {
-  background: #fff;
-}
-
-/* line 136 */
-.callout {
-  background: #28a197;
-  color: #fff;
-  padding: 30px;
-  text-align: center;
-}
-/* line 144 */
-.callout .callout__heading {
-  margin-top: 0;
-}
-/* line 148 */
-.callout .ref-number {
-  font-size: 27px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 0.25em;
-}
-/* line 154 */
-.callout .ref-number:last-of-type {
-  margin-bottom: 0;
-}
-
-/* line 160 */
-.with-hr {
-  border-bottom: 1px solid #bfc1c3;
-  padding: 15px 0;
-}
-
-/* line 165 */
-.summary-section {
-  position: relative;
-  border-top: 1px dotted #bfc1c3;
-  padding: 30px 0;
-}
-/* line 170 */
-.summary-section .summary-heading {
-  margin-top: 0;
-}
-/* line 174 */
-.summary-section .summary-edit-link {
-  position: absolute;
-  top: 30px;
-  right: 0;
-}
-/* line 178 */
-.summary-section .summary-edit-link:visited {
-  color: #005ea5;
-}
-
-/* line 184 */
-.secondary-content {
-  font-size: 16px;
-}
-
-/* line 188 */
-.submit-btn-group {
-  position: relative;
-  margin: 30px 0;
-}
-/* line 192 */
-.submit-btn-group .cancel-btn {
-  position: absolute;
-  right: 0;
-  line-height: 42px;
-}
-
-/* line 199 */
-.booking-section {
-  margin-bottom: 60px;
-}
-
-/* line 203 */
-.secondary-action {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-/* line 207 */
-.secondary-action a {
-  text-decoration: none;
-}
-
-/* line 213 */
-.button-group--stacked .button, .button-group--stacked .btn-csl {
-  margin-bottom: 5px;
-}
-
-/* line 218 */
-.icon-email {
-  padding: 0 19px 0;
-  height: 25px;
-  background-image: url(/static/images/envelope.svg);
-  background-position: 2px auto;
-  background-size: auto 25px;
-  background-repeat: no-repeat;
-}
-
-/* line 227 */
-.btn--secondary {
-  background-color: #4d4e53;
-  margin-bottom: 8px;
-}
-/* line 230 */
-.btn--secondary:hover {
-  background-color: #cd5a13;
-}
-
-/* line 235 */
-.notification--small {
-  margin: 0 10px;
-  padding: 3px 10px;
-  font-weight: bold;
-  color: #fff;
-  background: #1a2792;
-}
-
-/* line 243 */
-.notification--inline {
-  padding-left: 10px;
-  border-left: 5px solid #1a2792;
-}
-
-/* line 248 */
-.course-status, .course-status--confirmed {
-  font-size: 16px;
-  padding: 5px 5px 2px;
-  border: 2px solid #bfc1c3;
-  color: #6f777b;
-  line-height: 1em;
-  border-radius: 3px;
-  margin-left: 10px;
-  font-weight: bold;
-}
-
-/* line 259 */
-.course-status--confirmed {
-  color: #2eb135;
-  border-color: #2eb135;
-}
-
-/* line 265 */
-.level-separator {
-  border-top: 1px solid #bfc1c3;
-  margin-top: 60px;
-  position: relative;
-}
-/* line 270 */
-.level-separator h2 {
-  margin-top: 30px;
-}
-
-/* line 275 */
-.back-to-grid {
-  position: absolute;
-  right: 0;
-  top: 0;
-  line-height: 90px;
-}
-
-@media (min-width: 641px) {
-  /* line 284 */
-  .profile_header h1, .profile_header .profile-search-form {
-    float: left;
-    width: 50%;
-    margin-top: 30px;
-  }
-}
-/* line 291 */
-.profile_header .profile-search-form {
-  margin-bottom: 30px;
-}
-@media (min-width: 641px) {
-  /* line 291 */
-  .profile_header .profile-search-form {
-    margin-top: 60px;
-  }
-}
-
-/* line 301 */
-.notification-banner, .notification-banner--confirmed {
-  border-color: #1a2792;
-  background: #e4e6fa;
-  margin-right: 0;
-  position: relative;
-}
-
-/* line 309 */
-.notification-banner--confirmed {
-  border-color: #2eb135;
-  background: #d1f3d3;
-}
-
-/* line 315 */
-.check-status-link {
-  position: absolute;
-  right: 15px;
-}
-
-/* line 320 */
-.course-list--profile {
-  padding-left: 0;
-}
-/* line 323 */
-.course-list--profile > li {
-  border: 1px solid #1a2792;
-  margin: 0 0 10px;
-  list-style: none;
-}
-
-/* line 339 */
-.course-details {
-  padding-top: 3px;
-}
-/* line 343 */
-.course-details .course-detail {
-  margin: 0 15px 0 0;
-  float: left;
-}
-/* line 347 */
-.course-details .course-detail .highlight {
-  font-weight: bold;
-}
-/* line 351 */
-.course-details .course-detail .secondary {
-  color: #6f777b;
-}
-
-/* line 357 */
-dt.heading-small {
-  margin-top: 0;
-}
-
-/* line 359 */
-.el-hidden {
-  display: none;
-}
-
-/* line 363 */
-.selected + .el-hidden {
-  display: block;
-}
-
-/* line 367 */
-.time-details {
-  margin: -8px 0 12px;
-}
-
-/* line 371 */
-.map-details {
-  margin-top: 8px;
-}
-
-/* line 375 */
-.btn-csl {
-  background: #af292e;
-}
-/* line 378 */
-.btn-csl:visited {
-  background: #af292e;
-}
-/* line 381 */
-.btn-csl:hover {
-  background: #9a2429;
-}
-
-/* line 386 */
-.profile-section {
-  padding-top: 45px;
-}
-/* line 389 */
-.profile-section .profile-section-heading {
-  margin-top: 0;
-}
-
-/* line 394 */
-.profile-section__editable {
-  position: relative;
-}
-/* line 397 */
-.profile-section__editable .btn-edit {
-  position: absolute;
-  top: 45px;
-  right: 15px;
-  font-size: 16px;
-  line-height: 30px;
-}
-
-/* line 406 */
-.course-select-table {
-  margin: 0 -15px;
-}
-/* line 409 */
-.course-select-table tr th:first-child,
-.course-select-table tr td:first-child {
-  padding-left: 15px;
-}
-/* line 414 */
-.course-select-table tr td:last-child {
-  text-align: center;
-  padding-right: 0;
-}
-/* line 420 */
-.course-select-table tbody tr:not(.currently-selected):hover {
-  background: #dee0e2;
-}
-/* line 425 */
-.course-select-table .status-selected {
-  display: none;
-}
-/* line 429 */
-.course-select-table .currently-selected {
-  border-left: 10px solid #28a197;
-}
-/* line 431 */
-.course-select-table .currently-selected td {
-  font-weight: bold;
-}
-/* line 434 */
-.course-select-table .currently-selected .date-selection {
-  display: none;
-}
-/* line 437 */
-.course-select-table .currently-selected .status-selected {
-  display: inline;
-}
-
-/* line 444 */
-.table-strip tbody tr:nth-child(odd) {
-  background: #f8f8f8;
 }

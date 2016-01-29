@@ -1,0 +1,151 @@
+/* line 4 */
+.hide, .if-no-js-hide, .js-enabled .if-js-hide {
+  display: none;
+}
+
+/* line 8 */
+.js-enabled .if-no-js-hide {
+  display: block;
+}
+
+/* line 12 */
+.rm, .js .if-js-rm {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  z-index: -1;
+}
+
+/* line 24 */
+.subsection-controls {
+  text-align: right;
+  width: 100%;
+}
+
+/* line 29 */
+.subsection-controls button {
+  font-family: "nta", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 400;
+  text-transform: none;
+  display: inline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #005ea5;
+  text-decoration: underline;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+@media (min-width: 641px) {
+  /* line 46 */
+  .subsection-controls button {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+/* line 52 */
+.subsection-controls .if-no-js-hide {
+  display: none;
+}
+
+/* line 56 */
+.js-enabled .subsection-controls .if-no-js-hide {
+  display: inline;
+}
+
+/* line 60 */
+.subsection-controls button[disabled=disabled] {
+  cursor: default;
+  color: #6f777b;
+  text-decoration: none;
+}
+
+/* line 66 */
+.subsection-wrapper {
+  border-top: 1px solid #bfc1c3;
+}
+
+/* line 70 */
+.subsection {
+  width: 100%;
+}
+
+/* line 74 */
+.subsection__button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: #FFF;
+  padding: 1em 0;
+}
+
+/* line 83 */
+.subsection__button:hover {
+  cursor: pointer;
+  background: #f8f8f8;
+}
+
+/* line 88 */
+.js-subsection-closed .subsection__button {
+  border-bottom: 1px solid #bfc1c3;
+}
+
+/* line 92 */
+.subsection__title {
+  font-family: "nta", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 700;
+  text-transform: none;
+  color: #005ea5;
+}
+
+@media (min-width: 641px) {
+  /* line 102 */
+  .subsection__title {
+    font-size: 19px;
+    line-height: 1.3157894737;
+  }
+}
+/* line 108 */
+.subsection__description {
+  display: block;
+  font-family: "nta", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 400;
+  text-transform: none;
+  color: #6f777b;
+}
+
+@media (min-width: 641px) {
+  /* line 119 */
+  .subsection__description {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+/* line 125 */
+.subsection__items {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #bfc1c3;
+}
+
+/* line 130 */
+.subsection__items li {
+  margin-bottom: 0.25em;
+}
+
+/* line 134 */
+.subsection__items li a {
+  text-decoration: none;
+}

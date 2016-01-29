@@ -3,6 +3,127 @@
 
   {% include "_logout.html" %}
 
-  <p>this is a spaceholder for a plan view</p>
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li>Your learning plan</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="page-header">
+        <h1 class="heading-xlarge">Your learning plan</h1>
+        <p>Showing all items.</p>
+        <p><a href="#">Show required items only</a></p>
+
+
+
+        <div class="subsections" data-module="disclosure">
+
+        <div class="subsection-controls">
+          <button class="js-open-close if-no-js-hide">Open all</button>
+        </div>
+
+        <div class="subsection-wrapper">
+
+          <div class="subsection js-subsection-closed">
+            <div class="js-toggle-disclosure">
+              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-1">
+                <h2 class="subsection__title">
+                  This is the heading for subsection 1
+                </h2>
+                <p class="subsection__description">
+                  This is the description for subsection 1
+                </p>
+                <span class="subsection__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-1" aria-hidden="true">
+              <ul class="subsection__items">
+                <li><a href="#">Subsection 1 - link 1</a></li>
+                <li><a href="#">Subsection 1 - link 2</a></li>
+                <li><a href="#">Subsection 1 - link 3</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subsection js-subsection-closed">
+            <div class="js-toggle-disclosure">
+              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-2">
+                <h2 class="subsection__title">
+                  This is the heading for subsection 2
+                </h2>
+                <p class="subsection__description">
+                  This is the description for subsection 2
+                </p>
+                <span class="subsection__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-2" aria-hidden="true">
+              <ul class="subsection__items">
+                <li><a href="#">Subsection 2 - link 1</a></li>
+                <li><a href="#">Subsection 2 - link 2</a></li>
+                <li><a href="#">Subsection 2 - link 3</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subsection js-subsection-closed">
+            <div class="js-toggle-disclosure">
+              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-3">
+                <h2 class="subsection__title">
+                  This is the heading for subsection 3
+                </h2>
+                <p class="subsection__description">
+                  This is the description for subsection 3
+                </p>
+                <span class="subsection__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-3" aria-hidden="true">
+              <ul class="subsection__items">
+                <li><a href="#">Subsection 3 - link 1</a></li>
+                <li><a href="#">Subsection 3 - link 2</a></li>
+                <li><a href="#">Subsection 3 - link 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+        
+
+
+
+
+      </div>
+
+    </div>
+    
+    <div class="column-third related-container">
+      <aside class="related">
+        <div class="related-subsection">
+          <h2 class="heading-medium">Civil Service Learning</h2>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
+              <li><a href="#">Your learning suggestions</a></li>
+              <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">Your learning record</a></li>
+              <li><a href="{{ url_for('profile.view_profile') }}">Your profile</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+    </div>
+
+  </div>
 
 {% endblock %}
