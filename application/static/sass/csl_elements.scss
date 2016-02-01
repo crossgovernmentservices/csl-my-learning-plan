@@ -24,22 +24,28 @@
 .subsection-controls {
   text-align: right;
   width: 100%;
-}
+  button {
+    font-family: "nta", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    font-weight: 400;
+    text-transform: none;
+    display: inline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #005ea5;
+    text-decoration: underline;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  
+  button[disabled=disabled] {
+    cursor: default;
+    color: #6f777b;
+    text-decoration: none;
+  }
 
-.subsection-controls button {
-  font-family: "nta", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.1428571429;
-  font-weight: 400;
-  text-transform: none;
-  display: inline;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #005ea5;
-  text-decoration: underline;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
 }
 
 @media (min-width: 641px) {
@@ -57,12 +63,6 @@
   display: inline;
 }
 
-.subsection-controls button[disabled=disabled] {
-  cursor: default;
-  color: #6f777b;
-  text-decoration: none;
-}
-
 .subsection-wrapper {
   border-top: 1px solid #bfc1c3;
 }
@@ -78,11 +78,10 @@
   border: 0;
   background: #FFF;
   padding: 1em 0;
-}
-
-.subsection__button:hover {
-  cursor: pointer;
-  background: #f8f8f8;
+  &:hover {
+    cursor: pointer;
+    background: #f8f8f8;
+  }
 }
 
 .js-subsection-closed .subsection__button {
@@ -125,12 +124,10 @@
 .subsection__items {
   padding-bottom: 0.5em;
   border-bottom: 1px solid #bfc1c3;
-}
-
-.subsection__items li {
-  margin-bottom: 0.25em;
-}
-
-.subsection__items li a {
-  text-decoration: none;
+  li {
+    margin-bottom: 0.25em;
+    a {
+      text-decoration: none;
+    }
+  }
 }

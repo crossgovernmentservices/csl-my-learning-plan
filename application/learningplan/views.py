@@ -4,8 +4,11 @@ from flask import (
     redirect,
     flash,
     url_for,
-    request
+    request,
+    current_app
 )
+
+import json
 
 from flask.ext.security import login_required
 from flask.ext.login import current_user
@@ -18,4 +21,5 @@ learningplan = Blueprint('learningplan', __name__)
 @learningplan.route('/learning-plan')
 @login_required
 def view_plan():
-    return render_template('learningplan/view_plan.html')
+    learning_plan = lrs_service.get_user_learning_plan(current_user.email)
+    return render_template('learningplan/view_plan.html', learning_plan=learning_plan)

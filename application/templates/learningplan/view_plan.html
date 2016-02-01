@@ -1,4 +1,12 @@
 {% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_learning_plan" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
+
 {% block body_content %}
 
   {% include "_logout.html" %}
@@ -17,94 +25,84 @@
         <h1 class="heading-xlarge">Your learning plan</h1>
         <p>Showing all items.</p>
         <p><a href="#">Show required items only</a></p>
-
-
-
-        <div class="subsections" data-module="disclosure">
-
-        <div class="subsection-controls">
-          <button class="js-open-close if-no-js-hide">Open all</button>
-        </div>
-
-        <div class="subsection-wrapper">
-
-          <div class="subsection js-subsection-closed">
-            <div class="js-toggle-disclosure">
-              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-1">
-                <h2 class="subsection__title">
-                  This is the heading for subsection 1
-                </h2>
-                <p class="subsection__description">
-                  This is the description for subsection 1
-                </p>
-                <span class="subsection__icon" aria-hidden="true"></span>
-              </button>
-            </div>
-
-            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-1" aria-hidden="true">
-              <ul class="subsection__items">
-                <li><a href="#">Subsection 1 - link 1</a></li>
-                <li><a href="#">Subsection 1 - link 2</a></li>
-                <li><a href="#">Subsection 1 - link 3</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="subsection js-subsection-closed">
-            <div class="js-toggle-disclosure">
-              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-2">
-                <h2 class="subsection__title">
-                  This is the heading for subsection 2
-                </h2>
-                <p class="subsection__description">
-                  This is the description for subsection 2
-                </p>
-                <span class="subsection__icon" aria-hidden="true"></span>
-              </button>
-            </div>
-
-            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-2" aria-hidden="true">
-              <ul class="subsection__items">
-                <li><a href="#">Subsection 2 - link 1</a></li>
-                <li><a href="#">Subsection 2 - link 2</a></li>
-                <li><a href="#">Subsection 2 - link 3</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="subsection js-subsection-closed">
-            <div class="js-toggle-disclosure">
-              <button class="subsection__button" aria-expanded="false" aria-controls="subsection-3">
-                <h2 class="subsection__title">
-                  This is the heading for subsection 3
-                </h2>
-                <p class="subsection__description">
-                  This is the description for subsection 3
-                </p>
-                <span class="subsection__icon" aria-hidden="true"></span>
-              </button>
-            </div>
-
-            <div class="js-toggle-disclosure-target if-js-hide" id="subsection-3" aria-hidden="true">
-              <ul class="subsection__items">
-                <li><a href="#">Subsection 3 - link 1</a></li>
-                <li><a href="#">Subsection 3 - link 2</a></li>
-                <li><a href="#">Subsection 3 - link 3</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
       </div>
 
 
+      {% for programme in learning_plan %}
+      <div class="accordion">
+        <div class="accordion-head">
+          <div><span class="highlight">{{ programme.title }}</span></div>
+          <span class="more-group">
+            <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
+            <button class="btn-less">hide items <img alt="" src="/static/images/icon-caret-down.png"></button>
+          </span>
+        </div>
+        <div class="accordion-content">
+          <ul>
+          {% for descLine in programme.descriptionLines %}
+          <li>{{ descLine }}</li>
+          {% endfor %}
+          </ul>
 
-        
+          {% for section in programme.sections %}
+          <h4 class="heading-small">{{ section.title }}</h4>
+          <ul>
+            
+              {% for item in section['items'] %}
+
+                {% if item['descriptionLines'] or item.action %}
+
+                  <div class="accordion">
+                    <div class="accordion-head">
+                      <div>
+                        <input type="checkbox">
+                        <img alt="" src="/static/images/icon-caret-right.png">
+                        <span class="highlight">{{ item.title }}</span>
+                        {% if item.isRequired %}
+                        <span>Required</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="accordion-content"> 
+                      <ul>
+                      {% for itemDescLine in item['descriptionLines'] %}
+                      <li>{{ itemDescLine|safe }}</li>
+                      {% endfor %}
+                      </ul>
+                      
+                      {% if item.action %}
+                      <span><a href="{{ item['action']['url'] }}">{{ item['action']['title'] }}</a></span>
+                      {% endif %}
+
+                    </div>
+                  </div>
+                {% else %}
+                  <div>
+                    <input type="checkbox">
+                    <span class="highlight">{{ item.title }}</span>
+                    {% if item.isRequired %}
+                    <span>Required</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+              {% endfor %}
+
+          </ul>
+          {% endfor %}
+          
+          <ul>
+            {% for item in programme['items'] %}
+            <li><input type="checkbox">{{ item.title }}</li>
+            {% endfor %}
+          </ul>
 
 
 
-
+        </div>
       </div>
+      {% endfor %}
+
 
     </div>
     

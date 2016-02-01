@@ -1,7 +1,7 @@
 // Accordion
 // ==========================================================================
 .accordion {
-  border: 1px solid $csl-dark-blue;
+  // border: 1px solid $csl-light-grey;
   margin: 0 0 10px;
   list-style: none;
 }
@@ -43,9 +43,9 @@
 
 .accordion--open {
   .accordion-head {
-    border-bottom: 1px solid $csl-light-grey;
+    // border-bottom: 1px solid $csl-light-grey;
   }
-  .accordion-content {
+  > .accordion-content {
     display: block;
     padding: $gutter-half;
   }

@@ -16,6 +16,7 @@
 
     // for accordian course listings on profile
     $(".accordion-head").on("click", function() {
+      console.log(this)
       $( this ).parent(".accordion").toggleClass("accordion--open");
     });
 

@@ -1,8 +1,10 @@
 [
   {
     "title": "Induction",
-    "description": "Welcome to your new role at HMRC! These are the things you need to do to get up and running.",
-    ""
+    "descriptionLines": [
+      "Welcome to your new role at HMRC!",
+      "These are the things you need to do to get up and running."
+    ],
     "moreUrl": "",
     "from": "",
     "addedBy": "",
@@ -10,42 +12,115 @@
       { 
         "title": "Before you start",
         "items": [
-          { "title": "Read our team information" },
-          { "title": "Fill in the diversity survey" }
+          { 
+            "title": "Read our team information",
+            "isRequired": "true",
+            "descriptionLines": [
+              "All new starters must read the team information.",
+              "Average time: 20 mins",
+              "HTML guidance article"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
+          },
+          { 
+            "title": "Fill in the diversity survey", 
+            "isRequired": "true",
+            "descriptionLines": [
+              "All new starters must fill in the diversity survey.",
+              "Average time: 3 mins",
+              "Online survey"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
+          }
         ]
       },
       {
         "title": "After you start",
         "items": [
-          { "title": "Look at our organisational chart" },
-          { "title": "Meet your manager and the team" },
-          { "title": "Meet your buddy" },
-          { "title": "Read the department guidance" }
+          { 
+            "title": "Look at our organisational chart",
+            "descriptionLines": [
+              "This chart will help you understand how you fit in with the rest of the organisation.",
+              "Suggested by your manager"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
+          },
+          { 
+            "title": "Meet your manager and the team",
+            "descriptionLines": [
+              "Your manager is <a href='#'>Jo Hargraves</a>."
+            ]
+          },
+          { 
+            "title": "Meet your buddy",
+            "descriptionLines": [
+              "Your buddy is <a href='#'>Pete Perez-Banuelos</a>."
+            ]
+          },
+          { 
+            "title": "Read the department guidance",
+            "isRequired": "true" 
+          }
         ]
       },
       {
         "title": "Before you start doing your job",
         "items": [
-          { "title": "Test your project management skills" },
-          { "title": "Take the health and safety course" },
+          { 
+            "title": "Test your project management skills",
+            "isRequired": "true" 
+          },
+          { 
+            "title": "Take the health and safety course",
+            "isRequired": "true" 
+          },
           { "title": "Review grade 2 documents" }
         ]
       }
     ],
-    "items":[]
+    "items": []
   },
 
   {
     "title": "HMRC Operations mandatory learning",
-    "description": "This training is required for all people in your role, team and department.",
+    "descriptionLines": [
+      "This training is required for all people in your role, team and department."
+    ],
     "moreUrl": "",
     "from": "",
     "addedBy": "",
     "sections": [],
     "items":[
-      { "title": "Unconscious bias" },
-      { "title": "Health and safety 2016" },
-      { "title": "Effective performance reviews" }
+      { 
+        "title": "Unconscious bias",
+        "descriptionLines": [
+          "E-learning",
+          "Average time 30 mins"
+        ] 
+      },
+      { 
+        "title": "Health and safety 2016",
+        "descriptionLines": [
+          "E-learning",
+          "Average time 40 mins"
+        ]
+      },
+      { 
+        "title": "Effective performance reviews",
+          "descriptionLines": [
+            "Workshop",
+            "1 hour"
+          ]
+      }
     ]
   }
 

@@ -2437,7 +2437,6 @@ input[type=number] {
 
 /* line 3, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
 .accordion {
-  border: 1px solid #1a2792;
   margin: 0 0 10px;
   list-style: none;
 }
@@ -2479,12 +2478,8 @@ input[type=number] {
   max-width: 100%;
 }
 
-/* line 45, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
-.accordion--open .accordion-head {
-  border-bottom: 1px solid #cacac8;
-}
 /* line 48, /usr/src/app/application/static/sass/rebrand/components/_accordion.scss */
-.accordion--open .accordion-content {
+.accordion--open > .accordion-content {
   display: block;
   padding: 15px;
 }
