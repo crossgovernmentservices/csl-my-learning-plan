@@ -11,12 +11,10 @@ def get_all_courses_from_learning_registry():
     import urllib.request
     response = urllib.request.urlopen(LEARNING_REGISTRY_SANDBOX)
     items = json.loads(response.read().decode('utf-8'))
-    logger.debug('got items')
     def convert_item(item):
         def map_type(resource_data):
             type_switcher = {
-                'WebSite': 'web',
-                'Web': 'web',
+                'WebSite': 'website',
                 'Video': 'video',
                 'Book': 'book',
                 'Workshop': 'workshop',
