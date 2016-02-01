@@ -5,7 +5,7 @@ from application.config import Config
 DATA_FILEPATH='application/data/courses-for-search.json'
 LEARNING_REGISTRY_SANDBOX='http://sandbox.learningregistry.org/slice?any_tags=civil%20service%20learning'
 
-logger = logging.getLogger("flogger")
+logger = logging.getLogger()
 
 def get_all_courses_from_learning_registry():
     import urllib.request
@@ -13,8 +13,21 @@ def get_all_courses_from_learning_registry():
     items = json.loads(response.read().decode('utf-8'))
     logger.debug('got items')
     def convert_item(item):
+        def map_type(resource_data):
+            type_switcher = {
+                'WebSite': 'web',
+                'Web': 'web',
+                'Video': 'video',
+                'Book': 'book',
+                'Workshop': 'workshop',
+                'CreativeWork' : resource_data.get("learningResourceType", "eLearning").lower()
+            }
+            logger.debug('learningResourceType ' + resource_data.get("learningResourceType", "undefined"))
+            logger.debug('Type is ' + resource_data['@type'])
+            return type_switcher.get(resource_data.get("@type","undefined"),"undefined")
+
         return { 'title' : item['resource_data_description']['resource_data']['name'],
-                 'type' :  item['resource_data_description']['resource_data']['learningResourceType'].lower(),
+                 'type' :  map_type(item['resource_data_description']['resource_data']),
                  'desc' :  item['resource_data_description']['resource_data']['description'],
                  'duration' :  item['resource_data_description']['resource_data']['timeRequired'],
                  'url' :  item['resource_data_description']['resource_data']['url'], 
