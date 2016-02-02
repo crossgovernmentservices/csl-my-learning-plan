@@ -68,7 +68,16 @@
           },
           { 
             "title": "Read the department guidance",
-            "isRequired": "true" 
+            "isRequired": "true",
+            "descriptionLines": [
+              "This will help you understand how the department works.",
+              "Average time: 2 hours",
+              "HTML documents"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
           }
         ]
       },
@@ -77,13 +86,40 @@
         "items": [
           { 
             "title": "Test your project management skills",
-            "isRequired": "true" 
+            "isRequired": "true",
+            "descriptionLines": [
+              "This will determine which program of digital learning is recommended for you.",
+              "Average time: 30 mins",
+              "Online test"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
           },
           { 
             "title": "Take the health and safety course",
-            "isRequired": "true" 
+            "isRequired": "true",
+            "descriptionLines": [
+              "Average time: 1 hour",
+              "e-learning course"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
           },
-          { "title": "Review grade 2 documents" }
+          { 
+            "title": "Review grade 2 documents",
+            "descriptionLines": [
+              "Begin your progression towards grade 2.",
+              "Suggested by your manager"
+            ],
+            "action":{
+              "title": "Start now",
+              "url": "#"
+            }
+          }
         ]
       }
     ],
@@ -102,6 +138,7 @@
     "items":[
       { 
         "title": "Unconscious bias",
+        "isRequired": "true",
         "descriptionLines": [
           "E-learning",
           "Average time 30 mins"
@@ -109,6 +146,7 @@
       },
       { 
         "title": "Health and safety 2016",
+        "isRequired": "true",
         "descriptionLines": [
           "E-learning",
           "Average time 40 mins"
@@ -116,10 +154,11 @@
       },
       { 
         "title": "Effective performance reviews",
-          "descriptionLines": [
-            "Workshop",
-            "1 hour"
-          ]
+        "isRequired": "true",
+        "descriptionLines": [
+          "Workshop",
+          "1 hour"
+        ]
       }
     ]
   }
