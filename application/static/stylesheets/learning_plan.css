@@ -3257,29 +3257,37 @@ dt.heading-small {
   padding: 0 0 1em 3em;
 }
 /* line 156 */
-.plan-list .plan-item .description-lines {
+.plan-list .plan-item .info-lines {
   padding-top: 0;
   margin: 0;
 }
 /* line 159 */
-.plan-list .plan-item .description-lines li {
+.plan-list .plan-item .info-lines li {
   margin: 0;
   font-size: 16px;
   line-height: 1em;
   padding-bottom: 0.5em;
 }
-/* line 167 */
-.plan-list .plan-item .item-action {
-  float: right;
-  margin-right: 15px;
-  line-height: 1em;
+/* line 164 */
+.plan-list .plan-item .info-lines li.info {
+  color: #6f777b;
 }
-/* line 174 */
+/* line 171 */
+.plan-list .plan-item .action-list {
+  text-align: right;
+  line-height: 1em;
+  font-size: 16px;
+}
+/* line 175 */
+.plan-list .plan-item .action-list .action {
+  padding-bottom: 0.5em;
+}
+/* line 181 */
 .plan-list .required {
   float: right;
   color: #6f777b;
 }
-/* line 179 */
+/* line 186 */
 .plan-list .inline {
   display: inline;
 }

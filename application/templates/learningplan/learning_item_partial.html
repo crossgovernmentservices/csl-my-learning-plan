@@ -1,6 +1,12 @@
 
 <li class="plan-item">
-{% if item['descriptionLines'] or item.action %}
+
+  {% set hasInformationLines = item['descriptionLines'] or item['infoLines'] %}
+  {% set hasActions = item['actions'] %}
+  {% set isExpandable = hasInformationLines or hasActions %}
+
+
+{% if isExpandable %}
   <div class="accordion">
     <input type="checkbox" class="plan-item-check">
     <div class="accordion-head inline">
@@ -14,13 +20,25 @@
       {% endif %}
     </div>
     <div class="grid-row accordion-content"> 
-      <ul class="description-lines column-two-thirds">
+      {% if hasInformationLines %}
+      <ul class="info-lines column-two-thirds">
         {% for itemDescLine in item['descriptionLines'] %}
-        <li>{{ itemDescLine|safe }}</li>
+        <li class="desc">{{ itemDescLine|safe }}</li>
+        {% endfor %}
+
+        {% for itemInfoLine in item['infoLines'] %}
+        <li class="info">{{ itemInfoLine|safe }}</li>
         {% endfor %}
       </ul>
-      {% if item.action %}
-      <span class="item-action"><a href="{{ item['action']['url'] }}">{{ item['action']['title'] }}</a></span>
+      {% endif %}
+      
+      {% if hasActions %}
+      <ul class="action-list column-third">
+        {% for itemAction in item['actions'] %}
+          <li class="action"><a href="{{ itemAction['url'] }}">{{ itemAction['title'] }}</a></li>
+          
+        {% endfor %}
+      </ul>
       {% endif %}
 
     </div>

@@ -41,7 +41,7 @@
           
           <ul>
             {% for descLine in programme.descriptionLines %}
-            <li>{{ descLine }}</li>
+            <li>{{ descLine|safe }}</li>
             {% endfor %}
           </ul>
 

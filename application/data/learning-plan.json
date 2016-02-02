@@ -9,123 +9,155 @@
     "from": "",
     "addedBy": "",
     "sections": [
-      { 
+      {
         "title": "Before you start",
         "items": [
-          { 
+          {
             "title": "Read our team information",
             "isRequired": "true",
             "descriptionLines": [
-              "All new starters must read the team information.",
+              "All new starters must read the team information."
+            ],
+            "infoLines": [
               "Average time: 20 mins",
               "HTML guidance article"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              },
+              {
+                "title": "Save for later",
+                "url": "#"
+              }
+            ]
           },
-          { 
-            "title": "Fill in the diversity survey", 
+          {
+            "title": "Fill in the diversity survey",
             "isRequired": "true",
             "descriptionLines": [
-              "All new starters must fill in the diversity survey.",
+              "All new starters must fill in the diversity survey."
+            ],
+            "infoLines": [
               "Average time: 3 mins",
               "Online survey"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           }
         ]
       },
       {
         "title": "After you start",
         "items": [
-          { 
+          {
             "title": "Look at our organisational chart",
             "descriptionLines": [
-              "This chart will help you understand how you fit in with the rest of the organisation.",
+              "This chart will help you understand how you fit in with the rest of the organisation."
+            ],
+            "infoLines": [
               "Suggested by your manager"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           },
-          { 
+          {
             "title": "Meet your manager and the team",
-            "descriptionLines": [
+            "descriptionLines": [],
+            "infoLines": [
               "Your manager is <a href='#'>Jo Hargraves</a>."
             ]
           },
-          { 
+          {
             "title": "Meet your buddy",
-            "descriptionLines": [
+            "descriptionLines": [],
+            "infoLines": [
               "Your buddy is <a href='#'>Pete Perez-Banuelos</a>."
             ]
           },
-          { 
+          {
             "title": "Read the department guidance",
             "isRequired": "true",
             "descriptionLines": [
-              "This will help you understand how the department works.",
+              "This will help you understand how the department works."
+            ],
+            "infoLines": [
               "Average time: 2 hours",
               "HTML documents"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           }
         ]
       },
       {
         "title": "Before you start doing your job",
         "items": [
-          { 
+          {
             "title": "Test your project management skills",
             "isRequired": "true",
             "descriptionLines": [
-              "This will determine which program of digital learning is recommended for you.",
+              "This will determine which program of digital learning is recommended for you."
+            ],
+            "infoLines": [
               "Average time: 30 mins",
               "Online test"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           },
-          { 
+          {
             "title": "Take the health and safety course",
             "isRequired": "true",
-            "descriptionLines": [
+            "descriptionLines": [],
+            "infoLines": [
               "Average time: 1 hour",
               "e-learning course"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           },
-          { 
+          {
             "title": "Review grade 2 documents",
             "descriptionLines": [
-              "Begin your progression towards grade 2.",
+              "Begin your progression towards grade 2."
+            ],
+            "infoLines": [
               "Suggested by your manager"
             ],
-            "action":{
-              "title": "Start now",
-              "url": "#"
-            }
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
           }
         ]
       }
     ],
     "items": []
   },
-
   {
     "title": "HMRC Operations mandatory learning",
     "descriptionLines": [
@@ -135,32 +167,74 @@
     "from": "",
     "addedBy": "",
     "sections": [],
-    "items":[
-      { 
+    "items": [
+      {
         "title": "Unconscious bias",
         "isRequired": "true",
-        "descriptionLines": [
+        "descriptionLines": [],
+        "infoLines": [
           "E-learning",
           "Average time 30 mins"
-        ] 
+        ]
       },
-      { 
+      {
         "title": "Health and safety 2016",
         "isRequired": "true",
-        "descriptionLines": [
+        "descriptionLines": [],
+        "infoLines": [
           "E-learning",
           "Average time 40 mins"
         ]
       },
-      { 
+      {
         "title": "Effective performance reviews",
         "isRequired": "true",
-        "descriptionLines": [
+        "descriptionLines": [],
+        "infoLines": [
+          "Workshop",
+          "1 hour"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Team leader training program level 1",
+    "descriptionLines": [
+      "An introduction to the role of team leader, including an overview of the skills and techniques you will need.",
+      "<a href='#'>More about this program</a>"
+    ],
+    "moreUrl": "",
+    "from": "",
+    "addedBy": "",
+    "sections": [],
+    "items": [
+      {
+        "title": "Unconscious bias",
+        "isRequired": "true",
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time 30 mins"
+        ]
+      },
+      {
+        "title": "Health and safety 2016",
+        "isRequired": "true",
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time 40 mins"
+        ]
+      },
+      {
+        "title": "Effective performance reviews",
+        "isRequired": "true",
+        "descriptionLines": [],
+        "infoLines": [
           "Workshop",
           "1 hour"
         ]
       }
     ]
   }
-
 ]
