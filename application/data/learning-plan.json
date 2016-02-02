@@ -5,16 +5,13 @@
       "Welcome to your new role at HMRC!",
       "These are the things you need to do to get up and running."
     ],
-    "moreUrl": "",
-    "from": "",
-    "addedBy": "",
     "sections": [
       {
         "title": "Before you start",
         "items": [
           {
             "title": "Read our team information",
-            "isRequired": "true",
+            "required": true,
             "descriptionLines": [
               "All new starters must read the team information."
             ],
@@ -35,7 +32,7 @@
           },
           {
             "title": "Fill in the diversity survey",
-            "isRequired": "true",
+            "required": true,
             "descriptionLines": [
               "All new starters must fill in the diversity survey."
             ],
@@ -86,7 +83,7 @@
           },
           {
             "title": "Read the department guidance",
-            "isRequired": "true",
+            "required": true,
             "descriptionLines": [
               "This will help you understand how the department works."
             ],
@@ -108,7 +105,7 @@
         "items": [
           {
             "title": "Test your project management skills",
-            "isRequired": "true",
+            "required": true,
             "descriptionLines": [
               "This will determine which program of digital learning is recommended for you."
             ],
@@ -125,7 +122,7 @@
           },
           {
             "title": "Take the health and safety course",
-            "isRequired": "true",
+            "required": true,
             "descriptionLines": [],
             "infoLines": [
               "Average time: 1 hour",
@@ -163,14 +160,11 @@
     "descriptionLines": [
       "This training is required for all people in your role, team and department."
     ],
-    "moreUrl": "",
-    "from": "",
-    "addedBy": "",
     "sections": [],
     "items": [
       {
         "title": "Unconscious bias",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "E-learning",
@@ -179,7 +173,7 @@
       },
       {
         "title": "Health and safety 2016",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "E-learning",
@@ -188,7 +182,7 @@
       },
       {
         "title": "Effective performance reviews",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "Workshop",
@@ -197,20 +191,18 @@
       }
     ]
   },
+
   {
     "title": "Team leader training program level 1",
     "descriptionLines": [
       "An introduction to the role of team leader, including an overview of the skills and techniques you will need.",
       "<a href='#'>More about this program</a>"
     ],
-    "moreUrl": "",
-    "from": "",
-    "addedBy": "",
     "sections": [],
     "items": [
       {
         "title": "Unconscious bias",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "E-learning",
@@ -219,7 +211,7 @@
       },
       {
         "title": "Health and safety 2016",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "E-learning",
@@ -228,7 +220,7 @@
       },
       {
         "title": "Effective performance reviews",
-        "isRequired": "true",
+        "required": true,
         "descriptionLines": [],
         "infoLines": [
           "Workshop",
@@ -236,5 +228,50 @@
         ]
       }
     ]
+  },
+
+  {
+    "title": "Ungrouped",
+    "expandable": false,
+    "descriptionLines": [],
+    "sections": [],
+    "items": [
+      {
+        "title": "Excel spreadsheet tips",
+        "descriptionLines": [],
+        "infoLines": [
+          "Shared by <a href='#'>Janet</a>"
+        ]
+      },
+      {
+        "title": "What I learnt from the spring conference",
+        "descriptionLines": [],
+        "infoLines": [
+          "Blog",
+          "Saved by you"
+        ]
+      },
+      {
+        "title": "Share learnings from digital training with team",
+        "descriptionLines": [],
+        "infoLines": [
+          "Added by your manager"
+        ]
+      },
+      {
+        "title": "Assess yourself on a career pathway",
+        "descriptionLines": [],
+        "infoLines": [
+          "Added by professions"
+        ]
+      },
+      {
+        "title": "Reflect on how you've applied last weeks training",
+        "descriptionLines": [],
+        "infoLines": []
+      }
+    ]
   }
+
 ]
+

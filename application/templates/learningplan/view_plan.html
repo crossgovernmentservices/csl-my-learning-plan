@@ -7,6 +7,8 @@
 {% endblock %}
 
 
+{% from "learningplan/learning_plan_macros.html" import render_plan_item %}
+
 {% block body_content %}
 
   {% include "_logout.html" %}
@@ -29,43 +31,78 @@
 
 
       {% for programme in learning_plan %}
-      <div class="accordion bordered highlighted main-plan">
-        <div class="accordion-head main-plan-head">
-          <span class="head-title heading-medium">{{ programme.title }}</span>
-          <span class="more-group right">
-            <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
-            <button class="btn-less">hide items <img alt="" src="/static/images/icon-caret-down.png"></button>
-          </span>
+        {% if programme.get('expandable',True) %}
+        <div class="accordion bordered highlighted programme">
+          <div class="accordion-head programme-head">
+            <span class="head-title heading-medium">{{ programme.title }}</span>
+            <span class="more-group right">
+              <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
+              <button class="btn-less">hide items <img alt="" src="/static/images/icon-caret-down.png"></button>
+            </span>
+          </div>
+          <div class="accordion-content">
+            
+            {% if programme['descriptionLines'] %}
+            <ul class="programme-description">
+              {% for descLine in programme.descriptionLines %}
+              <li>{{ descLine|safe }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% for section in programme.sections %}
+            <ul class="plan-list">
+              <li class="plan-item">
+                <span class="heading-small">{{ section.title }}</span>
+              </li>
+
+              {% for item in section['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+            {% endfor %}
+            
+            <ul class="plan-list">
+              {% for item in programme['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+
+
+          </div>
         </div>
-        <div class="accordion-content">
-          
-          <ul>
-            {% for descLine in programme.descriptionLines %}
-            <li>{{ descLine|safe }}</li>
+        {% else %}
+          <div class="programme">
+            <div class="programme-head non-expandable">
+              <span class="head-title heading-medium">{{ programme.title }}</span>
+            </div>
+            <ul>
+              {% for descLine in programme.descriptionLines %}
+              <li>{{ descLine|safe }}</li>
+              {% endfor %}
+            </ul>
+
+            {% for section in programme.sections %}
+            <ul class="plan-list">
+              <li class="plan-item">
+                <h4 class="heading-small">{{ section.title }}</h4>
+              </li>
+
+              {% for item in section['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
             {% endfor %}
-          </ul>
-
-          {% for section in programme.sections %}
-          <ul class="plan-list">
-            <li class="plan-item">
-              <h4 class="heading-small">{{ section.title }}</h4>
-            </li>
-
-            {% for item in section['items'] %}
-              {% include "learningplan/learning_item_partial.html" with context %}
-            {% endfor %}
-          </ul>
-          {% endfor %}
-          
-          <ul class="plan-list">
-            {% for item in programme['items'] %}
-              {% include "learningplan/learning_item_partial.html" with context %}
-            {% endfor %}
-          </ul>
+            
+            <ul class="plan-list">
+              {% for item in programme['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
 
 
-        </div>
-      </div>
       {% endfor %}
 
     </div>

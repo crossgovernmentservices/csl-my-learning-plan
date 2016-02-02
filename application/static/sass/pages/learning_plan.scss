@@ -132,10 +132,19 @@
   }
 }
 
-.main-plan {
+.programme {
   padding-bottom: 10px;
   &-head {
     line-height: 3em;
+    &.non-expandable{
+      line-height: 1em;
+      padding: 1em 0 0.25em;
+      border-bottom: 1px solid $csl-light-grey;
+    }
+  }
+
+  .programme-description{
+    padding-bottom: 0.5em;
   }
 }
 
