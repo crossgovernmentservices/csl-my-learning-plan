@@ -76,7 +76,7 @@
             <div class="programme-head non-expandable">
               <span class="head-title heading-medium">{{ programme.title }}</span>
             </div>
-            <ul>
+            <ul class="programme-description">
               {% for descLine in programme.descriptionLines %}
               <li>{{ descLine|safe }}</li>
               {% endfor %}
@@ -85,7 +85,7 @@
             {% for section in programme.sections %}
             <ul class="plan-list">
               <li class="plan-item">
-                <h4 class="heading-small">{{ section.title }}</h4>
+                <span class="heading-small">{{ section.title }}</span>
               </li>
 
               {% for item in section['items'] %}
