@@ -1,0 +1,186 @@
+@import '../rebrand/rebrand.scss';
+
+
+
+.accordion {
+  list-style: none;
+  
+  &.bordered{
+    >.accordion-head{
+      border: 1px solid $csl-light-grey;
+    }
+    >.accordion-content {
+      border-bottom: 1px solid $csl-light-grey;
+      border-left: 1px solid $csl-light-grey;
+      border-right: 1px solid $csl-light-grey;
+    }
+
+  }
+
+  .accordion-head {
+    padding: 3px $gutter-half 0;
+    // line-height: 2em;
+    position: relative;
+
+
+    &:hover {
+      cursor: pointer;
+      .head-title {
+        text-decoration: underline;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .highlight {
+      font-weight: bold;
+    }
+
+  }
+
+  &.highlighted{
+    >.accordion-head:hover {
+      background: lighten( $csl-light-grey, 10% );
+      cursor: pointer;
+
+      .highlight {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .accordion-content {
+    display: none;
+
+    .panel-indent {
+      margin-bottom: $gutter;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .more-group {
+    display: inline-block;
+
+    &.right{
+      float: right;
+      margin-top: -3px;
+
+      .btn-less, .btn-more {
+        line-height: inherit;
+      }
+
+    }
+  }
+
+  .btn-more, .btn-less {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: $link-colour;
+
+    &:hover {
+      color: $link-hover-colour;
+      cursor: pointer;
+    }
+
+
+  }
+
+
+  .btn-less {
+    display: none;
+  }
+
+  .btn-more {
+    display: block;
+  }
+
+  &.accordion--open {
+    >.accordion-head {
+      // border-bottom: 1px solid $csl-light-grey;
+      .more-group{
+        .btn-less {
+          display: block;
+        }
+
+        .btn-more {
+          display: none;
+        }
+      }
+    }
+    >.accordion-content {
+      display: block;
+      padding: $gutter-half;
+    }
+    
+  }
+
+}
+
+.page-header {
+  .heading-xlarge {
+    margin-bottom: 0.5em;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.main-plan {
+  padding-bottom: 10px;
+  &-head {
+    line-height: 3em;
+  }
+}
+
+.plan-list {
+  padding-bottom: 1em;
+
+  .accordion-head {
+    padding: 0;
+  }
+  .plan-item {
+    border-bottom: 1px solid $csl-light-grey;
+    line-height: 2.25em;
+    
+    .accordion-content{
+      padding: 0 0 1em 3em;
+    }
+    
+    .description-lines{
+      padding-top: 0;
+      margin: 0;
+      li {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1em;
+        padding-bottom: 0.5em;
+      }
+    }
+
+    .item-action {
+      float: right;
+      margin-right: $gutter-half;
+      line-height: 1em;
+    }
+  }
+  
+  .required {
+    float: right;
+    color: $grey-1;
+  }
+
+  .inline{
+    display: inline;
+  }
+}
+
+
+
+

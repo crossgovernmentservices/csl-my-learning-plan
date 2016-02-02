@@ -68,10 +68,11 @@
 }
 
 .more-group {
-  position: absolute;
-  right: 10px;
-  top: 0;
-  line-height: 41px;
+  // position: absolute;
+  // right: 10px;
+  // top: 0;
+  // line-height: 41px;
+  float: left;
 
   .btn-less, .btn-more {
     line-height: inherit;

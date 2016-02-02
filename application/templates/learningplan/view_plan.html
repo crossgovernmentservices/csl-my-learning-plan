@@ -29,80 +29,43 @@
 
 
       {% for programme in learning_plan %}
-      <div class="accordion">
-        <div class="accordion-head">
-          <div><span class="highlight">{{ programme.title }}</span></div>
-          <span class="more-group">
+      <div class="accordion bordered highlighted main-plan">
+        <div class="accordion-head main-plan-head">
+          <span class="head-title heading-medium">{{ programme.title }}</span>
+          <span class="more-group right">
             <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
             <button class="btn-less">hide items <img alt="" src="/static/images/icon-caret-down.png"></button>
           </span>
         </div>
         <div class="accordion-content">
           <ul>
-          {% for descLine in programme.descriptionLines %}
-          <li>{{ descLine }}</li>
-          {% endfor %}
-          </ul>
-
-          {% for section in programme.sections %}
-          <h4 class="heading-small">{{ section.title }}</h4>
-          <ul>
-            
-              {% for item in section['items'] %}
-
-                {% if item['descriptionLines'] or item.action %}
-
-                  <div class="accordion">
-                    <div class="accordion-head">
-                      <div>
-                        <input type="checkbox">
-                        <img alt="" src="/static/images/icon-caret-right.png">
-                        <span class="highlight">{{ item.title }}</span>
-                        {% if item.isRequired %}
-                        <span>Required</span>
-                        {% endif %}
-                      </div>
-                    </div>
-                    <div class="accordion-content"> 
-                      <ul>
-                      {% for itemDescLine in item['descriptionLines'] %}
-                      <li>{{ itemDescLine|safe }}</li>
-                      {% endfor %}
-                      </ul>
-                      
-                      {% if item.action %}
-                      <span><a href="{{ item['action']['url'] }}">{{ item['action']['title'] }}</a></span>
-                      {% endif %}
-
-                    </div>
-                  </div>
-                {% else %}
-                  <div>
-                    <input type="checkbox">
-                    <span class="highlight">{{ item.title }}</span>
-                    {% if item.isRequired %}
-                    <span>Required</span>
-                    {% endif %}
-                  </div>
-                {% endif %}
-
-              {% endfor %}
-
-          </ul>
-          {% endfor %}
-          
-          <ul>
-            {% for item in programme['items'] %}
-            <li><input type="checkbox">{{ item.title }}</li>
+            {% for descLine in programme.descriptionLines %}
+            <li>{{ descLine }}</li>
             {% endfor %}
           </ul>
 
+          {% for section in programme.sections %}
+          <ul class="plan-list">
+            <li class="plan-item">
+              <h4 class="heading-small">{{ section.title }}</h4>
+            </li>
+
+            {% for item in section['items'] %}
+              {% include "learningplan/learning_item_partial.html" with context %}
+            {% endfor %}
+          </ul>
+          {% endfor %}
+          
+          <ul class="plan-list">
+            {% for item in programme['items'] %}
+              {% include "learningplan/learning_item_partial.html" with context %}
+            {% endfor %}
+          </ul>
 
 
         </div>
       </div>
       {% endfor %}
-
 
     </div>
     
