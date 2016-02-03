@@ -90,6 +90,8 @@
     },
 
     _generateCourseItemHTML: function(course){
+      console.log("_generateCourseItemHTML");
+      console.log(course);
       return $('<li/>', { 'class': 'course-result' }).html([
           $('<div/>',{ 'class': 'grid-row course-result__meta' }).html([
             $('<div/>',{ 'class': 'column-two-thirds' }).html(function(){
@@ -99,8 +101,14 @@
                 return [$('<i/>', { 'class': 'fa fa-youtube' }),$('<span/>').text('Video')]
               else if (course.type=='website')
                 return [$('<i/>', { 'class': 'fa fa-firefox' }),$('<span/>').text('Web')]
+              else if (course.type=='onlinecourse')
+                return [$('<i/>', { 'class': 'fa fa-vimeo' }),$('<span/>').text('Online course')]
               else if (course.type=='document')
                 return [$('<i/>', { 'class': 'fa fa-file' }),$('<span/>').text('Document')]
+              else if (course.type=='article')
+                return [$('<i/>', { 'class': 'fa fa-newspaper-o' }),$('<span/>').text('Article')]
+              else if (course.type=='onlinecommunity')
+                return [$('<i/>', { 'class': 'fa fa-users' }),$('<span/>').text('Online community')]
               else
                 return [$('<i/>', { 'class': 'fa fa-laptop' }),$('<span/>').text('e-Learning')];
               }),
