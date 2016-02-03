@@ -191,7 +191,6 @@
       }
     ]
   },
-
   {
     "title": "Team leader training program level 1",
     "descriptionLines": [
@@ -201,35 +200,146 @@
     "sections": [],
     "items": [
       {
-        "title": "Unconscious bias",
+        "title": "Test your existing knowledge",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Your score 63%",
+          "Test date: 25 Feburary 2016"
+        ],
+        "actions": [
+          {
+            "title": "Take the test again",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "What is a team leader?",
+        "required": true,
+        "descriptionLines": [
+          "An introduction to the role of team leader."
+        ],
+        "infoLines": [
+          "You read this material on 12 Feburary 2016"
+        ],
+        "actions": [
+          {
+            "title": "Review module",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Managing effective teams",
         "required": true,
         "descriptionLines": [],
         "infoLines": [
           "E-learning",
-          "Average time 30 mins"
+          "Average time: 2 hours"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
         ]
       },
       {
-        "title": "Health and safety 2016",
+        "title": "People and their needs",
         "required": true,
         "descriptionLines": [],
         "infoLines": [
-          "E-learning",
-          "Average time 40 mins"
+          "Blog",
+          "Average time: 20 mins"
+        ],
+        "actions": [
+          {
+            "title": "Read now",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
         ]
       },
       {
-        "title": "Effective performance reviews",
+        "title": "Team leader career pathways",
         "required": true,
         "descriptionLines": [],
         "infoLines": [
           "Workshop",
           "1 hour"
+        ],
+        "actions": [
+          {
+            "title": "Book a place",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Test your knowledge",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Online test",
+          "Average time: 10 mins"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          }
         ]
       }
     ]
   },
-
+  {
+    "title": "Actions from performance review",
+    "descriptionLines": [
+      "Imported automatically from your <a href='#'>performance review dated November 2015</a>, as agreed with your manager <a href='#'>Renee Geyer</a>."
+    ],
+    "sections": [],
+    "items": [
+      {
+        "title": "Attend accountancy training",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time: 2 hours"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Shadow Janet for a week",
+        "required": true
+      },
+      {
+        "title": "Work on giving useful feedback to team members",
+        "required": true
+      }
+    ]
+  },
   {
     "title": "Ungrouped",
     "expandable": false,
@@ -272,6 +382,4 @@
       }
     ]
   }
-
 ]
-
