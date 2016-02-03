@@ -3231,73 +3231,78 @@ dt.heading-small {
 }
 
 /* line 135 */
+.actions-panel {
+  text-align: right;
+}
+
+/* line 139 */
 .programme {
   padding-bottom: 10px;
 }
-/* line 137 */
+/* line 141 */
 .programme-head {
   line-height: 3em;
 }
-/* line 139 */
+/* line 143 */
 .programme-head.non-expandable {
   line-height: 1em;
   padding: 1em 0 0.25em;
   border-bottom: 1px solid #cacac8;
 }
-/* line 146 */
+/* line 150 */
 .programme .programme-description {
   padding-bottom: 0.5em;
 }
 
-/* line 151 */
+/* line 155 */
 .plan-list {
   padding-bottom: 1em;
 }
-/* line 154 */
+/* line 158 */
 .plan-list .accordion-head {
   padding: 0;
 }
-/* line 157 */
+/* line 161 */
 .plan-list .plan-item {
   border-bottom: 1px solid #cacac8;
   line-height: 2.25em;
 }
-/* line 161 */
+/* line 165 */
 .plan-list .plan-item .accordion-content {
   padding: 0 0 1em 3em;
 }
-/* line 165 */
+/* line 169 */
 .plan-list .plan-item .info-lines {
   padding-top: 0;
   margin: 0;
 }
-/* line 168 */
+/* line 172 */
 .plan-list .plan-item .info-lines li {
   margin: 0;
   font-size: 16px;
   line-height: 1em;
   padding-bottom: 0.5em;
 }
-/* line 173 */
+/* line 177 */
 .plan-list .plan-item .info-lines li.info {
   color: #6f777b;
 }
-/* line 180 */
+/* line 184 */
 .plan-list .plan-item .action-list {
   text-align: right;
   line-height: 1em;
   font-size: 16px;
 }
-/* line 184 */
+/* line 188 */
 .plan-list .plan-item .action-list .action {
   padding-bottom: 0.5em;
 }
-/* line 190 */
+/* line 194 */
 .plan-list .required {
   float: right;
   color: #6f777b;
 }
-/* line 195 */
+/* line 199 */
 .plan-list .inline {
   display: inline;
 }

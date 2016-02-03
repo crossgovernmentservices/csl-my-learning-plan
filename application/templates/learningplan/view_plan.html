@@ -25,8 +25,16 @@
     <div class="column-two-thirds">
       <div class="page-header">
         <h1 class="heading-xlarge">Your learning plan</h1>
-        <p>Showing all items.</p>
-        <p><a href="#">Show required items only</a></p>
+        <div class="grid-row">
+          <ul class="column-two-thirds">
+            <li>Showing all items.</li>
+            <li><a href="#">Show required items only</a></li>
+          </ul>
+          <ul class="column-third actions-panel">
+            <li><a href="#">+ add new item</a></li>
+            <li><a href="#">+ add new group</a></li>
+          </ul>
+        </div>
       </div>
 
 
@@ -104,6 +112,11 @@
 
 
       {% endfor %}
+
+      <ul>
+        <li><a href="#">Print</a></li>
+        <li><a href="#">Archive items</a></li>
+      </ul>
 
     </div>
     
