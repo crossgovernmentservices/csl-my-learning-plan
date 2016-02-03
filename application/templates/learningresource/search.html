@@ -1,8 +1,8 @@
-{% extends "learning-resource-base.html" %}
+{% extends "rebranded-base.html" %}
+
 {% block body_content %}
 
   {% include "_logout.html" %}
-
 
   <div id="global-breadcrumb">
     <ol>
@@ -68,44 +68,14 @@
           </div>
         </div>
 
-        <ul class="results js-courses-list">
-
-          <!-- uncomment if JS goes tits up -->
-
-          <!-- {% for course in courses %}
-            
-            <li class="course-result">
-              <div class="grid-row course-result__meta">
-                <div class="column-two-thirds">
-                  {% if course.type == 'face2face' %}
-                  <i class="fa fa-book"></i>
-                  <span>Workshop</span>
-                  {% elif course.type == 'video' %}
-                  <i class="fa fa-book"></i>
-                  <span>Video</span>
-                  {% else %}
-                  <i class="fa fa-laptop"></i>
-                  <span>{{ course.type }}</span>
-                  {% endif %}
-                </div>
-                <div class="column-third ta-right">
-                  <span>{% if course.duration is defined %}{{ course.duration }}{% else %}1 hr{% endif %}</span>
-                </div>
-              </div>
-              <h3 class="heading-small course-result__title"><a href="{{ course.url }}">{{ course.title }}</a></h3>
-              <p class="text">{{ course.desc }}</p>
-              <ul class="skills">
-                {% for topic in course.topics %}
-                <li>{{ topic }}</li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% endfor %} -->
-        </ul>
+        <ul class="results js-courses-list"></ul>
       </div>
     </div>
   </section>
+{% endblock %}
 
-
-
+{% block body_end %}
+  {{ super() }}
+  <script src="/static/javascripts/rebrand.js"></script>
+  <script src="/static/javascripts/course-search.js"></script>
 {% endblock %}

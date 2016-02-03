@@ -1,8 +1,141 @@
-{% extends "base.html" %}
+{% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_learning_plan" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
+
+{% from "learningplan/learning_plan_macros.html" import render_plan_item %}
+
 {% block body_content %}
 
   {% include "_logout.html" %}
 
-  <p>this is a spaceholder for a plan view: {{plan_id}}</p>
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li>Your learning plan</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="page-header">
+        <h1 class="heading-xlarge">Your learning plan</h1>
+        <div class="grid-row">
+          <ul class="column-two-thirds">
+            <li>Showing all items.</li>
+            <li><a href="#">Show required items only</a></li>
+          </ul>
+          <ul class="column-third actions-panel">
+            <li><a href="#">+ add new item</a></li>
+            <li><a href="#">+ add new group</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      {% for programme in learning_plan %}
+        {% if programme.get('expandable',True) %}
+        <div class="accordion bordered highlighted programme">
+          <div class="accordion-head programme-head">
+            <span class="head-title heading-medium">{{ programme.title }}</span>
+            <span class="more-group right">
+              <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
+              <button class="btn-less">hide items <img alt="" src="/static/images/icon-caret-down.png"></button>
+            </span>
+          </div>
+          <div class="accordion-content">
+            
+            {% if programme['descriptionLines'] %}
+            <ul class="programme-description">
+              {% for descLine in programme.descriptionLines %}
+              <li>{{ descLine|safe }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% for section in programme.sections %}
+            <ul class="plan-list">
+              <li class="plan-item">
+                <span class="heading-small">{{ section.title }}</span>
+              </li>
+
+              {% for item in section['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+            {% endfor %}
+            
+            <ul class="plan-list">
+              {% for item in programme['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+
+
+          </div>
+        </div>
+        {% else %}
+          <div class="programme">
+            <div class="programme-head non-expandable">
+              <span class="head-title heading-medium">{{ programme.title }}</span>
+            </div>
+            <ul class="programme-description">
+              {% for descLine in programme.descriptionLines %}
+              <li>{{ descLine|safe }}</li>
+              {% endfor %}
+            </ul>
+
+            {% for section in programme.sections %}
+            <ul class="plan-list">
+              <li class="plan-item">
+                <span class="heading-small">{{ section.title }}</span>
+              </li>
+
+              {% for item in section['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+            {% endfor %}
+            
+            <ul class="plan-list">
+              {% for item in programme['items'] %}
+                {{ render_plan_item(item) }}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+
+      {% endfor %}
+
+      <ul>
+        <li><a href="#">Print</a></li>
+        <li><a href="#">Archive items</a></li>
+      </ul>
+
+    </div>
+    
+    <div class="column-third related-container">
+      <aside class="related">
+        <div class="related-subsection">
+          <h2 class="heading-medium">Civil Service Learning</h2>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
+              <li><a href="#">Your learning suggestions</a></li>
+              <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">Your learning record</a></li>
+              <li><a href="{{ url_for('profile.view_profile') }}">Your profile</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+    </div>
+
+  </div>
 
 {% endblock %}

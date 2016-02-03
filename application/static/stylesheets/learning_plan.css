@@ -2659,221 +2659,221 @@ input[type=number] {
   border-color: #af292e;
 }
 
-/* line 18 */
+/* line 18, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .visually-hidden {
   display: none;
   visibility: hidden;
 }
 
-/* line 23 */
+/* line 23, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 #global-breadcrumb {
   display: inline-block;
 }
 
-/* line 27 */
+/* line 27, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .feedback-footer {
   padding: 15px 0;
   font-size: 16px;
 }
-/* line 32 */
+/* line 32, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .feedback-footer a,
 .feedback-footer a:hover,
 .feedback-footer a:visited {
   color: #6f777b;
 }
 
-/* line 39 */
+/* line 39, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .text ul {
   margin-bottom: 1em;
 }
 
-/* line 43 */
+/* line 43, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .page-header {
   margin: 30px 0;
 }
 
 /* dd */
-/* line 50 */
+/* line 50, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .definition-inline dt {
   font-weight: bold;
   clear: left;
   float: left;
   margin-right: 15px;
 }
-/* line 55 */
+/* line 55, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .definition-inline dt:after {
   content: ':';
 }
-/* line 59 */
+/* line 59, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .definition-inline dd {
   float: left;
 }
 
-/* line 66 */
+/* line 66, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-list-inline dt, .summary-list-inline dd {
   float: left;
   margin-bottom: 10px;
 }
-/* line 70 */
+/* line 70, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-list-inline dt {
   clear: left;
   margin-right: 15px;
   width: 200px;
 }
-/* line 75 */
+/* line 75, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-list-inline dd {
   font-weight: bold;
 }
 
-/* line 83 */
+/* line 83, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-description {
   margin-bottom: 45px;
 }
 
-/* line 88 */
+/* line 88, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-metadata-section h3 {
   border-top: 5px solid #0b0c0c;
   padding: 15px 0;
   margin-bottom: 0;
 }
 
-/* line 95 */
+/* line 95, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-actions {
   margin: 15px 0;
 }
-/* line 97 */
+/* line 97, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-actions span {
   display: block;
 }
 
-/* line 102 */
+/* line 102, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .example-separator {
   margin: 120px 0;
   background: #005ea5;
 }
 
-/* line 109 */
+/* line 109, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy tr {
   background: #f8f8f8;
 }
-/* line 112 */
+/* line 112, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy tr:nth-child(even) {
   background: #dee0e2;
 }
-/* line 115 */
+/* line 115, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy td, .gridcopy th {
   border: 2px solid #fff;
   padding: 5px;
 }
-/* line 119 */
+/* line 119, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy td {
   width: 16.66667%;
   height: 140px;
 }
-/* line 123 */
+/* line 123, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy th, .gridcopy td.axis {
   background: #1a2792;
   color: #fff;
   font-weight: 700;
 }
-/* line 128 */
+/* line 128, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy th {
   padding: 12px 5px 9px;
 }
-/* line 131 */
+/* line 131, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .gridcopy .empty {
   background: #fff;
 }
 
-/* line 136 */
+/* line 136, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .callout {
   background: #28a197;
   color: #fff;
   padding: 30px;
   text-align: center;
 }
-/* line 144 */
+/* line 144, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .callout .callout__heading {
   margin-top: 0;
 }
-/* line 148 */
+/* line 148, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .callout .ref-number {
   font-size: 27px;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 0.25em;
 }
-/* line 154 */
+/* line 154, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .callout .ref-number:last-of-type {
   margin-bottom: 0;
 }
 
-/* line 160 */
+/* line 160, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .with-hr {
   border-bottom: 1px solid #bfc1c3;
   padding: 15px 0;
 }
 
-/* line 165 */
+/* line 165, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-section {
   position: relative;
   border-top: 1px dotted #bfc1c3;
   padding: 30px 0;
 }
-/* line 170 */
+/* line 170, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-section .summary-heading {
   margin-top: 0;
 }
-/* line 174 */
+/* line 174, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-section .summary-edit-link {
   position: absolute;
   top: 30px;
   right: 0;
 }
-/* line 178 */
+/* line 178, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .summary-section .summary-edit-link:visited {
   color: #005ea5;
 }
 
-/* line 184 */
+/* line 184, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .secondary-content {
   font-size: 16px;
 }
 
-/* line 188 */
+/* line 188, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .submit-btn-group {
   position: relative;
   margin: 30px 0;
 }
-/* line 192 */
+/* line 192, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .submit-btn-group .cancel-btn {
   position: absolute;
   right: 0;
   line-height: 42px;
 }
 
-/* line 199 */
+/* line 199, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .booking-section {
   margin-bottom: 60px;
 }
 
-/* line 203 */
+/* line 203, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .secondary-action {
   display: block;
   margin: 0;
   padding: 0;
 }
-/* line 207 */
+/* line 207, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .secondary-action a {
   text-decoration: none;
 }
 
-/* line 213 */
+/* line 213, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .button-group--stacked .button, .button-group--stacked .btn-csl {
   margin-bottom: 5px;
 }
 
-/* line 218 */
+/* line 218, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .icon-email {
   padding: 0 19px 0;
   height: 25px;
@@ -2883,17 +2883,17 @@ input[type=number] {
   background-repeat: no-repeat;
 }
 
-/* line 227 */
+/* line 227, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn--secondary {
   background-color: #4d4e53;
   margin-bottom: 8px;
 }
-/* line 230 */
+/* line 230, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn--secondary:hover {
   background-color: #cd5a13;
 }
 
-/* line 235 */
+/* line 235, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification--small {
   margin: 0 10px;
   padding: 3px 10px;
@@ -2902,13 +2902,13 @@ input[type=number] {
   background: #1a2792;
 }
 
-/* line 243 */
+/* line 243, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification--inline {
   padding-left: 10px;
   border-left: 5px solid #1a2792;
 }
 
-/* line 248 */
+/* line 248, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-status, .course-status--confirmed {
   font-size: 16px;
   padding: 5px 5px 2px;
@@ -2920,24 +2920,24 @@ input[type=number] {
   font-weight: bold;
 }
 
-/* line 259 */
+/* line 259, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-status--confirmed {
   color: #2eb135;
   border-color: #2eb135;
 }
 
-/* line 265 */
+/* line 265, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .level-separator {
   border-top: 1px solid #bfc1c3;
   margin-top: 60px;
   position: relative;
 }
-/* line 270 */
+/* line 270, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .level-separator h2 {
   margin-top: 30px;
 }
 
-/* line 275 */
+/* line 275, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .back-to-grid {
   position: absolute;
   right: 0;
@@ -2946,25 +2946,25 @@ input[type=number] {
 }
 
 @media (min-width: 641px) {
-  /* line 284 */
+  /* line 284, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
   .profile_header h1, .profile_header .profile-search-form {
     float: left;
     width: 50%;
     margin-top: 30px;
   }
 }
-/* line 291 */
+/* line 291, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile_header .profile-search-form {
   margin-bottom: 30px;
 }
 @media (min-width: 641px) {
-  /* line 291 */
+  /* line 291, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
   .profile_header .profile-search-form {
     margin-top: 60px;
   }
 }
 
-/* line 301 */
+/* line 301, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification-banner, .notification-banner--confirmed {
   border-color: #1a2792;
   background: #e4e6fa;
@@ -2972,99 +2972,99 @@ input[type=number] {
   position: relative;
 }
 
-/* line 309 */
+/* line 309, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification-banner--confirmed {
   border-color: #2eb135;
   background: #d1f3d3;
 }
 
-/* line 315 */
+/* line 315, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .check-status-link {
   position: absolute;
   right: 15px;
 }
 
-/* line 320 */
+/* line 320, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-list--profile {
   padding-left: 0;
 }
-/* line 323 */
+/* line 323, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-list--profile > li {
   border: 1px solid #1a2792;
   margin: 0 0 10px;
   list-style: none;
 }
 
-/* line 339 */
+/* line 339, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details {
   padding-top: 3px;
 }
-/* line 343 */
+/* line 343, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail {
   margin: 0 15px 0 0;
   float: left;
 }
-/* line 347 */
+/* line 347, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail .highlight {
   font-weight: bold;
 }
-/* line 351 */
+/* line 351, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail .secondary {
   color: #6f777b;
 }
 
-/* line 357 */
+/* line 357, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 dt.heading-small {
   margin-top: 0;
 }
 
-/* line 359 */
+/* line 359, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .el-hidden {
   display: none;
 }
 
-/* line 363 */
+/* line 363, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .selected + .el-hidden {
   display: block;
 }
 
-/* line 367 */
+/* line 367, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .time-details {
   margin: -8px 0 12px;
 }
 
-/* line 371 */
+/* line 371, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .map-details {
   margin-top: 8px;
 }
 
-/* line 375 */
+/* line 375, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl {
   background: #af292e;
 }
-/* line 378 */
+/* line 378, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl:visited {
   background: #af292e;
 }
-/* line 381 */
+/* line 381, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl:hover {
   background: #9a2429;
 }
 
-/* line 386 */
+/* line 386, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section {
   padding-top: 45px;
 }
-/* line 389 */
+/* line 389, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section .profile-section-heading {
   margin-top: 0;
 }
 
-/* line 394 */
+/* line 394, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section__editable {
   position: relative;
 }
-/* line 397 */
+/* line 397, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section__editable .btn-edit {
   position: absolute;
   top: 45px;
@@ -3073,46 +3073,236 @@ dt.heading-small {
   line-height: 30px;
 }
 
-/* line 406 */
+/* line 406, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table {
   margin: 0 -15px;
 }
-/* line 409 */
+/* line 409, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tr th:first-child,
 .course-select-table tr td:first-child {
   padding-left: 15px;
 }
-/* line 414 */
+/* line 414, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tr td:last-child {
   text-align: center;
   padding-right: 0;
 }
-/* line 420 */
+/* line 420, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tbody tr:not(.currently-selected):hover {
   background: #dee0e2;
 }
-/* line 425 */
+/* line 425, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .status-selected {
   display: none;
 }
-/* line 429 */
+/* line 429, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected {
   border-left: 10px solid #28a197;
 }
-/* line 431 */
+/* line 431, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected td {
   font-weight: bold;
 }
-/* line 434 */
+/* line 434, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected .date-selection {
   display: none;
 }
-/* line 437 */
+/* line 437, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected .status-selected {
   display: inline;
 }
 
-/* line 444 */
+/* line 444, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .table-strip tbody tr:nth-child(odd) {
   background: #f8f8f8;
+}
+
+/* line 5 */
+.accordion {
+  list-style: none;
+}
+/* line 9 */
+.accordion.bordered > .accordion-head {
+  border: 1px solid #cacac8;
+}
+/* line 12 */
+.accordion.bordered > .accordion-content {
+  border-bottom: 1px solid #cacac8;
+  border-left: 1px solid #cacac8;
+  border-right: 1px solid #cacac8;
+}
+/* line 20 */
+.accordion .accordion-head {
+  padding: 3px 15px 0;
+  position: relative;
+}
+/* line 26 */
+.accordion .accordion-head:hover {
+  cursor: pointer;
+}
+/* line 28 */
+.accordion .accordion-head:hover .head-title {
+  text-decoration: underline;
+}
+/* line 33 */
+.accordion .accordion-head a {
+  text-decoration: none;
+}
+/* line 37 */
+.accordion .accordion-head .highlight {
+  font-weight: bold;
+}
+/* line 44 */
+.accordion.highlighted > .accordion-head:hover {
+  background: #e3e3e2;
+  cursor: pointer;
+}
+/* line 48 */
+.accordion.highlighted > .accordion-head:hover .highlight {
+  text-decoration: underline;
+}
+/* line 54 */
+.accordion .accordion-content {
+  display: none;
+}
+/* line 57 */
+.accordion .accordion-content .panel-indent, .accordion .accordion-content .notification-banner, .accordion .accordion-content .notification-banner--confirmed {
+  margin-bottom: 30px;
+}
+/* line 61 */
+.accordion .accordion-content img {
+  max-width: 100%;
+}
+/* line 66 */
+.accordion .more-group {
+  display: inline-block;
+}
+/* line 69 */
+.accordion .more-group.right {
+  float: right;
+  margin-top: -3px;
+}
+/* line 73 */
+.accordion .more-group.right .btn-less, .accordion .more-group.right .btn-more {
+  line-height: inherit;
+}
+/* line 80 */
+.accordion .btn-more, .accordion .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #005ea5;
+}
+/* line 87 */
+.accordion .btn-more:hover, .accordion .btn-less:hover {
+  color: #2e8aca;
+  cursor: pointer;
+}
+/* line 96 */
+.accordion .btn-less {
+  display: none;
+}
+/* line 100 */
+.accordion .btn-more {
+  display: block;
+}
+/* line 108 */
+.accordion.accordion--open > .accordion-head .more-group .btn-less {
+  display: block;
+}
+/* line 112 */
+.accordion.accordion--open > .accordion-head .more-group .btn-more {
+  display: none;
+}
+/* line 117 */
+.accordion.accordion--open > .accordion-content {
+  display: block;
+  padding: 15px;
+}
+
+/* line 127 */
+.page-header .heading-xlarge {
+  margin-bottom: 0.5em;
+}
+/* line 130 */
+.page-header p {
+  margin: 0;
+}
+
+/* line 135 */
+.actions-panel {
+  text-align: right;
+}
+
+/* line 139 */
+.programme {
+  padding-bottom: 10px;
+}
+/* line 141 */
+.programme-head {
+  line-height: 3em;
+}
+/* line 143 */
+.programme-head.non-expandable {
+  line-height: 1em;
+  padding: 1em 0 0.25em;
+  border-bottom: 1px solid #cacac8;
+}
+/* line 150 */
+.programme .programme-description {
+  padding-bottom: 0.5em;
+}
+
+/* line 155 */
+.plan-list {
+  padding-bottom: 1em;
+}
+/* line 158 */
+.plan-list .accordion-head {
+  padding: 0;
+}
+/* line 161 */
+.plan-list .plan-item {
+  border-bottom: 1px solid #cacac8;
+  line-height: 2.25em;
+}
+/* line 165 */
+.plan-list .plan-item .accordion-content {
+  padding: 0 0 1em 3em;
+}
+/* line 169 */
+.plan-list .plan-item .info-lines {
+  padding-top: 0;
+  margin: 0;
+}
+/* line 172 */
+.plan-list .plan-item .info-lines li {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1em;
+  padding-bottom: 0.5em;
+}
+/* line 177 */
+.plan-list .plan-item .info-lines li.info {
+  color: #6f777b;
+}
+/* line 184 */
+.plan-list .plan-item .action-list {
+  text-align: right;
+  line-height: 1em;
+  font-size: 16px;
+}
+/* line 188 */
+.plan-list .plan-item .action-list .action {
+  padding-bottom: 0.5em;
+}
+/* line 194 */
+.plan-list .required {
+  float: right;
+  color: #6f777b;
+}
+/* line 199 */
+.plan-list .inline {
+  display: inline;
 }

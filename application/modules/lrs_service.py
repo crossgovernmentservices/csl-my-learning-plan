@@ -7,6 +7,8 @@ from application.config import Config
 import urllib
 import requests
 
+DATA_FILEPATH='application/data/learning-plan.json'
+
 
 def get_user_records(email):
     pipeline = [
@@ -16,6 +18,12 @@ def get_user_records(email):
     ]
 
     return query(pipeline)['result']
+
+def get_user_learning_plan(email):
+  # all of them lines of code be here for now
+  with open(DATA_FILEPATH) as data_file:
+    learning_plan=json.load(data_file)
+  return learning_plan
 
 
 def query(aggregation_pipeline):

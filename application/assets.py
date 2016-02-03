@@ -50,9 +50,33 @@ css_rebrand = Bundle(
     depends='**/*.scss'
 )
 
+css_csl_styleguide = Bundle(
+    'sass/styleguide-csl.scss',
+    filters='scss',
+    output='stylesheets/styleguide-csl.css',
+    depends='**/*.scss'
+)
+
+css_csl_elements = Bundle(
+    'sass/csl_elements.scss',
+    filters='scss',
+    output='stylesheets/csl_elements.css',
+    depends='**/*.scss'
+)
+
+css_learning_plan = Bundle(
+    'sass/pages/learning_plan.scss',
+    filters='scss',
+    output='stylesheets/learning_plan.css',
+    depends='**/*.scss'
+)
+
 env = Environment()
 env.register('css_govuk_elements', css_govuk_elements)
 env.register('css_main', css_main)
 env.register('css_internal_interface', css_internal_interface)
 env.register('css_rebrand', css_rebrand)
 env.register('css_learning', css_learning)
+env.register('css_csl_styleguide', css_csl_styleguide)
+env.register('css_csl_elements', css_csl_elements)
+env.register('css_learning_plan', css_learning_plan)

@@ -1,0 +1,51 @@
+// See assets.py
+// Even though govuk.css is built for all views, we
+// still include it here for access to SASS variables.
+@import 'rebrand/govuk';
+
+@import 'rebrand/common/all';
+
+@import 'rebrand/components/search';
+@import 'rebrand/components/quick-actions';
+@import 'rebrand/components/summary-box';
+@import 'rebrand/components/tabs';
+@import 'rebrand/components/accordion';
+
+@import 'rebrand/common/csl-brand';
+
+
+.sg-csl-bg { background: $csl-red; }
+
+.swatches {
+  @extend %contain-floats;
+}
+
+.swatch-wrapper {
+  width: 20%;
+  float: left;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.swatch {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  border-radius: 100%;
+}
+
+.swatch-csl-red { background: $csl-red; }
+.swatch-csl-dark-grey { background: $csl-dark-grey; }
+.swatch-csl-light-grey { background: $csl-light-grey; }
+.swatch-csl-dark-blue { background: $csl-dark-blue; }
+.swatch-csl-light-blue { background: $csl-light-blue; }
+.swatch-csl-purple { background: $csl-purple; }
+.swatch-csl-brown { background: $csl-brown; }
+.swatch-csl-orange { background: $csl-orange; }
+.swatch-csl-green { background: $csl-green; }
+.swatch-csl-pink { background: $csl-pink; }
+.swatch-csl-yellow { background: $csl-yellow; }
+
+b {
+  font-weight: bold;
+}

@@ -1,0 +1,385 @@
+[
+  {
+    "title": "Induction",
+    "descriptionLines": [
+      "Welcome to your new role at HMRC!",
+      "These are the things you need to do to get up and running."
+    ],
+    "sections": [
+      {
+        "title": "Before you start",
+        "items": [
+          {
+            "title": "Read our team information",
+            "required": true,
+            "descriptionLines": [
+              "All new starters must read the team information."
+            ],
+            "infoLines": [
+              "Average time: 20 mins",
+              "HTML guidance article"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              },
+              {
+                "title": "Save for later",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "title": "Fill in the diversity survey",
+            "required": true,
+            "descriptionLines": [
+              "All new starters must fill in the diversity survey."
+            ],
+            "infoLines": [
+              "Average time: 3 mins",
+              "Online survey"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "After you start",
+        "items": [
+          {
+            "title": "Look at our organisational chart",
+            "descriptionLines": [
+              "This chart will help you understand how you fit in with the rest of the organisation."
+            ],
+            "infoLines": [
+              "Suggested by your manager"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "title": "Meet your manager and the team",
+            "descriptionLines": [],
+            "infoLines": [
+              "Your manager is <a href='#'>Jo Hargraves</a>."
+            ]
+          },
+          {
+            "title": "Meet your buddy",
+            "descriptionLines": [],
+            "infoLines": [
+              "Your buddy is <a href='#'>Pete Perez-Banuelos</a>."
+            ]
+          },
+          {
+            "title": "Read the department guidance",
+            "required": true,
+            "descriptionLines": [
+              "This will help you understand how the department works."
+            ],
+            "infoLines": [
+              "Average time: 2 hours",
+              "HTML documents"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Before you start doing your job",
+        "items": [
+          {
+            "title": "Test your project management skills",
+            "required": true,
+            "descriptionLines": [
+              "This will determine which program of digital learning is recommended for you."
+            ],
+            "infoLines": [
+              "Average time: 30 mins",
+              "Online test"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "title": "Take the health and safety course",
+            "required": true,
+            "descriptionLines": [],
+            "infoLines": [
+              "Average time: 1 hour",
+              "e-learning course"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "title": "Review grade 2 documents",
+            "descriptionLines": [
+              "Begin your progression towards grade 2."
+            ],
+            "infoLines": [
+              "Suggested by your manager"
+            ],
+            "actions": [
+              {
+                "title": "Start now",
+                "url": "#"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "items": []
+  },
+  {
+    "title": "HMRC Operations mandatory learning",
+    "descriptionLines": [
+      "This training is required for all people in your role, team and department."
+    ],
+    "sections": [],
+    "items": [
+      {
+        "title": "Unconscious bias",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time 30 mins"
+        ]
+      },
+      {
+        "title": "Health and safety 2016",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time 40 mins"
+        ]
+      },
+      {
+        "title": "Effective performance reviews",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Workshop",
+          "1 hour"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Team leader training program level 1",
+    "descriptionLines": [
+      "An introduction to the role of team leader, including an overview of the skills and techniques you will need.",
+      "<a href='#'>More about this program</a>"
+    ],
+    "sections": [],
+    "items": [
+      {
+        "title": "Test your existing knowledge",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Your score 63%",
+          "Test date: 25 Feburary 2016"
+        ],
+        "actions": [
+          {
+            "title": "Take the test again",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "What is a team leader?",
+        "required": true,
+        "descriptionLines": [
+          "An introduction to the role of team leader."
+        ],
+        "infoLines": [
+          "You read this material on 12 Feburary 2016"
+        ],
+        "actions": [
+          {
+            "title": "Review module",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Managing effective teams",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time: 2 hours"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "People and their needs",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Blog",
+          "Average time: 20 mins"
+        ],
+        "actions": [
+          {
+            "title": "Read now",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Team leader career pathways",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Workshop",
+          "1 hour"
+        ],
+        "actions": [
+          {
+            "title": "Book a place",
+            "url": "#"
+          },
+          {
+            "title": "Save link to my notes",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Test your knowledge",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "Online test",
+          "Average time: 10 mins"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Actions from performance review",
+    "descriptionLines": [
+      "Imported automatically from your <a href='#'>performance review dated November 2015</a>, as agreed with your manager <a href='#'>Renee Geyer</a>."
+    ],
+    "sections": [],
+    "items": [
+      {
+        "title": "Attend accountancy training",
+        "required": true,
+        "descriptionLines": [],
+        "infoLines": [
+          "E-learning",
+          "Average time: 2 hours"
+        ],
+        "actions": [
+          {
+            "title": "Start now",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Shadow Janet for a week",
+        "required": true
+      },
+      {
+        "title": "Work on giving useful feedback to team members",
+        "required": true
+      }
+    ]
+  },
+  {
+    "title": "Ungrouped",
+    "expandable": false,
+    "descriptionLines": [],
+    "sections": [],
+    "items": [
+      {
+        "title": "Excel spreadsheet tips",
+        "descriptionLines": [],
+        "infoLines": [
+          "Shared by <a href='#'>Janet</a>"
+        ]
+      },
+      {
+        "title": "What I learnt from the spring conference",
+        "descriptionLines": [],
+        "infoLines": [
+          "Blog",
+          "Saved by you"
+        ]
+      },
+      {
+        "title": "Share learnings from digital training with team",
+        "descriptionLines": [],
+        "infoLines": [
+          "Added by your manager"
+        ]
+      },
+      {
+        "title": "Assess yourself on a career pathway",
+        "descriptionLines": [],
+        "infoLines": [
+          "Added by professions"
+        ]
+      },
+      {
+        "title": "Reflect on how you've applied last weeks training",
+        "descriptionLines": [],
+        "infoLines": []
+      }
+    ]
+  }
+]

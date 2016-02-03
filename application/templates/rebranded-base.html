@@ -2,24 +2,20 @@
 
 {% block endhead %}
 
-  {% assets "css_learning" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-  {% endassets %}
-
-  {% assets "css_rebrand" %}
+  {% assets "css_learning", "css_rebrand", "css_csl_elements" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
   {% endassets %}
 
   <link rel="stylesheet" href="/static/vendor/font-awesome-4.4.0/css/font-awesome.min.css">
 
+  {% block page_head_end %}
+  {% endblock %}
+
 {% endblock %}
 
 
 {% block body_end %}
-
   {{ super() }}
-
-  <script src="/static/javascripts/rebrand.js"></script>
-  <script src="/static/javascripts/course-search.js"></script>
+  <script src="/static/javascripts/styleguide.js"></script>
 
 {% endblock %}

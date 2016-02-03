@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="{{ ASSET_URL }}">
   {% endassets %}
 
-
-
   <script type="text/javascript" src="/static/javascripts/vendor/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/static/javascripts/vendor/jsrender.min.js"></script>
 
@@ -31,9 +29,10 @@
     <nav id='proposition-menu'>
       <a href='/' id='proposition-name'>Civil Service Learning</a>
       <ul id="proposition-links">
-        <li><a href="{{ url_for('mylearning.index') }}">My learning plan</a></li>
-        <li><a href="{{ url_for('profile.view_profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+        <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
         <li><a href="{{ url_for('learningresource.search') }}">Course search</a></li>
+        <li><a href="{{ url_for('profile.view_profile') }}">Profile</a></li>
       </ul>
     </nav>
   </div>
