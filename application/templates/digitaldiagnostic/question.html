@@ -15,24 +15,23 @@
     <ol>
       <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
       <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
-      <li>Start digital diagnostic</li>
+      <li>Diagnostic 1 of 9</li>
     </ol>
   </div>
 
   <div class="grid-row">
     <main class="column-two-thirds">
-      <header class="page-header">
-        <h1 class="heading-xlarge">Test your Digital knowledge</h1>
+      <header class="question">
+          <h1>Problem solving</h1>
       </header>
+      <form action="" method="POST">
 
-      <section>
-        <p>
-          Take the Digital knowledge test to identify what digital learning you need to be able to do your job. We'll use your results to specify learning for you.
-        </p>
-        <p id="get-started" class="get-started">
-          <a href="{{ url_for('digitaldiagnostic.start') }}" class="button" role="button">Start now</a>
-        </p>
-      </section>
+    
+          <button type="submit" class="button">Continue</button>
+
+      </form>
+
+
     </main>
 
     

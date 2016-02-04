@@ -24,4 +24,9 @@ def intro():
 @digitaldiagnostic.route('/digital-diagnostic/start')
 @login_required
 def start():
-    return 'start :)'
+    return redirect(url_for('digitaldiagnostic.question'))
+
+@digitaldiagnostic.route('/digital-diagnostic/question', methods=['GET', 'POST'])
+@login_required
+def question():
+    return render_template('/digitaldiagnostic/question.html')
