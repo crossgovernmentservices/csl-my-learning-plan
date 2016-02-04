@@ -1,0 +1,57 @@
+{% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_digital_diagnostic" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
+
+{% block body_content %}
+
+  {% include "_logout.html" %}
+
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li>Your learning plan</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <main class="column-two-thirds">
+      <header class="page-header">
+        <h1 class="heading-xlarge">Test your Digital knowledge</h1>
+      </header>
+
+      <section>
+        <p>
+          Take the Digital knowledge test to identify what digital learning you need to be able to do your job. We'll use your results to specify learning for you.
+        </p>
+        <p id="get-started" class="get-started">
+          <a href="{{ url_for('digitaldiagnostic.start') }}" class="button" role="button">Start now</a>
+        </p>
+      </section>
+    </main>
+
+    
+    <div class="column-third related-container">
+      <aside class="related">
+        <div class="related-subsection">
+          <h2 class="heading-medium">Civil Service Learning</h2>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
+              <li><a href="#">Your learning suggestions</a></li>
+              <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">Your learning record</a></li>
+              <li><a href="{{ url_for('profile.view_profile') }}">Your profile</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+
+{% endblock %}

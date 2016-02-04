@@ -71,6 +71,13 @@ css_learning_plan = Bundle(
     depends='**/*.scss'
 )
 
+css_digital_diagnostic = Bundle(
+    'sass/pages/digital_diagnostic.scss',
+    filters='scss',
+    output='stylesheets/digital_diagnostic.css',
+    depends='**/*.scss'
+)
+
 env = Environment()
 env.register('css_govuk_elements', css_govuk_elements)
 env.register('css_main', css_main)
@@ -80,3 +87,4 @@ env.register('css_learning', css_learning)
 env.register('css_csl_styleguide', css_csl_styleguide)
 env.register('css_csl_elements', css_csl_elements)
 env.register('css_learning_plan', css_learning_plan)
+env.register('css_digital_diagnostic', css_digital_diagnostic)

@@ -49,6 +49,9 @@ def register_blueprints(app):
     from application.learningresource.views import learningresource
     app.register_blueprint(learningresource)
 
+    from application.digitaldiagnostic.views import digitaldiagnostic
+    app.register_blueprint(digitaldiagnostic)
+
 
 def register_extensions(app):
     from application.assets import env
