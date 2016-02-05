@@ -28,21 +28,40 @@
         </p>
       </header>
       
+      {% for rec in recommendations %}
       <section>
-        <h1 class="heading-large">Problem solving</h1>
+        <h1 class="heading-large">{{ rec['title'] }}</h1>
+        <p>Skill rating {{ answers[rec['tag']] }}</p>
         <p>
-          Skill rating {{ answers['basicproblemsolving'] }}
-        </p>
-      </section>
+          Recommendations:
+          
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Duration</th>
+              <th></th>
+            </thead>
+            <tbody>
+              {% for item in rec['recommendedItems'] %}
+              <tr>
+                <td>
+                  <a href="{{ item['resourceUrl'] }}">{{ item['name'] }}</a>
+                </td>
+                <td>{{ item['type'] }}</td>
+                <td>{{ item['duration'] }}</td>
+                <td><a href="#">add to plan</a></td>
+                <td></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
-      <section>
-        <h1 class="heading-large">Communicating</h1>
-        <p>
-          Skill rating {{ answers['communication'] }}
         </p>
       </section>
-        
-        {{ answers }}
+      {% endfor %}
+
+      
     </main>
 
     

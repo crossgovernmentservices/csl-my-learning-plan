@@ -23,28 +23,58 @@ digitaldiagnostic = Blueprint('digitaldiagnostic', __name__)
 def get_dummypage_data():
     data = [
         {
-            'educationalFramework': '1to5',
+            'educationalFramework': 'communication',
+            'target': '5',
             'audience': 'all',
-            'targetUrl': '1to5:5',
-            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 5 resource'
+            'name': 'staff forums',
+            'type': 'article',
+            'duration': 'PT15M',
+            'resourceUrl': 'http://test.com/item'
         },
         {
-            'educationalFramework': '1to5',
+            'educationalFramework': 'communication',
+            'target': '4',
             'audience': 'all',
-            'targetUrl': '1to5:4',
-            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 4 resource'
+            'name': 'thermomix scandal',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/thermo'
         },
         {
-            'educationalFramework': '1to5',
+            'educationalFramework': 'communication',
+            'target': '2',
             'audience': 'all',
-            'targetUrl': '1to5:3',
-            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 3 resource'
+            'name': 'onions',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/onions'
         },
         {
-            'educationalFramework': '1to5',
+            'educationalFramework': 'communication',
+            'target': '2',
             'audience': 'all',
-            'targetUrl': '1to5:2',
-            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 2 resource'
+            'name': 'sominkelse',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/sominkelse'
+        },
+        {
+            'educationalFramework': 'basicproblemsolving',
+            'target': '4',
+            'audience': 'all',
+            'name': 'word for advanced',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/item4'
+        },
+        {
+            'educationalFramework': 'basicproblemsolving',
+            'target': '1',
+            'audience': 'all',
+            'name': 'word for dummies',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/item0'
         }
     ]
     for i in data:
@@ -111,13 +141,33 @@ def question(number):
 def result():
     cookie_answers = json.loads(request.cookies.get('answers'))
 
-    items = [ BasisItem('all', '1to5', '1to5:%s' % json.loads(cookie_answers.get(answer_key)).get('score')) for answer_key in cookie_answers]
-    basis = RecommendationBasis("1to5", items)
+    items = [ BasisItem('all', answer_key, json.loads(cookie_answers.get(answer_key)).get('score'))
+        for answer_key in cookie_answers]
 
-    recommendation = rec_service.recommend_resources(basis, get_dummypage_data())
-    current_app.logger.info(recommendation)
+    basis = RecommendationBasis("dummypage", items)
 
-    return render_template('/digitaldiagnostic/result.html', answers=cookie_answers, recommendation=recommendation)
+    raw_reccomendations = rec_service.recommend_resources(basis, get_dummypage_data())
+    current_app.logger.info(raw_reccomendations)
+
+    page_data = {
+        "communication": "Communicating",
+        "basicproblemsolving": "Problem solving"
+    }
+
+    # print(1)#("reccomendedItems": recommendation.get('recommendation'))
+        # "title": page_data.get(recommendation.get('educationalFramework')).get('title'),
+
+    recommendations = [{
+            "title": page_data.get(recommendation.get('educationalFramework')),
+            "tag": recommendation.get('educationalFramework'),
+            "recommendedItems": recommendation.get('recommendations')
+        } 
+        for recommendation in raw_reccomendations]
+
+    current_app.logger.info(recommendations)
+
+    return render_template('/digitaldiagnostic/result.html', 
+        answers=cookie_answers, raw_reccomendations=raw_reccomendations, recommendations=recommendations)
 
 
 @digitaldiagnostic.route('/digital-diagnostic/questions-json')
