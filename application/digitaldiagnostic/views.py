@@ -42,34 +42,40 @@ def question(number):
     questionNo = questionNo if questionNo<len(questions) else len(questions) -1
 
     current_question = questions[questionNo]
-    cookie_answers = request.cookies.get('answers')
     
-    if cookie_answers:
+
+    if 'answers' in request.cookies:
+        cookie_answers = request.cookies.get('answers')
+        current_app.logger.info(cookie_answers)
+        
         cookie_json = json.loads(cookie_answers)
         current_answer = cookie_json.get(current_question.tag)
-        current_question.answer = json.loads(current_answer) if current_answer else None
+
+        current_question.answer = json.loads(current_answer).get('selected') if current_answer else None
+        # if current_answer:
+        #     current_question.answer = json.loads(current_answer).get('selected')
     else:
         cookie_json = {}
 
     if request.method == 'POST':
         current_app.logger.info(json.dumps(request.form))
-
-        form = dgn_forms.generate_form_for(current_question)
-
+        current_question.answer = request.form
         if (questionNo+1) < len(questions):
             redirect_url = url_for('digitaldiagnostic.question', number=questionNo+1)
         else:
             redirect_url = url_for('digitaldiagnostic.result')
 
         resp = make_response(redirect(redirect_url))
-        cookie_json[current_question.tag] = json.dumps(request.form)
+        cookie_json[current_question.tag] = json.dumps({
+            "selected": request.form,
+            "score": current_question.get_score()
+        })
         resp.set_cookie('answers', json.dumps(cookie_json))
         return resp
 
     current_app.logger.info(current_question.answer)
-    form = dgn_forms.generate_form_for(current_question)
     return render_template('/digitaldiagnostic/question.html',
-        form=form, questionNo=questionNo, question=current_question, question_count=len(questions))
+        questionNo=questionNo, question=current_question, question_count=len(questions))
 
 @digitaldiagnostic.route('/digital-diagnostic/result')
 @login_required

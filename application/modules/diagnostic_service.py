@@ -1,5 +1,6 @@
 import json
 import logging
+import math
 from application.config import Config
 
 DATA_FILEPATH='application/data/diagnostic-questions.json'
@@ -24,8 +25,19 @@ class Question:
         self.choices = choices
         self.answer = answer
 
+    def get_score(self):
+        score = 0
+        if self.answer:
+            if self.is_multichoice:
+                score = math.ceil((len(self.answer)/len(self.choices)) * 5)
+            else:
+                # we don't have option weight so we've got to reverse scoring as 1st item is 0 but
+                # it's actually the highes score at the moment - this will change
+                score = math.ceil(5 - (int(self.answer.get(self.tag))/(len(self.choices)-1)) * 5)
+        return score
+
     def get_choices_vals(self):
-        return [(str(index), caption) for (index, caption) in enumerate(self.choices, start=1)]
+        return [(str(index), caption) for (index, caption) in enumerate(self.choices, start=0)]
 
     def to_json(self):
         return json.dumps(self.__dict__)
@@ -38,3 +50,4 @@ class Question:
     def from_json(cls, json_str):
         json_dict = json.loads(json_str)
         return from_dict(json_dict)
+
