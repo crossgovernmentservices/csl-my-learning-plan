@@ -59,6 +59,15 @@ def get_dummypage_data():
             'resourceUrl': 'http://test.com/sominkelse'
         },
         {
+            'educationalFramework': 'communication',
+            'target': '1',
+            'audience': 'all',
+            'name': 'somink else for dummies',
+            'type': 'course',
+            'duration': 'PT5M',
+            'resourceUrl': 'http://test.com/sominkelsedummy'
+        },
+        {
             'educationalFramework': 'basicproblemsolving',
             'target': '4',
             'audience': 'all',
@@ -153,9 +162,6 @@ def result():
         "communication": "Communicating",
         "basicproblemsolving": "Problem solving"
     }
-
-    # print(1)#("reccomendedItems": recommendation.get('recommendation'))
-        # "title": page_data.get(recommendation.get('educationalFramework')).get('title'),
 
     recommendations = [{
             "title": page_data.get(recommendation.get('educationalFramework')),
