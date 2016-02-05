@@ -31,8 +31,22 @@ class SystemRecommendationsTests(unittest.TestCase):
     def get_dummypage_data(self):
         data = [ {'educationalFramework': 'basicproblemsolving', 'target':'5',
                 'audience': 'all',
-                 'name': 'staff forums', 'type': 'article', 'duration': 'PT15M', 'resourceUrl': 'http://test.com/item'}] 
+                 'name': 'staff forums', 'type': 'article', 'duration': 'PT15M', 'resourceUrl': 'http://test.com/item'},
+                 {'educationalFramework': 'digitalskills', 'target':'4',
+                'audience': 'all',
+                 'name': 'word for dummies', 'type': 'course', 'duration': 'PT5M', 'resourceUrl': 'http://test.com/item2'},
+                 {'educationalFramework': 'cooking', 'target':'3',
+                'audience': 'all',
+                 'name': 'thermomix scandal', 'type': 'course', 'duration': 'PT5M', 'resourceUrl': 'http://test.com/thermo'},
+                 {'educationalFramework': 'cooking', 'target':'3',
+                'audience': 'all',
+                 'name': 'onions', 'type': 'course', 'duration': 'PT5M', 'resourceUrl': 'http://test.com/onions'}] 
         for i in data:
+            yield i
+
+    def get_learningregistry_items(self):
+        from application.modules.lr_service import get_resources
+        for i in get_resources():
             yield i
 
 
@@ -70,9 +84,47 @@ class SystemRecommendationsTests(unittest.TestCase):
         self.assertEqual(1, len(recommendations))
         self.assertEqual(recommendations[0]['educationalFramework'], 'basicproblemsolving')
         self.assertEqual(1, len(recommendations[0]['recommendations']))
+        # digital skills
+        items = [BasisItem('all', 'digitalskills', '3')]
+        basis = RecommendationBasis("dummypage", items)
+        recommendations = recommend_resources(basis, self.get_dummypage_data())
+        self.assertEqual(1, len(recommendations))
+        self.assertEqual(recommendations[0]['educationalFramework'], 'digitalskills')
+        self.assertEqual(1, len(recommendations[0]['recommendations']))
+        self.assertEqual("word for dummies", recommendations[0]['recommendations'][0]['name'])
+        #cooking
+        items = [BasisItem('all', 'cooking', '2')]
+        basis = RecommendationBasis("dummypage", items)
+        recommendations = recommend_resources(basis, self.get_dummypage_data())
+        self.assertEqual(1, len(recommendations))
+        self.assertEqual(2, len(recommendations[0]['recommendations']))
+        #cooking & digital
+        items = [BasisItem('all', 'cooking', '2'), BasisItem('all', 'digitalskills', '3')]
+        basis = RecommendationBasis("dummypage", items)
+        recommendations = recommend_resources(basis, self.get_dummypage_data())
+        digitalrecs = [x['recommendations'] for x in recommendations if x["educationalFramework"]=='digitalskills']
+        self.assertEqual(1, len(digitalrecs[0]))
+        cooking = [x['recommendations'] for x in recommendations if x["educationalFramework"]=='cooking']
+        self.assertEqual(2, len(cooking[0]))
+        #dodo
+        items = [BasisItem('all', 'dodo', '2'), BasisItem('all', 'klein', '3')]
+        basis = RecommendationBasis("dummypage", items)
+        recommendations = recommend_resources(basis, self.get_dummypage_data())
+        self.assertEqual(2, len(recommendations))
+        self.assertEqual(0, len(recommendations[0]['recommendations']))
+        self.assertEqual(0, len(recommendations[1]['recommendations']))
+
+
+
         
-        
-        
+    def test_learning_registry_lookup(self):
+        items = [BasisItem('all', 'Civil Service competency framework', 'https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/436073/cscf_fulla4potrait_2013-2017_v2d.pdf#Seeing%20The%20Big%20Picture')]
+        basis = RecommendationBasis("learning_registry_match", items)
+        recommendations = recommend_resources(basis, self.get_learningregistry_items())
+        print(recommendations)
+        self.assertEqual(1, len(recommendations))
+        self.assertEqual(1, len(recommendations[0]['recommendations']))
+        self.assertEqual(recommendations[0]['recommendations'][0]['url'], 'https://www.gov.uk/government/publications/civil-service-capabilities-plan')
 
 if __name__ == '__main__':
     unittest.main()
