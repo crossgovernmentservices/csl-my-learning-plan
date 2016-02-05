@@ -6,8 +6,10 @@
   {% endassets %}
 {% endblock %}
 
-
 {% block body_content %}
+
+  {% from "_macros.html" import render_field, render_hidden %}
+
 
   {% include "_logout.html" %}
 
@@ -15,22 +17,46 @@
     <ol>
       <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
       <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
-      <li>Diagnostic 1 of 9</li>
+      <li>Diagnostic {{ questionNo+1 }} of {{ question_count }}</li>
     </ol>
   </div>
 
   <div class="grid-row">
     <main class="column-two-thirds">
       <header class="question">
-          <h1>Problem solving</h1>
+          <h1>{{ question.title }}</h1>
       </header>
-      <form action="" method="POST">
+      <form action="{{ url_for('digitaldiagnostic.question', number=questionNo) }}" method="POST">
+        <fieldset class="question">
+          <legend class="visuallyhidden">{{ question.title }}</legend>
 
-    
-          <button type="submit" class="button">Continue</button>
+          <div class="form-group">
+            {% for (value, caption) in question.get_choices_vals() %}
+            <label class="block-label" for="option-{{ loop.index }}">
+              
+              {% if question.is_multichoice %}
+                {% set key = '%s-%s' % (question.tag, loop.index) %}
+                <input id="option-{{ loop.index }}" name="{{ key }}" type="checkbox" value="{{ value }}"
+                  {% if question.answer[key] == value %}
+                    checked
+                  {% endif %}
+                >
+              {% else %}
+                <input id="option-{{ loop.index }}" type="radio" name="{{ question.tag }}" value="{{ value }}"
+                  {% if question.answer[question.tag] == value %}
+                    checked 
+                  {% endif %}
+                >
+              {% endif %}
 
+              {{ caption }}
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+          
+        <button type="submit" class="button">Continue</button>
       </form>
-
 
     </main>
 
