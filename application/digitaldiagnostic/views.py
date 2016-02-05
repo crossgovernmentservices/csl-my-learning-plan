@@ -11,14 +11,44 @@ from flask import (
 
 import json
 import application.modules.diagnostic_service as dgn_service
+import application.modules.system_recommendations as rec_service
+from application.modules.system_recommendations import BasisItem, RecommendationBasis
+
 
 from flask.ext.security import login_required
 from flask.ext.login import current_user
 
-import application.digitaldiagnostic.forms as dgn_forms
-
-
 digitaldiagnostic = Blueprint('digitaldiagnostic', __name__)
+
+def get_dummypage_data():
+    data = [
+        {
+            'educationalFramework': '1to5',
+            'audience': 'all',
+            'targetUrl': '1to5:5',
+            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 5 resource'
+        },
+        {
+            'educationalFramework': '1to5',
+            'audience': 'all',
+            'targetUrl': '1to5:4',
+            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 4 resource'
+        },
+        {
+            'educationalFramework': '1to5',
+            'audience': 'all',
+            'targetUrl': '1to5:3',
+            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 3 resource'
+        },
+        {
+            'educationalFramework': '1to5',
+            'audience': 'all',
+            'targetUrl': '1to5:2',
+            'resourceUrl': 'http://urlecho.appspot.com/echo?body=Target 2 resource'
+        }
+    ]
+    for i in data:
+        yield i
 
 
 @digitaldiagnostic.route('/digital-diagnostic')
@@ -52,8 +82,6 @@ def question(number):
         current_answer = cookie_json.get(current_question.tag)
 
         current_question.answer = json.loads(current_answer).get('selected') if current_answer else None
-        # if current_answer:
-        #     current_question.answer = json.loads(current_answer).get('selected')
     else:
         cookie_json = {}
 
@@ -77,12 +105,20 @@ def question(number):
     return render_template('/digitaldiagnostic/question.html',
         questionNo=questionNo, question=current_question, question_count=len(questions))
 
+
 @digitaldiagnostic.route('/digital-diagnostic/result')
 @login_required
 def result():
     cookie_answers = json.loads(request.cookies.get('answers'))
 
-    return render_template('/digitaldiagnostic/result.html', answers=cookie_answers)
+    items = [ BasisItem('all', '1to5', '1to5:%s' % json.loads(cookie_answers.get(answer_key)).get('score')) for answer_key in cookie_answers]
+    basis = RecommendationBasis("1to5", items)
+
+    recommendation = rec_service.recommend_resources(basis, get_dummypage_data())
+    current_app.logger.info(recommendation)
+
+    return render_template('/digitaldiagnostic/result.html', answers=cookie_answers, recommendation=recommendation)
+
 
 @digitaldiagnostic.route('/digital-diagnostic/questions-json')
 @login_required
