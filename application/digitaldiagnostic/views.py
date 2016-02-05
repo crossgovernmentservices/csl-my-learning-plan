@@ -62,25 +62,21 @@ def question(number):
             redirect_url = url_for('digitaldiagnostic.result')
 
         resp = make_response(redirect(redirect_url))
-        # resp.set_cookie('answer-%i' % questionNo, json.dumps(request.form))
         cookie_json[current_question.tag] = json.dumps(request.form)
         resp.set_cookie('answers', json.dumps(cookie_json))
         return resp
 
-    current_app.logger.info(cookie_json)
     current_app.logger.info(current_question.answer)
-    # if cookie_answer: 
-    #     current_question.answer = json.loads(cookie_answer)
-    # current_app.logger.info(cookie_answer) 
-
     form = dgn_forms.generate_form_for(current_question)
-    return render_template('/digitaldiagnostic/question.html', 
+    return render_template('/digitaldiagnostic/question.html',
         form=form, questionNo=questionNo, question=current_question, question_count=len(questions))
 
 @digitaldiagnostic.route('/digital-diagnostic/result')
 @login_required
 def result():
-    return "nice, look at cookies :)"
+    cookie_answers = json.loads(request.cookies.get('answers'))
+
+    return render_template('/digitaldiagnostic/result.html', answers=cookie_answers)
 
 @digitaldiagnostic.route('/digital-diagnostic/questions-json')
 @login_required
