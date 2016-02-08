@@ -3117,16 +3117,7 @@ dt.heading-small {
   background: #f8f8f8;
 }
 
-/* line 3 */
-.question {
-  padding: 1em 0 0;
-}
-/* line 5 */
-.question h1 {
-  padding-bottom: 0;
-}
-
-/* line 11 */
+/* line 10 */
 .block-label {
   float: none;
 }

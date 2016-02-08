@@ -28,7 +28,7 @@
           <p>{{ question.guide }}</p>
       </header>
       <form action="{{ url_for('digitaldiagnostic.question', number=questionNo) }}" method="POST">
-        <fieldset class="question">
+        <fieldset class="answer-list">
           <legend class="visuallyhidden">{{ question.title }}</legend>
 
           <div class="form-group">
