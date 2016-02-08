@@ -39,10 +39,18 @@
 
         <div class="filters-content">
           <form action="get">
-            <div class="form-group filter-field"><label for="" class="form-label">Type</label><input type="text" class="form-control js-course-search-input" id="type-filter"/></div>
+           <div class="form-group filter-field">
+            <label for="free-resources-filter" class="form-label">Free resources only</label>
+            <input type="checkbox" class="free-resources-filter"></input>
+           </div>
+            <div class="form-group filter-field">
+            <label for="" class="form-label">Type</label>
+            <input type="text" class="form-control js-course-search-input" id="type-filter"/>
+            </div>
             <div class="form-group filter-field"><label for="" class="form-label">Skill(s)</label><input type="text" class="form-control" /></div>
-            <div class="form-group filter-field"><label for="" class="form-label">Profession</label><input type="text" class="form-control" /></div>
+            <div class="form-group filter-field"><label for="" class="form-label">Profession or Department</label><input type="text" class="form-control js-course-search-input" id="profession-filter"/></div>
             <div class="form-group filter-field"><label for="" class="form-label">Cost</label><input type="text" class="form-control" /></div>
+
             <div class="form-group filter-field"><label for="" class="form-label">Key areas</label><input type="text" class="form-control" /></div>
           </form>
         </div>

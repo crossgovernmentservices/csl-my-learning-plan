@@ -22,15 +22,13 @@
     runQuery: function(filterJson){
       var that = this;
       filterJson = filterJson || { 'filter': { 'main-search' : '', 'type-search' : ''} };
-
+      console.log(JSON.stringify(filterJson));
       $.ajax({
         type: 'POST',
         data : JSON.stringify(filterJson),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(data, textStatus, jqXHR){
-          console.log(filterJson);
-          console.log(data);
           that.renderCourses(data);
           that.updateStatusLabels(data);
         },
@@ -59,8 +57,6 @@
     parseISO08601Duration: function(iso8601Duration){
       var iso8601DurationRegex = /(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?(?:T)?(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?/;
       var matches = iso8601Duration.match(iso8601DurationRegex);
-      console.log(matches);
-      console.log(iso8601Duration);
       return {
           sign: matches[1] === undefined ? '+' : '-',
           years: matches[2] === undefined ? 0 : matches[2],
@@ -84,14 +80,11 @@
     _getFilter: function(){
       var filters = {};
       this.$inputElems.map(function(){  filters[this.id]=this.value; });
-      console.log(JSON.stringify(filters));
-      console.log("end");
+      filters["free-resources-only"]=$('.free-resources-filter').prop("checked") ? "True" : "False";
       return filters;
     },
 
     _generateCourseItemHTML: function(course){
-      console.log("_generateCourseItemHTML");
-      console.log(course);
       return $('<li/>', { 'class': 'course-result' }).html([
           $('<div/>',{ 'class': 'grid-row course-result__meta' }).html([
             $('<div/>',{ 'class': 'column-two-thirds' }).html(function(){
@@ -112,8 +105,8 @@
               else
                 return [$('<i/>', { 'class': 'fa fa-laptop' }),$('<span/>').text('e-Learning')];
               }),
-            $('<div/>', { 'class': 'column-third ta-right'}).html(
-              $('<span/>').text(course.duration ? this.formatISO08601Duration(this.parseISO08601Duration(course.duration)) : 'No time specified')
+            $('<div/>', { 'class': 'column-one-third ta-right'}).html(
+              [$('<span/>').text(course.duration ? this.formatISO08601Duration(this.parseISO08601Duration(course.duration)) : 'No time specified')]
             )
           ]),
 
@@ -121,6 +114,7 @@
             $('<a/>', { 'href': course.url }).text(course.title)
           ),
 
+          $('<p/>', { 'class': 'text' }).text(course.price),
           $('<p/>', { 'class': 'text' }).text(course.desc),
 
           $('<ul/>', { 'class': 'skills' }).html(function(){
