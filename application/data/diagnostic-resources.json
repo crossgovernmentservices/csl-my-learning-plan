@@ -1,0 +1,65 @@
+[
+  {
+    "educationalFramework": "communication",
+    "target": "5",
+    "audience": "all",
+    "name": "staff forums",
+    "type": "article",
+    "duration": "PT15M",
+    "resourceUrl": "http://test.com/item"
+  },
+  {
+    "educationalFramework": "communication",
+    "target": "4",
+    "audience": "all",
+    "name": "thermomix scandal",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/thermo"
+  },
+  {
+    "educationalFramework": "communication",
+    "target": "2",
+    "audience": "all",
+    "name": "onions",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/onions"
+  },
+  {
+    "educationalFramework": "communication",
+    "target": "2",
+    "audience": "all",
+    "name": "sominkelse",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/sominkelse"
+  },
+  {
+    "educationalFramework": "communication",
+    "target": "1",
+    "audience": "all",
+    "name": "somink else for dummies",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/sominkelsedummy"
+  },
+  {
+    "educationalFramework": "basicproblemsolving",
+    "target": "4",
+    "audience": "all",
+    "name": "word for advanced",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/item4"
+  },
+  {
+    "educationalFramework": "basicproblemsolving",
+    "target": "1",
+    "audience": "all",
+    "name": "word for dummies",
+    "type": "course",
+    "duration": "PT5M",
+    "resourceUrl": "http://test.com/item0"
+  }
+]

@@ -10,85 +10,15 @@ from flask import (
 )
 
 import json
+import base64
 import application.modules.diagnostic_service as dgn_service
-import application.modules.system_recommendations as rec_service
-from application.modules.system_recommendations import BasisItem, RecommendationBasis
-
 
 from flask.ext.security import login_required
 from flask.ext.login import current_user
 
 digitaldiagnostic = Blueprint('digitaldiagnostic', __name__)
 
-def get_dummypage_data():
-    data = [
-        {
-            'educationalFramework': 'communication',
-            'target': '5',
-            'audience': 'all',
-            'name': 'staff forums',
-            'type': 'article',
-            'duration': 'PT15M',
-            'resourceUrl': 'http://test.com/item'
-        },
-        {
-            'educationalFramework': 'communication',
-            'target': '4',
-            'audience': 'all',
-            'name': 'thermomix scandal',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/thermo'
-        },
-        {
-            'educationalFramework': 'communication',
-            'target': '2',
-            'audience': 'all',
-            'name': 'onions',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/onions'
-        },
-        {
-            'educationalFramework': 'communication',
-            'target': '2',
-            'audience': 'all',
-            'name': 'sominkelse',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/sominkelse'
-        },
-        {
-            'educationalFramework': 'communication',
-            'target': '1',
-            'audience': 'all',
-            'name': 'somink else for dummies',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/sominkelsedummy'
-        },
-        {
-            'educationalFramework': 'basicproblemsolving',
-            'target': '4',
-            'audience': 'all',
-            'name': 'word for advanced',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/item4'
-        },
-        {
-            'educationalFramework': 'basicproblemsolving',
-            'target': '1',
-            'audience': 'all',
-            'name': 'word for dummies',
-            'type': 'course',
-            'duration': 'PT5M',
-            'resourceUrl': 'http://test.com/item0'
-        }
-    ]
-    for i in data:
-        yield i
-
+COOKIE_ANSWERS='answers'
 
 @digitaldiagnostic.route('/digital-diagnostic')
 @login_required
@@ -99,7 +29,7 @@ def intro():
 @login_required
 def start():
     resp = make_response(redirect(url_for('digitaldiagnostic.question', number=0)))
-    resp.set_cookie('answers', '', expires=0)
+    resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
     return resp
 
 @digitaldiagnostic.route('/digital-diagnostic/question/<number>', methods=['GET', 'POST'])
@@ -111,10 +41,9 @@ def question(number):
     questionNo = questionNo if questionNo<len(questions) else len(questions) -1
 
     current_question = questions[questionNo]
-    
 
-    if 'answers' in request.cookies:
-        cookie_answers = request.cookies.get('answers')
+    if COOKIE_ANSWERS in request.cookies:
+        cookie_answers = request.cookies.get(COOKIE_ANSWERS)
         current_app.logger.info(cookie_answers)
         
         cookie_json = json.loads(cookie_answers)
@@ -137,7 +66,7 @@ def question(number):
             "selected": request.form,
             "score": current_question.get_score()
         })
-        resp.set_cookie('answers', json.dumps(cookie_json))
+        resp.set_cookie(COOKIE_ANSWERS, json.dumps(cookie_json))
         return resp
 
     current_app.logger.info(current_question.answer)
@@ -148,35 +77,23 @@ def question(number):
 @digitaldiagnostic.route('/digital-diagnostic/result')
 @login_required
 def result():
-    cookie_answers = json.loads(request.cookies.get('answers'))
-
-    items = [ BasisItem('all', answer_key, json.loads(cookie_answers.get(answer_key)).get('score'))
-        for answer_key in cookie_answers]
-
-    basis = RecommendationBasis("dummypage", items)
-
-    raw_reccomendations = rec_service.recommend_resources(basis, get_dummypage_data())
-    current_app.logger.info(raw_reccomendations)
-
-    page_data = {
-        "communication": "Communicating",
-        "basicproblemsolving": "Problem solving"
-    }
-
-    recommendations = [{
-            "title": page_data.get(recommendation.get('educationalFramework')),
-            "tag": recommendation.get('educationalFramework'),
-            "recommendedItems": recommendation.get('recommendations')
-        } 
-        for recommendation in raw_reccomendations]
+    cookie_answers = json.loads(request.cookies.get(COOKIE_ANSWERS))
+    recommendations = dgn_service.get_recommendations(cookie_answers)
 
     current_app.logger.info(recommendations)
 
-    return render_template('/digitaldiagnostic/result.html', 
-        answers=cookie_answers, raw_reccomendations=raw_reccomendations, recommendations=recommendations)
+    return render_template('/digitaldiagnostic/result.html',
+        answers=cookie_answers, recommendations=recommendations)
 
 
 @digitaldiagnostic.route('/digital-diagnostic/questions-json')
 @login_required
 def questions_json():
-    return json.dumps(dgn_service.get_json())
+    return json.dumps(dgn_service.get_questions_json())
+
+@digitaldiagnostic.route('/digital-diagnostic/resources-json')
+@login_required
+def resources_json():
+    return json.dumps(dgn_service.get_resources_json())
+
+

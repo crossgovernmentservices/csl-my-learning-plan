@@ -23,7 +23,9 @@
   <div class="grid-row">
     <main class="column-two-thirds">
       <header class="question">
-          <h1>{{ question.title }}</h1>
+          <h1 class="heading-large">{{ question.title }}</h1>
+          <p>{{ question.description }}</p>
+          <p>{{ question.guide }}</p>
       </header>
       <form action="{{ url_for('digitaldiagnostic.question', number=questionNo) }}" method="POST">
         <fieldset class="question">

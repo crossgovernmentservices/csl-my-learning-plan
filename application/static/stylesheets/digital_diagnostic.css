@@ -3119,5 +3119,14 @@ dt.heading-small {
 
 /* line 3 */
 .question {
-  padding: 1em 0;
+  padding: 1em 0 0;
+}
+/* line 5 */
+.question h1 {
+  padding-bottom: 0;
+}
+
+/* line 11 */
+.block-label {
+  float: none;
 }

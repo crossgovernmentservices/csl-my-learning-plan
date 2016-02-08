@@ -23,6 +23,8 @@ class Config(object):
     LRS_PASS = os.environ.get('LRS_PASS')
     LRS_QUERY_URL = os.environ.get('LRS_QUERY_URL')
 
+    DGN_RULE = os.environ.get('DGN_RULE', 'dummypage')
+
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = Config.SECRET_KEY or 'local-dev-not-secret'

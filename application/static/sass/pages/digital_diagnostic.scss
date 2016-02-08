@@ -1,6 +1,13 @@
 @import '../rebrand/rebrand.scss';
 
 .question{
-  padding: 1em 0;
+  padding: 1em 0 0;
+  h1{
+  	padding-bottom: 0;
+  }
 }
 
+
+.block-label{
+  float: none;
+}
