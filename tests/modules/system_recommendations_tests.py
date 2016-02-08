@@ -126,7 +126,7 @@ class SystemRecommendationsTests(unittest.TestCase):
         self.assertEqual(1, len(recommendations[0]['areas']))
         self.assertEqual('ProblemSolving', recommendations[0]['areas'][0]['name'])
         self.assertEqual(1, recommendations[0]['areas'][0]['level'])
-        self.assertEqual(1, len(recommendations[0]['areas'][0]['recommendations']))
+        self.assertEqual(2, len(recommendations[0]['areas'][0]['recommendations']))
         self.assertEqual('https://www.mindtools.com/pages/article/newCT_10.htm', recommendations[0]['areas'][0]['recommendations'][0]['url'])
     
     def test_learning_registry_lookup_two_recommendations_over_two_frameworks(self):
@@ -143,7 +143,7 @@ class SystemRecommendationsTests(unittest.TestCase):
         self.assertEqual(1, len(ps))
         ps = ps[0]
         self.assertEqual(1, ps['level'])
-        self.assertEqual(1, len(ps['recommendations']))
+        self.assertEqual(2, len(ps['recommendations']))
 
         # Problem solving level 5
         c = [r for r in recommendations[0]['areas'] if r['name'] == 'Communications']
