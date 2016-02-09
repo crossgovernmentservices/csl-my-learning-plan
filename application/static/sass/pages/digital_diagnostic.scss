@@ -15,10 +15,6 @@
   max-width: 36em;
 }
 
-.block-label{
-  float: none;
-}
-
 .column-full{
   @include grid-column(1);
 }
