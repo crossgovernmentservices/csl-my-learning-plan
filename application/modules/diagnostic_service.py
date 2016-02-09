@@ -19,7 +19,7 @@ _SKILL_RATING = {
     5: "Excellent"
 }
 
-_EDU_FRAMEWORK = 'Civil Service Skills and Knowledge Framework'
+_EDU_FRAMEWORK = 'Civil Service Digital Skills Framework'
 _AREAS_DATA = [
     {
         'name': 'ProblemSolving',
@@ -29,7 +29,7 @@ _AREAS_DATA = [
     {
         'name': 'Communications',
         'title': 'Communicating',
-        'url': 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf'
+        'url': 'https://civilservicelearning.civilservice.gov.uk/digitalskillsf'
     }
 ]
 
