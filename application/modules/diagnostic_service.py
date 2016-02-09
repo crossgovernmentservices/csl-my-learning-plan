@@ -24,7 +24,7 @@ _AREAS_DATA = [
     {
         'name': 'ProblemSolving',
         'title': 'Problem solving',
-        'url': 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf'
+        'url': 'https://civilservicelearning.civilservice.gov.uk/digitalskillsf'
     },
     {
         'name': 'Communications',
@@ -63,6 +63,7 @@ def _transform_to_recommendations(raw_recs):
     recommendations = raw_recs[0]
 
     for area in recommendations['areas']:
+        logger.info(area['recommendations'])
         area_info = _get_framework_area(area.get('name'))
         area['title'] = area_info.get('title')
         area['levelName'] = _SKILL_RATING[area.get('level')]

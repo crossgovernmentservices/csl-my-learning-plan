@@ -1,3 +1,5 @@
+import re
+
 class TargetUrlElements:
     def __init__(self, framework, area, level):
         self._framework = framework
@@ -59,6 +61,17 @@ def __matchitem(item, matchingitems):
             return matchitem
     return None
 
+def __convertduration(duration):
+    match = re.search('(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?(?:T)?(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?', duration)
+    return (match.group(2) + ' Years'    if match.group(2) is not None else '') + \
+                (match.group(3) + ' Months ' if match.group(3) is not None else  '')  + \
+                (match.group(4) + ' Weeks ' if match.group(4) is not None else  '') + \
+                (match.group(5) + ' Days ' if match.group(5) is not None else  '') + \
+                (match.group(6) + ' Hours ' if match.group(6) is not None else  '') + \
+                (match.group(7) + ' Minutes ' if match.group(7) is not None else  '') + \
+                (match.group(8) + ' Seconds' if match.group(8) is not None else  '')
+
+
 def run(matchingitems, candidate_data_generator):
     """ Rule basically just looks for the next incremental item in the targetUrl """
     frameworks = {}
@@ -75,7 +88,7 @@ def run(matchingitems, candidate_data_generator):
                 frameworks[matchedrule.educationalFramework]['areas'].append(area)
             else:
                 area = area[0]
-            area["recommendations"].append( {'title' : item['name'], 'url' : item['url'], 'duration' : item['duration'] if 'duration' in item else '', 'type' : __maptype(item)} )
+            area["recommendations"].append( {'title' : item['name'], 'url' : item['url'], 'duration' : __convertduration(item['timeRequired']) if 'timeRequired' in item else '', 'type' : __maptype(item)} )
     return [ frameworks[f] for f in frameworks.keys() ] 
 
    
