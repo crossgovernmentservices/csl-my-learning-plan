@@ -12,17 +12,10 @@
 
   {% include "_logout.html" %}
 
-  <div id="global-breadcrumb">
-    <ol>
-      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
-      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
-      <li>Diagnostic {{ questionNo+1 }} of {{ question_count }}</li>
-    </ol>
-  </div>
-
   <div class="grid-row">
     <main class="column-two-thirds">
       <header class="question">
+          <p class="number">Question {{ questionNo+1 }} of {{ question_count }}</p>
           <h1 class="heading-large">{{ question.title }}</h1>
           <p>{{ question.description }}</p>
           <p>{{ question.guide }}</p>
@@ -58,26 +51,7 @@
           
         <button type="submit" class="button">Continue</button>
       </form>
-      {{ recommendations }}
     </main>
-
-
-    
-    <div class="column-third related-container">
-      <aside class="related">
-        <div class="related-subsection">
-          <h2 class="heading-medium">Civil Service Learning</h2>
-          <nav>
-            <ul>
-              <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
-              <li><a href="#">Your learning suggestions</a></li>
-              <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">Your learning record</a></li>
-              <li><a href="{{ url_for('profile.view_profile') }}">Your profile</a></li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-    </div>
 
   </div>
 

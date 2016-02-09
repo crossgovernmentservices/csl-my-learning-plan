@@ -20,75 +20,58 @@
   </div>
 
   <div class="grid-row">
-    <main class="column-two-thirds">
-      <header class="page-header">
+    <main class="column-full">
+      <header class="page-header text result-header">
         <h1 class="heading-xlarge">Test your Digital knowledge - Result</h1>
         <p>
           The results below indicate what you need to do to get the required skills to do your job. Those marked "Required" will be added to your <a href="#">learning plan</a> automatically.
         </p>
       </header>
-      
+
+      {% for area in recommendations.areas %}
+      <section class="recommendation-area">
+        <h1 class="heading-large">{{ area['title'] or area['name'] }}</h1>
+        <p>Skill rating = {{ area['levelName'] or area['level'] }}</p>
+        <span>
+          Recommendations:
+          <table class="recommendation-items">
+            <thead>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Duration</th>
+              <th></th>
+              <th></th>
+            </thead>
+            <tbody>
+              {% for item in area['recommendations'] %}
+              {% set isRequired = loop.index == 1 %}
+              <tr>
+                <td>
+                  <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                </td>
+                <td>{{ item['type'] }}</td>
+                <td>{{ item['duration'] }}</td>
+                  
+                {% if isRequired %}
+                  <td>added to plan</td>
+                  <td>Required</td>
+                {% else %}
+                  <td><a href="#">add to plan</a></td>
+                  <td><a href="#">remove</a></td>
+                {% endif %}
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </span>
+
+      </section>
+      {% endfor %}
+
     </main>
-    
-    <div class="column-third related-container">
-      <aside class="related">
-        <div class="related-subsection">
-          <h2 class="heading-medium">Civil Service Learning</h2>
-          <nav>
-            <ul>
-              <li><a href="{{ url_for('learningplan.view_plan') }}">Your learning plan</a></li>
-              <li><a href="#">Your learning suggestions</a></li>
-              <li><a href="{{ url_for('learningrecord.view_record',record_id=234) }}">Your learning record</a></li>
-              <li><a href="{{ url_for('profile.view_profile') }}">Your profile</a></li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-    </div>
-
+  
   </div>
 
-  <div class="grid-row">
-  {% for area in recommendations.areas %}
-    <section class="recommendation-area">
-      <h1 class="heading-large">{{ area['title'] or area['name'] }}</h1>
-      <p>Skill rating = {{ area['levelName'] or area['level'] }}</p>
-      <span>
-        Recommendations:
-        <table class="recommendation-items">
-          <thead>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Duration</th>
-            <th></th>
-            <th></th>
-          </thead>
-          <tbody>
-            {% for item in area['recommendations'] %}
-            {% set isRequired = loop.index == 1 %}
-            <tr>
-              <td>
-                <a href="{{ item['url'] }}">{{ item['title'] }}</a>
-              </td>
-              <td>{{ item['type'] }}</td>
-              <td>{{ item['duration'] }}</td>
-                
-              {% if isRequired %}
-                <td>added to plan</td>
-                <td>Required</td>
-              {% else %}
-                <td><a href="#">add to plan</a></td>
-                <td><a href="#">remove</a></td>
-              {% endif %}
-
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </span>
-
-    </section>
-    {% endfor %}
-  </div>
 
 {% endblock %}

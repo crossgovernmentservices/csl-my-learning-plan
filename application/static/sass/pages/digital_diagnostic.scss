@@ -1,20 +1,31 @@
 @import '../rebrand/rebrand.scss';
 
 .question{
+  padding-top: 2em;
+  .number{
+    margin-bottom: 0;
+    color: $grey-1;
+  }
   h1{
-
+    margin-top: 0.5em;
   }
 }
 
+.result-header{
+  max-width: 36em;
+}
 
 .block-label{
   float: none;
 }
 
-.recommendation-area{
+.column-full{
   @include grid-column(1);
+}
+
+.recommendation-area{
   h1 {
-    
+
   }
 }
 

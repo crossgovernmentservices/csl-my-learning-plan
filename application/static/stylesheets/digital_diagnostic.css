@@ -3117,47 +3117,66 @@ dt.heading-small {
   background: #f8f8f8;
 }
 
-/* line 10 */
+/* line 3 */
+.question {
+  padding-top: 2em;
+}
+/* line 5 */
+.question .number {
+  margin-bottom: 0;
+  color: #6f777b;
+}
+/* line 9 */
+.question h1 {
+  margin-top: 0.5em;
+}
+
+/* line 14 */
+.result-header {
+  max-width: 36em;
+}
+
+/* line 18 */
 .block-label {
   float: none;
 }
 
-/* line 14 */
-.recommendation-area {
+/* line 22 */
+.column-full {
   padding: 0 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 @media (min-width: 641px) {
-  /* line 14 */
-  .recommendation-area {
+  /* line 22 */
+  .column-full {
     float: left;
     width: 100%;
   }
 }
 
-/* line 21 */
+/* line 32 */
 table.recommendation-items {
   width: 100%;
 }
-/* line 25 */
+/* line 36 */
 table.recommendation-items tbody tr td:first-child {
   width: 50%;
 }
-/* line 26 */
+/* line 37 */
 table.recommendation-items tbody tr td:nth-child(2) {
   width: 15%;
 }
-/* line 27 */
+/* line 38 */
 table.recommendation-items tbody tr td:nth-child(3) {
   width: 10%;
 }
-/* line 28 */
+/* line 39 */
 table.recommendation-items tbody tr td:nth-child(4) {
   width: 15%;
 }
-/* line 29 */
+/* line 40 */
 table.recommendation-items tbody tr td:last-child {
   min-width: 100%;
 }
