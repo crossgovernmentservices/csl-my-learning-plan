@@ -12,11 +12,11 @@ QUESTIONS_DATA_FILEPATH = 'application/data/diagnostic-questions.json'
 RESOURCES_DATA_FILEPATH = 'application/data/diagnostic-resources.json'
 
 _SKILL_RATING = {
-    1: "Inadequate",
-    2: "Fair",
-    3: "Moderate",
-    4: "Good",
-    5: "Excellent"
+    1: "an awareness level",
+    2: "an awareness level",
+    3: "a working level",
+    4: "a practitioner level",
+    5: "an expert level"
 }
 
 _EDU_FRAMEWORK = 'Civil Service Digital Skills Framework'

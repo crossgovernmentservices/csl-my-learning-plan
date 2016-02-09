@@ -6,27 +6,28 @@
     "description": "I can solve a problem I have with a device or digital service using online help (e.g. Google, YouTube, forums)",
     "guide": "",
     "choices": [
-      "I can do this",
-      "I think I can but might need help",
-      "I can't do this"
+      "I can't do this",
+      "I think I can but I might need help",
+      "I'm not sure what you mean",
+      "I can do this"
     ]
   },
   {
     "title": "Communicating",
     "tag": "Communications",
     "multichoice": true,
-    "description": "Select each of the statements that you feel you CAN do confidently",
-    "guide": "Select all that apply",
+    "description": "Select which of these you could confidently teach a colleague",
+    "guide": "",
     "choices": [
-      "I can use calendar, including creating meetings and shared calendars",
-      "I can attache files or internet links to an email (e.g. documents and hyperlinks)",
-      "I can delete an email and aware of how to recover deleted emails",
-      "I understand follow up flags and importance markers",
-      "I can carry out housekeeping and ensure storage limit is not exceeded (e.g. outlook)",
-      "I use out of office assistant when away from place of work",
-      "I can send a personal message to another person via other online messaging services (e.g. twitter, facebook)",
-      "I can carefully and clearly make comments and share information online (e.g. forums)",
-      "I can collaborate with others using collaboration tools or forums (e.g. Lync)"
+      "Use calendars, including shared calendars and create meetings",
+      "Attach files or internet links to an email (e.g. documents and websites)",
+      "Delete an email and am aware of how to recover deleted emails ",
+      "Understand follow up flags and importance markers ",
+      "Can carry out housekeeping and ensure storage limit is not exceeded (e.g. in Outlook) ",
+      "Use the 'out of office assistant' for the days I'm not working ",
+      "Send a personal message to another person using online messaging services (e.g. Twitter, Facebook) ",
+      "Carefully and clearly make comments and share information online (e.g. on forums)",
+      "Collaborate with others using collaboration tools or forums (e.g. Lync)"
     ]
   }
 ]

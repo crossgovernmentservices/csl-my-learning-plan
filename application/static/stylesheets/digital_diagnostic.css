@@ -3157,7 +3157,7 @@ table.recommendation-items {
 }
 /* line 32 */
 table.recommendation-items tbody tr td:first-child {
-  width: 50%;
+  width: 40%;
 }
 /* line 33 */
 table.recommendation-items tbody tr td:nth-child(2) {
@@ -3165,11 +3165,11 @@ table.recommendation-items tbody tr td:nth-child(2) {
 }
 /* line 34 */
 table.recommendation-items tbody tr td:nth-child(3) {
-  width: 10%;
+  width: 15%;
 }
 /* line 35 */
 table.recommendation-items tbody tr td:nth-child(4) {
-  width: 15%;
+  width: 20%;
 }
 /* line 36 */
 table.recommendation-items tbody tr td:last-child {
