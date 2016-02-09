@@ -22,16 +22,16 @@
   <div class="grid-row">
     <main class="column-full">
       <header class="page-header text result-header">
-        <h1 class="heading-xlarge">Test your Digital knowledge - Result</h1>
-        <p>
-          The results below indicate what you need to do to get the required skills to do your job. Those marked "Required" will be added to your <a href="#">learning plan</a> automatically.
-        </p>
+        <h1 class="heading-xlarge">Your results</h1>
+        <p>Here's a list of what you need to do, to get the skills required to do your job.
+          Those marked as "required" have already been added to your <a href="#">learning plan</a>.</p>
+        <p>Your skills level will be at "awareness", "working", "practitioner" or "expert level".</p>
       </header>
 
       {% for area in recommendations.areas %}
       <section class="recommendation-area">
         <h1 class="heading-large">{{ area['title'] or area['name'] }}</h1>
-        <p>Skill rating = {{ area['levelName'] or area['level'] }}</p>
+        <p>Your skills are at {{ area['levelName'] or area['level'] }}.</p>
         <span>
           Recommendations:
           <table class="recommendation-items">
@@ -53,10 +53,10 @@
                 <td>{{ item['duration'] }}</td>
                   
                 {% if isRequired %}
-                  <td>added to plan</td>
-                  <td>Required</td>
+                  <td>added to learning plan</td>
+                  <td>required</td>
                 {% else %}
-                  <td><a href="#">add to plan</a></td>
+                  <td><a href="#">add to learning plan</a></td>
                   <td><a href="#">remove</a></td>
                 {% endif %}
 
