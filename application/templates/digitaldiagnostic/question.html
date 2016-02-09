@@ -48,8 +48,14 @@
             {% endfor %}
           </div>
         </fieldset>
-          
-        <button type="submit" class="button">Continue</button>
+        {% set isLastQuestion = (questionNo+1) == question_count %}
+        <button type="submit" class="button">
+          {% if isLastQuestion %}
+            Finish
+          {% else %}
+            Continue
+          {% endif %}
+          </button>
       </form>
     </main>
 
