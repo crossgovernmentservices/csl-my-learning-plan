@@ -45,7 +45,7 @@ def question(number):
     if COOKIE_ANSWERS in request.cookies:
         cookie_answers = request.cookies.get(COOKIE_ANSWERS)
         current_app.logger.info(cookie_answers)
-        
+
         cookie_json = json.loads(cookie_answers)
         current_answer = cookie_json.get(current_question.tag)
 
@@ -63,8 +63,8 @@ def question(number):
 
         resp = make_response(redirect(redirect_url))
         cookie_json[current_question.tag] = json.dumps({
-            "selected": request.form,
-            "score": current_question.get_score()
+            'selected': request.form,
+            'score': current_question.get_score()
         })
         resp.set_cookie(COOKIE_ANSWERS, json.dumps(cookie_json))
         return resp

@@ -1,7 +1,7 @@
 [
   {
     "title": "Problem solving",
-    "tag": "basicproblemsolving",
+    "tag": "ProblemSolving",
     "multichoice": false,
     "description": "I can solve a problem I have with a device or digital service using online help (e.g. Google, YouTube, forums)",
     "guide": "",
@@ -13,7 +13,7 @@
   },
   {
     "title": "Communicating",
-    "tag": "communication",
+    "tag": "Communications",
     "multichoice": true,
     "description": "Select each of the statements that you feel you CAN do confidently",
     "guide": "Select all that apply",

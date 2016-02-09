@@ -10,3 +10,22 @@
 .block-label{
   float: none;
 }
+
+.recommendation-area{
+  @include grid-column(1);
+  h1 {
+    
+  }
+}
+
+table.recommendation-items {
+  width: 100%;
+
+  tbody tr td{
+    &:first-child { width: 50%; }
+    &:nth-child(2) { width: 15%; }
+    &:nth-child(3) { width: 10%; }
+    &:nth-child(4) { width: 15%; }
+    &:last-child { min-width: 100%; }
+  }
+}

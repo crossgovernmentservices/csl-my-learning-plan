@@ -3,11 +3,35 @@ import logging
 import math
 from application.config import Config
 
+import application.modules.lr_service as lr_service
 import application.modules.system_recommendations as rec_service
 from application.modules.system_recommendations import BasisItem, RecommendationBasis
 
-QUESTIONS_DATA_FILEPATH='application/data/diagnostic-questions.json'
-RESOURCES_DATA_FILEPATH='application/data/diagnostic-resources.json'
+
+QUESTIONS_DATA_FILEPATH = 'application/data/diagnostic-questions.json'
+RESOURCES_DATA_FILEPATH = 'application/data/diagnostic-resources.json'
+
+_SKILL_RATING = {
+    1: "Inadequate",
+    2: "Fair",
+    3: "Moderate",
+    4: "Good",
+    5: "Excellent"
+}
+
+_EDU_FRAMEWORK = 'Civil Service Skills and Knowledge Framework'
+_AREAS_DATA = [
+    {
+        'name': 'ProblemSolving',
+        'title': 'Problem solving',
+        'url': 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf'
+    },
+    {
+        'name': 'Communications',
+        'title': 'Communicating',
+        'url': 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf'
+    }
+]
 
 logger = logging.getLogger()
 
@@ -31,24 +55,25 @@ def get_recommendations(answers):
 
 
 def _transform_to_basis_items(answers_dict):
-    return [ BasisItem('all', answer_key, json.loads(answers_dict.get(answer_key)).get('score'))
+    return [BasisItem('all', _EDU_FRAMEWORK, '%s#%s#%s' % (_get_framework_area(answer_key).get('url'), answer_key,json.loads(answers_dict.get(answer_key)).get('score')))
         for answer_key in answers_dict]
 
 def _transform_to_recommendations(raw_recs):
-    page_data = {
-        "communication": "Communicating",
-        "basicproblemsolving": "Problem solving"
-    }
+    # for now we are using only 1 framework
+    recommendations = raw_recs[0]
 
-    return [{
-            "title": page_data.get(recommendation.get('educationalFramework')),
-            "tag": recommendation.get('educationalFramework'),
-            "recommendedItems": recommendation.get('recommendations')
-        } for recommendation in raw_recs]
+    for area in recommendations['areas']:
+        area_info = _get_framework_area(area.get('name'))
+        area['title'] = area_info.get('title')
+        area['levelName'] = _SKILL_RATING[area.get('level')]
 
+    return recommendations
+
+def _get_framework_area(name):
+    return next(area for area in _AREAS_DATA if area.get('name').lower() == name.lower())
 
 def _get_resources_data():
-    for i in get_resources_json():
+    for i in lr_service.get_resources():
         yield i
 
 def _load_json_file(filepath):

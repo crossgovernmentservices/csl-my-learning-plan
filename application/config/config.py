@@ -23,7 +23,7 @@ class Config(object):
     LRS_PASS = os.environ.get('LRS_PASS')
     LRS_QUERY_URL = os.environ.get('LRS_QUERY_URL')
 
-    DGN_RULE = os.environ.get('DGN_RULE', 'dummypage')
+    DGN_RULE = os.environ.get('DGN_RULE', 'learning_registry_match')
 
 class DevelopmentConfig(Config):
     DEBUG = True
