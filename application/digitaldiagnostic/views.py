@@ -78,8 +78,10 @@ def question(number):
 @login_required
 def result():
     cookie_answers = json.loads(request.cookies.get(COOKIE_ANSWERS))
-    recommendations = dgn_service.get_recommendations(cookie_answers)
+    current_app.logger.info('passing scores to diagnostic service')
+    current_app.logger.info(cookie_answers)
 
+    recommendations = dgn_service.get_recommendations(cookie_answers)
     current_app.logger.info(recommendations)
 
     return render_template('/digitaldiagnostic/result.html',

@@ -6,17 +6,16 @@
     "description": "I can solve a problem I have with a device or digital service using online help (e.g. Google, YouTube, forums)",
     "guide": "",
     "choices": [
-      "I can't do this",
+      "I can do this",
       "I think I can but I might need help",
-      "I'm not sure what you mean",
-      "I can do this"
+      "I can't do this"
     ]
   },
   {
     "title": "Communicating",
     "tag": "Communications",
     "multichoice": true,
-    "description": "Select which of these you could confidently teach a colleague",
+    "description": "Select which of these you could confidently teach a colleague:",
     "guide": "",
     "choices": [
       "Use calendars, including shared calendars and create meetings",

@@ -61,9 +61,7 @@ def _transform_to_basis_items(answers_dict):
 def _transform_to_recommendations(raw_recs):
     # for now we are using only 1 framework
     recommendations = raw_recs[0]
-
     for area in recommendations['areas']:
-        logger.info(area['recommendations'])
         area_info = _get_framework_area(area.get('name'))
         area['title'] = area_info.get('title')
         area['levelName'] = _SKILL_RATING[area.get('level')]
