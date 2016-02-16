@@ -22,6 +22,7 @@ class Config(object):
     LRS_USER = os.environ.get('LRS_USER')
     LRS_PASS = os.environ.get('LRS_PASS')
     LRS_QUERY_URL = os.environ.get('LRS_QUERY_URL')
+    LRS_STATEMENTS_URL = os.environ.get('LRS_STATEMENTS_URL')
 
     DGN_RULE = os.environ.get('DGN_RULE', 'learning_registry_match')
 

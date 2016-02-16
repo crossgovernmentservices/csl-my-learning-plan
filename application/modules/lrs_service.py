@@ -7,7 +7,9 @@ from application.config import Config
 import urllib
 import requests
 
-DATA_FILEPATH='application/data/learning-plan.json'
+LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
+LRS_LEARNING_PLAN_ACTIVITIES_TEMPLATE_FILEPATH = 'application/data/lrs-learning-plan-activities-template.json'
+LRS_LEARNING_PLAN_ENROLLMENT_TEMPLATE_FILEPATH = 'application/data/lrs-learning-plan-enrollment-template.json'
 
 
 def get_user_records(email):
@@ -20,24 +22,94 @@ def get_user_records(email):
     return query(pipeline)['result']
 
 def get_user_learning_plan(email):
-  # all of them lines of code be here for now
-  with open(DATA_FILEPATH) as data_file:
-    learning_plan=json.load(data_file)
-  return learning_plan
+    # all of them lines of code be here for now
+    with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
+      learning_plan=json.load(data_file)
+    return learning_plan
+
+
+def create_plan_from_user_json():
+    activity_verb_mappings = { "article" : "read" };
+    with open(LRS_LEARNING_PLAN_ACTIVITIES_TEMPLATE_FILEPATH) as template_activities_file:
+        template_activities = json.load(template_activities_file)
+
+    # newid = uuid.uuid1()
+    # enrolstatement = template_activities['enrollment'].copy()
+    # ## customise for user
+    # # swap out the plan id with a unique identifier
+    # enrolstatement["object"]["id"] = enrolstatement["object"]["id"] + str(newid)
+    # #assign title
+    # enrolstatement['object']['definition']['name']['en'] = user_json['title']
+    # # assign the learners id to the enroll
+    # enrolstatement["actor"]["mbox"] = 'mailto:'+user_id
+    # statements = []
+    # for activitylink in user_json['planitems'].keys():
+    #     verb = activity_verb_mappings[user_json['planitems'][activitylink]['type']]
+    #     statement = template_activities[verb].copy()
+    #     statement['object']['actor']['mbox']='mailto:'+user_id
+    #     statement['object']['object']['id']=activitylink
+    #     statement['object']['object']['definition']['name']['en']=user_json['planitems'][activitylink]['name']
+    #     # context for plan
+    #     statement["context"]["contextActivities"]["grouping"][0]["id"] = statement["context"]["contextActivities"]["grouping"][0]["id"] + str(newid) 
+    #     statements.append(statement)
+    # body = '['
+    # body = body + json.dumps(enrolstatement)
+    # for statement in statements:
+    #     body = body + ", " + json.dumps(statement)
+    # body = body + ']'
+    return template_activities
+
+def create_plan(learner_email):
+    with open(LRS_LEARNING_PLAN_ENROLLMENT_TEMPLATE_FILEPATH) as enrollment_file:
+        enrollment_json = json.load(enrollment_file)
+
+    with open(LRS_LEARNING_PLAN_ACTIVITIES_TEMPLATE_FILEPATH) as activities_file:
+        activities_json = json.load(activities_file)
+
+    newid = uuid.uuid1()
+    enrollment_json["object"]["id"] = enrollment_json["object"]["id"] + str(newid)
+    enrollment_json["actor"]["mbox"] = "mailto:" + learner_email
+    for activity in activities_json:
+        activity["object"]["actor"]["mbox"] = "mailto:" + learner_email
+        activity["context"]["contextActivities"]["grouping"][0]["id"] = activity["context"]["contextActivities"]["grouping"][0]["id"] + str(newid)
+
+    activities_json.insert(0, enrollment_json)
+    return activities_json
+
+
+def post(payload):
+    username = Config.LRS_USER
+    password = Config.LRS_PASS
+
+    requestUrl = _create_url(Config.LRS_STATEMENTS_URL)
+    headers = {
+        'X-Experience-API-Version': '1.0.1',
+        'Content-Type': 'text/json'
+    }
+
+    print(json.dumps(payload))
+
+    response = requests.post(requestUrl, headers=headers, data=json.dumps(payload), auth=(username, password), verify=False)
+    return response.json()
 
 
 def query(aggregation_pipeline):
     username = Config.LRS_USER
     password = Config.LRS_PASS
 
-    requestUrl = "{protocol}://{host}:{port}/{query_url}".format(
+    query_url = Config.LRS_QUERY_URL % json.dumps(aggregation_pipeline)
+    requestUrl = _create_url(query_url)
+
+    response = requests.get(requestUrl, auth=(username, password), verify=False)
+    return response.json()
+
+# no creativity for names today :/
+def _create_url(detail_url):
+    return "{protocol}://{host}:{port}{detail_url}".format(
         protocol=('https' if Config.LRS_HTTPS_ENABLED else 'http'),
         host=Config.LRS_HOST,
         port=Config.LRS_PORT,
-        query_url=Config.LRS_QUERY_URL % json.dumps(aggregation_pipeline))
-
-    response=requests.get(requestUrl, auth=(username, password), verify=False)#params=payload)
-    return response.json()
+        detail_url=detail_url)
 
 
 def _create_match_user(email):

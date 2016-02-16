@@ -1,0 +1,60 @@
+[
+
+    {
+        "version": "1.0.0",
+        "actor": {
+            "objectType": "Agent",
+            "mbox": "mailto:planner@gmail.com"
+        },
+        "verb": {
+            "id": "http://www.tincanapi.co.uk/verbs/planned_learning",
+            "display": {
+                "en": "planned"
+            }
+        },
+        "object": {
+            "objectType": "SubStatement",
+            "actor": {
+                "objectType": "Agent",
+                "mbox": "mailto:agreatone@gmail.com"
+            },
+            "verb": {
+                "id": "http://activitystrea.ms/schema/1.0/read",
+                "display": {
+                    "en": "read"
+                }
+            },
+            "object": {
+                "objectType": "Activity",
+                "id": "https://www.mindtools.com/pages/article/newTMM_95.htm",
+                "definition": {
+                    "type": "http://activitystrea.ms/schema/1.0/page",
+                    "name": {
+                        "en": "Team Charter"
+                    }
+                }
+            }
+        },
+        "context": {
+            "contextActivities": {
+                "grouping": [{
+                    "objectType": "Activity",
+                    "id": "http://www.tincanapi.co.uk/wiki/learning_plan:"
+                }],
+                "category": [{
+                    "id": "http://www.example.com/learningplans/categories/beforeyoustart",
+                    "objectType": "Activity",
+                    "definition": {
+                        "name": {
+                            "en": "Before you start"
+                        },
+                        "description": {
+                            "en": "Prerequisite item"
+                        },
+                        "type": "http://example.com/learning/activities/plancategory"
+                    }
+                }]
+            }
+        }
+    }
+]
