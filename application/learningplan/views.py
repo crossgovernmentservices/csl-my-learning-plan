@@ -14,6 +14,7 @@ from flask.ext.security import login_required
 from flask.ext.login import current_user
 
 import application.modules.lrs_service as lrs_service
+import application.models as Statement
 
 learningplan = Blueprint('learningplan', __name__)
 

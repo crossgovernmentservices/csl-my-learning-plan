@@ -1,7 +1,6 @@
 [
 
     {
-        "version": "1.0.0",
         "actor": {
             "objectType": "Agent",
             "mbox": "mailto:planner@gmail.com"
