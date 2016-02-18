@@ -4,7 +4,7 @@ import uuid
 import ssl
 from application.config import Config
 import requests
-import application.models as Statement
+import application.modules.models as Statement
 
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
