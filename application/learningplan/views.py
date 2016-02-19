@@ -32,7 +32,7 @@ def assign_learning_plan():
     # current_app.logger.info(learner_email)
 
 
-    learning_plan = lrs_service.create_plan(learner_email)
+    learning_plan = lrs_service.create_sample_plan(learner_email)
     current_app.logger.info(learning_plan)
 
 

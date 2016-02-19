@@ -4,19 +4,15 @@ import uuid
 import ssl
 from application.config import Config
 import requests
-import application.modules.models as Statement
-
+from application.modules.models import Statement
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
-LRS_LEARNING_PLAN_ACTIVITIES_TEMPLATE_FILEPATH = 'application/data/lrs-learning-plan-activities-template.json'
-LRS_LEARNING_PLAN_ENROLLMENT_TEMPLATE_FILEPATH = 'application/data/lrs-learning-plan-enrollment-template.json'
-
 
 def get_user_records(email):
     pipeline = [
         _create_match_user(email),
         PROJECTIONS['learning_record'],
-        { "$sort": { "when": -1 } }
+        {"$sort": {"when": -1}}
     ]
 
     return query(pipeline)['result']
@@ -24,25 +20,30 @@ def get_user_records(email):
 def get_user_learning_plan(email):
     # all of them lines of code be here for now
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
-      learning_plan=json.load(data_file)
+        learning_plan = json.load(data_file)
     return learning_plan
 
-def create_plan(learner_email):
-    with open(LRS_LEARNING_PLAN_ENROLLMENT_TEMPLATE_FILEPATH) as enrollment_file:
-        enrollment_json = json.load(enrollment_file)
+def create_sample_plan(learner_email):
+    sample_plan = Statement.create_plan(
+        plan_name='Sample learning plan',
+        planner_actor='planner@gmail.com')
 
-    with open(LRS_LEARNING_PLAN_ACTIVITIES_TEMPLATE_FILEPATH) as activities_file:
-        activities_json = json.load(activities_file)
+    sample_plan.add_planned_item(Statement(
+        actor=learner_email,
+        verb=Statement.create_verb('complete'),
+        statement_obj=Statement.create_activity_obj(
+            uri='http://www.skillsyouneed.com/ips/improving-communication.html',
+            name='Developing Effective Communication | Skills You Need')))
 
-    newid = uuid.uuid1()
-    enrollment_json["object"]["id"] = enrollment_json["object"]["id"] + str(newid)
-    enrollment_json["actor"]["mbox"] = "mailto:" + learner_email
-    for activity in activities_json:
-        activity["object"]["actor"]["mbox"] = "mailto:" + learner_email
-        activity["context"]["contextActivities"]["grouping"][0]["id"] = activity["context"]["contextActivities"]["grouping"][0]["id"] + str(newid)
+    sample_plan.add_planned_item(Statement(
+        actor=learner_email,
+        verb='read',
+        statement_obj=Statement.create_activity_obj(
+            uri='http://www.artofliving.org/meditation/meditation-for-you/benefits-of-meditation',
+            name='Benefits of Meditation | Meditation Benefits | The Art Of Living Global')))
 
-    activities_json.insert(0, enrollment_json)
-    return activities_json
+    return sample_plan.to_json()
+
 
 
 def post(payload_json):
