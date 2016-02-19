@@ -23,14 +23,26 @@ class Statement:
         }
     }
 
-    def __init__(self, actor=None, verb=None, statement_obj=None):
+    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None):
         self._actor = None
         self.actor = actor
         self._verb = None
         self.verb = verb
         self._statement_obj = None
         self.statement_obj = statement_obj
-        self._uuid = uuid.uuid1()
+        self._datetime = datetime
+        self._planned_items = []
+        # only 1 for now
+        self._group_id = None
+        self.grouping = grouping
+
+    @property
+    def uuid(self):
+        return self._uuid
+    # should this be id instead of uuid
+    @uuid.setter
+    def uuid(self, uuid):
+        self._uuid = uuid
 
     @property
     def actor(self):
@@ -71,20 +83,65 @@ class Statement:
             else:
                 self._statement_obj = Statement.create_substatement_obj(statement_obj)
 
+    @property
+    def datetime(self):
+        return self._datetime
+
+    @property
+    def planned_items(self):
+        return self._planned_items
+
+
+    # GROUPING - only 1 group for now
+    @property
+    def grouping(self):
+        return self._group_id
+
+    @grouping.setter
+    def grouping(self, grouping):
+        if type(grouping) is dict:
+            self._group_id = grouping.get('id')
+        else:
+            self._group_id = grouping
+
+    def _grouping_to_json(self):
+        return [{
+            "objectType": "Activity",
+            "id": self.grouping
+        }]
+
+
+
     def get_statement_obj_display_name(self):
         return self.statement_obj.get('definition').get('name').get('en')
 
-    # @property
-    # def has_substatement(self):
-    #     return self.statement_obj.get('objectType') == 'SubStatement'
 
 
+    # GENERATING JSON
     def to_json(self):
-        return {
+        result_json = {
             'actor': self._actor_to_json(),
             'verb': self._verb_to_json(),
             'object': self._statement_obj_to_json()
         }
+        if self.grouping: #or category
+            result_json['context'] = {
+                'contextActivities': {
+                    'grouping': self._grouping_to_json()
+                }
+            }
+
+        if len(self.planned_items)>0:
+            result_batch_json = []
+            for plan_item in self.planned_items:
+                result_batch_json.append(Statement(
+                    actor=self.actor,
+                    verb=Statement.create_verb('plan'),
+                    statement_obj=Statement.create_substatement_obj(plan_item)).to_json())
+            result_batch_json.insert(0, result_json)
+            return result_batch_json
+        else:
+            return result_json
 
     def _actor_to_json(self):
         return {
@@ -106,14 +163,24 @@ class Statement:
             return result_json
 
 
+
+
+
+
+
+
+
+
+
+
     @classmethod
     def create_verb(cls, verb_key, name=None):
         if name:
-            verb = deepcopy(Statement.VERBS[verb_key])
+            verb = deepcopy(Statement.VERBS.get(verb_key))
             verb['display']['en'] = name
             return verb
         else:
-            return Statement.VERBS[verb_key]
+            return Statement.VERBS.get(verb_key)
 
     @classmethod
     def create_activity_obj(cls, uri, name):
@@ -126,23 +193,37 @@ class Statement:
             }
         }
 
+    # needs to be public?
     @classmethod
     def create_substatement_obj(cls, statement):
-        # substatemetn_obj = statement.to_json()
-        # substatemetn_obj['objectType'] = 'SubStatement'
         return statement
 
 
 
 
-
+    # PLAN SPECIFIC
     @classmethod
-    def from_dict(cls, json_dict):
-        return cls(**json_dict)
+    def create_plan(csl, plan_name, planner_actor=None, verb_name=None):
+        new_plan = Statement(actor=planner_actor)
+        new_plan.verb = Statement.create_verb('enroll', verb_name)
+        new_plan.statement_obj = Statement.create_activity_obj(
+            uri='http://www.tincanapi.co.uk/wiki/learning_plan:'+str(uuid.uuid1()),
+            name=plan_name)
+        return new_plan
 
-    @classmethod
-    def from_json(cls, json_str):
-        json_dict = json.loads(json_str)
-        return from_dict(json_dict)
+    def add_planned_item(self, statement, verb_name=None):
+        statement.grouping = self.statement_obj['id']
+        self._planned_items.append(statement)
+
+
+
+    # @classmethod
+    # def from_dict(cls, json_dict):
+    #     return cls(**json_dict)
+
+    # @classmethod
+    # def from_json(cls, json_str):
+    #     json_dict = json.loads(json_str)
+    #     return from_dict(json_dict)
 
 

@@ -10,7 +10,7 @@ class StatementTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        pass
+        cls.maxDiff = None
 
     def test_property_actor_set_with_string(self):
         sut_statement = Statement()
@@ -50,11 +50,61 @@ class StatementTests(unittest.TestCase):
         sut_statement = Statement(verb=Statement.create_verb('plan'))
         self.assertEqual('planned', sut_statement.get_verb_display_name())
 
+
     def test_create_verb_with_custom_name(self):
         sut_statement = Statement(verb=Statement.create_verb('plan', 'test_name'))
         self.assertEqual('test_name', sut_statement.get_verb_display_name())
 
+    # GROUPING
+    def test_property_grouping_set_with_string(self):
+        sut_statement = Statement()
+        sut_statement.grouping = 'http://www.tincanapi.co.uk/wiki/learning_plan:1234-1234-1234-1234'
 
+        self.assertEqual('http://www.tincanapi.co.uk/wiki/learning_plan:1234-1234-1234-1234', sut_statement.grouping)
+
+    def test_property_grouping_set_with_json(self):
+        sut_statement = Statement()
+        sut_statement.grouping = {
+            'objectType': 'Activity',
+            'id': 'http://www.tincanapi.co.uk/wiki/learning_plan:1234-1234-1234-1234'
+        }
+        self.assertEqual('http://www.tincanapi.co.uk/wiki/learning_plan:1234-1234-1234-1234', sut_statement.grouping)
+
+
+    # PLAN SPECIFIC
+    def test_create_plan(self):
+        sut_plan = Statement.create_plan('Test plan',
+            planner_actor='planner@email-test.com',
+            verb_name='enrolled onto test plan')
+
+        self.assertEqual('planner@email-test.com', sut_plan.actor)
+
+        expected_verb = {
+            'id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan',
+            'display': {'en': 'enrolled onto test plan'}
+        }
+        self.assertEqual(expected_verb, sut_plan.verb)
+        
+        self.assertEqual('Test plan', sut_plan.get_statement_obj_display_name())
+        self.assertIn('http://www.tincanapi.co.uk/wiki/learning_plan:', sut_plan.statement_obj.get('id'))
+
+
+    def test_add_planned_item(self):
+        sut_plan = Statement.create_plan(planner_actor='planner@test-email.com', plan_name='Test plan')
+        sut_plan.add_planned_item(Statement(
+            actor='learner@test-email.com',
+            verb='read',
+            statement_obj=Statement.create_activity_obj(
+                uri='http://www.someurl.com',
+                name='Some website')))
+
+        self.assertEqual(1, len(sut_plan.planned_items))
+        sut_item = sut_plan.planned_items[0]
+        self.assertEqual('learner@test-email.com', sut_item.actor)
+
+
+
+    # JSON GENERATION
     def test_to_json_for_simple_activity(self):
         with open('../data/statement-activity.json') as expected_activity:
             expected_json = json.load(expected_activity)
@@ -65,10 +115,10 @@ class StatementTests(unittest.TestCase):
             uri='http://www.someurl.com',
             name='Some website')
         
-        self.maxDiff = None
         self.assertEqual(expected_json, sut_statement.to_json())
 
-    def test_to_json_for_plan_with_substatement(self):
+
+    def test_to_json_for_planned_item(self):
         with open('../data/statement-plan.json') as expected_activity:
             expected_json = json.load(expected_activity)
         sut_statement = Statement()
@@ -82,9 +132,132 @@ class StatementTests(unittest.TestCase):
                     uri='http://www.someurl.com',
                     name='Some website')))
 
-        self.maxDiff = None
         self.assertEqual(expected_json, sut_statement.to_json())
 
+
+    def test_to_json_for_learning_plan(self):
+        sut_plan = Statement.create_plan(
+            plan_name='Test plan',
+            planner_actor='planner@test-email.com',
+            verb_name='test enrollment')
+
+        sut_plan.add_planned_item(Statement(
+            actor='test-1@email.com',
+            verb=Statement.create_verb('read', 'read test'),
+            statement_obj=Statement.create_activity_obj(
+                uri='http://www.someurl-1.com',
+                name='Some website - 1')))
+
+        sut_plan.add_planned_item(Statement(
+            actor='test-2@email.com',
+            verb='read',
+            statement_obj=Statement.create_activity_obj(
+                uri='http://www.someurl-2.com',
+                name='Some website - 2')))
+
+        sut_json = sut_plan.to_json()
+
+        self.assertEqual(3, len(sut_json))
+
+        sut_enroll_item = sut_json[0]
+        self.assertEqual(
+            {
+                'objectType': 'Agent',
+                'mbox': 'mailto:planner@test-email.com'
+            },
+            sut_enroll_item['actor'])
+
+        self.assertEqual(
+            {
+                'id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan',
+                'display': {'en': 'test enrollment'}
+            },
+            sut_enroll_item['verb'])
+
+        self.assertEqual({'name': {'en': 'Test plan'}}, sut_enroll_item['object']['definition'])
+        self.assertEqual('Activity', sut_enroll_item['object']['objectType'])
+        sut_enroll_item_id = sut_enroll_item['object']['id']
+        self.assertRegex(sut_enroll_item_id, 'http://www.tincanapi.co.uk/wiki/learning_plan:\w{8}-\w{4}-\w{4}-\w{4}-\w{12}')
+ 
+        self._assert_planned_item(
+            sut_planned_item=sut_json[1],
+            expected_substatement={
+                'objectType': 'SubStatement',
+                'actor': {
+                    'objectType': 'Agent',
+                    'mbox': 'mailto:test-1@email.com'
+                },
+                'verb': {
+                    'id': 'http://activitystrea.ms/schema/1.0/read',
+                    'display': {'en': 'read test'}
+                },
+                'object': {
+                    'objectType': 'Activity',
+                    'id': 'http://www.someurl-1.com',
+                    'definition': {
+                        'name': {'en': 'Some website - 1'}
+                    }
+                },
+                "context": {
+                    "contextActivities": {
+                        "grouping": [
+                            {
+                                "objectType": "Activity",
+                                "id": sut_enroll_item_id
+                            }
+                        ]
+                    }
+                }
+            })
+        
+        self._assert_planned_item(
+            sut_planned_item=sut_json[2],
+            expected_substatement={
+                'objectType': 'SubStatement',
+                'actor': {
+                    'objectType': 'Agent',
+                    'mbox': 'mailto:test-2@email.com'
+                },
+                'verb': {
+                    'id': 'http://activitystrea.ms/schema/1.0/read',
+                    'display': {'en': 'read'}
+                },
+                'object': {
+                    'objectType': 'Activity',
+                    'id': 'http://www.someurl-2.com',
+                    'definition': {
+                        'name': {'en': 'Some website - 2'}
+                    }
+                },
+                "context": {
+                    "contextActivities": {
+                        "grouping": [
+                            {
+                                "objectType": "Activity",
+                                "id": sut_enroll_item_id
+                            }
+                        ]
+                    }
+                }
+            })
+
+
+    def _assert_planned_item(self, sut_planned_item, expected_substatement):
+        self.assertEqual(
+            {
+                'objectType': 'Agent',
+                'mbox': 'mailto:planner@test-email.com'
+            },
+            sut_planned_item['actor'])
+
+        self.assertEqual(
+            {
+                'id': 'http://www.tincanapi.co.uk/verbs/planned_learning',
+                'display': {'en': 'planned'}
+            },
+            sut_planned_item['verb'])
+
+        self.assertEqual(expected_substatement, sut_planned_item['object'])
 
 if __name__ == '__main__':
     unittest.main()
