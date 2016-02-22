@@ -23,6 +23,21 @@ class Statement:
         }
     }
 
+    RESOURCE_TYPES = {
+        'website': {
+            'id': 'http://activitystrea.ms/schema/1.0/page',
+            'name': 'website'
+        },
+        'book': {
+            'id': 'http://id.tincanapi.com/activitytype/book',
+            'name': 'book'
+        },
+        'elearning': {
+            'id': 'http://adlnet.gov/expapi/activities/course',
+            'name': 'e-learning'
+        }
+    }
+
     def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None):
         self._actor = None
         self.actor = actor
@@ -175,8 +190,8 @@ class Statement:
             return Statement.VERBS.get(verb_key)
 
     @classmethod
-    def create_activity_obj(cls, uri, name):
-        return {
+    def create_activity_obj(cls, uri, name, resource_type=None):
+        result_obj = {
             'id': uri,
             'definition': {
                 'name': {
@@ -184,6 +199,14 @@ class Statement:
                 }
             }
         }
+
+        if resource_type:
+            if 'http' in resource_type:
+                result_obj['definition']['type'] = resource_type
+            else:
+                result_obj['definition']['type'] = Statement.RESOURCE_TYPES.get(resource_type).get('id')
+
+        return result_obj
 
     # needs to be public?
     @classmethod

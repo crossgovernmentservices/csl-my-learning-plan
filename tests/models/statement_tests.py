@@ -55,6 +55,46 @@ class StatementTests(unittest.TestCase):
         sut_statement = Statement(verb=Statement.create_verb('plan', 'test_name'))
         self.assertEqual('test_name', sut_statement.get_verb_display_name())
 
+
+    def test_create_activity_obj_string_type(self):
+        sut_activity = Statement.create_activity_obj(
+            uri='www.test.com',
+            name='test name',
+            resource_type='elearning')
+
+        expected_obj = {
+            'id': 'www.test.com',
+            'definition': {
+                'name': {
+                    'en': 'test name'
+                },
+                'type': 'http://adlnet.gov/expapi/activities/course'
+            }
+        }
+
+        self.assertEqual(expected_obj, sut_activity)
+
+
+    def test_create_activity_obj_with_type(self):
+        sut_activity = Statement.create_activity_obj(
+            uri='www.test.com',
+            name='test name',
+            resource_type='http://activitystrea.ms/schema/1.0/offer')
+
+        expected_obj = {
+            'id': 'www.test.com',
+            'definition': {
+                'name': {
+                    'en': 'test name'
+                },
+                'type': 'http://activitystrea.ms/schema/1.0/offer'
+            }
+        }
+
+        self.assertEqual(expected_obj, sut_activity)
+
+
+
     # GROUPING
     def test_property_grouping_set_with_string(self):
         sut_statement = Statement()
