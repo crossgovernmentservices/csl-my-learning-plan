@@ -28,6 +28,7 @@ def create_sample_plan(learner_email):
         plan_name='Sample learning plan',
         planner_actor='planner@gmail.com')
 
+    # maybe here assignee_actor then add_planneditem can take it if it's there - do it later
     sample_plan.add_planned_item(Statement(
         actor=learner_email,
         verb=Statement.create_verb('complete'),

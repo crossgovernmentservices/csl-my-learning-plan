@@ -37,14 +37,6 @@ class Statement:
         self.grouping = grouping
 
     @property
-    def uuid(self):
-        return self._uuid
-    # should this be id instead of uuid
-    @uuid.setter
-    def uuid(self, uuid):
-        self._uuid = uuid
-
-    @property
     def actor(self):
         return self._actor
 
