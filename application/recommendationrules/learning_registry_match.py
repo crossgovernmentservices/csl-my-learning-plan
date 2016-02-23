@@ -96,7 +96,14 @@ def run(matchingitems, candidate_data_generator):
                 frameworks[matchedrule.educationalFramework]['areas'].append(area)
             else:
                 area = area[0]
-            area["recommendations"].append( {'title' : item['name'], 'url' : item['url'], 'duration' : __convertduration(item['timeRequired']) if 'timeRequired' in item else '', 'type' : __maptype(item)} )
+            def addrecommendation(item):
+                recommendation = {'title' : item['name'], 'url' : item['url'], 'duration' : __convertduration(item['timeRequired']) if 'timeRequired' in item else '', 'type' : __maptype(item)}
+                if 'tincanstatement' in item:
+                    recommendation['tincanstatement'] = item['tincanstatement']
+                return recommendation
+            area["recommendations"].append(addrecommendation(item))
+
+
     return [ frameworks[f] for f in frameworks.keys() ] 
 
    

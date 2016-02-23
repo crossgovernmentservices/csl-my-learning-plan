@@ -3,9 +3,21 @@ import logging
 from application.config import Config
 
 DATA_FILEPATH='application/data/courses-for-search.json'
+RESOURCE_TINCAN_DATA='/usr/src/app/application/data/learning-resource-tincanstatements.json'
 LEARNING_REGISTRY_SANDBOX='http://sandbox.learningregistry.org/slice?any_tags=civil%20service%20learning'
 
 logger = logging.getLogger()
+
+def get_resources_with_tincanstatements():
+    with open(RESOURCE_TINCAN_DATA) as data_file:
+        tc = json.load(data_file)
+    
+    def addtc(item):
+        if item['url'] in tc:
+            item['tincanstatement'] = tc[item['url']]
+        return item
+
+    return [ addtc(r) for r in get_resources()]
 
 def get_resources():
     import urllib.request

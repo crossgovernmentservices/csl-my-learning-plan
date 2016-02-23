@@ -45,8 +45,8 @@ class SystemRecommendationsTests(unittest.TestCase):
             yield i
 
     def get_learningregistry_items(self):
-        from application.modules.lr_service import get_resources
-        for i in get_resources():
+        from application.modules.lr_service import get_resources_with_tincanstatements
+        for i in get_resources_with_tincanstatements():
             yield i
 
 
@@ -115,42 +115,46 @@ class SystemRecommendationsTests(unittest.TestCase):
         self.assertEqual(0, len(recommendations[1]['recommendations']))
 
 
-        
     def test_learning_registry_lookup_one_recommendation(self):
-        items = [BasisItem('all', 'Civil Service Skills and Knowledge Framework', 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf#ProblemSolving#0')]
+        items = [BasisItem('all', 'Civil Service Digital Skills Framework', 'https://civilservicelearning.civilservice.gov.uk/digitalskillsf#ProblemSolving#3')]
         basis = RecommendationBasis('learning_registry_match', items)
         recommendations = recommend_resources(basis, self.get_learningregistry_items())
-        print(recommendations)
         self.assertEqual(1, len(recommendations))
-        self.assertEqual('Civil Service Skills and Knowledge Framework', recommendations[0]['title'])
+        self.assertEqual('Civil Service Digital Skills Framework', recommendations[0]['title'])
         self.assertEqual(1, len(recommendations[0]['areas']))
         self.assertEqual('ProblemSolving', recommendations[0]['areas'][0]['name'])
-        self.assertEqual(1, recommendations[0]['areas'][0]['level'])
-        self.assertEqual(2, len(recommendations[0]['areas'][0]['recommendations']))
-        self.assertEqual('https://www.mindtools.com/pages/article/newCT_10.htm', recommendations[0]['areas'][0]['recommendations'][0]['url'])
+        self.assertEqual(4, recommendations[0]['areas'][0]['level'])
+        self.assertEqual(1, len(recommendations[0]['areas'][0]['recommendations']))
+        self.assertEqual('http://www.computerperformance.co.uk/Training/Problems.htm', recommendations[0]['areas'][0]['recommendations'][0]['url'])
+        # Check associated tincanstatement is associated
+        self.assertEqual(True, 'tincanstatement' in recommendations[0]['areas'][0]['recommendations'][0])       
     
     def test_learning_registry_lookup_two_recommendations_over_two_frameworks(self):
-        items = [BasisItem('all', 'Civil Service Skills and Knowledge Framework', 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf#ProblemSolving#0'),
-                BasisItem('all', 'Civil Service Skills and Knowledge Framework', 'https://civilservicelearning.civilservice.gov.uk/sites/default/files/policy_profession_skills_and_knowledge_framework_jan2013web.pdf#Communications#4')]
+
+        items = [BasisItem('all', 'Civil Service Digital Skills Framework', 'https://civilservicelearning.civilservice.gov.uk/digitalskillsf#Communications#4'),
+                BasisItem('all', 'Civil Service Digital Skills Framework', 'https://civilservicelearning.civilservice.gov.uk/digitalskillsf#ProblemSolving#3')]
         basis = RecommendationBasis('learning_registry_match', items)
         recommendations = recommend_resources(basis, self.get_learningregistry_items())
         self.assertEqual(1, len(recommendations))
-        self.assertEqual('Civil Service Skills and Knowledge Framework', recommendations[0]['title'])
+        self.assertEqual('Civil Service Digital Skills Framework', recommendations[0]['title'])
+        print(recommendations[0]['areas'])
         self.assertEqual(2, len(recommendations[0]['areas']))
 
-        # Problem solving level 1
+        # Digital Skills level 4
         ps = [r for r in recommendations[0]['areas'] if r['name'] == 'ProblemSolving']
         self.assertEqual(1, len(ps))
         ps = ps[0]
-        self.assertEqual(1, ps['level'])
-        self.assertEqual(2, len(ps['recommendations']))
+        self.assertEqual(4, ps['level'])
+        self.assertEqual(1, len(ps['recommendations']))
 
-        # Problem solving level 5
+        # Digital Comms level 5
         c = [r for r in recommendations[0]['areas'] if r['name'] == 'Communications']
-        self.assertEqual(1, len(c))
-        c = c[0]
-        self.assertEqual(5, c['level'])
-        self.assertEqual(1, len(c['recommendations']))
+        self.assertEqual(5, c[0]['level'])
+        self.assertEqual(2, len(c[0]['recommendations']))
+        self.assertEqual(True, 'tincanstatement' in c[0]['recommendations'][0])
+        self.assertEqual(True, 'tincanstatement' in c[0]['recommendations'][1])
+
+
     
     
 
