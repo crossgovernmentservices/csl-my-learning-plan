@@ -32,7 +32,11 @@ table.recommendation-items {
     &:first-child { width: 40%; }
     &:nth-child(2) { width: 15%; }
     &:nth-child(3) { width: 15%; }
-    &:nth-child(4) { width: 20%; }
+    &:nth-child(4) { width: 15%; }
     &:last-child { min-width: 100%; }
   }
+}
+
+.next-step{
+  padding-top: 3em;
 }

@@ -61,6 +61,7 @@ def _transform_to_basis_items(answers_dict):
 def _transform_to_recommendations(raw_recs):
     # for now we are using only 1 framework
     recommendations = raw_recs[0]
+
     for area in recommendations['areas']:
         area_info = _get_framework_area(area.get('name'))
         area['title'] = area_info.get('title')
@@ -72,7 +73,7 @@ def _get_framework_area(name):
     return next(area for area in _AREAS_DATA if area.get('name').lower() == name.lower())
 
 def _get_resources_data():
-    for i in lr_service.get_resources():
+    for i in lr_service.get_resources_with_tincanstatements():
         yield i
 
 def _load_json_file(filepath):

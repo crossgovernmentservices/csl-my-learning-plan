@@ -1,5 +1,11 @@
 {% extends "rebranded-base.html" %}
 
+{% block body_end %}
+  {{ super() }}
+  <script src="/static/javascripts/rebrand.js"></script>
+  <script src="/static/javascripts/course-search.js"></script>
+{% endblock %}
+
 {% block body_content %}
 
   {% include "_logout.html" %}
@@ -80,10 +86,4 @@
       </div>
     </div>
   </section>
-{% endblock %}
-
-{% block body_end %}
-  {{ super() }}
-  <script src="/static/javascripts/rebrand.js"></script>
-  <script src="/static/javascripts/course-search.js"></script>
 {% endblock %}

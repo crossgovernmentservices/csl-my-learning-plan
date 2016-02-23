@@ -2,11 +2,14 @@ import json
 import http.client
 import uuid
 import ssl
+import os
 from application.config import Config
 import requests
 from application.modules.models import Statement
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
+
+LEARNING_PLAN_USER_DATA_FILEPATH = 'application/data/user-data.json'
 
 def get_user_records(email):
     pipeline = [
@@ -21,7 +24,43 @@ def get_user_learning_plan(email):
     # all of them lines of code be here for now
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
+
+    if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
+        with open(LEARNING_PLAN_USER_DATA_FILEPATH) as user_data_file:
+            diagnostic_learning_plan = json.load(user_data_file)
+            
+            planned_items = [ {
+                        "title": item['title'],
+                        "required": item.get('required', False),
+                        "descriptionLines": [],
+                        "infoLines": [
+                          item['type'],
+                          ("Average time: " + item['duration'] if item['duration'] else item.get('duration'))
+                        ],
+                        "actions": [{
+                            "title": "Start now",
+                            "url": item['url']
+                        }]
+                    }
+                for item in diagnostic_learning_plan]
+
+            dgn_learning_plan = {
+                "title": "Actions from diagnostic",
+                "addedBy": "diagnostic",
+                "descriptionLines": [
+                  "Imported automatically from your diagnostic test."
+                ],
+                "sections": [],
+                "items": planned_items
+            }
+
+            learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
+
+
     return learning_plan
+
+
+
 
 def create_sample_plan(learner_email):
     sample_plan = Statement.create_plan(
@@ -45,6 +84,18 @@ def create_sample_plan(learner_email):
 
     return sample_plan.to_json()
 
+
+def save_to_json(learner_email, json_data):
+    with open(LEARNING_PLAN_USER_DATA_FILEPATH, 'w+') as f:
+        json.dump(json_data, f, indent=4)
+
+def remove_json():
+    if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
+        os.remove(LEARNING_PLAN_USER_DATA_FILEPATH)
+        return 'removed :)'
+    else:
+        return 'already done - there was no file to remove'
+    
 
 
 def post(payload_json):
@@ -70,6 +121,7 @@ def query(aggregation_pipeline):
 
     response = requests.get(requestUrl, auth=(username, password), verify=False)
     return response.json()
+
 
 def _create_full_url(route_url):
     return "{protocol}://{host}:{port}{route_url}".format(

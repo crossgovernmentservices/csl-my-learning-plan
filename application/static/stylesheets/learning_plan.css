@@ -3306,3 +3306,18 @@ dt.heading-small {
 .plan-list .inline {
   display: inline;
 }
+
+/* line 204 */
+.new-items-panel-wrap {
+  margin-bottom: 1em;
+  width: 100%;
+}
+/* line 207 */
+.new-items-panel-wrap .new-items-panel {
+  padding: 0.5em;
+  background: #FFBD5D;
+}
+/* line 210 */
+.new-items-panel-wrap .new-items-panel p {
+  margin: 0.25em 0;
+}

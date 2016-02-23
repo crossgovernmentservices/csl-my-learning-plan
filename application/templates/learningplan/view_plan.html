@@ -6,7 +6,6 @@
   {% endassets %}
 {% endblock %}
 
-
 {% from "learningplan/learning_plan_macros.html" import render_plan_item %}
 
 {% block body_content %}
@@ -25,6 +24,24 @@
     <div class="column-two-thirds">
       <div class="page-header">
         <h1 class="heading-xlarge">Your learning plan</h1>
+        
+        {% if diagnostic_plan %}
+        <div class="grid-row">
+          <div class="column-two-thirds new-items-panel-wrap">
+            <div class="new-items-panel">
+              
+              <p>You have: {{ diagnostic_plan['items']|count }} new items</p>
+              <ul>
+                {% for item in diagnostic_plan['items'] %}
+                <li><a href="{{ (item['actions']|first)['url'] }}">{{ item['title'] }}</a></li>
+                {% endfor %}
+              </ul>
+              <p>These have been added to the {{ diagnostic_plan['title'] }} group.</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
         <div class="grid-row">
           <ul class="column-two-thirds">
             <li>Showing all items.</li>

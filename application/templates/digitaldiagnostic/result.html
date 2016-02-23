@@ -7,6 +7,12 @@
 {% endblock %}
 
 
+{% block body_end %}
+  {{ super() }}
+  <script src="/static/javascripts/diagnostic-result.js"></script>
+{% endblock %}
+
+
 {% block body_content %}
 
   {% include "_logout.html" %}
@@ -18,6 +24,7 @@
       <li>Test your digital knowledge</li>
     </ol>
   </div>
+
 
   <div class="grid-row">
     <main class="column-full">
@@ -45,19 +52,25 @@
             <tbody>
               {% for item in area['recommendations'] %}
               {% set isRequired = loop.index == 1 %}
-              <tr>
-                <td>
-                  <a href="{{ item['url'] }}">{{ item['title'] }}</a>
-                </td>
+              <tr data-title="{{ item['title'] }}" data-url="{{ item['url'] }}" data-duration="{{ item['duration'] }}" data-type="{{ item['type'] }}"
+                {% if isRequired %}
+                  class="js-selected-res" 
+                  data-required="true"
+                {% endif %}
+                {% if item['tincanstatement'] %} 
+                  data-tincan-data="{{ item['tincanstatement'] }}"
+                {% endif %}>
+
+                <td><a href="{{ item['url'] }}">{{ item['title'] }}</a></td>
                 <td>{{ item['type'] }}</td>
                 <td>{{ item['duration'] }}</td>
                   
                 {% if isRequired %}
-                  <td>added to learning plan</td>
+                  <td>added to plan</td>
                   <td>required</td>
                 {% else %}
-                  <td><a href="#">add to learning plan</a></td>
-                  <td><a href="#">remove</a></td>
+                  <td class="js-plan-message"></td>
+                  <td><a href="#" class="js-item-toggle">add to plan</a></td>
                 {% endif %}
 
               </tr>
@@ -68,7 +81,13 @@
 
       </section>
       {% endfor %}
+      
+    
+      <section class="next-step">
+        <div id="error-panel" class="error-summary js-info-panel visually-hidden"></div>
 
+        <button class="button js-continue">Go to Learning plan</button>
+      </section>
     </main>
   
   </div>

@@ -173,13 +173,6 @@ class Statement:
 
 
 
-
-
-
-
-
-
-
     @classmethod
     def create_verb(cls, verb_key, name=None):
         if name:

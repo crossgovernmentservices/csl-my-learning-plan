@@ -26,7 +26,7 @@
           {% endfor %}
 
           {% for itemInfoLine in plan_item['infoLines'] %}
-          <li class="info">{{ itemInfoLine|safe }}</li>
+          <li class="info">{{ itemInfoLine|capitalize|safe }}</li>
           {% endfor %}
         </ul>
         {% endif %}
