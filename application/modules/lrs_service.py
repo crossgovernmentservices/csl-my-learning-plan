@@ -35,7 +35,7 @@ def get_user_learning_plan(email):
                         "descriptionLines": [],
                         "infoLines": [
                           item['type'],
-                          ("Average time: " + item['duration'] if item['duration'] else item.get('duration'))
+                          ("Average time: " + item.get('duration') if item.get('duration') else item.get('duration'))
                         ],
                         "actions": [{
                             "title": "Start now",
