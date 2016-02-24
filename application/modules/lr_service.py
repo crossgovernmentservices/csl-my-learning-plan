@@ -3,7 +3,7 @@ import logging
 from application.config import Config
 
 DATA_FILEPATH='application/data/courses-for-search.json'
-RESOURCE_TINCAN_DATA='/usr/src/app/application/data/learning-resource-tincanstatements.json'
+RESOURCE_TINCAN_DATA='application/data/learning-resource-tincanstatements.json'
 LEARNING_REGISTRY_SANDBOX='http://sandbox.learningregistry.org/slice?any_tags=civil%20service%20learning'
 
 logger = logging.getLogger()
