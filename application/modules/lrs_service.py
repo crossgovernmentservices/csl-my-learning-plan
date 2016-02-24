@@ -48,7 +48,7 @@ def get_user_learning_plan(email):
                 "title": "Actions from diagnostic",
                 "addedBy": "diagnostic",
                 "descriptionLines": [
-                  "Imported automatically from your diagnostic test."
+                  "Imported from your diagnostic test."
                 ],
                 "sections": [],
                 "items": planned_items
