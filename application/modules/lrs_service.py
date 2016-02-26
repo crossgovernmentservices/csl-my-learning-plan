@@ -65,18 +65,16 @@ def get_user_learning_plan(email):
 def create_sample_plan(learner_email):
     sample_plan = Statement.create_plan(
         plan_name='Sample learning plan',
-        planner_actor='planner@gmail.com')
+        learner_actor=learner_email)
 
     # maybe here assignee_actor then add_planneditem can take it if it's there - do it later
     sample_plan.add_planned_item(Statement(
-        actor=learner_email,
         verb=Statement.create_verb('complete'),
         statement_obj=Statement.create_activity_obj(
             uri='http://www.skillsyouneed.com/ips/improving-communication.html',
             name='Developing Effective Communication | Skills You Need')))
 
     sample_plan.add_planned_item(Statement(
-        actor=learner_email,
         verb='read',
         statement_obj=Statement.create_activity_obj(
             uri='http://www.artofliving.org/meditation/meditation-for-you/benefits-of-meditation',

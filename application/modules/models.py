@@ -4,6 +4,8 @@ import uuid
 from copy import deepcopy
 
 class Statement:
+    DEFAULT_PLANNER_EMAIL = "planner@gmail.com"
+
     VERBS = {
         'read': {
             'id': 'http://activitystrea.ms/schema/1.0/read',
@@ -38,7 +40,7 @@ class Statement:
         }
     }
 
-    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None):
+    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None, planner_actor=None):
         self._actor = None
         self.actor = actor
         self._verb = None
@@ -51,16 +53,31 @@ class Statement:
         self._group_id = None
         self.grouping = grouping
 
+        self._planner_actor = None
+        self.planner_actor = planner_actor
+
     @property
     def actor(self):
         return self._actor
 
     @actor.setter
     def actor(self, actor):
+        self._actor = self._parse_actor(actor)
+
+    @property
+    def planner_actor(self):
+        return self._planner_actor
+
+    @planner_actor.setter
+    def planner_actor(self, planner_actor):
+        self._planner_actor = self._parse_actor(planner_actor)
+
+    def _parse_actor(self, actor):
         if type(actor) is dict:
-            self._actor = actor.get('mbox').replace('mailto:', '')
+            return actor.get('mbox').replace('mailto:', '')
         else:
-            self._actor = actor
+            return actor
+
 
     @property
     def verb(self):
@@ -138,11 +155,11 @@ class Statement:
                 }
             }
 
-        if len(self.planned_items)>0:
+        if len(self.planned_items) > 0:
             result_batch_json = []
             for plan_item in self.planned_items:
                 result_batch_json.append(Statement(
-                    actor=self.actor,
+                    actor=self.planner_actor or self.DEFAULT_PLANNER_EMAIL,
                     verb=Statement.create_verb('plan'),
                     statement_obj=Statement.create_substatement_obj(plan_item)).to_json())
             result_batch_json.insert(0, result_json)
@@ -211,8 +228,8 @@ class Statement:
 
     # PLAN SPECIFIC
     @classmethod
-    def create_plan(csl, plan_name, planner_actor=None, verb_name=None):
-        new_plan = Statement(actor=planner_actor)
+    def create_plan(csl, plan_name, learner_actor=None, planner_actor=None, verb_name=None):
+        new_plan = Statement(actor=learner_actor, planner_actor=planner_actor)
         new_plan.verb = Statement.create_verb('enroll', verb_name)
         new_plan.statement_obj = Statement.create_activity_obj(
             uri='http://www.tincanapi.co.uk/wiki/learning_plan:'+str(uuid.uuid1()),
@@ -221,6 +238,7 @@ class Statement:
 
     def add_planned_item(self, statement, verb_name=None):
         statement.grouping = self.statement_obj['id']
+        statement.actor = self.actor
         self._planned_items.append(statement)
 
 

@@ -114,10 +114,11 @@ class StatementTests(unittest.TestCase):
     # PLAN SPECIFIC
     def test_create_plan(self):
         sut_plan = Statement.create_plan('Test plan',
-            planner_actor='planner@email-test.com',
+            learner_actor='learner@test-email.com',
+            planner_actor='planner@test-email.com',
             verb_name='enrolled onto test plan')
 
-        self.assertEqual('planner@email-test.com', sut_plan.actor)
+        self.assertEqual('learner@test-email.com', sut_plan.actor)
 
         expected_verb = {
             'id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan',
@@ -130,7 +131,11 @@ class StatementTests(unittest.TestCase):
 
 
     def test_add_planned_item(self):
-        sut_plan = Statement.create_plan(planner_actor='planner@test-email.com', plan_name='Test plan')
+        sut_plan = Statement.create_plan(
+            plan_name='Test plan',
+            learner_actor='learner@test-email.com',
+            planner_actor='planner@test-email.com')
+
         sut_plan.add_planned_item(Statement(
             actor='learner@test-email.com',
             verb='read',
@@ -178,7 +183,7 @@ class StatementTests(unittest.TestCase):
     def test_to_json_for_learning_plan(self):
         sut_plan = Statement.create_plan(
             plan_name='Test plan',
-            planner_actor='planner@test-email.com',
+            learner_actor='learner@test-email.com',
             verb_name='test enrollment')
 
         sut_plan.add_planned_item(Statement(
@@ -203,7 +208,7 @@ class StatementTests(unittest.TestCase):
         self.assertEqual(
             {
                 'objectType': 'Agent',
-                'mbox': 'mailto:planner@test-email.com'
+                'mbox': 'mailto:learner@test-email.com'
             },
             sut_enroll_item['actor'])
 
@@ -225,7 +230,7 @@ class StatementTests(unittest.TestCase):
                 'objectType': 'SubStatement',
                 'actor': {
                     'objectType': 'Agent',
-                    'mbox': 'mailto:test-1@email.com'
+                    'mbox': 'mailto:learner@test-email.com'
                 },
                 'verb': {
                     'id': 'http://activitystrea.ms/schema/1.0/read',
@@ -256,7 +261,7 @@ class StatementTests(unittest.TestCase):
                 'objectType': 'SubStatement',
                 'actor': {
                     'objectType': 'Agent',
-                    'mbox': 'mailto:test-2@email.com'
+                    'mbox': 'mailto:learner@test-email.com'
                 },
                 'verb': {
                     'id': 'http://activitystrea.ms/schema/1.0/read',
@@ -286,7 +291,7 @@ class StatementTests(unittest.TestCase):
         self.assertEqual(
             {
                 'objectType': 'Agent',
-                'mbox': 'mailto:planner@test-email.com'
+                'mbox': 'mailto:%s' % Statement.DEFAULT_PLANNER_EMAIL
             },
             sut_planned_item['actor'])
 
