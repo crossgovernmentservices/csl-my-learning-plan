@@ -224,6 +224,9 @@ class Statement:
         return statement
 
 
+    @classmethod
+    def get_resource_type(cls, url):
+        return next( (Statement.RESOURCE_TYPES[res_key] for res_key in Statement.RESOURCE_TYPES if Statement.RESOURCE_TYPES[res_key]['id'] == url), None)
 
 
     # PLAN SPECIFIC
@@ -240,6 +243,7 @@ class Statement:
         statement.grouping = self.statement_obj['id']
         statement.actor = self.actor
         self._planned_items.append(statement)
+
 
 
 

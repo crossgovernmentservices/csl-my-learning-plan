@@ -15,52 +15,96 @@ def get_user_records(email):
     pipeline = [
         _create_match_user(email),
         PROJECTIONS['learning_record'],
-        {"$sort": {"when": -1}}
+        {'$sort': {'when': -1}}
     ]
 
-    return query(pipeline)['result']
+    return _query(pipeline)['result']
 
 def get_user_learning_plan(email):
     # all of them lines of code be here for now
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
 
-    if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
-        with open(LEARNING_PLAN_USER_DATA_FILEPATH) as user_data_file:
-            diagnostic_learning_plan = json.load(user_data_file)
+    # if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
+    #     with open(LEARNING_PLAN_USER_DATA_FILEPATH) as user_data_file:
+    #         diagnostic_learning_plan = json.load(user_data_file)
             
-            planned_items = [ {
-                        "title": item['title'],
-                        "required": item.get('required', False),
-                        "descriptionLines": [],
-                        "infoLines": [
-                          item['type'],
-                          ("Average time: " + item.get('duration') if item.get('duration') else item.get('duration'))
-                        ],
-                        "actions": [{
-                            "title": "Start now",
-                            "url": item['url']
-                        }]
-                    }
-                for item in diagnostic_learning_plan]
+    #         planned_items = [ {
+    #                 'title': item['title'],
+    #                 'required': item.get('required', False),
+    #                 'descriptionLines': [],
+    #                 'infoLines': [
+    #                   item['type'],
+    #                   ('Average time: ' + item.get('duration') if item.get('duration') else item.get('duration'))
+    #                 ],
+    #                 'actions': [{
+    #                     'title': 'Start now',
+    #                     'url': item['url']
+    #                 }]
+    #             }
+    #             for item in diagnostic_learning_plan]
 
-            dgn_learning_plan = {
-                "title": "Actions from diagnostic",
-                "addedBy": "diagnostic",
-                "descriptionLines": [
-                  "Imported from your diagnostic test."
+    #         dgn_learning_plan = {
+    #             'title': 'Actions from diagnostic',
+    #             'addedBy': 'diagnostic',
+    #             'descriptionLines': [
+    #               'Imported from your diagnostic test.'
+    #             ],
+    #             'sections': [],
+    #             'items': planned_items
+    #         }
+
+    #         learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
+
+    plans = load_learning_plans(email)
+
+    for plan in plans:
+
+        st = Statement(
+            actor=plan['actor'],
+            verb=plan['verb'],
+            statement_obj=plan['object'])
+        
+        planned_items = [{
+                'title': '%s %s' % (item['verb']['display']['en'].capitalize(), item['object']['definition']['name']['en']),
+                'required': item.get('required', False),
+                'descriptionLines': [],
+                'infoLines': [
+                    Statement.get_resource_type(item['object']['definition']['type'])['name']
                 ],
-                "sections": [],
-                "items": planned_items
-            }
+                'actions': [{
+                    'title': 'Start now',
+                    'url': item['object']['id']
+                }]
+            } for item in load_learning_plan_items(email, plan['object']['id'])]
 
-            learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
+        dgn_learning_plan = {
+            'title': plan['object']['definition']['name']['en'],
+            'addedBy': 'diagnostic',
+            'descriptionLines': [],
+            'sections': [],
+            'items': planned_items
+        }
 
+        learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
 
     return learning_plan
 
+def load_learning_plans(email):
+    return _query([
+        _create_match_learning_plan(email),
+        PROJECTIONS['generic_statement']
+    ])['result']
+
+def load_learning_plan_items(email, plan_id):
+    return _query([
+        _create_match_learning_plan_items(email, plan_id),
+        PROJECTIONS['generic_substatement']
+    ])['result']
 
 
+def save_learning_plan(learning_plan):
+    return _post(learning_plan.to_json())
 
 def create_sample_plan(learner_email):
     sample_plan = Statement.create_plan(
@@ -96,7 +140,7 @@ def remove_json():
     
 
 
-def post(payload_json):
+def _post(payload_json):
     username = Config.LRS_USER
     password = Config.LRS_PASS
 
@@ -110,7 +154,7 @@ def post(payload_json):
     return response.json()
 
 
-def query(aggregation_pipeline):
+def _query(aggregation_pipeline):
     username = Config.LRS_USER
     password = Config.LRS_PASS
 
@@ -122,7 +166,7 @@ def query(aggregation_pipeline):
 
 
 def _create_full_url(route_url):
-    return "{protocol}://{host}:{port}{route_url}".format(
+    return '{protocol}://{host}:{port}{route_url}'.format(
         protocol=('https' if Config.LRS_HTTPS_ENABLED else 'http'),
         host=Config.LRS_HOST,
         port=Config.LRS_PORT,
@@ -131,48 +175,90 @@ def _create_full_url(route_url):
 
 def _create_match_user(email):
     return {
-        "$match": {
-            "$or": [
-                { "statement.actor.mbox": "mailto:%s" % email},
-                { "statement.actor.name": "%s" % email.split('@')[0] }
+        '$match': {
+            '$or': [
+                {'statement.actor.mbox': 'mailto:%s' % email},
+                {'statement.actor.name': '%s' % email.split('@')[0]}
             ]
         }
     }
 
+
+
+def _create_match_learning_plan(email):
+   return {
+        '$match': {
+            'statement.actor.mbox': 'mailto:%s' % email,
+            'statement.verb.id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan'
+        }
+    }
+
+def _create_match_learning_plan_items(email, plan_id):
+    return {
+        '$match': {
+            'statement.object.actor.mbox': 'mailto:%s' % email,
+            'statement.object.context.contextActivities.grouping': {
+                '$elemMatch': {
+                    'id': '%s' % plan_id
+                }
+            }
+        }
+    }
+
+
 PROJECTIONS = {
     'learning_record': {
-        "$project": {
-          "statementId": "$statement.id",
-          "actor": {
-            "id": { "$ifNull": [ "$statement.actor.account.name", "$statement.actor.mbox" ] },
-            "name": "$statement.actor.name",
-            "mbox": "$mailto"
+        '$project': {
+          'statementId': '$statement.id',
+          'actor': {
+            'id': { '$ifNull': [ '$statement.actor.account.name', '$statement.actor.mbox' ] },
+            'name': '$statement.actor.name',
+            'mbox': '$mailto'
           },
-          "verb": {
-            "id": "$statement.verb.id",
-            "name": { "$ifNull": [ "$statement.verb.display.en", "$statement.verb.display.en-US" ] }
+          'verb': {
+            'id': '$statement.verb.id',
+            'name': { '$ifNull': [ '$statement.verb.display.en', '$statement.verb.display.en-US' ] }
           },
-          "object": {
-            "id": "$statement.object.id",
-            "name": { "$ifNull": [ "$statement.object.definition.name.en", "$statement.object.definition.name.en-US" ] }
+          'object': {
+            'id': '$statement.object.id',
+            'name': { '$ifNull': [ '$statement.object.definition.name.en', '$statement.object.definition.name.en-US' ] }
           },
-          "when": "$statement.timestamp",
-          "result": {
-            "score": "$statement.result.score",
-            "duration": "$statement.result.duration"
+          'when': '$statement.timestamp',
+          'result': {
+            'score': '$statement.result.score',
+            'duration': '$statement.result.duration'
           },
-          "activities": { 
-            "$map": { 
-              "input": "$statement.context.contextActivities.grouping",
-              "as": "activity",
-              "in": { 
-                "id": "$$activity.id",
-                "name": "$$activity.definition.name.en"
+          'activities': { 
+            '$map': { 
+              'input': '$statement.context.contextActivities.grouping',
+              'as': 'activity',
+              'in': { 
+                'id': '$$activity.id',
+                'name': '$$activity.definition.name.en'
               }
             }
           }
         }
+    },
+    'generic_statement':{
+        '$project': {
+            '_id': 1,
+            'statementId': '$statement.id',
+            'actor': '$statement.actor',
+            'verb': '$statement.verb',
+            'object': '$statement.object'
+        }
+    },
+    'generic_substatement':{
+        '$project': {
+            '_id': 1,
+            'statementId': '$statement.id',
+            'actor': '$statement.object.actor',
+            'verb': '$statement.object.verb',
+            'object': '$statement.object.object'
+        }
     }
+
 }
 
 

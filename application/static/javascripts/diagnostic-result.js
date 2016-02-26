@@ -47,7 +47,7 @@
       success: function(data, textStatus, jqXHR){
         console.log("success");
         console.log(data);
-        win.location = "/learning-plan";
+        // win.location = "/learning-plan";
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.error(errorThrown);
