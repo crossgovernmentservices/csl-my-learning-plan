@@ -26,6 +26,9 @@ class Config(object):
 
     DGN_RULE = os.environ.get('DGN_RULE', 'learning_registry_match')
 
+    LR_URL = os.environ.get('LR_URL', 'http://sandbox.learningregistry.org')
+    LR_QUERY_URL = os.environ.get('LR_QUERY_URL', '/slice?any_tags=civil%20service%20learning')
+
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = Config.SECRET_KEY or 'local-dev-not-secret'

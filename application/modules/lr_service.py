@@ -2,9 +2,9 @@ import json
 import logging
 from application.config import Config
 
-DATA_FILEPATH='application/data/courses-for-search.json'
-RESOURCE_TINCAN_DATA='application/data/learning-resource-tincanstatements.json'
-LEARNING_REGISTRY_SANDBOX='http://sandbox.learningregistry.org/slice?any_tags=civil%20service%20learning'
+DATA_FILEPATH = 'application/data/courses-for-search.json'
+RESOURCE_TINCAN_DATA = 'application/data/learning-resource-tincanstatements.json'
+LEARNING_REGISTRY_URL = Config.LR_URL + Config.LR_QUERY_URL
 
 logger = logging.getLogger()
 
@@ -21,7 +21,8 @@ def get_resources_with_tincanstatements():
 
 def get_resources():
     import urllib.request
-    response = urllib.request.urlopen(LEARNING_REGISTRY_SANDBOX)
+    logger.debug('Ger resources query url: '+LEARNING_REGISTRY_URL)
+    response = urllib.request.urlopen(LEARNING_REGISTRY_URL)
     items = json.loads(response.read().decode('utf-8'))
     return [i['resource_data_description']['resource_data'] for i in items['documents']]
 
