@@ -85,7 +85,7 @@ def result():
     current_app.logger.info(recommendations)
 
     return render_template('/digitaldiagnostic/result.html',
-        answers=cookie_answers, recommendations=recommendations)
+        answers=cookie_answers, recommendations=recommendations, redirect_url=url_for('learningplan.assign_learning_plan'))
 
 
 @digitaldiagnostic.route('/digital-diagnostic/questions-json')

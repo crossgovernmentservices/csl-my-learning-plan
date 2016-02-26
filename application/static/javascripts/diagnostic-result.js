@@ -23,14 +23,10 @@
   });
 
   $(".js-continue").on("click", function(){
+    var payload = [];
 
-    // var that = this;
-    // filterJson = filterJson || { 'filter': { 'main-search' : '', 'type-search' : ''} };
-    // console.log(JSON.stringify(filterJson));
-    var payload = []
     $(".js-selected-res").each(function(idx, tableRow){
       var $tableRow = $(tableRow);
-
       var planItem = {
         url: $(tableRow).data("url"),
         title: $(tableRow).data("title"),
@@ -40,12 +36,10 @@
         tincan: $(tableRow).data("tincan-data")
       };
       payload.push(planItem);
-
     });
 
-
     $.ajax({
-      url: "/learning-plan/assign",
+      url: redirect_url,
       type: 'POST',
       data : JSON.stringify(payload),
       contentType: 'application/json; charset=utf-8',
@@ -65,9 +59,6 @@
         $jsInfoPanel.html("Oops that's embarrassing (see browser logs): "+errorThrown);
       }
     });
-  
-
-
 
   });
 
