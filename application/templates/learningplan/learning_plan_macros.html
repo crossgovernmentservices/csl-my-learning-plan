@@ -1,5 +1,5 @@
 {% macro render_plan_item(plan_item) %}
-  <li class="plan-item">
+  <li class="plan-item js-plan-item" data-statement-id= " plan_item.statement_id ">
 
     {% set hasInformationLines = plan_item['descriptionLines'] or plan_item['infoLines'] %}
     {% set hasActions = plan_item['actions'] %}

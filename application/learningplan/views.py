@@ -69,13 +69,20 @@ def assign_learning_plan():
     resp.status_code = lrs_result.get('code', 200) if type(lrs_result) is dict else 200
     return resp
 
-@learningplan.route('/learning-plan/remove')
-@login_required
-def remove_learning_plan():
-    return lrs_service.remove_json()
-
-
+# API stuff
 @learningplan.route('/learning-plan/api/load_learning_plans')
 @login_required
 def api_load_learning_plans():
     return json.dumps(lrs_service.load_learning_plans(current_user.email))
+
+@learningplan.route('/learning-plan/api/load_learning_plan_items/<plan_id>')
+@login_required
+def load_learning_plan_items(plan_id):
+    return json.dumps(lrs_service.load_learning_plan_items(plan_id))
+
+@learningplan.route('/learning-plan/api/load_learning_plan_item/<statement_id>')
+@login_required
+def load_learning_plan_item(statement_id):
+    return json.dumps(lrs_service.load_learning_plan_item(statement_id))
+
+

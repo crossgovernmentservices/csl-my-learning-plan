@@ -10,11 +10,9 @@ import application.modules.dates as mls_dates
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
-LEARNING_PLAN_USER_DATA_FILEPATH = 'application/data/user-data.json'
-
 def get_user_records(email):
     pipeline = [
-        _create_match_user(email),
+        _create_match_user_by(email),
         PROJECTIONS['learning_record'],
         {'$sort': {'when': -1}}
     ]
@@ -26,41 +24,9 @@ def get_user_learning_plan(email):
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
 
-    # if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
-    #     with open(LEARNING_PLAN_USER_DATA_FILEPATH) as user_data_file:
-    #         diagnostic_learning_plan = json.load(user_data_file)
-            
-    #         planned_items = [ {
-    #                 'title': item['title'],
-    #                 'required': item.get('required', False),
-    #                 'descriptionLines': [],
-    #                 'infoLines': [
-    #                   item['type'],
-    #                   ('Average time: ' + item.get('duration') if item.get('duration') else item.get('duration'))
-    #                 ],
-    #                 'actions': [{
-    #                     'title': 'Start now',
-    #                     'url': item['url']
-    #                 }]
-    #             }
-    #             for item in diagnostic_learning_plan]
-
-    #         dgn_learning_plan = {
-    #             'title': 'Actions from diagnostic',
-    #             'addedBy': 'diagnostic',
-    #             'descriptionLines': [
-    #               'Imported from your diagnostic test.'
-    #             ],
-    #             'sections': [],
-    #             'items': planned_items
-    #         }
-
-    #         learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
-
     plans = load_learning_plans(email)
 
     for plan in plans:
-        
         planned_items = [{
                 'title': '%s %s' % (item['verb']['display']['en'].capitalize(), item['object']['definition']['name']['en']),
                 'required': item.get('result', {}).get('completion', False),
@@ -74,7 +40,7 @@ def get_user_learning_plan(email):
                     'title': 'Start now',
                     'url': item['object']['id']
                 }]
-            } for item in load_learning_plan_items(email, plan['object']['id'])]
+            } for item in load_learning_plan_items(plan['object']['id'])]
 
         dgn_learning_plan = {
             'title': plan['object']['definition']['name']['en'],
@@ -90,19 +56,25 @@ def get_user_learning_plan(email):
 
 def load_learning_plans(email):
     return _query([
-        _create_match_learning_plan(email),
+        _create_match_learning_plan_by(email),
         PROJECTIONS['plan']
     ])['result']
 
-def load_learning_plan_items(email, plan_id):
+def load_learning_plan_items(plan_id):
     return _query([
-        _create_match_learning_plan_items(email, plan_id),
+        _create_match_learning_plan_items_by(plan_id),
         PROJECTIONS['plan_item']
     ])['result']
 
+def load_learning_plan_item(statement_id):
+    return _query([
+        _create_match_learning_plan_item_by(statement_id),
+        PROJECTIONS['plan_item']
+    ])['result']
 
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
+
 
 def create_sample_plan(learner_email):
     sample_plan = Statement.create_plan(
@@ -122,20 +94,7 @@ def create_sample_plan(learner_email):
             uri='http://www.artofliving.org/meditation/meditation-for-you/benefits-of-meditation',
             name='Benefits of Meditation | Meditation Benefits | The Art Of Living Global')))
 
-    return sample_plan.to_json()
-
-
-def save_to_json(learner_email, json_data):
-    with open(LEARNING_PLAN_USER_DATA_FILEPATH, 'w+') as f:
-        json.dump(json_data, f, indent=4)
-
-def remove_json():
-    if os.path.isfile(LEARNING_PLAN_USER_DATA_FILEPATH):
-        os.remove(LEARNING_PLAN_USER_DATA_FILEPATH)
-        return 'removed :)'
-    else:
-        return 'already done - there was no file to remove'
-    
+    return _post(sample_plan.to_json())
 
 
 def _post(payload_json):
@@ -171,7 +130,7 @@ def _create_full_url(route_url):
         route_url=route_url)
 
 
-def _create_match_user(email):
+def _create_match_user_by(email):
     return {
         '$match': {
             '$or': [
@@ -181,9 +140,7 @@ def _create_match_user(email):
         }
     }
 
-
-
-def _create_match_learning_plan(email):
+def _create_match_learning_plan_by(email):
    return {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
@@ -191,17 +148,30 @@ def _create_match_learning_plan(email):
         }
     }
 
-def _create_match_learning_plan_items(email, plan_id):
+def _create_match_learning_plan_items_by(plan_id):
     return {
         '$match': {
-            'statement.object.actor.mbox': 'mailto:%s' % email,
             'statement.object.context.contextActivities.grouping': {
                 '$elemMatch': {
-                    'id': '%s' % plan_id
+                    '$or': [
+                        {'id': '%s' % plan_id},
+                        {'id': 'http://www.tincanapi.co.uk/wiki/learning_plan:%s' % plan_id}
+                    ]
                 }
             }
         }
     }
+
+def _create_match_learning_plan_item_by(statement_id):
+    return {
+        '$match': {'statement.id': statement_id}
+    }
+
+
+# def _create_match_learning_plan_by_item_learning_records():
+#     return {
+
+#     }
 
 
 PROJECTIONS = {
@@ -259,15 +229,5 @@ PROJECTIONS = {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
