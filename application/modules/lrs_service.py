@@ -64,7 +64,7 @@ def load_learning_plan(plan_id):
     return _query([
         _create_match_learning_plan_by_plan_id(plan_id),
         PROJECTIONS['plan']
-    ])['result']
+    ])['result'][0]
 
 def load_learning_plan_items(plan_id):
     return _query([
@@ -79,9 +79,7 @@ def load_learning_plan_item(statement_id):
     ])['result'][0]
 
 def load_learning_plan_item_learning_records(email, plan_item_id):
-
     plan_item = load_learning_plan_item(plan_item_id)
-
     return _query([
         _create_match_learning_plan_item_learning_records(email, plan_item),
         PROJECTIONS['learning_record']
