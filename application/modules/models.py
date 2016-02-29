@@ -40,14 +40,13 @@ class Statement:
         }
     }
 
-    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None, planner_actor=None):
+    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None, planner_actor=None, duration=None, required=None):
         self._actor = None
         self.actor = actor
         self._verb = None
         self.verb = verb
         self._statement_obj = None
         self.statement_obj = statement_obj
-        self._datetime = datetime
         self._planned_items = []
         # only 1 for now
         self._group_id = None
@@ -55,6 +54,12 @@ class Statement:
 
         self._planner_actor = None
         self.planner_actor = planner_actor
+        
+        self._duration = None
+        self.duration = duration
+
+        self._required = None
+        self.required = required
 
     @property
     def actor(self):
@@ -108,8 +113,21 @@ class Statement:
                 self._statement_obj = Statement.create_substatement_obj(statement_obj)
 
     @property
-    def datetime(self):
-        return self._datetime
+    def duration(self):
+        return self._duration
+
+    @duration.setter
+    def duration(self, duration):
+        self._duration = duration
+
+    @property
+    def required(self):
+        return self._required
+
+    @required.setter
+    def required(self, required):
+        self._required = required
+
 
     @property
     def planned_items(self):
@@ -226,7 +244,7 @@ class Statement:
 
     @classmethod
     def get_resource_type(cls, url):
-        return next( (Statement.RESOURCE_TYPES[res_key] for res_key in Statement.RESOURCE_TYPES if Statement.RESOURCE_TYPES[res_key]['id'] == url), None)
+        return next((Statement.RESOURCE_TYPES[res_key] for res_key in Statement.RESOURCE_TYPES if Statement.RESOURCE_TYPES[res_key]['id'] == url), None)
 
 
     # PLAN SPECIFIC

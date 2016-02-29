@@ -93,13 +93,13 @@ def get_user_learning_plan(email):
 def load_learning_plans(email):
     return _query([
         _create_match_learning_plan(email),
-        PROJECTIONS['generic_statement']
+        PROJECTIONS['plan']
     ])['result']
 
 def load_learning_plan_items(email, plan_id):
     return _query([
         _create_match_learning_plan_items(email, plan_id),
-        PROJECTIONS['generic_substatement']
+        PROJECTIONS['plan_item']
     ])['result']
 
 
@@ -240,7 +240,7 @@ PROJECTIONS = {
           }
         }
     },
-    'generic_statement':{
+    'plan':{
         '$project': {
             '_id': 1,
             'statementId': '$statement.id',
@@ -249,7 +249,7 @@ PROJECTIONS = {
             'object': '$statement.object'
         }
     },
-    'generic_substatement':{
+    'plan_item':{
         '$project': {
             '_id': 1,
             'statementId': '$statement.id',

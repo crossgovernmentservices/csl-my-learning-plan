@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 '''The app module, containing the app factory function.'''
+import logging
 from flask import Flask, render_template
-
 from flask.ext.security import Security
+
+import application.modules.dates as mls_dates
 
 
 def asset_path_context_processor():
@@ -66,4 +68,14 @@ def register_extensions(app):
 
 
 def register_filters(app):
-    pass
+    logger = logging.getLogger()
+
+    def format_duration(duration):
+        try:
+            return mls_dates.convert_duration(duration)
+        except Exception as e:
+            logger.exception('Error while formatting duration:' + str(e))
+            return ''
+
+    app.jinja_env.filters['format_duration'] = format_duration
+
