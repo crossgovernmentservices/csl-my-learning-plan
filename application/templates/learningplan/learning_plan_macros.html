@@ -1,5 +1,5 @@
 {% macro render_plan_item(plan_item) %}
-  <li class="plan-item js-plan-item" data-statement-id= " plan_item.statement_id ">
+  <li class="plan-item js-plan-item" data-statement-id= "{{ plan_item['statementId'] }}">
 
     {% set hasInformationLines = plan_item['descriptionLines'] or plan_item['infoLines'] %}
     {% set hasActions = plan_item['actions'] %}
@@ -27,6 +27,10 @@
 
           {% for itemInfoLine in plan_item['infoLines'] %}
           <li class="info">{{ itemInfoLine|capitalize|safe }}</li>
+          {% endfor %}
+
+          {% for record in plan_item['records'] %}
+          <li>{{ record }}</li>
           {% endfor %}
         </ul>
         {% endif %}

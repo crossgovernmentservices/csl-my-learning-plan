@@ -28,6 +28,8 @@ def get_user_learning_plan(email):
 
     for plan in plans:
         planned_items = [{
+                'statementId': item['statementId'],
+                'records': load_learning_plan_item_learning_records(email, item['statementId']),
                 'title': '%s %s' % (item['verb']['display']['en'].capitalize(), item['object']['definition']['name']['en']),
                 'required': item.get('result', {}).get('completion', False),
                 'descriptionLines': [],
