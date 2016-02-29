@@ -1,12 +1,23 @@
 restore:
-   build: ./dockerllrestore/
-   command: mongorestore -h lrs /tmp/dump/
-   links:
-      - lrs
+  build: ./dockerllrestore/
+  command: mongorestore -h lrs /tmp/dump/
+  links:
+    - lrs
+
+webusers:
+  build: .
+  env_file: docker-local.env
+  links:
+    - mongo
+  volumes:
+    - ".:/usr/src/app"
+  command: "python manage.py create-users"
+
 web:
   build: .
   env_file: docker-local.env
   links:
+    - webusers
     - mongo
     - lrs
   ports:
@@ -14,6 +25,7 @@ web:
   volumes:
     - ".:/usr/src/app"
   command: "python manage.py server"
+
 mongo:
   image: mongo:3.2
 lrs:
