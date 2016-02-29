@@ -76,7 +76,17 @@ def load_learning_plan_item(statement_id):
     return _query([
         _create_match_learning_plan_item_by(statement_id),
         PROJECTIONS['plan_item']
+    ])['result'][0]
+
+def load_learning_plan_item_learning_records(email, plan_item_id):
+
+    plan_item = load_learning_plan_item(plan_item_id)
+
+    return _query([
+        _create_match_learning_plan_item_learning_records(email, plan_item),
+        PROJECTIONS['learning_record']
     ])['result']
+
 
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
@@ -185,10 +195,15 @@ def _create_match_learning_plan_item_by(statement_id):
     }
 
 
-# def _create_match_learning_plan_by_email_item_learning_records():
-#     return {
-
-#     }
+def _create_match_learning_plan_item_learning_records(email, plan_item):
+    return {
+        '$match': {
+            'statement.actor.mbox': 'mailto:%s' % email,
+            'statement.object.id': '%s' % plan_item['object']['id'],
+            'statement.object.definition.type': '%s' % plan_item['object']['definition']['type'],
+            'statement.verb.id': '%s' % plan_item['verb']['id']
+        }
+    }
 
 
 PROJECTIONS = {
@@ -196,28 +211,28 @@ PROJECTIONS = {
         '$project': {
           'statementId': '$statement.id',
           'actor': {
-            'id': { '$ifNull': [ '$statement.actor.account.name', '$statement.actor.mbox' ] },
+            'id': {'$ifNull': ['$statement.actor.account.name', '$statement.actor.mbox']},
             'name': '$statement.actor.name',
             'mbox': '$mailto'
           },
           'verb': {
             'id': '$statement.verb.id',
-            'name': { '$ifNull': [ '$statement.verb.display.en', '$statement.verb.display.en-US' ] }
+            'name': {'$ifNull': ['$statement.verb.display.en', '$statement.verb.display.en-US']}
           },
           'object': {
             'id': '$statement.object.id',
-            'name': { '$ifNull': [ '$statement.object.definition.name.en', '$statement.object.definition.name.en-US' ] }
+            'name': {'$ifNull': ['$statement.object.definition.name.en', '$statement.object.definition.name.en-US']}
           },
           'when': '$statement.timestamp',
           'result': {
             'score': '$statement.result.score',
             'duration': '$statement.result.duration'
           },
-          'activities': { 
-            '$map': { 
+          'activities': {
+            '$map': {
               'input': '$statement.context.contextActivities.grouping',
               'as': 'activity',
-              'in': { 
+              'in': {
                 'id': '$$activity.id',
                 'name': '$$activity.definition.name.en'
               }
@@ -225,7 +240,8 @@ PROJECTIONS = {
           }
         }
     },
-    'plan':{
+
+    'plan': {
         '$project': {
             '_id': 1,
             'statementId': '$statement.id',
@@ -234,7 +250,8 @@ PROJECTIONS = {
             'object': '$statement.object'
         }
     },
-    'plan_item':{
+
+    'plan_item': {
         '$project': {
             '_id': 1,
             'statementId': '$statement.id',

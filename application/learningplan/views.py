@@ -39,8 +39,6 @@ def assign_learning_plan():
     learning_plan = Statement.create_plan(plan_name='Actions from diagnostic', learner_actor=learner_email)
 
     for resource in post_data:
-        # replace this horrible replace here!
-
         tincan_data = resource.get('tincan', '{}')
         verb = tincan_data.get('verb') or 'read'
         statement_obj = tincan_data.get('object') or Statement.create_activity_obj(
@@ -69,6 +67,8 @@ def assign_learning_plan():
     resp.status_code = lrs_result.get('code', 200) if type(lrs_result) is dict else 200
     return resp
 
+
+
 # API stuff
 @learningplan.route('/learning-plan/api/load_learning_plans')
 @login_required
@@ -89,5 +89,10 @@ def api_load_learning_plan_items(plan_id):
 @login_required
 def api_load_learning_plan_item(statement_id):
     return json.dumps(lrs_service.load_learning_plan_item(statement_id))
+
+@learningplan.route('/learning-plan/api/load_learning_plan_item_learning_records/<plan_item_id>')
+@login_required
+def api_load_learning_plan_item_learning_records(plan_item_id):
+    return json.dumps(lrs_service.load_learning_plan_item_learning_records(current_user.email, plan_item_id))
 
 
