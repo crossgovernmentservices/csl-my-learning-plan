@@ -37,7 +37,7 @@ def __matchCandidateNodes(framework, matchUrl, candidateUrl):
     except ValueError:
         return None
 
-def __hasTargetedItem(matchitem, educationalAlignments): 
+def __hasTargetedItem(matchitem, educationalAlignments):
     for ea in educationalAlignments:
         if (    ea['alignmentType'] == 'teaches' 
                 and ea['educationalFramework'] == matchitem.educationalFramework
@@ -59,7 +59,7 @@ def __matchitem(item, matchingitems):
                 and __hasTargetedItem(matchitem, item['educationalAlignment'])):
             return matchitem
     return None
-    
+
 
 def run(matchingitems, candidate_data_generator):
     """ Rule basically just looks for the next incremental item in the targetUrl """
@@ -89,9 +89,5 @@ def run(matchingitems, candidate_data_generator):
             area["recommendations"].append(addrecommendation(item))
 
 
-    return [ frameworks[f] for f in frameworks.keys() ] 
-
-   
-    
-
+    return [frameworks[f] for f in frameworks.keys()] 
 

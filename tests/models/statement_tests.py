@@ -191,7 +191,9 @@ class StatementTests(unittest.TestCase):
             verb=Statement.create_verb('read', 'read test'),
             statement_obj=Statement.create_activity_obj(
                 uri='http://www.someurl-1.com',
-                name='Some website - 1')))
+                name='Some website - 1'),
+            required=True,
+            duration='PT6H0M'))
 
         sut_plan.add_planned_item(Statement(
             actor='test-2@email.com',
@@ -243,15 +245,19 @@ class StatementTests(unittest.TestCase):
                         'name': {'en': 'Some website - 1'}
                     }
                 },
-                "context": {
-                    "contextActivities": {
-                        "grouping": [
+                'context': {
+                    'contextActivities': {
+                        'grouping': [
                             {
-                                "objectType": "Activity",
-                                "id": sut_enroll_item_id
+                                'objectType': 'Activity',
+                                'id': sut_enroll_item_id
                             }
                         ]
                     }
+                },
+                'result': {
+                    'duration': 'PT6H0M',
+                    'completion': True
                 }
             })
         
@@ -274,12 +280,12 @@ class StatementTests(unittest.TestCase):
                         'name': {'en': 'Some website - 2'}
                     }
                 },
-                "context": {
-                    "contextActivities": {
-                        "grouping": [
+                'context': {
+                    'contextActivities': {
+                        'grouping': [
                             {
-                                "objectType": "Activity",
-                                "id": sut_enroll_item_id
+                                'objectType': 'Activity',
+                                'id': sut_enroll_item_id
                             }
                         ]
                     }

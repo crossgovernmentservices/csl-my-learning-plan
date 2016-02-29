@@ -5,7 +5,8 @@ from flask import (
     flash,
     url_for,
     request,
-    current_app
+    current_app,
+    jsonify
 )
 
 import json
@@ -39,23 +40,34 @@ def assign_learning_plan():
 
     for resource in post_data:
         # replace this horrible replace here!
-        tincan_data = json.loads(resource.get('tincan', '{}').replace('\'', '\"'))
+
+        tincan_data = resource.get('tincan', '{}')
         verb = tincan_data.get('verb') or 'read'
         statement_obj = tincan_data.get('object') or Statement.create_activity_obj(
             uri=resource.get('url'),
             name=resource.get('title'))
-        planned_item = Statement(verb=verb, statement_obj=statement_obj)
+        
+        tincan_result = tincan_data.get('result')
+        required = tincan_result.get('completion', resource.get('required'))
+        duration = tincan_result.get('duration', resource.get('duration'))
+
+        planned_item = Statement(
+            verb=verb,
+            statement_obj=statement_obj,
+            required=required,
+            duration=duration)
+
         learning_plan.add_planned_item(planned_item)
 
-
-    # lrs_service.save_to_json(learner_email, post_data)
     lrs_result = lrs_service.save_learning_plan(learning_plan)
 
-    return json.dumps({
-            'postData': post_data,
-            'plan': learning_plan.to_json(),
-            'lrsResult': lrs_result
-        })
+    resp = jsonify({
+        'postData': post_data,
+        'plan': learning_plan.to_json(),
+        'lrsResult': lrs_result
+    })
+    resp.status_code = lrs_result.get('code', 200) if type(lrs_result) is dict else 200
+    return resp
 
 @learningplan.route('/learning-plan/remove')
 @login_required

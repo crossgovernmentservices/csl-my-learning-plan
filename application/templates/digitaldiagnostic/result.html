@@ -61,7 +61,7 @@
                   data-required="true"
                 {% endif %}
                 {% if item['tincanstatement'] %} 
-                  data-tincan-data="{{ item['tincanstatement'] }}"
+                  data-tincan-data='{{ item["tincanstatement"]|tojson|safe }}'
                 {% endif %}>
 
                 <td><a href="{{ item['url'] }}">{{ item['title'] }}</a></td>

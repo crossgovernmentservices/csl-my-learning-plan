@@ -166,6 +166,10 @@ class Statement:
             'verb': self._verb_to_json(),
             'object': self._statement_obj_to_json()
         }
+        
+        if self.required or self.duration:
+            result_json['result'] = self._result_to_json()
+
         if self.grouping: #or category
             result_json['context'] = {
                 'contextActivities': {
@@ -204,7 +208,14 @@ class Statement:
             result_json['objectType'] = 'Activity'
             return result_json
 
+    def _result_to_json(self):
+        result_json = {}
+        if self.duration is not None:
+            result_json['duration'] = self.duration
+        if self.required is not None:
+            result_json['completion'] = self.required
 
+        return result_json
 
 
 

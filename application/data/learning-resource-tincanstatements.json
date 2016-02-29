@@ -15,6 +15,10 @@
       "display": {
         "en": "read"
       }
+    },
+    "result": {
+      "duration": "P1D",
+      "completion": true
     }
   },
   "https://www.siliconbeachtraining.co.uk/digital-marketing-training/html-emails-training": {
@@ -33,6 +37,9 @@
       "display": {
         "en": "complete"
       }
+    },
+    "result": {
+      "duration": "P1W"
     }
   },
   "https://www.thegooru.com/category/gmail/": {
@@ -51,6 +58,10 @@
       "display": {
         "en": "read"
       }
+    },
+    "result": {
+      "duration": "PT6H0M",
+      "completion": true
     }
   }
 }

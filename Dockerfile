@@ -11,5 +11,6 @@ COPY requirements.txt /usr/src/app/
 RUN wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 WORKDIR /usr/src/app
+
 CMD ["gunicorn", "--config=gunicorn.py", "application.run:app"]
 

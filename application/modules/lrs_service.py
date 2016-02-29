@@ -6,6 +6,7 @@ import os
 from application.config import Config
 import requests
 from application.modules.models import Statement
+import application.modules.dates as mls_dates
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
@@ -59,18 +60,15 @@ def get_user_learning_plan(email):
     plans = load_learning_plans(email)
 
     for plan in plans:
-
-        st = Statement(
-            actor=plan['actor'],
-            verb=plan['verb'],
-            statement_obj=plan['object'])
         
         planned_items = [{
                 'title': '%s %s' % (item['verb']['display']['en'].capitalize(), item['object']['definition']['name']['en']),
-                'required': item.get('required', False),
+                'required': item.get('result', {}).get('completion', False),
                 'descriptionLines': [],
                 'infoLines': [
-                    Statement.get_resource_type(item['object']['definition']['type'])['name']
+                    Statement.get_resource_type(item['object']['definition']['type'])['name'],
+                    ('Average time: ' + mls_dates.convert_duration(item['result']['duration']) 
+                        if item.get('result', {}).get('duration') else item.get('result', {}).get('duration'))
                 ],
                 'actions': [{
                     'title': 'Start now',
@@ -255,7 +253,8 @@ PROJECTIONS = {
             'statementId': '$statement.id',
             'actor': '$statement.object.actor',
             'verb': '$statement.object.verb',
-            'object': '$statement.object.object'
+            'object': '$statement.object.object',
+            'result': '$statement.object.result'
         }
     }
 

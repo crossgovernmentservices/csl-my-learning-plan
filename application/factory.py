@@ -78,4 +78,3 @@ def register_filters(app):
             return ''
 
     app.jinja_env.filters['format_duration'] = format_duration
-
