@@ -75,14 +75,19 @@ def assign_learning_plan():
 def api_load_learning_plans():
     return json.dumps(lrs_service.load_learning_plans(current_user.email))
 
+@learningplan.route('/learning-plan/api/load_learning_plan/<plan_id>')
+@login_required
+def api_load_learning_plan(plan_id):
+    return json.dumps(lrs_service.load_learning_plan(plan_id))
+
 @learningplan.route('/learning-plan/api/load_learning_plan_items/<plan_id>')
 @login_required
-def load_learning_plan_items(plan_id):
+def api_load_learning_plan_items(plan_id):
     return json.dumps(lrs_service.load_learning_plan_items(plan_id))
 
 @learningplan.route('/learning-plan/api/load_learning_plan_item/<statement_id>')
 @login_required
-def load_learning_plan_item(statement_id):
+def api_load_learning_plan_item(statement_id):
     return json.dumps(lrs_service.load_learning_plan_item(statement_id))
 
 

@@ -56,7 +56,13 @@ def get_user_learning_plan(email):
 
 def load_learning_plans(email):
     return _query([
-        _create_match_learning_plan_by(email),
+        _create_match_learning_plan_by_email(email),
+        PROJECTIONS['plan']
+    ])['result']
+
+def load_learning_plan(plan_id):
+    return _query([
+        _create_match_learning_plan_by_plan_id(plan_id),
         PROJECTIONS['plan']
     ])['result']
 
@@ -140,11 +146,22 @@ def _create_match_user_by(email):
         }
     }
 
-def _create_match_learning_plan_by(email):
+def _create_match_learning_plan_by_email(email):
    return {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
             'statement.verb.id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan'
+        }
+    }
+
+def _create_match_learning_plan_by_plan_id(plan_id):
+   return {
+        '$match': {
+            '$or': [
+                {'statement.id': '%s' % plan_id},
+                {'statement.object.id': '%s' % plan_id},
+                {'statement.object.id': 'http://www.tincanapi.co.uk/wiki/learning_plan:%s' % plan_id}
+            ]
         }
     }
 
@@ -168,7 +185,7 @@ def _create_match_learning_plan_item_by(statement_id):
     }
 
 
-# def _create_match_learning_plan_by_item_learning_records():
+# def _create_match_learning_plan_by_email_item_learning_records():
 #     return {
 
 #     }
