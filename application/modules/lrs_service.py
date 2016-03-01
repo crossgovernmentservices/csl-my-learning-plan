@@ -33,7 +33,7 @@ def get_user_learning_plans(email):
         
         for item in load_learning_plan_items(plan['object']['id']):
             records = load_learning_plan_item_learning_records(email, item['statementId'])
-            
+
             verb_name = item['verb']['display']['en']
             
             info_lines = []
@@ -51,11 +51,11 @@ def get_user_learning_plans(email):
                 'title': verb_name.capitalize() + (' again' if records else ' now'),
                 'url': item['object']['id']
             }]
+
+            # taking the last one to display, done like this as who knows what they are going to come up with
+            # all records may be required later
             if records:
-                actions.append({
-                    'title': 'See learning record',
-                    'url': '#'
-                })
+                records = [records[-1]] 
 
             planned_item = {
                 'statementId': item['statementId'],
