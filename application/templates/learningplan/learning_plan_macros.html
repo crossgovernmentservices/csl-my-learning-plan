@@ -51,21 +51,10 @@
         
 
         <div class="column-third"> 
-          {% if hasRecords %}
-          <div class="records to-right">
-            <p class="message">Completed on:</p>
-            <ul class="record-lines">
-              {% for record in plan_item['records'] %}
-              <li>{{ record['when']|format_date }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
           {% if hasActions %}
           <ul class="action-list">
           {% for itemAction in plan_item['actions'] %}
-            <li class="action"><a href="{{ itemAction['url'] }}">{{ itemAction['title'] }}</a></li>
+            <li class="action"><a href="{{ itemAction['url'] }}" target="_blank">{{ itemAction['title'] }}</a></li>
           {% endfor %}
           </ul>
           {% endif %}
