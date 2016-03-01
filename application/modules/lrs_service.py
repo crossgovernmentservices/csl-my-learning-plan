@@ -3,8 +3,10 @@ import http.client
 import uuid
 import ssl
 import os
-from application.config import Config
+import logging
 import requests
+
+from application.config import Config
 from application.modules.models import Statement
 import application.modules.dates as mls_dates
 
@@ -114,6 +116,22 @@ def load_learning_plan_item_learning_records(email, plan_item_id):
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
 
+def clean_learning_plans(email):
+    logger = logging.getLogger()
+
+    username = Config.LRS_USER
+    password = Config.LRS_PASS
+    matcher = {'$or': [
+        {'statement.actor.mbox': 'mailto:%s' % email},
+        {'statement.object.actor.mbox': 'mailto:%s' % email}
+    ]}
+
+    requestUrl = '%s/void?match=%s' % (_create_full_url(Config.LRS_COMMAND_API_URL), json.dumps(matcher))
+    logger.debug(requestUrl)
+
+    response = requests.get(requestUrl, auth=(username, password), verify=False)
+    return response.json()
+
 
 def create_sample_plan(learner_email):
     sample_plan = Statement.create_plan(
@@ -156,6 +174,7 @@ def _query(aggregation_pipeline):
 
     query_url = Config.LRS_QUERY_URL % json.dumps(aggregation_pipeline)
     requestUrl = _create_full_url(query_url)
+    logger = logging.getLogger()
 
     response = requests.get(requestUrl, auth=(username, password), verify=False)
     return response.json()
@@ -175,7 +194,8 @@ def _create_match_user_by(email):
             '$or': [
                 {'statement.actor.mbox': 'mailto:%s' % email},
                 {'statement.actor.name': '%s' % email.split('@')[0]}
-            ]
+            ],
+            'voided': False
         }
     }
 
@@ -183,7 +203,8 @@ def _create_match_learning_plan_by_email(email):
    return {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
-            'statement.verb.id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan'
+            'statement.verb.id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan',
+            'voided': False
         }
     }
 
@@ -194,7 +215,8 @@ def _create_match_learning_plan_by_plan_id(plan_id):
                 {'statement.id': '%s' % plan_id},
                 {'statement.object.id': '%s' % plan_id},
                 {'statement.object.id': 'http://www.tincanapi.co.uk/wiki/learning_plan:%s' % plan_id}
-            ]
+            ],
+            'voided': False
         }
     }
 
@@ -208,13 +230,17 @@ def _create_match_learning_plan_items_by(plan_id):
                         {'id': 'http://www.tincanapi.co.uk/wiki/learning_plan:%s' % plan_id}
                     ]
                 }
-            }
+            },
+            'voided': False
         }
     }
 
 def _create_match_learning_plan_item_by(statement_id):
     return {
-        '$match': {'statement.id': statement_id}
+        '$match': {
+            'statement.id': statement_id,
+            'voided': False
+        }
     }
 
 
@@ -223,7 +249,8 @@ def _create_match_learning_plan_item_learning_records(email, plan_item):
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
             'statement.object.id': '%s' % plan_item['object']['id'],
-            'statement.verb.id': '%s' % plan_item['verb']['id']
+            'statement.verb.id': '%s' % plan_item['verb']['id'],
+            'voided': False
         }
     }
     obj_type = plan_item.get('object').get('definition').get('type')

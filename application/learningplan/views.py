@@ -70,6 +70,11 @@ def assign_learning_plan():
 
 
 # API stuff
+@learningplan.route('/learning-plan/api/clean_learning_plans')
+@login_required
+def api_clean_learning_plans():
+    return json.dumps(lrs_service.clean_learning_plans(current_user.email))
+
 @learningplan.route('/learning-plan/api/load_learning_plans')
 @login_required
 def api_load_learning_plans():

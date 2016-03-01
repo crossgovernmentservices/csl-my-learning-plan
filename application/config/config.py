@@ -21,6 +21,8 @@ class Config(object):
     LRS_HTTPS_ENABLED = json.loads(os.environ.get('LRS_HTTPS_ENABLED', 'false'))
     LRS_USER = os.environ.get('LRS_USER')
     LRS_PASS = os.environ.get('LRS_PASS')
+    LRS_QUERY_API_URL = os.environ.get('LRS_QUERY_API_URL')
+    LRS_COMMAND_API_URL = os.environ.get('LRS_COMMAND_API_URL')
     LRS_QUERY_URL = os.environ.get('LRS_QUERY_URL')
     LRS_STATEMENTS_URL = os.environ.get('LRS_STATEMENTS_URL')
 
