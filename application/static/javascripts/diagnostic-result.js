@@ -48,7 +48,13 @@
         console.log(textStatus);
         console.log(jqXHR);
         console.log(data);
-        win.location = "/learning-plan";
+        var redirectUrl = "/learning-plan";
+        var newPlanId = data && data['lrsResult'] && data['lrsResult'][0]
+        if(newPlanId){
+          redirectUrl+= "?newplan=" + newPlanId;
+        }
+        console.log(redirectUrl);
+        win.location = redirectUrl;
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.error(errorThrown);

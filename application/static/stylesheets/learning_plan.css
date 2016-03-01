@@ -3269,7 +3269,7 @@ dt.heading-small {
 }
 /* line 165 */
 .plan-list .plan-item .accordion-content {
-  padding: 0 0 1em 3em;
+  padding: 0 0 1em 28px;
 }
 /* line 169 */
 .plan-list .plan-item .info-lines {
@@ -3286,10 +3286,6 @@ dt.heading-small {
 /* line 177 */
 .plan-list .plan-item .info-lines li.info {
   color: #6f777b;
-}
-/* line 183 */
-.plan-list .plan-item .records {
-  padding-top: 1em;
 }
 /* line 185 */
 .plan-list .plan-item .records.to-right {

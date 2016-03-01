@@ -25,18 +25,18 @@
       <div class="page-header">
         <h1 class="heading-xlarge">Your learning plan</h1>
         
-        {% if diagnostic_plan %}
+        {% if new_plan %}
         <div class="grid-row">
           <div class="column-two-thirds new-items-panel-wrap">
             <div class="new-items-panel">
               
-              <p>You have: {{ diagnostic_plan['items']|count }} new items</p>
+              <p>You have: {{ new_plan['items']|count }} new items</p>
               <ul>
-                {% for item in diagnostic_plan['items'] %}
+                {% for item in new_plan['items'] %}
                 <li><a href="{{ (item['actions']|first)['url'] }}">{{ item['title'] }}</a></li>
                 {% endfor %}
               </ul>
-              <p>These have been added to the {{ diagnostic_plan['title'] }} group.</p>
+              <p>These have been added to the {{ new_plan['title'] }} group.</p>
             </div>
           </div>
         </div>
@@ -55,10 +55,10 @@
       </div>
 
 
-      {% for programme in learning_plan %}
+      {% for programme in learning_plans %}
         {% if programme.get('expandable',True) %}
         <div class="accordion bordered highlighted programme">
-          <div class="accordion-head programme-head">
+          <div class="accordion-head programme-head" data-statement-id= "{{ programme.get('statementId') }}">
             <span class="head-title heading-medium">{{ programme.title }}</span>
             <span class="more-group right">
               <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>

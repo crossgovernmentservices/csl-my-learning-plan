@@ -23,10 +23,10 @@ learningplan = Blueprint('learningplan', __name__)
 @learningplan.route('/learning-plan')
 @login_required
 def view_plan():
-    learning_plan = lrs_service.get_user_learning_plan(current_user.email)
-    # diagnostic_plan = next((plan for plan in learning_plan if plan.get('addedBy') == "diagnostic"), None)
-
-    return render_template('learningplan/view_plan.html', learning_plan=learning_plan, diagnostic_plan=None)
+    learning_plans = lrs_service.get_user_learning_plans(current_user.email)
+    plan_id = request.args.get('newplan')
+    new_plan = next((plan for plan in learning_plans if plan.get('statementId') == plan_id), None) if plan_id else None
+    return render_template('learningplan/view_plan.html', learning_plans=learning_plans, new_plan=new_plan)
 
 @learningplan.route('/learning-plan/assign', methods=['POST'])
 @login_required
@@ -39,13 +39,13 @@ def assign_learning_plan():
     learning_plan = Statement.create_plan(plan_name='Actions from diagnostic', learner_actor=learner_email)
 
     for resource in post_data:
-        tincan_data = resource.get('tincan', '{}')
+        tincan_data = resource.get('tincan', dict())
         verb = tincan_data.get('verb') or 'read'
         statement_obj = tincan_data.get('object') or Statement.create_activity_obj(
             uri=resource.get('url'),
             name=resource.get('title'))
         
-        tincan_result = tincan_data.get('result')
+        tincan_result = tincan_data.get('result', dict())
         required = tincan_result.get('completion', resource.get('required'))
         duration = tincan_result.get('duration', resource.get('duration'))
 

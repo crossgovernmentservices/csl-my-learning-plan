@@ -19,7 +19,7 @@ def get_user_records(email):
 
     return _query(pipeline)['result']
 
-def get_user_learning_plan(email):
+def get_user_learning_plans(email):
     # all of them lines of code be here for now
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
@@ -28,29 +28,32 @@ def get_user_learning_plan(email):
 
     for plan in plans:
         planned_items = []
-
         
         for item in load_learning_plan_items(plan['object']['id']):
             records = load_learning_plan_item_learning_records(email, item['statementId'])
-            resource_type = Statement.get_resource_type(item['object']['definition']['type'])['name']
+            
             verb_name = item['verb']['display']['en']
+            
+            info_lines = []
+            resource_type = Statement.get_resource_type(item.get('object').get('definition').get('type'))
+            if resource_type:
+                resource_type = resource_type.get('name', '')
+                info_lines.append(resource_type)
             
             duration = item.get('result', {}).get('duration')
             if duration:
                 duration = 'Average time: ' + mls_dates.convert_duration(duration)
-
+                info_lines.append(duration)
 
             actions = [{
                 'title': verb_name.capitalize() + (' again' if records else ' now'),
                 'url': item['object']['id']
             }]
-
             if records:
                 actions.append({
                     'title': 'See learning record',
                     'url': '#'
                 })
-
 
             planned_item = {
                 'statementId': item['statementId'],
@@ -58,12 +61,13 @@ def get_user_learning_plan(email):
                 'title': '%s %s' % (verb_name.capitalize(), item['object']['definition']['name']['en']),
                 'required': item.get('result', {}).get('completion', False),
                 'descriptionLines': [],
-                'infoLines': [resource_type, duration],
+                'infoLines': info_lines,
                 'actions': actions
             }
             planned_items.append(planned_item)
 
         dgn_learning_plan = {
+            'statementId': plan['statementId'], 
             'title': plan['object']['definition']['name']['en'],
             'addedBy': 'diagnostic',
             'descriptionLines': [],
@@ -215,14 +219,18 @@ def _create_match_learning_plan_item_by(statement_id):
 
 
 def _create_match_learning_plan_item_learning_records(email, plan_item):
-    return {
+    matcher = {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
             'statement.object.id': '%s' % plan_item['object']['id'],
-            'statement.object.definition.type': '%s' % plan_item['object']['definition']['type'],
             'statement.verb.id': '%s' % plan_item['verb']['id']
         }
     }
+    obj_type = plan_item.get('object').get('definition').get('type')
+    if obj_type:
+        matcher['$match']['statement.object.definition.type'] = plan_item['object']['definition']['type'] 
+
+    return matcher
 
 
 PROJECTIONS = {
