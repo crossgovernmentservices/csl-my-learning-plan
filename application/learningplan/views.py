@@ -70,32 +70,32 @@ def assign_learning_plan():
 
 
 # API stuff
-@learningplan.route('/learning-plan/api/clean_learning_plans')
+@learningplan.route('/api/learning-plan/clean_learning_plans')
 @login_required
 def api_clean_learning_plans():
     return json.dumps(lrs_service.clean_learning_plans(current_user.email))
 
-@learningplan.route('/learning-plan/api/load_learning_plans')
+@learningplan.route('/api/learning-plan/load_learning_plans')
 @login_required
 def api_load_learning_plans():
     return json.dumps(lrs_service.load_learning_plans(current_user.email))
 
-@learningplan.route('/learning-plan/api/load_learning_plan/<plan_id>')
+@learningplan.route('/api/learning-plan/load_learning_plan/<plan_id>')
 @login_required
 def api_load_learning_plan(plan_id):
     return json.dumps(lrs_service.load_learning_plan(plan_id))
 
-@learningplan.route('/learning-plan/api/load_learning_plan_items/<plan_id>')
+@learningplan.route('/api/learning-plan/load_learning_plan_items/<plan_id>')
 @login_required
 def api_load_learning_plan_items(plan_id):
     return json.dumps(lrs_service.load_learning_plan_items(plan_id))
 
-@learningplan.route('/learning-plan/api/load_learning_plan_item/<statement_id>')
+@learningplan.route('/api/learning-plan/load_learning_plan_item/<statement_id>')
 @login_required
 def api_load_learning_plan_item(statement_id):
     return json.dumps(lrs_service.load_learning_plan_item(statement_id))
 
-@learningplan.route('/learning-plan/api/load_learning_plan_item_learning_records/<plan_item_id>')
+@learningplan.route('/api/learning-plan/load_learning_plan_item_learning_records/<plan_item_id>')
 @login_required
 def api_load_learning_plan_item_learning_records(plan_item_id):
     return json.dumps(lrs_service.load_learning_plan_item_learning_records(current_user.email, plan_item_id))
