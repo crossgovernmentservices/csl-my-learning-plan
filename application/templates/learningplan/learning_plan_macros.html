@@ -4,10 +4,10 @@
     {% set hasInformationLines = plan_item['descriptionLines'] or plan_item['infoLines'] %}
     {% set hasActions = plan_item['actions'] %}
     {% set isExpandable = hasInformationLines or hasActions %}
+    {% set hasRecords = plan_item.get('records', False) %}
 
   {% if isExpandable %}
     <div class="accordion">
-      <input type="checkbox" class="plan-item-check">
       <div class="accordion-head inline">
         <span class="more-group">
           <button class="btn-more"><img alt="" src="/static/images/icon-caret-right.png"></button>
@@ -17,38 +17,66 @@
         {% if plan_item.get('required', False) %}
         <span class="required">Required</span>
         {% endif %}
+
+        {% if hasRecords %}
+        <span class="item-status done">done</span>
+        {% endif %}
+
       </div>
       <div class="grid-row accordion-content"> 
-        {% if hasInformationLines %}
-        <ul class="info-lines column-two-thirds">
-          {% for itemDescLine in plan_item['descriptionLines'] %}
-          <li class="desc">{{ itemDescLine|safe }}</li>
-          {% endfor %}
+        <div class="column-two-thirds">
+          {% if hasInformationLines %}
+          <ul class="info-lines">
+            {% for itemDescLine in plan_item['descriptionLines'] %}
+            <li class="desc">{{ itemDescLine|safe }}</li>
+            {% endfor %}
 
-          {% for itemInfoLine in plan_item['infoLines'] %}
-          <li class="info">{{ itemInfoLine|capitalize|safe }}</li>
-          {% endfor %}
+            {% for itemInfoLine in plan_item['infoLines'] %}
+            <li class="info">{{ itemInfoLine|capitalize|safe }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
 
-          {% for record in plan_item['records'] %}
-          <li>{{ record }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+          {% if hasRecords %}
+          <div class="records">
+            <p class="message">Completed on:</p>
+            <ul class="record-lines">
+              {% for record in plan_item['records'] %}
+              <li>{{ record['when']|format_date }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
         
-        {% if hasActions %}
-        <ul class="action-list column-third">
-        {% for itemAction in plan_item['actions'] %}
-          <li class="action"><a href="{{ itemAction['url'] }}">{{ itemAction['title'] }}</a></li>
-        {% endfor %}
-        </ul>
-        {% endif %}
+
+        <div class="column-third">  
+          {% if hasRecords %}
+          <div class="records to-right">
+            <p class="message">Completed on:</p>
+            <ul class="record-lines">
+              {% for record in plan_item['records'] %}
+              <li>{{ record['when']|format_date }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if hasActions %}
+          <ul class="action-list">
+          {% for itemAction in plan_item['actions'] %}
+            <li class="action"><a href="{{ itemAction['url'] }}">{{ itemAction['title'] }}</a></li>
+          {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
 
       </div>
     </div>
 
   {% else %}
     <div>
-      <input type="checkbox" class="plan-item-check">
       <span class="head-title">{{ plan_item.title }}</span>
       {% if plan_item.get('required', False) %}
       <span class="required">Required</span>

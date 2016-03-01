@@ -77,4 +77,12 @@ def register_filters(app):
             logger.exception('Error while formatting duration:' + str(e))
             return ''
 
+    def format_date(date, format=None):
+        try:
+            return mls_dates.format_date(date, format)
+        except Exception as e:
+            logger.exception('Error while formatting:' + str(e))
+            return ''
+
     app.jinja_env.filters['format_duration'] = format_duration
+    app.jinja_env.filters['format_date'] = format_date

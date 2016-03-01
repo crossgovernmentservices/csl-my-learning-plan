@@ -178,7 +178,31 @@
           color: $grey-1;
         }
       }
+    }
 
+    .records{
+      padding-top: 1em;
+      &.to-right{
+        text-align: right;
+      }
+      .message{
+        font-size: 16px;
+        font-weight: bold;
+        color: $button-colour;
+        padding: 0;
+        margin: 0;
+        line-height: 2em;
+      }
+      .record-lines{
+        padding-top: 0;
+        margin: 0;
+        li {
+          margin: 0;
+          font-size: 16px;
+          line-height: 1em;
+          padding-bottom: 0.5em;
+        }
+      }
     }
     
     .action-list{
@@ -194,6 +218,23 @@
   .required {
     float: right;
     color: $grey-1;
+  }
+
+  .item-status{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 5px;
+    margin: 0 10px;
+    
+    line-height: 2.25em;
+
+    // float: right;
+    border-radius: 3px;
+
+    &.done{
+      border: 1px solid $button-colour;
+      color: $button-colour;
+    }
   }
 
   .inline{

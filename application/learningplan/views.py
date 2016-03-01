@@ -95,4 +95,3 @@ def api_load_learning_plan_item(statement_id):
 def api_load_learning_plan_item_learning_records(plan_item_id):
     return json.dumps(lrs_service.load_learning_plan_item_learning_records(current_user.email, plan_item_id))
 
-

@@ -27,22 +27,41 @@ def get_user_learning_plan(email):
     plans = load_learning_plans(email)
 
     for plan in plans:
-        planned_items = [{
+        planned_items = []
+
+        
+        for item in load_learning_plan_items(plan['object']['id']):
+            records = load_learning_plan_item_learning_records(email, item['statementId'])
+            resource_type = Statement.get_resource_type(item['object']['definition']['type'])['name']
+            verb_name = item['verb']['display']['en']
+            
+            duration = item.get('result', {}).get('duration')
+            if duration:
+                duration = 'Average time: ' + mls_dates.convert_duration(duration)
+
+
+            actions = [{
+                'title': verb_name.capitalize() + (' again' if records else ' now'),
+                'url': item['object']['id']
+            }]
+
+            if records:
+                actions.append({
+                    'title': 'See learning record',
+                    'url': '#'
+                })
+
+
+            planned_item = {
                 'statementId': item['statementId'],
-                'records': load_learning_plan_item_learning_records(email, item['statementId']),
-                'title': '%s %s' % (item['verb']['display']['en'].capitalize(), item['object']['definition']['name']['en']),
+                'records': records,
+                'title': '%s %s' % (verb_name.capitalize(), item['object']['definition']['name']['en']),
                 'required': item.get('result', {}).get('completion', False),
                 'descriptionLines': [],
-                'infoLines': [
-                    Statement.get_resource_type(item['object']['definition']['type'])['name'],
-                    ('Average time: ' + mls_dates.convert_duration(item['result']['duration']) 
-                        if item.get('result', {}).get('duration') else item.get('result', {}).get('duration'))
-                ],
-                'actions': [{
-                    'title': 'Start now',
-                    'url': item['object']['id']
-                }]
-            } for item in load_learning_plan_items(plan['object']['id'])]
+                'infoLines': [resource_type, duration],
+                'actions': actions
+            }
+            planned_items.append(planned_item)
 
         dgn_learning_plan = {
             'title': plan['object']['definition']['name']['en'],

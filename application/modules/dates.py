@@ -1,4 +1,5 @@
 import re
+from dateutil.parser import *
 
 def convert_duration(duration):
     match = re.search('(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?(?:T)?(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?', duration)
@@ -17,3 +18,13 @@ def __formatdurationunit(item, unitlabel):
     if item > 1:
         unitlabel = unitlabel + 's'
     return str(item) + ' ' + unitlabel + ' '
+
+
+
+def format_date(date, format=None):
+    date = parse(date)
+    native = date.replace(tzinfo=None)
+    if format is None:
+        format = '%d %b %Y %H:%M'
+
+    return native.strftime(format)
