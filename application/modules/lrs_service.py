@@ -243,9 +243,8 @@ def _create_match_learning_plan_item_by(statement_id):
         }
     }
 
-
 def _create_match_learning_plan_item_learning_records(email, plan_item):
-    matcher = {
+    return {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
             'statement.object.id': '%s' % plan_item['object']['id'],
@@ -253,11 +252,6 @@ def _create_match_learning_plan_item_learning_records(email, plan_item):
             'voided': False
         }
     }
-    obj_type = plan_item.get('object').get('definition').get('type')
-    if obj_type:
-        matcher['$match']['statement.object.definition.type'] = plan_item['object']['definition']['type'] 
-
-    return matcher
 
 
 PROJECTIONS = {
