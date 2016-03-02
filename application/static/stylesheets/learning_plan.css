@@ -3250,48 +3250,52 @@ dt.heading-small {
   border-bottom: 1px solid #cacac8;
 }
 /* line 150 */
+.programme .programme-head.new-programme {
+  background: #FFBD5D;
+}
+/* line 154 */
 .programme .programme-description {
   padding-bottom: 0.5em;
 }
 
-/* line 155 */
+/* line 159 */
 .plan-list {
   padding-bottom: 1em;
 }
-/* line 158 */
+/* line 162 */
 .plan-list .accordion-head {
   padding: 0;
 }
-/* line 161 */
+/* line 165 */
 .plan-list .plan-item {
   border-bottom: 1px solid #cacac8;
   line-height: 2.25em;
 }
-/* line 165 */
+/* line 169 */
 .plan-list .plan-item .accordion-content {
   padding: 0 0 1em 28px;
 }
-/* line 169 */
+/* line 173 */
 .plan-list .plan-item .info-lines {
   padding-top: 0;
   margin: 0;
 }
-/* line 172 */
+/* line 176 */
 .plan-list .plan-item .info-lines li {
   margin: 0;
   font-size: 16px;
   line-height: 1em;
   padding-bottom: 0.5em;
 }
-/* line 177 */
+/* line 181 */
 .plan-list .plan-item .info-lines li.info {
   color: #6f777b;
 }
-/* line 185 */
+/* line 189 */
 .plan-list .plan-item .records.to-right {
   text-align: right;
 }
-/* line 188 */
+/* line 192 */
 .plan-list .plan-item .records .message {
   font-size: 16px;
   font-weight: bold;
@@ -3300,34 +3304,34 @@ dt.heading-small {
   margin: 0;
   line-height: 2em;
 }
-/* line 196 */
+/* line 200 */
 .plan-list .plan-item .records .record-lines {
   padding-top: 0;
   margin: 0;
 }
-/* line 199 */
+/* line 203 */
 .plan-list .plan-item .records .record-lines li {
   margin: 0;
   font-size: 16px;
   line-height: 1em;
   padding-bottom: 0.5em;
 }
-/* line 208 */
+/* line 212 */
 .plan-list .plan-item .action-list {
   text-align: right;
   line-height: 1em;
   font-size: 16px;
 }
-/* line 212 */
+/* line 216 */
 .plan-list .plan-item .action-list .action {
   padding-bottom: 0.5em;
 }
-/* line 218 */
+/* line 222 */
 .plan-list .required {
   float: right;
   color: #6f777b;
 }
-/* line 223 */
+/* line 227 */
 .plan-list .item-status {
   font-size: 16px;
   font-weight: bold;
@@ -3336,27 +3340,27 @@ dt.heading-small {
   line-height: 2.25em;
   border-radius: 3px;
 }
-/* line 234 */
+/* line 238 */
 .plan-list .item-status.done {
   border: 1px solid #00823b;
   color: #00823b;
 }
-/* line 240 */
+/* line 244 */
 .plan-list .inline {
   display: inline;
 }
 
-/* line 245 */
+/* line 251 */
 .new-items-panel-wrap {
   margin-bottom: 1em;
   width: 100%;
 }
-/* line 248 */
+/* line 254 */
 .new-items-panel-wrap .new-items-panel {
   padding: 0.5em;
   background: #FFBD5D;
 }
-/* line 251 */
+/* line 257 */
 .new-items-panel-wrap .new-items-panel p {
   margin: 0.25em 0;
 }

@@ -58,7 +58,8 @@
       {% for programme in learning_plans %}
         {% if programme.get('expandable',True) %}
         <div class="accordion bordered highlighted programme">
-          <div class="accordion-head programme-head" data-statement-id= "{{ programme.get('statementId') }}">
+          {% set isNewProgramme = new_plan and (programme.get('statementId') == new_plan.get('statementId')) %}
+          <div class="accordion-head programme-head {% if isNewProgramme %} new-programme {% endif %}" data-statement-id= "{{ programme.get('statementId') }}">
             <span class="head-title heading-medium">{{ programme.title }}</span>
             <span class="more-group right">
               <button class="btn-more">show items <img alt="" src="/static/images/icon-caret-left.png"></button>
