@@ -13,104 +13,60 @@ import application.modules.dates as mls_dates
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
-def get_user_records(email):
+def load_user_records(email):
     pipeline = [
         _create_match_learning_records_by(email),
         PROJECTIONS['learning_record'],
         {'$sort': {'when': -1}}
     ]
-    return _query(pipeline)['result']
+    return _get_lrs_result_from(_query(pipeline))
 
-def get_user_learning_plans(email):
+def load_user_learning_plans(email):
     # all of them lines of code be here for now
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
 
-    plans = load_learning_plans(email)
-
-    for plan in plans:
-        planned_items = []
-        
-        for item in load_learning_plan_items(plan['object']['id']):
-            records = load_learning_plan_item_learning_records(email, item['statementId'])
-
-            verb_name = item['verb']['display']['en']
-            
-            info_lines = []
-            resource_type = Statement.get_resource_type(item.get('object').get('definition').get('type'))
-            if resource_type:
-                resource_type = resource_type.get('name', '')
-                info_lines.append(resource_type)
-            
-            duration = item.get('result', {}).get('duration')
-            if duration:
-                duration = 'Average time: ' + mls_dates.convert_duration(duration)
-                info_lines.append(duration)
-
-            actions = [{
-                'title': verb_name.capitalize() + (' again' if records else ' now'),
-                'url': item['object']['id']
-            }]
-
-            # taking the last one to display, done like this as who knows what they are going to come up with
-            # all records may be required later
-            if records:
-                records = [records[-1]]
-
-            planned_item = {
-                'statementId': item['statementId'],
-                'records': records,
-                'title': '%s %s' % (verb_name.capitalize(), item['object']['definition']['name']['en']),
-                'required': item.get('result', {}).get('completion', False),
-                'descriptionLines': [],
-                'infoLines': info_lines,
-                'actions': actions
-            }
-            planned_items.append(planned_item)
-
-        dgn_learning_plan = {
-            'statementId': plan['statementId'], 
-            'title': plan['object']['definition']['name']['en'],
-            'addedBy': 'diagnostic',
-            'descriptionLines': [],
-            'sections': [],
-            'items': planned_items
-        }
-
-        learning_plan.insert(len(learning_plan)-1, dgn_learning_plan)
+    loaded_plans = load_learning_plans(email)
+    for plan in loaded_plans:
+        learning_plan.insert(len(learning_plan)-1, _create_learning_plan_view_model(plan, email))
 
     return learning_plan
 
 def load_learning_plans(email):
-    return _query([
+    query_response = _query([
         _create_match_learning_plan_by_email(email),
         PROJECTIONS['plan']
-    ])['result']
+    ])
+    return _get_lrs_result_from(query_response)
 
 def load_learning_plan(plan_id):
-    return _query([
+    query_response = _query([
         _create_match_learning_plan_by_plan_id(plan_id),
         PROJECTIONS['plan']
-    ])['result'][0]
+    ])
+    return _get_lrs_result_from(query_response, take_first=True)
 
 def load_learning_plan_items(plan_id):
-    return _query([
+    query_response = _query([
         _create_match_learning_plan_items_by(plan_id),
         PROJECTIONS['plan_item']
-    ])['result']
+    ])
+    return _get_lrs_result_from(query_response)
 
 def load_learning_plan_item(statement_id):
-    return _query([
+    query_response = _query([
         _create_match_learning_plan_item_by(statement_id),
         PROJECTIONS['plan_item']
-    ])['result'][0]
+    ])
+    return _get_lrs_result_from(query_response, take_first=True)
 
 def load_learning_plan_item_learning_records(email, plan_item_id):
     plan_item = load_learning_plan_item(plan_item_id)
-    return _query([
+    query_response = _query([
         _create_match_learning_plan_item_learning_records(email, plan_item),
         PROJECTIONS['learning_record']
-    ])['result']
+    ])
+    return _get_lrs_result_from(query_response)
 
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
@@ -131,27 +87,11 @@ def clean_learning_plans(email):
     response = requests.get(requestUrl, auth=(username, password), verify=False)
     return response.json()
 
-
-def create_sample_plan(learner_email):
-    sample_plan = Statement.create_plan(
-        plan_name='Sample learning plan',
-        learner_actor=learner_email)
-
-    # maybe here assignee_actor then add_planneditem can take it if it's there - do it later
-    sample_plan.add_planned_item(Statement(
-        verb=Statement.create_verb('complete'),
-        statement_obj=Statement.create_activity_obj(
-            uri='http://www.skillsyouneed.com/ips/improving-communication.html',
-            name='Developing Effective Communication | Skills You Need')))
-
-    sample_plan.add_planned_item(Statement(
-        verb='read',
-        statement_obj=Statement.create_activity_obj(
-            uri='http://www.artofliving.org/meditation/meditation-for-you/benefits-of-meditation',
-            name='Benefits of Meditation | Meditation Benefits | The Art Of Living Global')))
-
-    return _post(sample_plan.to_json())
-
+def _get_lrs_result_from(query_response, take_first=False):
+    result = query_response.get('result')
+    if result and take_first:
+        result = next(iter(result), None)
+    return result
 
 def _post(payload_json):
     username = Config.LRS_USER
@@ -310,4 +250,51 @@ PROJECTIONS = {
 
 }
 
+def _create_learning_plan_view_model(plan, email):
+    planned_items = []
+    
+    for item in load_learning_plan_items(plan['object']['id']):
+        records = load_learning_plan_item_learning_records(email, item['statementId'])
 
+        verb_name = item['verb']['display']['en']
+        
+        info_lines = []
+        resource_type = Statement.get_resource_type(item.get('object').get('definition').get('type'))
+        if resource_type:
+            resource_type = resource_type.get('name', '')
+            info_lines.append(resource_type)
+        
+        duration = item.get('result', {}).get('duration')
+        if duration:
+            duration = 'Average time: ' + mls_dates.convert_duration(duration)
+            info_lines.append(duration)
+
+        actions = [{
+            'title': verb_name.capitalize() + (' again' if records else ' now'),
+            'url': item['object']['id']
+        }]
+
+        # taking the last one to display, done like this as who knows what they are going to come up with
+        # all records may be required later
+        if records:
+            records = [records[-1]]
+
+        planned_item = {
+            'statementId': item['statementId'],
+            'records': records,
+            'title': '%s %s' % (verb_name.capitalize(), item['object']['definition']['name']['en']),
+            'required': item.get('result', {}).get('completion', False),
+            'descriptionLines': [],
+            'infoLines': info_lines,
+            'actions': actions
+        }
+        planned_items.append(planned_item)
+
+    return {
+        'statementId': plan['statementId'],
+        'title': plan['object']['definition']['name']['en'],
+        'addedBy': 'diagnostic',
+        'descriptionLines': [],
+        'sections': [],
+        'items': planned_items
+    }

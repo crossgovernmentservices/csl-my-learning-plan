@@ -23,7 +23,7 @@ learningplan = Blueprint('learningplan', __name__)
 @learningplan.route('/learning-plan')
 @login_required
 def view_plan():
-    learning_plans = lrs_service.get_user_learning_plans(current_user.email)
+    learning_plans = lrs_service.load_user_learning_plans(current_user.email)
     plan_id = request.args.get('newplan')
     new_plan = next((plan for plan in learning_plans if plan.get('statementId') == plan_id), None) if plan_id else None
     return render_template('learningplan/view_plan.html', learning_plans=learning_plans, new_plan=new_plan)

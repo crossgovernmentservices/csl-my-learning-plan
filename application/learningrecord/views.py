@@ -20,7 +20,7 @@ learningrecord = Blueprint('learningrecord', __name__)
 @learningrecord.route('/learning-record')
 @login_required
 def view_record():
-    records = lrs_service.get_user_records(current_user.email)
+    records = lrs_service.load_user_records(current_user.email)
 
     return render_template('learningrecord/view_record.html', records=records)
 
@@ -29,5 +29,5 @@ def view_record():
 @learningrecord.route('/learning-record/json')
 @login_required
 def view_record_json():
-    records = lrs_service.get_user_records(current_user.email)
+    records = lrs_service.load_user_records(current_user.email)
     return jsonify(records=records)
