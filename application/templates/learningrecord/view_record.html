@@ -1,10 +1,52 @@
-{% extends "base.html" %}
+{% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_learning_record" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
 {% block body_content %}
 
   {% include "_logout.html" %}
-  <h2 class="heading-medium">Learning records JSON from LRS</h2>
-  <a href="{{ url_for('learningrecord.view_record_json',record_id=123) }}">see this as a real JSON</a>
-  <p>{{learning_records}}</p>
 
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="page-header">
+        <h1 class="heading-xlarge">Your learning record</h1>
+      </div>
+    </div>
+  </div>
+  
+  <table class="user-history">
+    <thead>
+      <th>Date</th>
+      <th>What</th>
+      <th>Resource</th>
+    </thead>
+    <tbody>
+      {% for statement in records %}
+      <tr>
+        <td>{{ statement.when | format_date  }}</td>
+        <td>{{ statement.verb.name }}</td>
+        <td>
+          {% if 'www.youtube' in statement.object.id %}
+            YouTube video (<a href="{{ statement.object.id }}" target="_blank">{{ statement.object.name }}</a>)
+          {% else %}
+            <a href="{{ statement.object.id }}" target="_blank">{{ statement.object.name }}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  <div class="grid-row record-actions">
+    <div class="column-two-thirds">
+      <p><a href="{{ url_for('learningrecord.view_record_json') }}">I feel like looking at JSON today</a></p>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -14,11 +14,10 @@ LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
 def get_user_records(email):
     pipeline = [
-        _create_match_user_by(email),
+        _create_match_learning_records_by(email),
         PROJECTIONS['learning_record'],
         {'$sort': {'when': -1}}
     ]
-
     return _query(pipeline)['result']
 
 def get_user_learning_plans(email):
@@ -188,7 +187,7 @@ def _create_full_url(route_url):
         route_url=route_url)
 
 
-def _create_match_user_by(email):
+def _create_match_learning_records_by(email):
     return {
         '$match': {
             '$or': [

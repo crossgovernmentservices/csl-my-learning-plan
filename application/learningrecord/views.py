@@ -17,18 +17,17 @@ import application.modules.lrs_service as lrs_service
 
 learningrecord = Blueprint('learningrecord', __name__)
 
-@learningrecord.route('/learning-record/<record_id>')
+@learningrecord.route('/learning-record')
 @login_required
-def view_record(record_id):
+def view_record():
     records = lrs_service.get_user_records(current_user.email)
-    current_app.logger.info(records)
 
-    return render_template('learningrecord/view_record.html', learning_records=records)
+    return render_template('learningrecord/view_record.html', records=records)
 
 
 # JSON stuff here
-@learningrecord.route('/learning-record/<record_id>/json')
+@learningrecord.route('/learning-record/json')
 @login_required
-def view_record_json(record_id):
+def view_record_json():
     records = lrs_service.get_user_records(current_user.email)
     return jsonify(records=records)
