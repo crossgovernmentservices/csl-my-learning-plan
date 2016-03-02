@@ -5,6 +5,7 @@ import ssl
 import os
 import logging
 import requests
+import urllib.parse as url_parse
 
 from application.config import Config
 from application.modules.models import Statement
@@ -54,7 +55,7 @@ def get_user_learning_plans(email):
             # taking the last one to display, done like this as who knows what they are going to come up with
             # all records may be required later
             if records:
-                records = [records[-1]] 
+                records = [records[-1]]
 
             planned_item = {
                 'statementId': item['statementId'],
@@ -110,7 +111,6 @@ def load_learning_plan_item_learning_records(email, plan_item_id):
         _create_match_learning_plan_item_learning_records(email, plan_item),
         PROJECTIONS['learning_record']
     ])['result']
-
 
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
@@ -173,7 +173,6 @@ def _query(aggregation_pipeline):
 
     query_url = Config.LRS_QUERY_URL % json.dumps(aggregation_pipeline)
     requestUrl = _create_full_url(query_url)
-    logger = logging.getLogger()
 
     response = requests.get(requestUrl, auth=(username, password), verify=False)
     return response.json()
@@ -246,7 +245,7 @@ def _create_match_learning_plan_item_learning_records(email, plan_item):
     return {
         '$match': {
             'statement.actor.mbox': 'mailto:%s' % email,
-            'statement.object.id': '%s' % plan_item['object']['id'],
+            'statement.object.id': '%s' % url_parse.quote(plan_item['object']['id']),
             'statement.verb.id': '%s' % plan_item['verb']['id'],
             'voided': False
         }
