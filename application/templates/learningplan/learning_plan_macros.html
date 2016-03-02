@@ -54,7 +54,7 @@
           {% if hasActions %}
           <ul class="action-list">
           {% for itemAction in plan_item['actions'] %}
-            <li class="action"><a href="{{ itemAction['url'] }}" target="_blank">{{ itemAction['title'] }}</a></li>
+            <li class="action"><a href="{{ itemAction['url'] }}">{{ itemAction['title'] }}</a></li>
           {% endfor %}
           </ul>
           {% endif %}
