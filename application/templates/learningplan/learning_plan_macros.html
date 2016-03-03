@@ -14,6 +14,7 @@
           <button class="btn-less"><img alt="" src="/static/images/icon-caret-down.png"></button>
         </span>
         <span class="head-title">{{ plan_item.title }}</span>
+        
         {% if plan_item.get('required', False) %}
         <span class="required">Required</span>
         {% endif %}

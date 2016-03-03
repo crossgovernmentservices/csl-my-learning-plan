@@ -22,7 +22,12 @@
     // line-height: 2em;
     position: relative;
 
-
+    .head-title{
+      display: inline-block;
+      word-wrap: break-word;
+      margin: 0;
+      max-width: 70%;
+    }
     &:hover {
       cursor: pointer;
       .head-title {
@@ -238,6 +243,7 @@
     &.done{
       border: 1px solid $button-colour;
       color: $button-colour;
+      vertical-align: top;
     }
   }
 
