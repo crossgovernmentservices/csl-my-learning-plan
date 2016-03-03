@@ -64,9 +64,13 @@
                   data-tincan-data='{{ item["tincanstatement"]|tojson|safe }}'
                 {% endif %}>
 
-                <td><a href="{{ item['url'] }}">{{ item['title'] }}</a></td>
+                <td><a href="{{ item['url'] }}" target="_blank">{{ item['title'] }}</a></td>
                 <td>{{ item['type'] }}</td>
-                <td>{{ item['duration']|format_duration }}</td>
+                <td>
+                  {% if item['duration'] %}
+                    {{ item['duration']|format_duration }}
+                  {% endif %}
+                </td>
                   
                 {% if isRequired %}
                   <td>added to plan</td>
