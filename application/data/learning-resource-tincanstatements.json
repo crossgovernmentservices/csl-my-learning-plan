@@ -63,5 +63,27 @@
       "duration": "PT6H0M",
       "completion": true
     }
+  },
+  "https://www.youtube.com/watch?v=SjnmIvmH4UU": {
+    "object": {
+      "objectType": "Activity",
+      "id": "https://www.youtube.com/watch?v=SjnmIvmH4UU",
+      "definition": {
+        "type": "http://activitystrea.ms/schema/1.0/video",
+        "name": {
+          "en": "Youtube version of How to be agile in a non-agile environment"
+        }
+      }
+    },
+    "verb": {
+      "id": "http://activitystrea.ms/schema/1.0/watch",
+      "display": {
+        "en": "watch"
+      }
+    },
+    "result": {
+      "duration": "PT19M",
+      "completion": false
+    }
   }
 }

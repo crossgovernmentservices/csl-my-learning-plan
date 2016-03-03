@@ -4,7 +4,7 @@ import uuid
 from copy import deepcopy
 
 class Statement:
-    DEFAULT_PLANNER_EMAIL = "planner@gmail.com"
+    DEFAULT_PLANNER_EMAIL = 'planner@gmail.com'
 
     VERBS = {
         'read': {
@@ -22,6 +22,10 @@ class Statement:
         'enroll': {
             'id': 'http://www.tincanapi.co.uk/verbs/enrolled_onto_learning_plan',
             'display': {'en': 'enrolled onto plan'}
+        },
+        'watch': {
+            'id': 'http://activitystrea.ms/schema/1.0/watch',
+            'display': {'en': 'watch'}
         }
     }
 
@@ -37,6 +41,10 @@ class Statement:
         'elearning': {
             'id': 'http://adlnet.gov/expapi/activities/course',
             'name': 'e-learning'
+        },
+        'video': {
+            'id': 'http://activitystrea.ms/schema/1.0/video',
+            'name': 'video'
         }
     }
 
@@ -148,8 +156,8 @@ class Statement:
 
     def _grouping_to_json(self):
         return [{
-            "objectType": "Activity",
-            "id": self.grouping
+            'objectType': 'Activity',
+            'id': self.grouping
         }]
 
 
