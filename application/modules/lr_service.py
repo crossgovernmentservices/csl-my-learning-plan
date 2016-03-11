@@ -61,7 +61,7 @@ def get_all_courses_from_learning_registry():
             'audience': item['audience'],
             'type': map_type(item),
             'desc': item['description'],
-            'url': item['url'], 
+            'url': item['url'],
             'price': item['offers']['price'] + item['offers']['priceCurrency'] if 'offers' in item else 'Free Resource',
             'topics': item['keywords']
         }

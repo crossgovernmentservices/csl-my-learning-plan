@@ -43,32 +43,49 @@
         {% endblock %}
 
         {% block pricing %}
-          {% if course.pricing is defined %}
+          {% if course.price %}
           <h2 class="heading-large">Pricing</h2>
-          {{ course.pricing|safe }}
+          <p>
+            {% if course.duration %}
+            This is a {{ course.duration|format_duration|lower }} course.
+            {% endif %}
+
+            {% if "Free Resource" in course.price %}
+              This course is free.
+            {% else %}
+              The cost for 1 person is {{ course.price }}.
+              {% if course.priceAdditional %}
+                {{ course.priceAdditional|safe }}
+              {% endif %}
+            {% endif %}
+          </p>
+          <p>For further details please call 020 3367 8316 or email <a href='mailto:info@civilservicelearning.org.uk'>info@civilservicelearning.org.uk</a>.</p>
+
           {% endif %}
         {% endblock %}
+        
+        {% if course.outcomes %}
+          <h2 class="heading-large">Learning outcomes</h2>
+          {{ course.outcomes.blurb|safe }}
 
-        <h2 class="heading-large">Learning outcomes</h2>
-        {{ course.outcomes.blurb|safe }}
+          <ul class="list-bullet">
+          {% for outcome in course.outcomes.points %}
+            <li>{{ outcome }}</li>
+          {% endfor %}
+          </ul>
 
-        <ul class="list-bullet">
-        {% for outcome in course.outcomes.points %}
-          <li>{{ outcome }}</li>
-        {% endfor %}
-        </ul>
-
-        {% if course.outcomes.warning is defined %}
-        <div class="panel-indent">{{ course.outcomes.warning|safe }}</div>
+          {% if course.outcomes.warning is defined %}
+          <div class="panel-indent">{{ course.outcomes.warning|safe }}</div>
+          {% endif %}
         {% endif %}
 
       </div>
 
       <div class="course-actions">
       {% if course.type and course.type == "face2face" %}
-        <a href="/rebrand/schedule-course" class="button button-get-started" role="button">Start booking now</a>
+        <a href="#" class="button button-get-started" role="button">Start booking now</a>
       {% else %}
-        <a href="/rebrand/schedule-course" class="button button-get-started" role="button">Start now</a>
+        <a href="{{ course.url }}" class="button button-get-started" role="button">Start now</a>
       {% endif %}
       </div>
 
@@ -154,15 +171,11 @@
         <dt>Product code</dt>
         <dd>DADD13</dd>
         <dt>Duration</dt>
-        <dd>{% if course.duration is defined %} {{ course.duration }} {% endif %}</dd>
+        <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
       </dl>
     </div>
   </div>
 
-  
-  <div>
-    {{ course }}
-  </div>
 
 </main>
 
