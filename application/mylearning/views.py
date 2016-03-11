@@ -25,7 +25,6 @@ mylearning = Blueprint('mylearning', __name__, template_folder='templates')
 
 
 @mylearning.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     return render_template('index.html')
 

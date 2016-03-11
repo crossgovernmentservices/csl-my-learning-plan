@@ -42,6 +42,12 @@ def view_resource(resource_id):
     course = lr_service.get_resource(resource_id)
     return render_template('learningresource/view_resource.html', course=course)
 
+@learningresource.route('/learning-resource/course/<resource_id>/start')
+@login_required
+def start(resource_id):
+    course = lr_service.get_resource(resource_id)
+    return redirect(course['url'])
+
 # API
 @learningresource.route('/api/learning-resource/course/<resource_id>')
 def api_view_resource(resource_id):

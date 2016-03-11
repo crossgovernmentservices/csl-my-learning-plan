@@ -2,9 +2,11 @@
 
 {% block page_title %}CSL Courses |  {{ course.title }} {% endblock %}
 
-{% block content %}
+{% block body_content %}
 
 <main id="content" role="main">
+
+  {% include "_logout.html" %}
 
   <div id="global-breadcrumb">
     <ol>
@@ -85,7 +87,7 @@
       {% if course.type and course.type == "face2face" %}
         <a href="#" class="button button-get-started" role="button">Start booking now</a>
       {% else %}
-        <a href="{{ course.url }}" class="button button-get-started" role="button">Start now</a>
+        <a href="{{ url_for('learningresource.start', resource_id=course.id) }}" class="button button-get-started" role="button">Start now</a>
       {% endif %}
       </div>
 
