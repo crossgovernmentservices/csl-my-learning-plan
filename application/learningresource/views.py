@@ -19,7 +19,6 @@ import application.modules.lr_service as lr_service
 learningresource = Blueprint('learningresource', __name__)
 
 @learningresource.route('/learning-resource/search', methods=['GET', 'POST'])
-@login_required
 def search():
     if request.method == 'POST':
         filterJson = request.get_json()
@@ -37,3 +36,14 @@ def search():
         return json.dumps(courses)
 
     return render_template('learningresource/search.html')
+
+@learningresource.route('/learning-resource/course/<resource_id>')
+def view_resource(resource_id):
+    course = lr_service.get_resource(resource_id)
+    return render_template('learningresource/view_resource.html', course=course)
+
+# API
+@learningresource.route('/api/learning-resource/course/<resource_id>')
+def api_view_resource(resource_id):
+    course = lr_service.get_resource(resource_id)
+    return jsonify(course)

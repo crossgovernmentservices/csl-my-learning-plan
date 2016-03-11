@@ -111,7 +111,7 @@
           ]),
 
           $('<h3/>', { 'class': 'heading-small course-result__title'}).html(
-            $('<a/>', { 'href': course.url }).text(course.title)
+            $('<a/>', { 'href': '/learning-resource/course/' + course.id }).text(course.title)
           ),
 
           $('<p/>', { 'class': 'text' }).text(course.price),

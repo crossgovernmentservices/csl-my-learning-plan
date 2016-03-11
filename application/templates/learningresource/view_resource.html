@@ -1,0 +1,169 @@
+{% extends "rebranded-base.html" %}
+
+{% block page_title %}CSL Courses |  {{ course.title }} {% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="/index#rebrand">CSL rebrand</a></li>
+      <li>Courses</li>
+      <li>{{ course.title }}</li>
+    </ol>
+  </div>
+
+  {% if status == "waiting" %}
+  <div class="notification-banner">
+    <p>Booking requested. Waiting for confirmation. <a class="check-status-link" href="/rebrand/user-newcourse/waiting#current-courses">Check details</a></p>
+  </div>
+  {% elif status == "confirmed" %}
+  <div class="notification-banner--confirmed">
+    <p>You are due to attend on 22nd November 2015. <a class="check-status-link" href="/rebrand/user-newcourse/confirmed#current-courses">Check details</a></p>
+  </div>
+  {% endif %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="page-header">
+        <h1 class="heading-xlarge">{{ course.title }}</h1>
+      </div>
+
+      <div class="course-description text">
+        <h2 class="heading-large">Description</h2>
+        {{ course.desc|safe }}
+
+        {% block prelearning_content %}
+          {% if course["pre-learning"] is defined %}
+          <h2 class="heading-large">Pre-learning requirements</h2>
+          {{ course["pre-learning"]|safe }}
+          {% endif %}
+        {% endblock %}
+
+        {% block pricing %}
+          {% if course.pricing is defined %}
+          <h2 class="heading-large">Pricing</h2>
+          {{ course.pricing|safe }}
+          {% endif %}
+        {% endblock %}
+
+        <h2 class="heading-large">Learning outcomes</h2>
+        {{ course.outcomes.blurb|safe }}
+
+        <ul class="list-bullet">
+        {% for outcome in course.outcomes.points %}
+          <li>{{ outcome }}</li>
+        {% endfor %}
+        </ul>
+
+        {% if course.outcomes.warning is defined %}
+        <div class="panel-indent">{{ course.outcomes.warning|safe }}</div>
+        {% endif %}
+
+      </div>
+
+      <div class="course-actions">
+      {% if course.type and course.type == "face2face" %}
+        <a href="/rebrand/schedule-course" class="button button-get-started" role="button">Start booking now</a>
+      {% else %}
+        <a href="/rebrand/schedule-course" class="button button-get-started" role="button">Start now</a>
+      {% endif %}
+      </div>
+
+    </div>
+
+    <div class="column-third related-container">
+      <aside class="related">
+        <div class="related-subsection">
+          <h2 class="heading-medium">Learning material</h2>
+          <nav>
+            <ul>
+              {% if course.related_materials is defined %}
+                {% import 'partials/helpers.html' as helpers %}
+                {{ helpers.link_list(course.related_materials) }}
+              {% else %}
+              <li><a href="#">Digital Efficiency Report</a></li>
+              <li><a href="#">Digital Government, Open Architecture, and Innovation</a></li>
+              <li><a href="#">Digital Inclusion – Resources & Tools</a></li>
+              <li><a href="#">Digital Landscape research</a></li>
+              <li><a href="#">Digital and IT capabilities</a></li>
+              <li><a href="#">Digital Services for Small and Medium Enterprises</a></li>
+              <li><a href="#">Introduction to social media</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        <div class="related-subsection">
+          <h2 class="heading-medium">Learning opportunities</h2>
+          <nav>
+            <ul>
+              {% if course.related_opportunities %}
+                <!-- ?? -->
+              {% else %}
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-listening-users">Digital skills - Listening to users</a></li>
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-starting-user-needs">Digital skills - Starting with user needs</a></li>
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-transforming-services-agile">Digital skills - Transforming services with Agile</a></li>
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-using-social-media-public-services">Digital skills - Using social media in public services</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+
+    </div>
+
+  </div>
+
+  
+  <div class="grid-row">
+    <div class="column-third course-metadata-section">
+      <h3 class="heading-medium">Level</h3>
+      <ul class="list-bullet">
+      {% if course.levels is defined %}
+        {% for level in course.levels %}
+        <li>{{ level }}</li>
+        {% endfor %}
+      {% else %}
+        <li>Administrative Level (AA/AO)</li>
+        <li>First Line Managers (EO)</li>
+        <li>Middle Managers (HEO/SEO)</li>
+        <li>Senior Managers (Grade 6/7)</li>
+        <li>Senior Civil Servants (SCS)</li>
+      {% endif %}
+      </ul>
+    </div>
+    <div class="column-third course-metadata-section">
+      <h3 class="heading-medium">Topic</h3>
+      <ul class="list-bullet">
+        {% if course.topics is defined %}
+          {% for topic in course.topics %}
+          <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">{{ topic }}</a></li>
+          {% endfor %}
+        {% else %}
+        <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Core Skills</a></li>
+        <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Digital & IT</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="column-third course-metadata-section">
+      <h3 class="heading-medium">Other information</h3>
+      <dl class="definition-inline">
+        <dt>Product code</dt>
+        <dd>DADD13</dd>
+        <dt>Duration</dt>
+        <dd>{% if course.duration is defined %} {{ course.duration }} {% endif %}</dd>
+      </dl>
+    </div>
+  </div>
+
+  
+  <div>
+    {{ course }}
+  </div>
+
+</main>
+
+{% endblock %}
