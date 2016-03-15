@@ -17,9 +17,49 @@
     "levels": [
       "Senior Managers (Grade 6/7)",
       "Senior Civil Servants (SCS)"
-    ]
+    ],
+    "course": {
+      "pages": [
+        {
+          "title": "page 1 title",
+          "content": "some html describing page 1"
+        },
+        {
+          "title": "page 2 title",
+          "content": "some html describing page 2"
+        }
+      ],
+      "questions": [
+        {
+          "title": "Question one",
+          "tag": "",
+          "multichoice": false,
+          "description": "I know gmail, say:",
+          "guide": "",
+          "choices": [
+            "Like a back of my hand",
+            "I know of it",
+            "What's a keyboard?"
+          ]
+        },
+        {
+          "title": "Question two",
+          "tag": "",
+          "multichoice": true,
+          "description": "Select which of these you could confidently teach a colleague:",
+          "guide": "",
+          "choices": [
+            "Sending calendars, including shared calendars and create meetings",
+            "Attach files or internet links to an email (e.g. documents and websites)",
+            "Delete an email and am aware of how to recover deleted emails ",
+            "Understand follow up flags and importance markers ",
+            "Can carry out housekeeping and ensure storage limit is not exceeded (e.g. in Outlook) ",
+            "Use the 'out of office assistant' for the days I'm not working "
+          ]
+        }
+      ]
+    }
   },
-
   "d8e42a1ecf4d11e5ac3f0242ac110001": {
     "title": "HTML Email Training",
     "priceAdditional": "",
@@ -33,8 +73,46 @@
     "levels": [
       "some level 1",
       "some level 2"
-    ]
+    ],
+    "course": {
+      "pages": [
+        {
+          "title": "page 1 html basics title",
+          "content": "some html describing page 1"
+        },
+        {
+          "title": "page 2 html basics title",
+          "content": "some html describing page 2"
+        }
+      ],
+      "questions": [
+        {
+          "title": "Question one",
+          "tag": "",
+          "multichoice": false,
+          "description": "I know email, say:",
+          "guide": "",
+          "choices": [
+            "I'm an email troll and send all kindz of them",
+            "It's there, I use it, no biggie",
+            "I go to post office to ask for help"
+          ]
+        },
+        {
+          "title": "Question two",
+          "tag": "",
+          "multichoice": true,
+          "description": "Select which of these you could confidently teach a colleague:",
+          "guide": "",
+          "choices": [
+            "Typing",
+            "Typing and reading typed in stuff",
+            "Pasting an image",
+            "Changing them fonts and using colours",
+            "Sending troll emails to w3.org saying what you would change"
+          ]
+        }
+      ]
+    }
   }
-
-
 }

@@ -6,7 +6,8 @@ from flask import (
     url_for,
     request,
     current_app,
-    jsonify
+    jsonify,
+    make_response
 )
 
 from flask.ext.security import login_required
@@ -18,6 +19,11 @@ import application.modules.lrs_service as lrs_service
 
 
 learningresource = Blueprint('learningresource', __name__)
+
+COOKIE_COURSE='learningcourse'
+
+TYPE_PAGE='pages'
+TYPE_QUESTION='questions'
 
 @learningresource.route('/learning-resource/search', methods=['GET', 'POST'])
 def search():
@@ -54,14 +60,50 @@ def view_resource(resource_id):
                 course_uri=url_for('learningresource.view_resource', resource_id=pre_course['id'], _external=True))
 
 
-
     return render_template('learningresource/view_resource.html', course=course, pre_course=pre_course, user_logged_in=current_user.is_authenticated)
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required
 def start(resource_id):
+    resp = make_response(redirect(url_for('learningresource.view_course_page', resource_id=resource_id, res_type=TYPE_PAGE, number=0)))
+    resp.set_cookie(COOKIE_COURSE, '', expires=0)
+    return resp
+
+
+@learningresource.route('/learning-resource/course/<resource_id>/<res_type>/<number>', methods=['GET', 'POST'])
+@login_required
+def view_course_page(resource_id, res_type, number):
     course = lr_service.get_resource(resource_id)
-    return redirect(course['url'])
+    page_number = int(number or 0)
+    page_count = len(course['course'][res_type])
+    current_page = course['course'][res_type][page_number]
+
+    if request.method == 'POST':
+        is_last = (page_number + 1) >= page_count
+        if is_last:
+            if res_type == TYPE_PAGE:
+                res_type = TYPE_QUESTION
+                page_number = 0
+            elif res_type == TYPE_QUESTION:
+                return redirect(url_for('learningresource.view_course_complete', resource_id=resource_id))
+        else:
+            page_number+=1
+
+        redirect_url = url_for('learningresource.view_course_page', resource_id=resource_id, res_type=res_type, number=page_number)
+        return redirect(redirect_url)
+
+
+    return render_template('/learningresource/course_page.html',
+        res_type=res_type, course=course, page_number=page_number, page=current_page, page_count=page_count)
+
+@learningresource.route('/learning-resource/course/<resource_id>/success')
+@login_required
+def view_course_complete(resource_id):
+    course = lr_service.get_resource(resource_id)
+    # learning_record ??
+    return render_template('/learningresource/course_outro.html', course=course, learninig_record=None)
+
+
 
 # API
 @learningresource.route('/api/learning-resource/course/<resource_id>')

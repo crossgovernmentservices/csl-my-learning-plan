@@ -1,0 +1,45 @@
+{% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_learning_resource" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
+{% block body_content %}
+
+
+  {% include "_logout.html" %}
+
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li>{{ course['title'] }}</li>
+      <li>completed</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <main class="column-full">
+    
+
+      <div class="callout">
+        <h2 class="heading-large callout__heading">Completed</h2>
+        <div class="lede">
+          <span>Course</span>
+          <p class="course-title">{{ course['title'] }}</p>
+          <span>Your score</span>
+          <p class="ref-number">N/A - needs to be developed :P</p>
+        </div>
+      </div>
+
+      <p class="with-hr"><i class="icon-email"></i>Have we sent you a confirmation email here?</p>
+      <h3 class="heading-medium">What happens next?</h3>
+      <p class="text">Dunno</p>
+
+    </main>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "rebranded-base.html" %}
+
+{% block page_head_end %}
+  {% assets "css_learning_resource" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
+
+
+{% block body_content %}
+
+  {% include "_logout.html" %}
+
+  <div id="global-breadcrumb">
+    <ol>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li>{{ course['title'] }}</li>
+      <li>{{ page['title'] }}</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <main class="column-two-thirds">
+      <header class="page-header">
+        <h1 class="heading-xlarge">{{ page['title'] }}</h1>
+      </header>
+
+      <section>
+        <form action="{{ url_for('learningresource.view_course_page', resource_id=course['id'], res_type=res_type, number=page_number) }}" method="POST">
+          {% if res_type == TYPE_QUESTION %}
+            <p>question be here</p>
+          {% else %}
+            {{ page['content']|safe }}
+          {% endif %}
+            
+
+
+          <p id="get-started" class="get-started">
+            {% set isLastPage = (page_number+1) == page_count %}  
+            <button type="submit" class="button">Next page</button>
+          </p>
+
+        </form>
+      </section>
+    </main>
+
+  </div>
+
+{% endblock %}
