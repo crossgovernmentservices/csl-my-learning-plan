@@ -1,5 +1,8 @@
 {
-  "1dc4ddf4cf5311e5b7460242ac110001": {
+  "04d181dccf4c11e59fa60242ac110001": {
+    "title": "Ultimate Guide to Gmail",
+    "prerequisites": "d8e42a1ecf4d11e5ac3f0242ac110001",
+    "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "outcomes": {
       "blurb": "<p>By the end of the programme you’ll have:</p>",
       "points": [
@@ -11,11 +14,25 @@
       ],
       "warning": "Please note that it may take up to 24 hours for your learning record to update following completion of this course."
     },
-    "pre-learning": "<p>You’ll need to consider:</p><ol class='list-number'><li>a current or imminent change programme being implemented within your organisation</li><li>your strategy for leading the change within your organisation</li><li>what change challenges are you currently dealing with or expect to face when delivering the change?</li><li>where have you seen change succeed in the past  - and why?</li><li>what’s inspired you in the past - in or out of work? What types of things do you visualise to help your motivation?</li></ol>",
-    "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "levels": [
       "Senior Managers (Grade 6/7)",
       "Senior Civil Servants (SCS)"
+    ]
+  },
+
+  "d8e42a1ecf4d11e5ac3f0242ac110001": {
+    "title": "HTML Email Training",
+    "priceAdditional": "",
+    "outcomes": {
+      "blurb": "<p>By the end of the programme you’ll have:</p>",
+      "points": [
+        "some point numero uno"
+      ],
+      "warning": "Please note that it may take up to 24 hours for your learning record to update following completion of this course."
+    },
+    "levels": [
+      "some level 1",
+      "some level 2"
     ]
   }
 

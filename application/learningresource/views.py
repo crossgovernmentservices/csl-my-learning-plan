@@ -14,6 +14,7 @@ from flask.ext.login import current_user
 import json
 
 import application.modules.lr_service as lr_service
+import application.modules.lrs_service as lrs_service
 
 
 learningresource = Blueprint('learningresource', __name__)
@@ -40,7 +41,21 @@ def search():
 @learningresource.route('/learning-resource/course/<resource_id>')
 def view_resource(resource_id):
     course = lr_service.get_resource(resource_id)
-    return render_template('learningresource/view_resource.html', course=course)
+    pre_course = lr_service.get_course_prerequisites(resource_id)
+
+    if current_user.is_authenticated:
+        course['learningRecord'] = lrs_service.load_course_learning_records(
+            email=current_user.email,
+            course_uri=url_for('learningresource.view_resource', resource_id=course['id'], _external=True))
+        
+        if pre_course:
+            pre_course['learningRecord'] = lrs_service.load_course_learning_records(
+                email=current_user.email,
+                course_uri=url_for('learningresource.view_resource', resource_id=pre_course['id'], _external=True))
+
+
+
+    return render_template('learningresource/view_resource.html', course=course, pre_course=pre_course)
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required

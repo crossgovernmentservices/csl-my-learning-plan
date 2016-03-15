@@ -10,8 +10,13 @@ LEARNING_REGISTRY_URL = Config.LR_URL + Config.LR_QUERY_URL
 
 logger = logging.getLogger()
 
-def get_resource(resource_id):
+def get_course_prerequisites(course_id):
+    course = get_resource(course_id)
+    pre_course = get_resource(course.get('prerequisites'))
+    return pre_course
 
+
+def get_resource(resource_id):
     with open(RESOURCE_DATA_FILEPATH) as data_file:
         course_data = json.load(data_file).get(resource_id, {})
 
@@ -20,7 +25,6 @@ def get_resource(resource_id):
 
     return {**course_data, **lr_data}
 
-    
 
 def get_resources_with_tincanstatements():
     with open(RESOURCE_TINCAN_DATA) as data_file:

@@ -13,6 +13,22 @@ import application.modules.dates as mls_dates
 
 LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
+
+def load_course_learning_records(email, course_uri):
+    verb = Statement.create_verb('complete')
+    query_response = _query([
+        {'$match': {
+            'statement.actor.mbox': 'mailto:%s' % email,
+            'statement.object.id': '%s' % url_parse.quote(course_uri),
+            'statement.verb.id': '%s' % verb['id'],
+            'voided': False
+        }},
+        PROJECTIONS['learning_record']
+    ])
+    return _get_lrs_result_from(query_response)
+
+# def save_statement
+
 def load_user_records(email):
     pipeline = [
         _create_match_learning_records_by(email),

@@ -38,9 +38,10 @@
         {{ course.desc|safe }}
 
         {% block prelearning_content %}
-          {% if course["pre-learning"] is defined %}
+          {% if pre_course %}
           <h2 class="heading-large">Pre-learning requirements</h2>
-          {{ course["pre-learning"]|safe }}
+          <p>Blah blah blah you've got to do this first:</p>
+          <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id) }}">{{ pre_course['title'] }}</a>
           {% endif %}
         {% endblock %}
 
@@ -82,14 +83,16 @@
         {% endif %}
 
       </div>
-
-      <div class="course-actions">
-      {% if course.type and course.type == "face2face" %}
-        <a href="#" class="button button-get-started" role="button">Start booking now</a>
-      {% else %}
-        <a href="{{ url_for('learningresource.start', resource_id=course.id) }}" class="button button-get-started" role="button">Start now</a>
+      
+      {% if current_user.is_authenticated %}
+        <div class="course-actions">
+        {% if course.type and course.type == "face2face" %}
+          <a href="#" class="button button-get-started" role="button">Start booking now</a>
+        {% else %}
+          <a href="{{ url_for('learningresource.start', resource_id=course.id) }}" class="button button-get-started" role="button">Start now</a>
+        {% endif %}
+        </div>
       {% endif %}
-      </div>
 
     </div>
 
