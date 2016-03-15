@@ -15,7 +15,8 @@
     <ol>
       <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
       <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
-      <li>{{ course['title'] }}</li>
+      <li><a href="{{ url_for('learningresource.search') }}">Courses</a></li>
+      <li><a href="{{ url_for('learningresource.view_resource', resource_id=course['id']) }}">{{ course['title'] }}</a></li>
       <li>completed</li>
     </ol>
   </div>
@@ -23,7 +24,6 @@
   <div class="grid-row">
     <main class="column-full">
     
-
       <div class="callout">
         <h2 class="heading-large callout__heading">Completed</h2>
         <div class="lede">

@@ -11,30 +11,54 @@
 
   {% include "_logout.html" %}
 
-  <div id="global-breadcrumb">
-    <ol>
-      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
-      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
-      <li>{{ course['title'] }}</li>
-      <li>{{ page['title'] }}</li>
-    </ol>
-  </div>
 
   <div class="grid-row">
     <main class="column-two-thirds">
-      <header class="page-header">
-        <h1 class="heading-xlarge">{{ page['title'] }}</h1>
+
+      <header class="question">
+        <p class="number">{{ res_type|capitalize }}: {{ page_number+1 }} of {{ page_count }}</p>
+        <h1 class="heading-large">{{ page.title }}</h1>
+        <p>{{ page.description }}</p>
+        <p>{{ page.guide }}</p>
       </header>
 
       <section>
         <form action="{{ url_for('learningresource.view_course_page', resource_id=course['id'], res_type=res_type, number=page_number) }}" method="POST">
-          {% if res_type == TYPE_QUESTION %}
-            <p>question be here</p>
+
+          {% if res_type == 'questions' %}
+
+            <fieldset class="answer-list">
+              <legend class="visuallyhidden">{{ page.title }}</legend>
+
+              <div class="form-group">
+                {% for (value, caption) in page.get_choices_vals() %}
+                <label class="block-label" for="option-{{ loop.index }}">
+                  
+                  {% if page.is_multichoice %}
+                    {% set key = '%s-%s' % (page.tag, loop.index) %}
+                    <input id="option-{{ loop.index }}" name="{{ key }}" type="checkbox" value="{{ value }}"
+                      {% if page.answer[key] == value %}
+                        checked
+                      {% endif %}
+                    >
+                  {% else %}
+                    <input id="option-{{ loop.index }}" type="radio" name="{{ page.tag }}" value="{{ value }}"
+                      {% if page.answer[page.tag] == value %}
+                        checked 
+                      {% endif %}
+                    >
+                  {% endif %}
+
+                  {{ caption }}
+                </label>
+                {% endfor %}
+              </div>
+            </fieldset>
+            
           {% else %}
             {{ page['content']|safe }}
           {% endif %}
-            
-
+          
 
           <p id="get-started" class="get-started">
             {% set isLastPage = (page_number+1) == page_count %}  

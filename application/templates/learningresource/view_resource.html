@@ -10,8 +10,9 @@
 
   <div id="global-breadcrumb">
     <ol>
-      <li><a href="/index#rebrand">CSL rebrand</a></li>
-      <li>Courses</li>
+      <li><a href="{{ url_for('mylearning.index') }}">Home</a></li>
+      <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
+      <li><a href="{{ url_for('learningresource.search') }}">Courses</a></li>
       <li>{{ course.title }}</li>
     </ol>
   </div>

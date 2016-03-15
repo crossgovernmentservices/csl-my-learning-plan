@@ -32,7 +32,7 @@
       "questions": [
         {
           "title": "Question one",
-          "tag": "",
+          "tag": "ugtg-1",
           "multichoice": false,
           "description": "I know gmail, say:",
           "guide": "",
@@ -44,7 +44,7 @@
         },
         {
           "title": "Question two",
-          "tag": "",
+          "tag": "ugtg-2",
           "multichoice": true,
           "description": "Select which of these you could confidently teach a colleague:",
           "guide": "",
@@ -88,7 +88,7 @@
       "questions": [
         {
           "title": "Question one",
-          "tag": "",
+          "tag": "het-1",
           "multichoice": false,
           "description": "I know email, say:",
           "guide": "",
@@ -100,7 +100,7 @@
         },
         {
           "title": "Question two",
-          "tag": "",
+          "tag": "het-2",
           "multichoice": true,
           "description": "Select which of these you could confidently teach a colleague:",
           "guide": "",

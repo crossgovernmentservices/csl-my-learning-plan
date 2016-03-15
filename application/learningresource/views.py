@@ -16,6 +16,8 @@ import json
 
 import application.modules.lr_service as lr_service
 import application.modules.lrs_service as lrs_service
+from application.modules.models import Question
+
 
 
 learningresource = Blueprint('learningresource', __name__)
@@ -78,6 +80,9 @@ def view_course_page(resource_id, res_type, number):
     page_count = len(course['course'][res_type])
     current_page = course['course'][res_type][page_number]
 
+    if res_type == TYPE_QUESTION:
+        current_page = Question.from_dict(current_page)
+
     if request.method == 'POST':
         is_last = (page_number + 1) >= page_count
         if is_last:
@@ -101,7 +106,7 @@ def view_course_page(resource_id, res_type, number):
 def view_course_complete(resource_id):
     course = lr_service.get_resource(resource_id)
     # learning_record ??
-    return render_template('/learningresource/course_outro.html', course=course, learninig_record=None)
+    return render_template('/learningresource/course_result.html', course=course, learninig_record=None)
 
 
 
