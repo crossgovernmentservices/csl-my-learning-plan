@@ -29,7 +29,7 @@ def search():
 
         current_app.logger.info('getting items')
         try:
-            courses = lr_service.get_courses(filterJson)    
+            courses = lr_service.get_courses(filterJson)
         except Exception as e:
             current_app.logger.exception(e, exc_info=True)
             raise
@@ -55,7 +55,7 @@ def view_resource(resource_id):
 
 
 
-    return render_template('learningresource/view_resource.html', course=course, pre_course=pre_course)
+    return render_template('learningresource/view_resource.html', course=course, pre_course=pre_course, user_logged_in=current_user.is_authenticated)
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required

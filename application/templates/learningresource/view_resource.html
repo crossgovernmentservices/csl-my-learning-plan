@@ -39,9 +39,14 @@
 
         {% block prelearning_content %}
           {% if pre_course %}
-          <h2 class="heading-large">Pre-learning requirements</h2>
-          <p>Blah blah blah you've got to do this first:</p>
-          <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id) }}">{{ pre_course['title'] }}</a>
+            <h2 class="heading-large">Pre-learning requirements</h2>
+            <p>Blah blah blah you've got to do this first:</p>
+            <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id) }}">{{ pre_course['title'] }}</a>
+            {% if pre_course['learningRecord'] %}
+              <p>here is the record {{ pre_course['learningRecord'] }}</p>
+            {% else %}
+              <p>there is no learning record for this requirement</p>
+            {% endif %}
           {% endif %}
         {% endblock %}
 
@@ -84,7 +89,7 @@
 
       </div>
       
-      {% if current_user.is_authenticated %}
+      {% if user_logged_in %}
         <div class="course-actions">
         {% if course.type and course.type == "face2face" %}
           <a href="#" class="button button-get-started" role="button">Start booking now</a>
