@@ -61,7 +61,8 @@
             <p>Blah blah blah you've got to do this first:</p>
             <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}">{{ pre_course['title'] }}</a>
             <p>duration: {{ pre_course.duration|format_duration }}</p>
-            {% if pre_course['learningRecord'] %}
+            {% if user_logged_in %}
+              {% if pre_course['learningRecord'] %}
                 <p>seems like you've done all requirement training </p>
                 <div class="panel-indent">
                   <p>hay, all goodie:</p>
@@ -78,9 +79,12 @@
                   </table>
                 </div>
 
-            {% else %}
-              <p>there is no learning record for this requirement</p>
+              {% else %}
+                <p>there is no learning record for this requirement</p>
+              {% endif %}
             {% endif %}
+
+
           {% endif %}
         {% endblock %}
 
