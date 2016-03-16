@@ -23,7 +23,8 @@ def load_course_learning_records(email, course_uri):
             'statement.verb.id': '%s' % verb['id'],
             'voided': False
         }},
-        PROJECTIONS['learning_record']
+        PROJECTIONS['learning_record'],
+        {'$sort': {'when': -1}}
     ])
     return _get_lrs_result_from(query_response)
 

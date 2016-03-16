@@ -139,13 +139,14 @@ def view_course_page(resource_id, res_type, number):
     return render_template('/learningresource/course_page.html',
         res_type=res_type, course=course, page_number=page_number, page=current_page, page_count=page_count, source_course=source_course)
 
-@learningresource.route('/learning-resource/course/<resource_id>/success')
+@learningresource.route('/learning-resource/course/<resource_id>/complete')
 @login_required
 def view_course_complete(resource_id):
     course = lr_service.get_resource(resource_id)
     
     cookie_answers = json.loads(request.cookies.get(COOKIE_ANSWERS))
-    source_course = lr_service.get_resource(request.args.get('source'))
+    source_course_id = request.args.get('source')
+    source_course = lr_service.get_resource(source_course_id)
 
     final_score = reduce(lambda x, y: (json.loads(cookie_answers[x]).get('score', 0) + json.loads(cookie_answers[y]).get('score', 0)) / 2, cookie_answers)
 
@@ -166,13 +167,26 @@ def view_course_complete(resource_id):
     }
 
     lrs_result = lrs_service.save_statement(record)
+
+    resp = make_response(redirect(url_for('.view_course_result', resource_id=resource_id, source=source_course_id)))
+    resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
+    return resp
+
+@learningresource.route('/learning-resource/course/<resource_id>/result')
+@login_required
+def view_course_result(resource_id):
+
+    course = lr_service.get_resource(resource_id)
+    record = lrs_service.load_course_learning_records(
+        email=current_user.email,
+        course_uri=url_for('.view_resource', resource_id=resource_id, _external=True))[0]
+
+    source_course = lr_service.get_resource(request.args.get('source'))
     
     current_app.logger.info(record)
-    display_score = round((final_score/5)*100)
-    resp = make_response(render_template('/learningresource/course_result.html', course=course, learninig_record=None, source_course=source_course, cookie_answers=cookie_answers, score=display_score, lrs_result=lrs_result))
-    resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
 
-    return resp
+    return render_template('/learningresource/course_result.html', course=course, record=record, source_course=source_course)
+
 
 
 # API
