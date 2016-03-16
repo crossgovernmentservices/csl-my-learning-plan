@@ -36,7 +36,12 @@
 
       <p class="with-hr"><i class="icon-email"></i>Have we sent you a confirmation email here?</p>
       <h3 class="heading-medium">What happens next?</h3>
-      <p class="text">Dunno</p>
+      {% if source_course %}
+        good good now go back to you original course:
+        <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
+      {% else %}
+        <p class="text">Dunno</p>
+      {% endif %}
 
     </main>
 

@@ -23,7 +23,7 @@
       </header>
 
       <section>
-        <form action="{{ url_for('learningresource.view_course_page', resource_id=course['id'], res_type=res_type, number=page_number) }}" method="POST">
+        <form action="{{ url_for('learningresource.view_course_page', resource_id=course['id'], res_type=res_type, number=page_number, source=source_course) }}" method="POST">
 
           {% if res_type == 'questions' %}
 

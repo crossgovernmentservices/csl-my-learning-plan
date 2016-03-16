@@ -19,7 +19,6 @@ import application.modules.lrs_service as lrs_service
 from application.modules.models import Question
 
 
-
 learningresource = Blueprint('learningresource', __name__)
 
 COOKIE_COURSE='learningcourse'
@@ -51,34 +50,40 @@ def view_resource(resource_id):
     course = lr_service.get_resource(resource_id)
     pre_course = lr_service.get_course_prerequisites(resource_id)
 
+    source_course = request.args.get('source')
+
     if current_user.is_authenticated:
         course['learningRecord'] = lrs_service.load_course_learning_records(
             email=current_user.email,
-            course_uri=url_for('learningresource.view_resource', resource_id=course['id'], _external=True))
+            course_uri=url_for('.view_resource', resource_id=course['id'], _external=True))
         
         if pre_course:
             pre_course['learningRecord'] = lrs_service.load_course_learning_records(
                 email=current_user.email,
-                course_uri=url_for('learningresource.view_resource', resource_id=pre_course['id'], _external=True))
+                course_uri=url_for('.view_resource', resource_id=pre_course['id'], _external=True))
 
 
-    return render_template('learningresource/view_resource.html', course=course, pre_course=pre_course, user_logged_in=current_user.is_authenticated)
+    return render_template('learningresource/view_resource.html',
+        course=course, pre_course=pre_course, user_logged_in=current_user.is_authenticated, source_course=source_course)
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required
 def start(resource_id):
-    resp = make_response(redirect(url_for('learningresource.view_course_page', resource_id=resource_id, res_type=TYPE_PAGE, number=0)))
+    resp = make_response(redirect(url_for('.view_course_page', 
+        resource_id=resource_id, res_type=TYPE_PAGE, number=0, source=request.args.get('source'))))
     resp.set_cookie(COOKIE_COURSE, '', expires=0)
     return resp
 
 
-@learningresource.route('/learning-resource/course/<resource_id>/<res_type>/<number>', methods=['GET', 'POST'])
+@learningresource.route('/learning-resource/course/<resource_id>/<res_type>/<int:number>', methods=['GET', 'POST'])
 @login_required
 def view_course_page(resource_id, res_type, number):
     course = lr_service.get_resource(resource_id)
-    page_number = int(number or 0)
+    page_number = number or 0
     page_count = len(course['course'][res_type])
     current_page = course['course'][res_type][page_number]
+    source_course = request.args.get('source')
+
 
     if res_type == TYPE_QUESTION:
         current_page = Question.from_dict(current_page)
@@ -90,23 +95,25 @@ def view_course_page(resource_id, res_type, number):
                 res_type = TYPE_QUESTION
                 page_number = 0
             elif res_type == TYPE_QUESTION:
-                return redirect(url_for('learningresource.view_course_complete', resource_id=resource_id))
+                return redirect(url_for('.view_course_complete', resource_id=resource_id, source=source_course))
         else:
             page_number+=1
 
-        redirect_url = url_for('learningresource.view_course_page', resource_id=resource_id, res_type=res_type, number=page_number)
+        redirect_url = url_for('.view_course_page', resource_id=resource_id, res_type=res_type, number=page_number, source=source_course)
         return redirect(redirect_url)
 
 
     return render_template('/learningresource/course_page.html',
-        res_type=res_type, course=course, page_number=page_number, page=current_page, page_count=page_count)
+        res_type=res_type, course=course, page_number=page_number, page=current_page, page_count=page_count, source_course=source_course)
 
 @learningresource.route('/learning-resource/course/<resource_id>/success')
 @login_required
 def view_course_complete(resource_id):
     course = lr_service.get_resource(resource_id)
     # learning_record ??
-    return render_template('/learningresource/course_result.html', course=course, learninig_record=None)
+    source_course = lr_service.get_resource(request.args.get('source'))
+
+    return render_template('/learningresource/course_result.html', course=course, learninig_record=None, source_course=source_course)
 
 
 

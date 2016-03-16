@@ -42,7 +42,8 @@
           {% if pre_course %}
             <h2 class="heading-large">Pre-learning requirements</h2>
             <p>Blah blah blah you've got to do this first:</p>
-            <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id) }}">{{ pre_course['title'] }}</a>
+            <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}">{{ pre_course['title'] }}</a>
+            <p>duration: {{ pre_course.duration|format_duration }}</p>
             {% if pre_course['learningRecord'] %}
               <p>here is the record {{ pre_course['learningRecord'] }}</p>
             {% else %}
@@ -90,15 +91,15 @@
 
       </div>
       
-      {% if user_logged_in %}
+
         <div class="course-actions">
         {% if course.type and course.type == "face2face" %}
           <a href="#" class="button button-get-started" role="button">Start booking now</a>
         {% else %}
-          <a href="{{ url_for('learningresource.start', resource_id=course.id) }}" class="button button-get-started" role="button">Start now</a>
+          <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" class="button button-get-started" role="button">Start now</a>
         {% endif %}
         </div>
-      {% endif %}
+
 
     </div>
 
