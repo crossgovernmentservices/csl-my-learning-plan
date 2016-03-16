@@ -123,14 +123,20 @@
 
       </div>
       
-
-        <div class="course-actions">
-        {% if course.type and course.type == "face2face" %}
-          <a href="#" class="button button-get-started" role="button">Start booking now</a>
+          
+        {% if course['course'] %}
+          <div class="course-actions">
+          {% if course.type and course.type == "face2face" %}
+            <a href="#" class="button button-get-started" role="button">Start booking now</a>
+          {% else %}
+            <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" class="button button-get-started" role="button">Start now</a>
+          {% endif %}
+          </div>
         {% else %}
-          <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" class="button button-get-started" role="button">Start now</a>
+          <p class="panel-indent">ok so when it comes to this one, there no internal mock course content for this one so will redirect you to the external real content</p>
+          <a href="{{ course.url }}" class="button button-get-started" role="button">Start now</a>
+          
         {% endif %}
-        </div>
 
 
     </div>
