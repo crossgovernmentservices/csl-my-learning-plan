@@ -1,6 +1,8 @@
 # added here as the other models imports flasks etc
 import json
 import uuid
+import math
+
 from copy import deepcopy
 
 class Statement:

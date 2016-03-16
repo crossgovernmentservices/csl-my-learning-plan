@@ -30,7 +30,7 @@
           <span>Course</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
-          <p class="ref-number">N/A - needs to be developed :P</p>
+          <p class="ref-number">{{ score }}%</p>
         </div>
       </div>
 
@@ -42,6 +42,13 @@
       {% else %}
         <p class="text">Dunno</p>
       {% endif %}
+
+      <p>
+        {{ cookie_answers }}
+      </p>
+      <p>
+        {{ lrs_result }}
+      </p>
 
     </main>
 

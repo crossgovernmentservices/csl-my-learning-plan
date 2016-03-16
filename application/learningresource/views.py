@@ -16,12 +16,12 @@ import json
 
 import application.modules.lr_service as lr_service
 import application.modules.lrs_service as lrs_service
-from application.modules.models import Question
-
+from application.modules.models import *
+from functools import reduce
 
 learningresource = Blueprint('learningresource', __name__)
 
-COOKIE_COURSE='learningcourse'
+COOKIE_ANSWERS='courseanswers'
 
 TYPE_PAGE='pages'
 TYPE_QUESTION='questions'
@@ -71,7 +71,7 @@ def view_resource(resource_id):
 def start(resource_id):
     resp = make_response(redirect(url_for('.view_course_page', 
         resource_id=resource_id, res_type=TYPE_PAGE, number=0, source=request.args.get('source'))))
-    resp.set_cookie(COOKIE_COURSE, '', expires=0)
+    resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
     return resp
 
 
@@ -88,6 +88,17 @@ def view_course_page(resource_id, res_type, number):
     if res_type == TYPE_QUESTION:
         current_page = Question.from_dict(current_page)
 
+        if COOKIE_ANSWERS in request.cookies:
+            cookie_answers = request.cookies.get(COOKIE_ANSWERS)
+            current_app.logger.info(cookie_answers)
+
+            cookie_json = json.loads(cookie_answers)
+            current_answer = cookie_json.get(current_page.tag)
+
+            current_page.answer = json.loads(current_answer).get('selected') if current_answer else None
+        else:
+            cookie_json = {}
+
     if request.method == 'POST':
         is_last = (page_number + 1) >= page_count
         if is_last:
@@ -95,12 +106,34 @@ def view_course_page(resource_id, res_type, number):
                 res_type = TYPE_QUESTION
                 page_number = 0
             elif res_type == TYPE_QUESTION:
-                return redirect(url_for('.view_course_complete', resource_id=resource_id, source=source_course))
+                # clean this up !
+                resp = make_response(redirect(url_for('.view_course_complete', resource_id=resource_id, source=source_course)))
+                if type(current_page) is Question:
+                    current_page.answer = request.form
+                    # save cookies only if it's a question
+                    cookie_json[current_page.tag] = json.dumps({
+                        'selected': request.form,
+                        'score': current_page.get_score()
+                    })
+                    resp.set_cookie(COOKIE_ANSWERS, json.dumps(cookie_json))
+                return resp
         else:
             page_number+=1
 
+
         redirect_url = url_for('.view_course_page', resource_id=resource_id, res_type=res_type, number=page_number, source=source_course)
-        return redirect(redirect_url)
+        resp = make_response(redirect(redirect_url))
+
+        if type(current_page) is Question:
+            current_page.answer = request.form
+            # save cookies only if it's a question
+            cookie_json[current_page.tag] = json.dumps({
+                'selected': request.form,
+                'score': current_page.get_score()
+            })
+            resp.set_cookie(COOKIE_ANSWERS, json.dumps(cookie_json))
+
+        return resp
 
 
     return render_template('/learningresource/course_page.html',
@@ -110,11 +143,36 @@ def view_course_page(resource_id, res_type, number):
 @login_required
 def view_course_complete(resource_id):
     course = lr_service.get_resource(resource_id)
-    # learning_record ??
+    
+    cookie_answers = json.loads(request.cookies.get(COOKIE_ANSWERS))
     source_course = lr_service.get_resource(request.args.get('source'))
 
-    return render_template('/learningresource/course_result.html', course=course, learninig_record=None, source_course=source_course)
+    final_score = reduce(lambda x, y: (json.loads(cookie_answers[x]).get('score', 0) + json.loads(cookie_answers[y]).get('score', 0)) / 2, cookie_answers)
 
+    record = Statement(
+        actor=current_user.email,
+        verb='complete',
+        statement_obj=Statement.create_activity_obj(
+            uri=url_for('.view_resource', resource_id=resource_id, _external=True),
+            name=course['title'],
+            resource_type=course['type'])).to_json()
+
+    record['result'] = {
+        "score": {
+            "min": 0,
+            "max": 5,
+            "raw": final_score
+        }
+    }
+
+    lrs_result = lrs_service.save_statement(record)
+    
+    current_app.logger.info(record)
+    display_score = round((final_score/5)*100)
+    resp = make_response(render_template('/learningresource/course_result.html', course=course, learninig_record=None, source_course=source_course, cookie_answers=cookie_answers, score=display_score, lrs_result=lrs_result))
+    resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
+
+    return resp
 
 
 # API

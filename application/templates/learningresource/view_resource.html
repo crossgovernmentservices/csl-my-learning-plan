@@ -32,6 +32,23 @@
 
       <div class="page-header">
         <h1 class="heading-xlarge">{{ course.title }}</h1>
+        {% if course['learningRecord'] %}
+
+        <div class="panel-indent">
+          <p>hay hay hay, you've completed this course on:</p>
+          <table>
+            <tbody>
+              {% for record in course['learningRecord'] %}
+                <tr>
+                  <td>{{ record['when']|format_date }}</td>
+                  <td>{{ record['result']['score']['raw']/5*100 }}%</td>
+                </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
       </div>
 
       <div class="course-description text">
@@ -45,7 +62,22 @@
             <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}">{{ pre_course['title'] }}</a>
             <p>duration: {{ pre_course.duration|format_duration }}</p>
             {% if pre_course['learningRecord'] %}
-              <p>here is the record {{ pre_course['learningRecord'] }}</p>
+                <p>seems like you've done all requirement training </p>
+                <div class="panel-indent">
+                  <p>hay, all goodie:</p>
+                  <table>
+                    <tbody>
+                      {% for record in pre_course['learningRecord'] %}
+                        <tr>
+                          <td>{{ record['when']|format_date }}</td>
+                          <td>{{ record['result']['score']['raw']/5*100 }}%</td>
+                        </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                </div>
+
             {% else %}
               <p>there is no learning record for this requirement</p>
             {% endif %}

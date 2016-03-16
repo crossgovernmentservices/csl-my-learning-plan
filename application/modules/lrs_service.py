@@ -27,7 +27,10 @@ def load_course_learning_records(email, course_uri):
     ])
     return _get_lrs_result_from(query_response)
 
-# def save_statement
+def save_statement(statement_json):
+    return _post(statement_json)
+
+
 
 def load_user_records(email):
     pipeline = [
@@ -228,6 +231,7 @@ PROJECTIONS = {
           'when': '$statement.timestamp',
           'result': {
             'score': '$statement.result.score',
+            # 'max_score': '$statement.result.score',
             'duration': '$statement.result.duration'
           },
           'activities': {
