@@ -32,6 +32,13 @@
 
       <div class="page-header">
         <h1 class="heading-xlarge">{{ course.title }}</h1>
+          {% if not user_logged_in or (pre_course and not pre_course['learningRecord']) %}
+          <div class="panel-indent">
+            <p>You've got to complete all kindz of prerequisites to start this course</p>
+          </div>
+        {% endif %}
+
+
         {% if course['learningRecord'] %}
 
         <div class="panel-indent">
@@ -130,10 +137,10 @@
           
         {% if course['course'] %}
           <div class="course-actions">
-          {% if course.type and course.type == "face2face" %}
-            <a href="#" class="button button-get-started" role="button">Start booking now</a>
-          {% else %}
+          {% if (pre_course and pre_course['learningRecord']) or (not pre_course and user_logged_in) %}
             <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" class="button button-get-started" role="button">Start now</a>
+          {% else %}
+            <p class="panel-indent">looking for some Start button? you go and log on or complete prerequisites first alright</p>
           {% endif %}
           </div>
         {% else %}

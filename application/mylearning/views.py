@@ -32,8 +32,7 @@ def index():
 @mylearning.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if request.args.get('next'):
-        form.next.data = request.args.get('next')
+    form.next.data = request.values.get('next') or request.referrer
     if form.validate_on_submit():
         current_app.logger.info(form.data)
         email = form.email.data.strip()

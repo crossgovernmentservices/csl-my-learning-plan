@@ -25,16 +25,22 @@
     <main class="column-full">
     
       <div class="callout">
-        <h2 class="heading-large callout__heading">Completed</h2>
+        {% set score=record['result']['score']['raw']/5*100 %}
+        <h2 class="heading-large callout__heading">
+          {% if score > 51 %}
+            Passed
+          {% else %}
+            Failed
+          {% endif %}
+          </h2>
         <div class="lede">
           <span>Course</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
-          <p class="ref-number">{{ record['result']['score']['raw']/5*100 }}%</p>
+          <p class="ref-number">{{ score }}%</p>
         </div>
       </div>
 
-      <p class="with-hr"><i class="icon-email"></i>Have we sent you a confirmation email here?</p>
       <h3 class="heading-medium">What happens next?</h3>
       {% if source_course %}
         good good now go back to you original course:
