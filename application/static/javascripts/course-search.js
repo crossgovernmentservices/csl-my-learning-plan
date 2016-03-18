@@ -29,6 +29,7 @@
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(data, textStatus, jqXHR){
+          console.log(data);
           that.renderCourses(data);
           that.updateStatusLabels(data);
         },
@@ -85,6 +86,8 @@
     },
 
     _generateCourseItemHTML: function(course){
+      var courseUrl = course.hasMockCourse ? '/learning-resource/course/' + course.id : course.url;
+
       return $('<li/>', { 'class': 'course-result' }).html([
           $('<div/>',{ 'class': 'grid-row course-result__meta' }).html([
             $('<div/>',{ 'class': 'column-two-thirds' }).html(function(){
@@ -111,7 +114,7 @@
           ]),
 
           $('<h3/>', { 'class': 'heading-small course-result__title'}).html(
-            $('<a/>', { 'href': '/learning-resource/course/' + course.id }).text(course.title)
+            $('<a/>', { 'href': courseUrl }).text(course.title)
           ),
 
           $('<p/>', { 'class': 'text' }).text(course.price),

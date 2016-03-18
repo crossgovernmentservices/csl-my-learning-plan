@@ -42,7 +42,16 @@ def get_resources():
     logger.debug('Ger resources query url: '+LEARNING_REGISTRY_URL)
     response = urllib.request.urlopen(LEARNING_REGISTRY_URL)
     items = json.loads(response.read().decode('utf-8'))
-    return [{**i['resource_data_description']['resource_data'], '_id': i['resource_data_description']['_id']} for i in items['documents']]
+
+    # this is that ugly thing here
+    with open(RESOURCE_DATA_FILEPATH) as data_file:
+        course_data = json.load(data_file)
+    
+    return [{
+            **i['resource_data_description']['resource_data'],
+            '_id': i['resource_data_description']['_id'],
+            'hasMockCourse': True if course_data.get(i['resource_data_description']['_id']) else False
+        } for i in items['documents']]
 
 def get_all_courses_from_learning_registry():
     def convert_item(item):
@@ -67,7 +76,8 @@ def get_all_courses_from_learning_registry():
             'desc': item['description'],
             'url': item['url'],
             'price': item['offers']['price'] + item['offers']['priceCurrency'] if 'offers' in item else 'Free Resource',
-            'topics': item['keywords']
+            'topics': item['keywords'],
+            'hasMockCourse': item['hasMockCourse']
         }
 
         if 'timeRequired' in item:
