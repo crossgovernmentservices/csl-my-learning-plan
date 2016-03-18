@@ -27,7 +27,7 @@
       <div class="callout">
         {% set score=record['result']['score']['raw']/5*100 %}
         <h2 class="heading-large callout__heading">
-          {% if score > 51 %}
+          {% if score > 10 %}
             Passed
           {% else %}
             Failed
@@ -37,16 +37,16 @@
           <span>Course</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
-          <p class="ref-number">{{ score }}%</p>
+          <p class="ref-number">{{ score|round|int }}%</p>
         </div>
       </div>
 
       <h3 class="heading-medium">What happens next?</h3>
       {% if source_course %}
-        good good now go back to you original course:
+        <p class="text">Now since you've completed the prerequisite course you can take:</p>
         <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
       {% else %}
-        <p class="text">Dunno</p>
+        <p class="text">Bravo you've completed all of the things, <a href="{{ url_for('learningresource.search') }}">see what else CSL has to offer</a></p>
       {% endif %}
 
     </main>

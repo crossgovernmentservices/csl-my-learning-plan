@@ -21,7 +21,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -57,7 +57,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -90,7 +90,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -109,7 +109,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -145,7 +145,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -174,7 +174,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -193,7 +193,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -2660,14 +2660,14 @@ input[type=number] {
 }
 
 /* line 18 */
+#global-breadcrumb {
+  display: inline-block;
+}
+
+/* line 22 */
 .visually-hidden {
   display: none;
   visibility: hidden;
-}
-
-/* line 23 */
-#global-breadcrumb {
-  display: inline-block;
 }
 
 /* line 27 */
@@ -2909,7 +2909,8 @@ input[type=number] {
 }
 
 /* line 248 */
-.course-status, .course-status--confirmed {
+.course-status, .course-status--confirmed, .flag-done,
+.flag {
   font-size: 16px;
   padding: 5px 5px 2px;
   border: 2px solid #bfc1c3;
@@ -2920,24 +2921,33 @@ input[type=number] {
   font-weight: bold;
 }
 
-/* line 259 */
+/* line 260 */
 .course-status--confirmed {
   color: #2eb135;
   border-color: #2eb135;
 }
 
-/* line 265 */
+/* line 266 */
+.flag-done {
+  color: #fff;
+  border-color: #28a197;
+  background: #28a197;
+  padding: 4px 3px 0;
+  text-transform: uppercase;
+}
+
+/* line 275 */
 .level-separator {
   border-top: 1px solid #bfc1c3;
   margin-top: 60px;
   position: relative;
 }
-/* line 270 */
+/* line 280 */
 .level-separator h2 {
   margin-top: 30px;
 }
 
-/* line 275 */
+/* line 285 */
 .back-to-grid {
   position: absolute;
   right: 0;
@@ -2946,25 +2956,25 @@ input[type=number] {
 }
 
 @media (min-width: 641px) {
-  /* line 284 */
+  /* line 294 */
   .profile_header h1, .profile_header .profile-search-form {
     float: left;
     width: 50%;
     margin-top: 30px;
   }
 }
-/* line 291 */
+/* line 301 */
 .profile_header .profile-search-form {
   margin-bottom: 30px;
 }
 @media (min-width: 641px) {
-  /* line 291 */
+  /* line 301 */
   .profile_header .profile-search-form {
     margin-top: 60px;
   }
 }
 
-/* line 301 */
+/* line 311 */
 .notification-banner, .notification-banner--confirmed {
   border-color: #1a2792;
   background: #e4e6fa;
@@ -2972,99 +2982,195 @@ input[type=number] {
   position: relative;
 }
 
-/* line 309 */
+/* line 319 */
 .notification-banner--confirmed {
   border-color: #2eb135;
   background: #d1f3d3;
 }
 
-/* line 315 */
+/* line 325 */
 .check-status-link {
   position: absolute;
   right: 15px;
 }
 
-/* line 320 */
+/* line 330 */
 .course-list--profile {
   padding-left: 0;
 }
-/* line 323 */
+/* line 333 */
 .course-list--profile > li {
   border: 1px solid #1a2792;
   margin: 0 0 10px;
   list-style: none;
 }
 
-/* line 339 */
+/* line 340 */
+.accordian-head, .course-wrapper {
+  padding: 0 15px;
+  line-height: 2em;
+}
+/* line 344 */
+.accordian-head a, .course-wrapper a {
+  text-decoration: none;
+}
+
+/* line 349 */
 .course-details {
   padding-top: 3px;
 }
-/* line 343 */
+/* line 353 */
 .course-details .course-detail {
   margin: 0 15px 0 0;
   float: left;
 }
-/* line 347 */
+/* line 357 */
 .course-details .course-detail .highlight {
   font-weight: bold;
 }
-/* line 351 */
+/* line 361 */
 .course-details .course-detail .secondary {
   color: #6f777b;
 }
 
-/* line 357 */
+/* line 367 */
+.accordian-content {
+  display: none;
+}
+/* line 370 */
+.accordian-content .panel-indent, .accordian-content .notification-banner, .accordian-content .notification-banner--confirmed {
+  margin-bottom: 30px;
+}
+/* line 374 */
+.accordian-content img {
+  max-width: 100%;
+}
+
+/* line 380 */
+.accordian--open .accordian-head {
+  border-bottom: 1px solid #cacac8;
+}
+/* line 383 */
+.accordian--open .accordian-content {
+  display: block;
+  padding: 15px;
+}
+/* line 388 */
+.accordian--open .btn-less {
+  display: block;
+}
+/* line 392 */
+.accordian--open .btn-more {
+  display: none;
+}
+
+/* line 397 */
+.btn-less {
+  display: none;
+}
+
+/* line 401 */
+.btn-more {
+  display: block;
+}
+
+/* line 405 */
+.accordian-head, .course-wrapper {
+  position: relative;
+}
+
+/* line 410 */
+.more-group {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  line-height: 41px;
+}
+/* line 416 */
+.more-group .btn-less, .more-group .btn-more {
+  line-height: inherit;
+}
+
+/* line 421 */
+.btn-more, .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #005ea5;
+}
+/* line 428 */
+.btn-more:hover, .btn-less:hover {
+  color: #2e8aca;
+  cursor: pointer;
+}
+/* line 433 */
+.btn-more img, .btn-less img {
+  margin-bottom: -2px;
+}
+
+/* line 438 */
+.accordian-head:hover {
+  background: #e3e3e2;
+  cursor: pointer;
+}
+/* line 442 */
+.accordian-head:hover .highlight {
+  text-decoration: underline;
+}
+
+/* line 447 */
 dt.heading-small {
   margin-top: 0;
 }
 
-/* line 359 */
+/* line 449 */
 .el-hidden {
   display: none;
 }
 
-/* line 363 */
+/* line 453 */
 .selected + .el-hidden {
   display: block;
 }
 
-/* line 367 */
+/* line 457 */
 .time-details {
   margin: -8px 0 12px;
 }
 
-/* line 371 */
+/* line 461 */
 .map-details {
   margin-top: 8px;
 }
 
-/* line 375 */
+/* line 465 */
 .btn-csl {
   background: #af292e;
 }
-/* line 378 */
+/* line 468 */
 .btn-csl:visited {
   background: #af292e;
 }
-/* line 381 */
+/* line 471 */
 .btn-csl:hover {
   background: #9a2429;
 }
 
-/* line 386 */
+/* line 476 */
 .profile-section {
   padding-top: 45px;
 }
-/* line 389 */
+/* line 479 */
 .profile-section .profile-section-heading {
   margin-top: 0;
 }
 
-/* line 394 */
+/* line 484 */
 .profile-section__editable {
   position: relative;
 }
-/* line 397 */
+/* line 487 */
 .profile-section__editable .btn-edit {
   position: absolute;
   top: 45px;
@@ -3073,46 +3179,178 @@ dt.heading-small {
   line-height: 30px;
 }
 
-/* line 406 */
+/* line 496 */
 .course-select-table {
   margin: 0 -15px;
 }
-/* line 409 */
+/* line 499 */
 .course-select-table tr th:first-child,
 .course-select-table tr td:first-child {
   padding-left: 15px;
 }
-/* line 414 */
+/* line 504 */
 .course-select-table tr td:last-child {
   text-align: center;
   padding-right: 0;
 }
-/* line 420 */
+/* line 510 */
 .course-select-table tbody tr:not(.currently-selected):hover {
   background: #dee0e2;
 }
-/* line 425 */
+/* line 515 */
 .course-select-table .status-selected {
   display: none;
 }
-/* line 429 */
+/* line 519 */
 .course-select-table .currently-selected {
   border-left: 10px solid #28a197;
 }
-/* line 431 */
+/* line 521 */
 .course-select-table .currently-selected td {
   font-weight: bold;
 }
-/* line 434 */
+/* line 524 */
 .course-select-table .currently-selected .date-selection {
   display: none;
 }
-/* line 437 */
+/* line 527 */
 .course-select-table .currently-selected .status-selected {
   display: inline;
 }
 
-/* line 444 */
+/* line 534 */
 .table-strip tbody tr:nth-child(odd) {
   background: #f8f8f8;
+}
+
+/* line 539 */
+.data-highlight {
+  margin: 30px 0 45px;
+}
+
+/* line 543 */
+.data-group {
+  margin: 30px 0;
+}
+
+/* line 547 */
+.warning-indent {
+  margin: 15px 0;
+}
+/* line 550 */
+.warning-indent .warning-message {
+  padding-left: 65px;
+  font-weight: bold;
+}
+/* line 555 */
+.warning-indent .icon-important {
+  display: inline-block;
+  float: left;
+  width: 35px;
+  height: 35px;
+  background-image: url("/static/icons/icon-important.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  /* line 555 */
+  .warning-indent .icon-important {
+    background-image: url("/static/images//static/icons/icon-important-2x.png");
+    background-size: 100%;
+  }
+}
+
+/* line 571 */
+.notice strong {
+  line-height: 34px;
+  padding-left: 10px;
+}
+
+/* line 576 */
+.done-banner {
+  color: #fff;
+  background: #28a197;
+  padding: 15px 10px;
+  text-align: center;
+  margin-right: 15px;
+}
+/* line 583 */
+.done-banner .heading {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+/* line 588 */
+.done-banner h3 {
+  font-weight: bold;
+}
+
+/* line 593 */
+.warning-banner {
+  border-left: 5px solid #ffbf47;
+  background: #fff4e0;
+  padding: 10px 0 10px 15px;
+  margin: 30px 15px 30px 0;
+}
+/* line 599 */
+.warning-banner p {
+  margin: 0;
+}
+
+/* dl */
+/* line 605 */
+.df-inline dd, .df-inline dt {
+  display: inline;
+}
+/* line 608 */
+.df-inline dt {
+  margin-right: 15px;
+}
+/* line 610 */
+.df-inline dt:after {
+  content: ':';
+}
+/* line 614 */
+.df-inline dd {
+  font-weight: bold;
+}
+
+/* line 619 */
+.pre-req-list {
+  border-top: 1px solid #dee0e2;
+}
+/* line 621 */
+.pre-req-list li {
+  position: relative;
+  border-bottom: 1px solid #dee0e2;
+  padding: 10px 0;
+}
+/* line 626 */
+.pre-req-list .status-wrap {
+  text-align: right;
+}
+/* line 628 */
+.pre-req-list .status-wrap span {
+  display: inline-block;
+}
+/* line 632 */
+.pre-req-list .course-name {
+  font-weight: bold;
+  text-decoration: none;
+}
+/* line 636 */
+.pre-req-list .course-name:hover {
+  text-decoration: underline;
+}
+/* line 640 */
+.pre-req-list .record-link {
+  color: #6f777b;
+  text-decoration: none;
+}
+/* line 644 */
+.pre-req-list .record-link:hover {
+  text-decoration: underline;
+}
+
+/* line 649 */
+.text-secondary {
+  font-size: 16px;
+  color: #6f777b;
 }

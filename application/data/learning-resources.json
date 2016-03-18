@@ -12,11 +12,19 @@
         "developed a range of practical tips, tools and advice that can be put into place straightaway",
         "reflected with peers on what change means for you and for your teams"
       ],
-      "warning": "Please note that it may take up to 24 hours for your learning record to update following completion of this course."
+      "warning": ""
     },
     "levels": [
       "Senior Managers (Grade 6/7)",
       "Senior Civil Servants (SCS)"
+    ],
+    "relatedMaterials": [
+      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
+    ],
+    "relatedOpportunities": [
+      { "title": "Unconscious bias (e-learning)", "url": "#" },
+      { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
+      { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
     "course": {
       "pages": [
@@ -68,11 +76,19 @@
       "points": [
         "some point numero uno"
       ],
-      "warning": "Please note that it may take up to 24 hours for your learning record to update following completion of this course."
+      "warning": ""
     },
     "levels": [
       "some level 1",
       "some level 2"
+    ],
+    "relatedMaterials": [
+      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
+    ],
+    "relatedOpportunities": [
+      { "title": "Unconscious bias (e-learning)", "url": "#" },
+      { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
+      { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
     "course": {
       "pages": [

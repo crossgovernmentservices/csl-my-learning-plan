@@ -2,9 +2,13 @@
 
 {% block page_title %}CSL Courses |  {{ course.title }} {% endblock %}
 
-{% block body_content %}
+{% block page_head_end %}
+  {% assets "css_learning_resource" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endblock %}
 
-<main id="content" role="main">
+{% block body_content %}
 
   {% include "_logout.html" %}
 
@@ -17,83 +21,63 @@
     </ol>
   </div>
 
-  {% if status == "waiting" %}
-  <div class="notification-banner">
-    <p>Booking requested. Waiting for confirmation. <a class="check-status-link" href="/rebrand/user-newcourse/waiting#current-courses">Check details</a></p>
-  </div>
-  {% elif status == "confirmed" %}
-  <div class="notification-banner--confirmed">
-    <p>You are due to attend on 22nd November 2015. <a class="check-status-link" href="/rebrand/user-newcourse/confirmed#current-courses">Check details</a></p>
-  </div>
-  {% endif %}
-
   <div class="grid-row">
     <div class="column-two-thirds">
 
       <div class="page-header">
         <h1 class="heading-xlarge">{{ course.title }}</h1>
-          {% if not user_logged_in or (pre_course and not pre_course['learningRecord']) %}
-          <div class="panel-indent">
-            <p>You've got to complete all kindz of prerequisites to start this course</p>
-          </div>
-        {% endif %}
-
-
-        {% if course['learningRecord'] %}
-
-        <div class="panel-indent">
-          <p>hay hay hay, you've completed this course on:</p>
-          <table>
-            <tbody>
-              {% for record in course['learningRecord'] %}
-                <tr>
-                  <td>{{ record['when']|format_date }}</td>
-                  <td>{{ record['result']['score']['raw']/5*100 }}%</td>
-                </tr>
-              {% endfor %}
-              
-            </tbody>
-          </table>
-        </div>
-        {% endif %}
       </div>
+
+      {% if user_logged_in and course['learningRecord'] %}
+        <div class="done-banner">
+          <h3 class="heading-medium heading">Passed</h3>
+          <dl class="df-inline">
+            <dt>Completed on</dt>
+            <dd>{{ course['learningRecord']['when']|format_date('%d/%m/%Y') }}</dd>
+          </dl>
+          {% if course['learningRecord']['result'] and course['learningRecord']['result']['score'] %}
+            {% set score = course['learningRecord']['result']['score'] %}
+            <dl class="df-inline">
+              <dt>Score</dt>
+              <dd>{{ ((score['raw']/(score['max'] or 5)) * 100)|round|int }}%</dd>
+            </dl>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      
+      {% if user_logged_in and pre_course and (not pre_course['learningRecord']) %}
+        <div class="warning-banner">
+          <p class="bold-small">
+            You must complete all <a href="#prereq">pre req(s)</a> before doing this course.
+          </p>
+        </div>
+      {% endif %}
 
       <div class="course-description text">
         <h2 class="heading-large">Description</h2>
         {{ course.desc|safe }}
 
-        {% block prelearning_content %}
-          {% if pre_course %}
-            <h2 class="heading-large">Pre-learning requirements</h2>
-            <p>Blah blah blah you've got to do this first:</p>
-            <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}">{{ pre_course['title'] }}</a>
-            <p>duration: {{ pre_course.duration|format_duration }}</p>
-            {% if user_logged_in %}
-              {% if pre_course['learningRecord'] %}
-                <p>seems like you've done all requirement training </p>
-                <div class="panel-indent">
-                  <p>hay, all goodie:</p>
-                  <table>
-                    <tbody>
-                      {% for record in pre_course['learningRecord'] %}
-                        <tr>
-                          <td>{{ record['when']|format_date }}</td>
-                          <td>{{ record['result']['score']['raw']/5*100 }}%</td>
-                        </tr>
-                      {% endfor %}
-                      
-                    </tbody>
-                  </table>
+        {% if pre_course %}
+          <h2 id="prereq" class="heading-large">Pre requisite</h2>
+          <p>You must complete all of the following pre requisite courses before taking this course.</p>
+          
+          <ul class="pre-req-list">
+            <li>
+              <div class="grid-row">
+                <div class="column-two-thirds">
+                  <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}" class="course-name">{{ pre_course['title'] }}</a>
                 </div>
-
-              {% else %}
-                <p>there is no learning record for this requirement</p>
-              {% endif %}
-            {% endif %}
-
-
-          {% endif %}
-        {% endblock %}
+                {% if user_logged_in and pre_course['learningRecord'] %}
+                  <div class="column-third status-wrap">
+                    <div><span class="flag-done">Done</span></div>
+                    <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_course['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
+                  </div>
+                {% endif %}
+              </div>
+            </li>
+          </ul>
+        {% endif %}
 
         {% block pricing %}
           {% if course.price %}
@@ -127,27 +111,38 @@
           {% endfor %}
           </ul>
 
-          {% if course.outcomes.warning is defined %}
+          {% if course.outcomes.warning %}
           <div class="panel-indent">{{ course.outcomes.warning|safe }}</div>
           {% endif %}
         {% endif %}
-
       </div>
-      
-          
-        {% if course['course'] %}
-          <div class="course-actions">
-          {% if (pre_course and pre_course['learningRecord']) or (not pre_course and user_logged_in) %}
-            <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" class="button button-get-started" role="button">Start now</a>
+
+      <div class="course-actions">
+        {% if user_logged_in %}
+          {% if pre_course %}
+            
+            {% if pre_course['learningRecord'] %}
+              <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
+                class="button button-start" role="button">Start now</a>
+            {% else %}
+              <div class="warning-indent">
+                <i class="icon-important">
+                  <span class="visually-hidden">warning</span>
+                </i>
+                <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
+              </div>
+            {% endif %}
+
           {% else %}
-            <p class="panel-indent">looking for some Start button? you go and log on or complete prerequisites first alright</p>
+            <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
+              class="button button-start" role="button">Start now</a>
+
           {% endif %}
-          </div>
+
         {% else %}
-          <p class="panel-indent">ok so when it comes to this one, there no internal mock course content for this one so will redirect you to the external real content</p>
-          <a href="{{ course.url }}" class="button button-get-started" role="button">Start now</a>
-          
+          <a href="{{ url_for('mylearning.login') }}" class="button">Sign in to do this training</a>
         {% endif %}
+      </div>
 
 
     </div>
@@ -158,17 +153,13 @@
           <h2 class="heading-medium">Learning material</h2>
           <nav>
             <ul>
-              {% if course.related_materials is defined %}
-                {% import 'partials/helpers.html' as helpers %}
-                {{ helpers.link_list(course.related_materials) }}
+              {% if course.relatedMaterials %}
+                {% for mat in course.relatedMaterials %}
+                  <li><a href="{{ mat.url }}">{{ mat.title }}</a></li>
+                {% endfor %}
               {% else %}
-              <li><a href="#">Digital Efficiency Report</a></li>
-              <li><a href="#">Digital Government, Open Architecture, and Innovation</a></li>
-              <li><a href="#">Digital Inclusion – Resources & Tools</a></li>
-              <li><a href="#">Digital Landscape research</a></li>
-              <li><a href="#">Digital and IT capabilities</a></li>
-              <li><a href="#">Digital Services for Small and Medium Enterprises</a></li>
-              <li><a href="#">Introduction to social media</a></li>
+                <li><a href="#">Digital Government, Open Architecture, and Innovation</a></li>
+                <li><a href="#">Digital Inclusion – Resources & Tools</a></li>
               {% endif %}
             </ul>
           </nav>
@@ -177,13 +168,13 @@
           <h2 class="heading-medium">Learning opportunities</h2>
           <nav>
             <ul>
-              {% if course.related_opportunities %}
-                <!-- ?? -->
+              {% if course.relatedOpportunities %}
+                {% for opp in course.relatedOpportunities %}
+                  <li><a href="{{ opp.url }}">{{ opp.title }}</a></li>
+                {% endfor %}
               {% else %}
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-listening-users">Digital skills - Listening to users</a></li>
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-starting-user-needs">Digital skills - Starting with user needs</a></li>
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-transforming-services-agile">Digital skills - Transforming services with Agile</a></li>
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-using-social-media-public-services">Digital skills - Using social media in public services</a></li>
+                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-listening-users">Digital skills - Listening to users</a></li>
+                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-starting-user-needs">Digital skills - Starting with user needs</a></li>
               {% endif %}
             </ul>
           </nav>
@@ -237,7 +228,5 @@
     </div>
   </div>
 
-
-</main>
 
 {% endblock %}

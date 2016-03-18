@@ -32,3 +32,8 @@
 .next-step{
   padding-top: 3em;
 }
+
+// override gds resource locations
+.button.button-start{
+  background-image: url('/static/icons/icon-pointer.png');
+}

@@ -21,10 +21,10 @@ from functools import reduce
 
 learningresource = Blueprint('learningresource', __name__)
 
-COOKIE_ANSWERS='courseanswers'
+COOKIE_ANSWERS = 'courseanswers'
 
-TYPE_PAGE='pages'
-TYPE_QUESTION='questions'
+TYPE_PAGE = 'pages'
+TYPE_QUESTION = 'questions'
 
 @learningresource.route('/learning-resource/search', methods=['GET', 'POST'])
 def search():
@@ -53,14 +53,16 @@ def view_resource(resource_id):
     source_course = request.args.get('source')
 
     if current_user.is_authenticated:
-        course['learningRecord'] = lrs_service.load_course_learning_records(
+        learning_records = lrs_service.load_course_learning_records(
             email=current_user.email,
             course_uri=url_for('.view_resource', resource_id=course['id'], _external=True))
+        course['learningRecord'] = learning_records[0] if learning_records else None
         
         if pre_course:
-            pre_course['learningRecord'] = lrs_service.load_course_learning_records(
+            pre_learning_records = lrs_service.load_course_learning_records(
                 email=current_user.email,
                 course_uri=url_for('.view_resource', resource_id=pre_course['id'], _external=True))
+            pre_course['learningRecord'] = pre_learning_records[0] if pre_learning_records else None
 
 
     return render_template('learningresource/view_resource.html',
