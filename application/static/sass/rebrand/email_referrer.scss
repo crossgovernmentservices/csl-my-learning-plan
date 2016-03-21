@@ -23,10 +23,20 @@
     font-weight: 600;
     padding: 0 0.5em;
   }
+
+
 }
 
 .email__content {
   border-top: 1px solid $secondary-text-colour;
   min-height: 300px;
   padding: $gutter-half;
+}
+
+.bold-tiny {
+  font-weight: 600;
+}
+
+*{
+  background: red;
 }
