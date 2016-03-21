@@ -135,11 +135,17 @@
       <div class="course-actions">
         {% if user_logged_in %}
           {% if pre_course %}
-            
-            
+            {% if pre_course['learningRecord'] %}
               <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
                 class="button button-start" role="button">Start now</a>
-
+            {% else %}
+              <div class="warning-indent">
+                <i class="icon-important">
+                  <span class="visually-hidden">warning</span>
+                </i>
+                <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
+              </div>
+            {% endif %}
 
           {% else %}
             <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
