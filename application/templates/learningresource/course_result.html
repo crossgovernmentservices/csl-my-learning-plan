@@ -17,7 +17,7 @@
       <li><a href="{{ url_for('mylearning.index') }}">Civil Service Learning</a></li>
       <li><a href="{{ url_for('learningresource.search') }}">Courses</a></li>
       <li><a href="{{ url_for('learningresource.view_resource', resource_id=course['id']) }}">{{ course['title'] }}</a></li>
-      <li>completed</li>
+      <li>Completed</li>
     </ol>
   </div>
 
@@ -46,7 +46,16 @@
         <p class="text">Now since you've completed the prerequisite course you can take:</p>
         <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
       {% else %}
-        <p class="text">Bravo you've completed all of the things, <a href="{{ url_for('learningresource.search') }}">see what else CSL has to offer</a></p>
+        <p>After completing this course, it may take up to 24 hours for your learning record to be updated.</p>
+        <div class="text">
+          You may also be interested in these learning opportunities:
+          <ul>
+            {% for suggestion in course.completionSuggestions %}
+              <li><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <p><a href="{{ url_for('learningresource.search') }}">See what else CSL has to offer</a></p>
       {% endif %}
 
     </main>

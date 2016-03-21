@@ -150,7 +150,13 @@ def view_course_complete(resource_id):
     source_course_id = request.args.get('source')
     source_course = lr_service.get_resource(source_course_id)
 
-    final_score = reduce(lambda x, y: (json.loads(cookie_answers[x]).get('score', 0) + json.loads(cookie_answers[y]).get('score', 0)) / 2, cookie_answers)
+    score_sum = 0
+    for key in cookie_answers:
+        answer = json.loads(cookie_answers.get(key, "{}"))
+        if answer:
+            score_sum += answer.get('score', 0)
+
+    final_score = score_sum / len(cookie_answers)
 
     record = Statement(
         actor=current_user.email,

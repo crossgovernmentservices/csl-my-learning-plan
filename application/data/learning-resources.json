@@ -1,25 +1,26 @@
 {
   "e7693080099f4ac19e646b45b7fdfb36": {
-    "title": "Communicating with customers 2013",
+    "title": "Communicating with customers",
     "prerequisites": "c0cb9ab77d8a4c55a14a5730109bbce2",
-    "desc": "<p>The way we communicate with customers can greatly influence the way people judge government services and helps us ensure we get the right information at the right time.</p><p>The purpose of this unit is to help you develop your professional communication skills.</p><p>The material in this package contains four main sections:</p><p>What is professional communication</p><ul><li>Communicating professionally in writing</li><li>Communicating professionally by telephone</li><li>Communicating professionally face to face</li></ul>",
+    "desc": "<p>This learning explores the essential principles required by any operational delivery professional to best communicate with their customers. This learning package is divided into four topics and concludes with a quiz.</p><p>It will take approximately 45 minutes to complete this course.</p>",
     "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "outcomes": {
       "blurb": "<p>By the end of the programme you’ll have:</p>",
       "points": [
         "explain what is meant by professional communication",
         "outline the benefits of professional communication to the individual, the customer and the business",
-        "describe effective techniques for communicating with customers",
-        "in writing",
-        "over the telephone",
-        "in a face to face environment",
+        "describe effective techniques for communicating with customers: in writing, over the telephone, in a face to face environment",
         "plan and structure communications to ensure the most successful outcome"
       ],
-      "warning": ""
+      "warning": "After completing this course, it may take up to 24 hours for your learning record to be updated."
     },
-    "levels": [
-      "Senior Managers (Grade 6/7)",
-      "Senior Civil Servants (SCS)"
+    "audience": [
+      "Anyone who works with customers or other people"
+    ],
+    "topics": [ 
+      "Communication",
+      "Customer Service",
+      "Support"
     ],
     "relatedMaterials": [
       { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
@@ -29,43 +30,103 @@
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
       { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
+    "completionSuggestions":[
+      { 
+        "title": "eLearning on customers with mental health conditions",
+        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/mental-health-conditions-and-dementia-support-customers"
+      },
+      { 
+        "title": "Workshop on adapting behaviours to suit customers",
+        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/operational-delivery-profession-adapting-your-behaviour-suit-customer"
+      },
+      { 
+        "title": "Workshop on writing to the public",
+        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/writing-public"
+      },
+      { 
+        "title": "eLearning on written communications",
+        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/written-communications"
+      }
+    ],
     "course": {
       "pages": [
         {
-          "title": "page 1 title",
-          "content": "some html describing page 1"
+          "title": "Introduction",
+          "content": "<p>Ever put together flat-packed furniture only to find a piece missing? Or leftover screws?</p><p>We expect certain things to be put together correctly so they can be effective. The same is true of our written communications. If you want your letter or email to be effective, you need to make sure it has been put together properly.</p><p>This topic will explore tips and tricks to ensure your communications have a solid structure and will have the right impact.</p>"
         },
         {
-          "title": "page 2 title",
-          "content": "some html describing page 2"
+          "title": "Plain English and the 5 C's",
+          "content": "<p>You may have heard of the rules of Plain English, but do you always follow them? The principles are simple: use everyday words as if you are in conversation with the reader, avoid jargon, keep sentences short and, where possible, always choose active over passive.</p><p>These principles are incorporated into a simple formula that can help you to remember how to communicate professionally in your letters. It's called the five Cs.</p><p>The 5 Cs are as follows:</p><ul class='list-bullet'><li>Courteous</li><li>Complete</li><li>Concise</li><li>Clear</li><li>Correct</li></ul>"
+        },
+        {
+          "title": "Quiz: Communicating with Customers",
+          "content": "<p>Welcome to this short quiz to test your knowledge.</p><p>Here you will answer ten questions to see how much you have learned about professional communications.</p><p>At the end of this quiz, you will be given a score and find out whether you are a clear communicator or need to take a second look at the topics. You must score 70% or higher to show your understanding of the core knowledge in this learning.</p>"
         }
       ],
       "questions": [
         {
           "title": "Question one",
           "tag": "ugtg-1",
-          "multichoice": false,
-          "description": "I know gmail, say:",
-          "guide": "",
+          "multichoice": true,
+          "description": "Why do we need professional communication skills?",
+          "guide": "Select one or more options",
           "choices": [
-            "Like a back of my hand",
-            "I know of it",
-            "What's a keyboard?"
+            "To engage with our customers",
+            "To follow departmental rules",
+            "To build rapport",
+            "To develop trust",
+            "To make communication easier for us",
+            "To deliver a quality service"
           ]
         },
         {
           "title": "Question two",
           "tag": "ugtg-2",
-          "multichoice": true,
-          "description": "Select which of these you could confidently teach a colleague:",
-          "guide": "",
+          "multichoice": false,
+          "description": "You are in conversation with Mr Katazwa, who is from Japan. He does not maintain eye contact with you. What should you be aware of?",
+          "guide": "Select one option",
           "choices": [
-            "Sending calendars, including shared calendars and create meetings",
-            "Attach files or internet links to an email (e.g. documents and websites)",
-            "Delete an email and am aware of how to recover deleted emails ",
-            "Understand follow up flags and importance markers ",
-            "Can carry out housekeeping and ensure storage limit is not exceeded (e.g. in Outlook) ",
-            "Use the 'out of office assistant' for the days I'm not working "
+            "He is probably a liar and his responses can't be trusted",
+            "Maintaining eye contact may be considered rude and aggressive in his culture",
+            "He is not interested in what you are saying",
+            "He doesn't speak English and can't understand you"
+          ]
+        },
+        {
+          "title": "Question three",
+          "tag": "ugtg-3",
+          "multichoice": false,
+          "description": "When we talk about personal space, the people who we are comfortable having in our intimate distance are?",
+          "guide": "Select one option",
+          "choices": [
+            "Colleagues",
+            "Strangers",
+            "Family and friends"
+          ]
+        },
+        {
+          "title": "Question four",
+          "tag": "ugtg-4",
+          "multichoice": true,
+          "description": "What can get in the way of your listening?",
+          "guide": "Select one or more options",
+          "choices": [
+            "Distractions in the office such as noise",
+            "Difficulty making out what the speaker is saying, because of accent, pace or volume",
+            "Thinking about how you are going to respond to them"
+          ]
+        },
+        {
+          "title": "Question five",
+          "tag": "ugtg-5",
+          "multichoice": false,
+          "description": "What sort of voices do we tend to really listen to?",
+          "guide": "Select one option",
+          "choices": [
+            "Regional accents",
+            "Strong, male voices",
+            "Upbeat, warm, clear and controlled voices",
+            "Female voices"
           ]
         }
       ]
@@ -73,18 +134,23 @@
   },
   "c0cb9ab77d8a4c55a14a5730109bbce2": {
     "title": "Operational Delivery Profession",
+    "desc": "<p>This course is here to help you fulfil your career aspirations. Find out how to record your strengths and tackle any weaknesses, and discover how to get where you want to be.</p><p>It will take approximately 20 minutes to complete this course.</p>",
     "priceAdditional": "",
     "outcomes": {
-      "blurb": "<p>By the end of the programme you’ll have:</p>",
+      "blurb": "<p>As a result of completing this learning opportunity you will be able to:</p>",
       "points": [
-        "some point numero uno"
+        "Describe what the operational delivery profession is",
+        "Explain the benefits of the operational delivery profession",
+        "Understand the importance of professional standards",
+        "Start your operational delivery profession journey using an action plan"
       ],
-      "warning": ""
+      "warning": "After completing this course, it may take up to 24 hours for your learning record to be updated."
     },
-    "levels": [
-      "some level 1",
-      "some level 2"
+    "audience": [
+      "All staff in Operational roles",
+      "Other staff who need an understanding of Operations"
     ],
+    "topics": [ "Operations Delivery Profession"],
     "relatedMaterials": [
       { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
     ],
@@ -96,12 +162,16 @@
     "course": {
       "pages": [
         {
-          "title": "page efqwefwere1 html basics title",
-          "content": "some html describing page 1"
+          "title": "What is operational delivery?",
+          "content": "Operational delivery is a huge professional group made up of everyone who provides services to support or protect citizens in the UK and abroad, or provides support or manages those who, is part of operational delivery. This includes their managers as well. Operational delivery professional roles are grouped by the skills needed to perform them. We call these groups skills families and there are six of them."
         },
         {
-          "title": "page 2 html basics title",
-          "content": "some html describing page 2"
+          "title": "What the profession aims to achieve",
+          "content": "<p>So, we're all working together in operational delivery, and while there are lots of differences in what each of us do on a daily basis, we're all working together towards the same objectives. Let's consider these before going any further.</p><p>The aims of the profession are twofold:</p><ul class='list-bullet'><li>To deliver the best possible service to the customer.</li><li>To help employees through recognising and enhancing their skills.</li></ul><p>In order to achieve these aims, the profession has the following objectives:</p><ul class='list-bullet'><li>For people working in operational delivery to be recognised and valued as professionals.</li><li>To have transferable skills that are recognised and respected across government and the wider economy.</li><li>To achieve the same level of status as the more established professions.</li></ul>"
+        },
+        {
+          "title": "Quiz: Operational Delivery Profession",
+          "content": "<p>Welcome to this short quiz to test your knowledge.</p>"
         }
       ],
       "questions": [
@@ -109,26 +179,24 @@
           "title": "Question one",
           "tag": "het-1",
           "multichoice": false,
-          "description": "I know email, say:",
-          "guide": "",
+          "description": "How are Operational Professional roles grouped?",
+          "guide": "Select one option",
           "choices": [
-            "I'm an email troll and send all kindz of them",
-            "It's there, I use it, no biggie",
-            "I go to post office to ask for help"
+            "By the skills to perform them",
+            "By job title",
+            "By location"
           ]
         },
         {
           "title": "Question two",
           "tag": "het-2",
-          "multichoice": true,
-          "description": "Select which of these you could confidently teach a colleague:",
-          "guide": "",
+          "multichoice": false,
+          "description": "What is one of the aims of the profession?",
+          "guide": "Select one option",
           "choices": [
-            "Typing",
-            "Typing and reading typed in stuff",
-            "Pasting an image",
-            "Changing them fonts and using colours",
-            "Sending troll emails to w3.org saying what you would change"
+            "To deliver the best possible service to the customer",
+            "To help employee get promoted",
+            "To get more people to contact us by telephone"
           ]
         }
       ]

@@ -49,7 +49,7 @@
       {% if user_logged_in and pre_course and (not pre_course['learningRecord']) %}
         <div class="warning-banner">
           <p class="bold-small">
-            You must complete all <a href="#prereq">pre req(s)</a> before doing this course.
+            You must complete all <a href="#prereq">pre learning</a> before doing this course.
           </p>
         </div>
       {% endif %}
@@ -59,7 +59,7 @@
         {{ course.desc|safe }}
 
         {% if pre_course %}
-          <h2 id="prereq" class="heading-large">Pre requisite</h2>
+          <h2 id="prereq" class="heading-large">Pre learning</h2>
           <p>You must complete all of the following pre requisite courses before taking this course.</p>
           
           <ul class="pre-req-list">
@@ -79,27 +79,44 @@
           </ul>
         {% endif %}
 
-        {% block pricing %}
-          {% if course.price %}
-          <h2 class="heading-large">Pricing</h2>
-          <p>
-            {% if course.duration %}
-            This is a {{ course.duration|format_duration|lower }} course.
-            {% endif %}
+        <h2 class="heading-large">Who might find this useful</h2>
+        <ul class="list-bullet">
+        {% if course.audience is defined %}
+          {% for aud in course.audience %}
+          <li>{{ aud }}</li>
+          {% endfor %}
+        {% else %}
+          <li>Administrative Level (AA/AO)</li>
+          <li>First Line Managers (EO)</li>
+          <li>Middle Managers (HEO/SEO)</li>
+          <li>Senior Managers (Grade 6/7)</li>
+          <li>Senior Civil Servants (SCS)</li>
+        {% endif %}
+        </ul>
 
-            {% if "Free Resource" in course.price %}
-              This course is free.
-            {% else %}
-              The cost for 1 person is {{ course.price }}.
-              {% if course.priceAdditional %}
-                {{ course.priceAdditional|safe }}
-              {% endif %}
-            {% endif %}
-          </p>
-          <p>For further details please call 020 3367 8316 or email <a href='mailto:info@civilservicelearning.org.uk'>info@civilservicelearning.org.uk</a>.</p>
-
+        {% if not (course.type == 'elearning') and course.price %}
+        <h2 class="heading-large">Pricing</h2>
+        <p>
+          {% if course.duration %}
+          This is a {{ course.duration|format_duration|lower }} course.
           {% endif %}
-        {% endblock %}
+
+          {% if "Free Resource" in course.price %}
+            This course is free.
+          {% else %}
+            The cost for 1 person is {{ course.price }}.
+            {% if course.priceAdditional %}
+              {{ course.priceAdditional|safe }}
+            {% endif %}
+          {% endif %}
+        </p>
+        <p>For further details please call 020 3367 8316 or email <a href='mailto:info@civilservicelearning.org.uk'>info@civilservicelearning.org.uk</a>.</p>
+
+        {% endif %}
+
+
+
+
         
         {% if course.outcomes %}
           <h2 class="heading-large">Learning outcomes</h2>
@@ -121,17 +138,10 @@
         {% if user_logged_in %}
           {% if pre_course %}
             
-            {% if pre_course['learningRecord'] %}
+            
               <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
                 class="button button-start" role="button">Start now</a>
-            {% else %}
-              <div class="warning-indent">
-                <i class="icon-important">
-                  <span class="visually-hidden">warning</span>
-                </i>
-                <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
-              </div>
-            {% endif %}
+
 
           {% else %}
             <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
@@ -149,21 +159,38 @@
 
     <div class="column-third related-container">
       <aside class="related">
+        
         <div class="related-subsection">
-          <h2 class="heading-medium">Learning material</h2>
+          <h2 class="heading-medium">Information</h2>
+          <nav>
+            <dl class="definition-inline">
+              <dt>Product code</dt>
+              <dd>DADD13</dd>
+              <dt>Duration</dt>
+              <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
+              <dt>Type</dt>
+              <dd>{{ course.type }}</dd>
+            </dl>  
+          </nav>
+        </div>
+      
+        <div class="related-subsection">
+          <h2 class="heading-medium">Topics/keywords</h2>
           <nav>
             <ul>
-              {% if course.relatedMaterials %}
-                {% for mat in course.relatedMaterials %}
-                  <li><a href="{{ mat.url }}">{{ mat.title }}</a></li>
+              {% if course.topics is defined %}
+                {% for topic in course.topics %}
+                <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">{{ topic }}</a></li>
                 {% endfor %}
               {% else %}
-                <li><a href="#">Digital Government, Open Architecture, and Innovation</a></li>
-                <li><a href="#">Digital Inclusion – Resources & Tools</a></li>
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Core Skills</a></li>
+              <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Digital & IT</a></li>
               {% endif %}
             </ul>
           </nav>
         </div>
+
+
         <div class="related-subsection">
           <h2 class="heading-medium">Learning opportunities</h2>
           <nav>
@@ -186,47 +213,7 @@
 
   </div>
 
-  
-  <div class="grid-row">
-    <div class="column-third course-metadata-section">
-      <h3 class="heading-medium">Level</h3>
-      <ul class="list-bullet">
-      {% if course.levels is defined %}
-        {% for level in course.levels %}
-        <li>{{ level }}</li>
-        {% endfor %}
-      {% else %}
-        <li>Administrative Level (AA/AO)</li>
-        <li>First Line Managers (EO)</li>
-        <li>Middle Managers (HEO/SEO)</li>
-        <li>Senior Managers (Grade 6/7)</li>
-        <li>Senior Civil Servants (SCS)</li>
-      {% endif %}
-      </ul>
-    </div>
-    <div class="column-third course-metadata-section">
-      <h3 class="heading-medium">Topic</h3>
-      <ul class="list-bullet">
-        {% if course.topics is defined %}
-          {% for topic in course.topics %}
-          <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">{{ topic }}</a></li>
-          {% endfor %}
-        {% else %}
-        <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Core Skills</a></li>
-        <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Digital & IT</a></li>
-        {% endif %}
-      </ul>
-    </div>
-    <div class="column-third course-metadata-section">
-      <h3 class="heading-medium">Other information</h3>
-      <dl class="definition-inline">
-        <dt>Product code</dt>
-        <dd>DADD13</dd>
-        <dt>Duration</dt>
-        <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
-      </dl>
-    </div>
-  </div>
+
 
 
 {% endblock %}
