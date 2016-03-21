@@ -1,16 +1,19 @@
 {
-  "04d181dccf4c11e59fa60242ac110001": {
-    "title": "Ultimate Guide to Gmail",
-    "prerequisites": "d8e42a1ecf4d11e5ac3f0242ac110001",
+  "e7693080099f4ac19e646b45b7fdfb36": {
+    "title": "Communicating with customers 2013",
+    "prerequisites": "c0cb9ab77d8a4c55a14a5730109bbce2",
+    "desc": "<p>The way we communicate with customers can greatly influence the way people judge government services and helps us ensure we get the right information at the right time.</p><p>The purpose of this unit is to help you develop your professional communication skills.</p><p>The material in this package contains four main sections:</p><p>What is professional communication</p><ul><li>Communicating professionally in writing</li><li>Communicating professionally by telephone</li><li>Communicating professionally face to face</li></ul>",
     "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "outcomes": {
       "blurb": "<p>By the end of the programme you’ll have:</p>",
       "points": [
-        "understood the impact of providing people with a clear vision of the future during change programmes",
-        "explored sources of inspiration and practical techniques to engage and inspire others during change",
-        "uncovered the secret behind motivating people through change and the 5 basic social needs we require in order to feel secure in our roles",
-        "developed a range of practical tips, tools and advice that can be put into place straightaway",
-        "reflected with peers on what change means for you and for your teams"
+        "explain what is meant by professional communication",
+        "outline the benefits of professional communication to the individual, the customer and the business",
+        "describe effective techniques for communicating with customers",
+        "in writing",
+        "over the telephone",
+        "in a face to face environment",
+        "plan and structure communications to ensure the most successful outcome"
       ],
       "warning": ""
     },
@@ -68,8 +71,8 @@
       ]
     }
   },
-  "d8e42a1ecf4d11e5ac3f0242ac110001": {
-    "title": "HTML Email Training",
+  "c0cb9ab77d8a4c55a14a5730109bbce2": {
+    "title": "Operational Delivery Profession",
     "priceAdditional": "",
     "outcomes": {
       "blurb": "<p>By the end of the programme you’ll have:</p>",

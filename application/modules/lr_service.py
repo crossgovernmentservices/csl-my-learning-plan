@@ -23,7 +23,7 @@ def get_resource(resource_id):
     lr_data = get_courses({"filter": {"id": resource_id}})
     lr_data = lr_data[0] if lr_data else {}
 
-    return {**course_data, **lr_data}
+    return {**lr_data, **course_data}
 
 
 def get_resources_with_tincanstatements():
