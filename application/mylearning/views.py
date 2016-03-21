@@ -1,5 +1,5 @@
 import os
-
+import json
 from flask import (
     Blueprint,
     render_template,
@@ -15,18 +15,24 @@ from flask.ext.security import login_required
 from flask.ext.security.utils import login_user
 
 from application.mylearning.forms import LoginForm
-
 from application.models import User
-
 from application.extensions import user_datastore
 
-
 mylearning = Blueprint('mylearning', __name__, template_folder='templates')
-
 
 @mylearning.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
+
+
+# temp solution
+@mylearning.route('/email_referrer')
+def email_referrer():
+    with open('application/data/email-referrer-data.json') as data_file:
+        email_data = json.load(data_file)
+
+    return render_template('email_referrer.html', email=email_data)
+
 
 
 @mylearning.route('/login', methods=['GET', 'POST'])

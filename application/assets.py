@@ -92,6 +92,13 @@ css_learning_resource = Bundle(
     depends='**/*.scss'
 )
 
+css_email_referrer = Bundle(
+    'sass/pages/email_referrer.scss',
+    filters='scss',
+    output='stylesheets/email_referrer.css',
+    depends='**/*.scss'
+)
+
 env = Environment()
 env.register('css_govuk_elements', css_govuk_elements)
 env.register('css_main', css_main)
@@ -104,3 +111,4 @@ env.register('css_learning_plan', css_learning_plan)
 env.register('css_learning_record', css_learning_record)
 env.register('css_digital_diagnostic', css_digital_diagnostic)
 env.register('css_learning_resource', css_learning_resource)
+env.register('css_email_referrer', css_email_referrer)
