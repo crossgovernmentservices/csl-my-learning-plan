@@ -560,7 +560,7 @@ dt.heading-small { margin-top: 0; }
     background-image: url("/static/icons/icon-important.png");
 
     @include device-pixel-ratio() {
-      background-image: file-url("/static/icons/icon-important-2x.png");
+      background-image: url("/static/icons/icon-important-2x.png");
       background-size: 100%;
     }
   }
