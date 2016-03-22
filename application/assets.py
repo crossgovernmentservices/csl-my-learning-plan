@@ -95,7 +95,7 @@ css_learning_resource = Bundle(
 css_email_referrer = Bundle(
     'sass/pages/email_referrer.scss',
     filters='scss',
-    output='stylesheets/email_resesdfrrer.css',
+    output='stylesheets/email_referrer.css',
     depends='**/*.scss'
 )
 
