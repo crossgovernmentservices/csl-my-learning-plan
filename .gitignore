@@ -53,6 +53,7 @@ internal_interface.css
 # generated ones should be isolated
 email_referrer.css
 rebrand.css
+learning_resource.css
 
 environment-private.sh
 
