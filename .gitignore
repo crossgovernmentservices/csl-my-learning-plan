@@ -50,6 +50,9 @@ govuk_elements.css
 journeys.css
 internal_interface.css
 
+# generated ones should be isolated
+email_referrer.css
+
 environment-private.sh
 
 .cache

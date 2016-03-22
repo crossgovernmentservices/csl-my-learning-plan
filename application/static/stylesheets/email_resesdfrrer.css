@@ -3386,3 +3386,8 @@ dt.heading-small {
   min-height: 300px;
   padding: 15px;
 }
+
+/* line 31 */
+.bold-tiny {
+  font-weight: 600;
+}
