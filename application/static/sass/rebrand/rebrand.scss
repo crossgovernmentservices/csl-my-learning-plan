@@ -558,6 +558,11 @@ dt.heading-small { margin-top: 0; }
     width: 35px;
     height: 35px;
     background-image: url("/static/icons/icon-important.png");
+
+    @include device-pixel-ratio() {
+      background-image: url("/static/icons/icon-important-2x.png");
+      background-size: 100%;
+    }
   }
 }
 
