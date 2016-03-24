@@ -15,7 +15,7 @@ scss.load_paths = [os.path.join(os.path.dirname(__file__), 'static/sass'),
 css_govuk_elements = Bundle(
     'sass/govuk_elements.scss',
     filters=scss,
-    output='stylesheets/govuk_elements.css',
+    output='stylesheets/generated/govuk_elements.css',
     depends=['/static/govuk_elements/public/sass/**/*.scss',
              '/static/govuk_frontend_toolkit/stylesheets/**/*.scss']
 )
@@ -23,7 +23,7 @@ css_govuk_elements = Bundle(
 css_internal_interface = Bundle(
     'sass/internal_interface.scss',
     filters=scss,
-    output='stylesheets/internal_interface.css',
+    output='stylesheets/generated/internal_interface.css',
     depends=['/static/sass/internal_interface/**/*.scss',
              '/static/govuk_frontend_toolkit/stylesheets/**/*.scss']
 )
@@ -31,7 +31,7 @@ css_internal_interface = Bundle(
 css_main = Bundle(
     'sass/main.scss',
     filters=scss,
-    output='stylesheets/main.css',
+    output='stylesheets/generated/main.css',
     depends=['/static/sass/main/**/*.scss',
              '/static/govuk_frontend_toolkit/stylesheets/**/*.scss']
 )
@@ -39,63 +39,63 @@ css_main = Bundle(
 css_learning = Bundle(
     'sass/learning.scss',
     filters='scss',
-    output='stylesheets/learning.css',
+    output='stylesheets/generated/learning.css',
     depends="**/*.scss"
 )
 
 css_rebrand = Bundle(
     'sass/rebrand/rebrand.scss',
     filters='scss',
-    output='stylesheets/rebrand.css',
+    output='stylesheets/generated/rebrand.css',
     depends='**/*.scss'
 )
 
 css_csl_styleguide = Bundle(
     'sass/styleguide-csl.scss',
     filters='scss',
-    output='stylesheets/styleguide-csl.css',
+    output='stylesheets/generated/styleguide-csl.css',
     depends='**/*.scss'
 )
 
 css_csl_elements = Bundle(
     'sass/csl_elements.scss',
     filters='scss',
-    output='stylesheets/csl_elements.css',
+    output='stylesheets/generated/csl_elements.css',
     depends='**/*.scss'
 )
 
 css_learning_plan = Bundle(
     'sass/pages/learning_plan.scss',
     filters='scss',
-    output='stylesheets/learning_plan.css',
+    output='stylesheets/generated/learning_plan.css',
     depends='**/*.scss'
 )
 
 css_learning_record = Bundle(
     'sass/pages/learning_record.scss',
     filters='scss',
-    output='stylesheets/learning_record.css',
+    output='stylesheets/generated/learning_record.css',
     depends='**/*.scss'
 )
 
 css_digital_diagnostic = Bundle(
     'sass/pages/digital_diagnostic.scss',
     filters='scss',
-    output='stylesheets/digital_diagnostic.css',
+    output='stylesheets/generated/digital_diagnostic.css',
     depends='**/*.scss'
 )
 
 css_learning_resource = Bundle(
     'sass/pages/learning_resource.scss',
     filters='scss',
-    output='stylesheets/learning_resource.css',
+    output='stylesheets/generated/learning_resource.css',
     depends='**/*.scss'
 )
 
 css_email_referrer = Bundle(
     'sass/pages/email_referrer.scss',
     filters='scss',
-    output='stylesheets/email_referrer.css',
+    output='stylesheets/generated/email_referrer.css',
     depends='**/*.scss'
 )
 
