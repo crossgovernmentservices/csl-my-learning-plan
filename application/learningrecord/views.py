@@ -21,8 +21,15 @@ learningrecord = Blueprint('learningrecord', __name__)
 @login_required
 def view_record():
     records = lrs_service.load_user_records(current_user.email)
-
     return render_template('learningrecord/view_record.html', records=records)
+
+
+@learningrecord.route('/learning-record/clean-all-records')
+@login_required
+def clean_all():
+    records = lrs_service.clean_learning_plans(current_user.email)
+    back_url = url_for('learningrecord.view_record')
+    return render_template('learningrecord/clean.html', back_url=back_url)
 
 
 # JSON stuff here

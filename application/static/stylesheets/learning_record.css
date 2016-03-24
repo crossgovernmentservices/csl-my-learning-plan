@@ -21,7 +21,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -57,7 +57,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -90,7 +90,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -109,7 +109,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -145,7 +145,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -174,7 +174,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -193,7 +193,7 @@
   width: device-width;
 }
 /* line 46, /usr/src/app/application/static/govuk_frontend_toolkit/stylesheets/_shims.scss */
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .notification-banner:after, .notification-banner--confirmed:after, .guide__header:after, .guide__header__contents:after, .activity-navigation ul:after, .filters-content:after, .definition-inline:after, .summary-list-inline:after, .callout:after, .profile_header:after, .profile_header .profile-search-form:after, .course-details:after, .warning-indent:after {
   content: "";
   display: block;
   clear: both;
@@ -2352,7 +2352,7 @@ input[type=number] {
 
 /* line 4, /usr/src/app/application/static/sass/rebrand/related.scss */
 .related {
-  border-top: 10px solid #005ea5;
+  border-top: 10px solid #af292e;
   padding-top: 5px;
   font-size: 16px;
 }
@@ -2660,14 +2660,14 @@ input[type=number] {
 }
 
 /* line 18, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+#global-breadcrumb {
+  display: inline-block;
+}
+
+/* line 22, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .visually-hidden {
   display: none;
   visibility: hidden;
-}
-
-/* line 23, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
-#global-breadcrumb {
-  display: inline-block;
 }
 
 /* line 27, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
@@ -2909,7 +2909,8 @@ input[type=number] {
 }
 
 /* line 248, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
-.course-status, .course-status--confirmed {
+.course-status, .course-status--confirmed, .flag-done,
+.flag {
   font-size: 16px;
   padding: 5px 5px 2px;
   border: 2px solid #bfc1c3;
@@ -2920,24 +2921,33 @@ input[type=number] {
   font-weight: bold;
 }
 
-/* line 259, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 260, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-status--confirmed {
   color: #2eb135;
   border-color: #2eb135;
 }
 
-/* line 265, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 266, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.flag-done {
+  color: #fff;
+  border-color: #28a197;
+  background: #28a197;
+  padding: 4px 3px 0;
+  text-transform: uppercase;
+}
+
+/* line 275, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .level-separator {
   border-top: 1px solid #bfc1c3;
   margin-top: 60px;
   position: relative;
 }
-/* line 270, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 280, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .level-separator h2 {
   margin-top: 30px;
 }
 
-/* line 275, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 285, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .back-to-grid {
   position: absolute;
   right: 0;
@@ -2946,25 +2956,25 @@ input[type=number] {
 }
 
 @media (min-width: 641px) {
-  /* line 284, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+  /* line 294, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
   .profile_header h1, .profile_header .profile-search-form {
     float: left;
     width: 50%;
     margin-top: 30px;
   }
 }
-/* line 291, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 301, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile_header .profile-search-form {
   margin-bottom: 30px;
 }
 @media (min-width: 641px) {
-  /* line 291, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+  /* line 301, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
   .profile_header .profile-search-form {
     margin-top: 60px;
   }
 }
 
-/* line 301, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 311, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification-banner, .notification-banner--confirmed {
   border-color: #1a2792;
   background: #e4e6fa;
@@ -2972,99 +2982,195 @@ input[type=number] {
   position: relative;
 }
 
-/* line 309, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 319, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .notification-banner--confirmed {
   border-color: #2eb135;
   background: #d1f3d3;
 }
 
-/* line 315, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 325, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .check-status-link {
   position: absolute;
   right: 15px;
 }
 
-/* line 320, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 330, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-list--profile {
   padding-left: 0;
 }
-/* line 323, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 333, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-list--profile > li {
   border: 1px solid #1a2792;
   margin: 0 0 10px;
   list-style: none;
 }
 
-/* line 339, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 340, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-head, .course-wrapper {
+  padding: 0 15px;
+  line-height: 2em;
+}
+/* line 344, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-head a, .course-wrapper a {
+  text-decoration: none;
+}
+
+/* line 349, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details {
   padding-top: 3px;
 }
-/* line 343, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 353, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail {
   margin: 0 15px 0 0;
   float: left;
 }
-/* line 347, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 357, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail .highlight {
   font-weight: bold;
 }
-/* line 351, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 361, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-details .course-detail .secondary {
   color: #6f777b;
 }
 
-/* line 357, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 367, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-content {
+  display: none;
+}
+/* line 370, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-content .panel-indent, .accordian-content .notification-banner, .accordian-content .notification-banner--confirmed {
+  margin-bottom: 30px;
+}
+/* line 374, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-content img {
+  max-width: 100%;
+}
+
+/* line 380, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian--open .accordian-head {
+  border-bottom: 1px solid #cacac8;
+}
+/* line 383, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian--open .accordian-content {
+  display: block;
+  padding: 15px;
+}
+/* line 388, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian--open .btn-less {
+  display: block;
+}
+/* line 392, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian--open .btn-more {
+  display: none;
+}
+
+/* line 397, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.btn-less {
+  display: none;
+}
+
+/* line 401, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.btn-more {
+  display: block;
+}
+
+/* line 405, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-head, .course-wrapper {
+  position: relative;
+}
+
+/* line 410, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.more-group {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  line-height: 41px;
+}
+/* line 416, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.more-group .btn-less, .more-group .btn-more {
+  line-height: inherit;
+}
+
+/* line 421, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.btn-more, .btn-less {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #005ea5;
+}
+/* line 428, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.btn-more:hover, .btn-less:hover {
+  color: #2e8aca;
+  cursor: pointer;
+}
+/* line 433, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.btn-more img, .btn-less img {
+  margin-bottom: -2px;
+}
+
+/* line 438, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-head:hover {
+  background: #e3e3e2;
+  cursor: pointer;
+}
+/* line 442, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.accordian-head:hover .highlight {
+  text-decoration: underline;
+}
+
+/* line 447, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 dt.heading-small {
   margin-top: 0;
 }
 
-/* line 359, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 449, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .el-hidden {
   display: none;
 }
 
-/* line 363, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 453, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .selected + .el-hidden {
   display: block;
 }
 
-/* line 367, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 457, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .time-details {
   margin: -8px 0 12px;
 }
 
-/* line 371, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 461, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .map-details {
   margin-top: 8px;
 }
 
-/* line 375, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 465, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl {
   background: #af292e;
 }
-/* line 378, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 468, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl:visited {
   background: #af292e;
 }
-/* line 381, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 471, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .btn-csl:hover {
   background: #9a2429;
 }
 
-/* line 386, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 476, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section {
   padding-top: 45px;
 }
-/* line 389, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 479, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section .profile-section-heading {
   margin-top: 0;
 }
 
-/* line 394, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 484, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section__editable {
   position: relative;
 }
-/* line 397, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 487, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .profile-section__editable .btn-edit {
   position: absolute;
   top: 45px;
@@ -3073,51 +3179,183 @@ dt.heading-small {
   line-height: 30px;
 }
 
-/* line 406, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 496, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table {
   margin: 0 -15px;
 }
-/* line 409, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 499, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tr th:first-child,
 .course-select-table tr td:first-child {
   padding-left: 15px;
 }
-/* line 414, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 504, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tr td:last-child {
   text-align: center;
   padding-right: 0;
 }
-/* line 420, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 510, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table tbody tr:not(.currently-selected):hover {
   background: #dee0e2;
 }
-/* line 425, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 515, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .status-selected {
   display: none;
 }
-/* line 429, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 519, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected {
   border-left: 10px solid #28a197;
 }
-/* line 431, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 521, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected td {
   font-weight: bold;
 }
-/* line 434, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 524, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected .date-selection {
   display: none;
 }
-/* line 437, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 527, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .course-select-table .currently-selected .status-selected {
   display: inline;
 }
 
-/* line 444, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+/* line 534, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
 .table-strip tbody tr:nth-child(odd) {
   background: #f8f8f8;
 }
 
+/* line 539, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.data-highlight {
+  margin: 30px 0 45px;
+}
+
+/* line 543, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.data-group {
+  margin: 30px 0;
+}
+
+/* line 547, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.warning-indent {
+  margin: 15px 0;
+}
+/* line 550, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.warning-indent .warning-message {
+  padding-left: 65px;
+  font-weight: bold;
+}
+/* line 555, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.warning-indent .icon-important {
+  display: inline-block;
+  float: left;
+  width: 35px;
+  height: 35px;
+  background-image: url("/static/icons/icon-important.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  /* line 555, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+  .warning-indent .icon-important {
+    background-image: url("/static/icons/icon-important-2x.png");
+    background-size: 100%;
+  }
+}
+
+/* line 570, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.notice strong {
+  line-height: 34px;
+  padding-left: 10px;
+}
+
+/* line 575, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.done-banner {
+  color: #fff;
+  background: #28a197;
+  padding: 15px 10px;
+  text-align: center;
+  margin-right: 15px;
+}
+/* line 582, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.done-banner .heading {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+/* line 587, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.done-banner h3 {
+  font-weight: bold;
+}
+
+/* line 592, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.warning-banner {
+  border-left: 5px solid #ffbf47;
+  background: #fff4e0;
+  padding: 10px 0 10px 15px;
+  margin: 30px 15px 30px 0;
+}
+/* line 598, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.warning-banner p {
+  margin: 0;
+}
+
+/* dl */
+/* line 604, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.df-inline dd, .df-inline dt {
+  display: inline;
+}
+/* line 607, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.df-inline dt {
+  margin-right: 15px;
+}
+/* line 609, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.df-inline dt:after {
+  content: ':';
+}
+/* line 613, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.df-inline dd {
+  font-weight: bold;
+}
+
+/* line 618, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list {
+  border-top: 1px solid #dee0e2;
+}
+/* line 620, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list li {
+  position: relative;
+  border-bottom: 1px solid #dee0e2;
+  padding: 10px 0;
+}
+/* line 625, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .status-wrap {
+  text-align: right;
+}
+/* line 627, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .status-wrap span {
+  display: inline-block;
+}
+/* line 631, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .course-name {
+  font-weight: bold;
+  text-decoration: none;
+}
+/* line 635, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .course-name:hover {
+  text-decoration: underline;
+}
+/* line 639, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .record-link {
+  color: #6f777b;
+  text-decoration: none;
+}
+/* line 643, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.pre-req-list .record-link:hover {
+  text-decoration: underline;
+}
+
+/* line 648, /usr/src/app/application/static/sass/rebrand/rebrand.scss */
+.text-secondary {
+  font-size: 16px;
+  color: #6f777b;
+}
+
 /* line 3 */
 .user-history {
-  margin-bottom: 1em;
+  margin-bottom: 4em;
 }
