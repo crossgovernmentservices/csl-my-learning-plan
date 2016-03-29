@@ -45,15 +45,8 @@ docs/_build
 .sass-cache
 
 # sass generated css
-main.css
-govuk_elements.css
-journeys.css
-internal_interface.css
+application/static/stylesheets/generated
 
-# generated ones should be isolated
-email_referrer.css
-rebrand.css
-learning_resource.css
 
 environment-private.sh
 

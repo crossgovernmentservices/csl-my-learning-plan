@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ ASSET_URL }}">
   {% endassets %}
 
-  <link rel="stylesheet" href="/static/vendor/font-awesome-4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset_path }}vendor/font-awesome-4.4.0/css/font-awesome.min.css">
 
   {% block page_head_end %}
   {% endblock %}
@@ -16,6 +16,6 @@
 
 {% block body_end %}
   {{ super() }}
-  <script src="/static/javascripts/styleguide.js"></script>
+  <script src="{{ asset_path }}javascripts/styleguide.js"></script>
 
 {% endblock %}
