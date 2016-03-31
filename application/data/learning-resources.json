@@ -3,25 +3,18 @@
     "title": "Communicating with customers",
     "prerequisites": "c0cb9ab77d8a4c55a14a5730109bbce2",
     "desc": "<p>This learning explores the essential principles required by any operational delivery professional to best communicate with their customers. This learning package is divided into four topics and concludes with a quiz.</p><p>It will take approximately 45 minutes to complete this course.</p>",
+    "descDetails": "<p>Some details about the course</p>",
     "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "outcomes": {
-      "blurb": "<p>By the end of the programme you’ll have:</p>",
+      "blurb": "<p>On completing this learning, you'll be able to:</p>",
       "points": [
-        "explain what is meant by professional communication",
-        "outline the benefits of professional communication to the individual, the customer and the business",
-        "describe effective techniques for communicating with customers: in writing, over the telephone, in a face to face environment",
-        "plan and structure communications to ensure the most successful outcome"
-      ],
-      "warning": "After completing this course, it may take up to 24 hours for your learning record to be updated."
+        "explain professional communication and outline its benefits to you, the customer and the business",
+        "describe the most effective techniques for communicating: in writing, on the phone and in person",
+        "plan and structure communications to ensure a successful outcome"
+      ]
     },
-    "audience": [
-      "Anyone who works with customers or other people"
-    ],
-    "topics": [ 
-      "Communication",
-      "Customer Service",
-      "Support"
-    ],
+    "audience": [ "Operations" ],
+    
     "relatedMaterials": [
       { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
     ],
@@ -135,6 +128,7 @@
   "c0cb9ab77d8a4c55a14a5730109bbce2": {
     "title": "Operational Delivery Profession",
     "desc": "<p>This course is here to help you fulfil your career aspirations. Find out how to record your strengths and tackle any weaknesses, and discover how to get where you want to be.</p><p>It will take approximately 20 minutes to complete this course.</p>",
+    "descDetails": "<p>Some details about the course</p>",
     "priceAdditional": "",
     "outcomes": {
       "blurb": "<p>As a result of completing this learning opportunity you will be able to:</p>",
@@ -143,14 +137,12 @@
         "Explain the benefits of the operational delivery profession",
         "Understand the importance of professional standards",
         "Start your operational delivery profession journey using an action plan"
-      ],
-      "warning": "After completing this course, it may take up to 24 hours for your learning record to be updated."
+      ]
     },
     "audience": [
       "All staff in Operational roles",
       "Other staff who need an understanding of Operations"
     ],
-    "topics": [ "Operations Delivery Profession"],
     "relatedMaterials": [
       { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
     ],
@@ -201,5 +193,135 @@
         }
       ]
     }
+  },
+
+  "04d181dccf4c11e59fa60242ac110001": {
+    "title": "Ultimate Guide to Gmail",
+    "prerequisites": "d8e42a1ecf4d11e5ac3f0242ac110001",
+    "descDetails": "<p>Some details about the course</p>",
+    "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
+    "outcomes": {
+      "blurb": "<p>On completing this learning, you'll be able to:</p>",
+      "points": [
+        "understood the impact of providing people with a clear vision of the future during change programmes",
+        "explored sources of inspiration and practical techniques to engage and inspire others during change",
+        "uncovered the secret behind motivating people through change and the 5 basic social needs we require in order to feel secure in our roles",
+        "developed a range of practical tips, tools and advice that can be put into place straightaway",
+        "reflected with peers on what change means for you and for your teams"
+      ]
+    },
+    "audience": [ "Everybody", "Jonathan Ross" ],
+    "relatedMaterials": [
+      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
+    ],
+    "relatedOpportunities": [
+      { "title": "Unconscious bias (e-learning)", "url": "#" },
+      { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
+      { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
+    ],
+    "course": {
+      "pages": [
+        {
+          "title": "page 1 title",
+          "content": "some html describing page 1"
+        },
+        {
+          "title": "page 2 title",
+          "content": "some html describing page 2"
+        }
+      ],
+      "questions": [
+        {
+          "title": "Question one",
+          "tag": "ugtg-1",
+          "multichoice": false,
+          "description": "I know gmail, say:",
+          "guide": "",
+          "choices": [
+            "Like a back of my hand",
+            "I know of it",
+            "What's a keyboard?"
+          ]
+        },
+        {
+          "title": "Question two",
+          "tag": "ugtg-2",
+          "multichoice": true,
+          "description": "Select which of these you could confidently teach a colleague:",
+          "guide": "",
+          "choices": [
+            "Sending calendars, including shared calendars and create meetings",
+            "Attach files or internet links to an email (e.g. documents and websites)",
+            "Delete an email and am aware of how to recover deleted emails ",
+            "Understand follow up flags and importance markers ",
+            "Can carry out housekeeping and ensure storage limit is not exceeded (e.g. in Outlook) ",
+            "Use the 'out of office assistant' for the days I'm not working "
+          ]
+        }
+      ]
+    }
+  },
+  "d8e42a1ecf4d11e5ac3f0242ac110001": {
+    "title": "HTML Email Training",
+    "descDetails": "<p>Some details about the course</p>",
+    "priceAdditional": "",
+    "outcomes": {
+      "blurb": "<p>On completing this learning, you'll be able to:</p>",
+      "points": [
+        "some point numero uno"
+      ]
+    },
+    "relatedMaterials": [
+      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
+    ],
+    "relatedOpportunities": [
+      { "title": "Unconscious bias (e-learning)", "url": "#" },
+      { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
+      { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
+    ],
+    "course": {
+      "pages": [
+        {
+          "title": "page efqwefwere1 html basics title",
+          "content": "some html describing page 1"
+        },
+        {
+          "title": "page 2 html basics title",
+          "content": "some html describing page 2"
+        }
+      ],
+      "questions": [
+        {
+          "title": "Question one",
+          "tag": "het-1",
+          "multichoice": false,
+          "description": "I know email, say:",
+          "guide": "",
+          "choices": [
+            "I'm an email troll and send all kindz of them",
+            "It's there, I use it, no biggie",
+            "I go to post office to ask for help"
+          ]
+        },
+        {
+          "title": "Question two",
+          "tag": "het-2",
+          "multichoice": true,
+          "description": "Select which of these you could confidently teach a colleague:",
+          "guide": "",
+          "choices": [
+            "Typing",
+            "Typing and reading typed in stuff",
+            "Pasting an image",
+            "Changing them fonts and using colours",
+            "Sending troll emails to w3.org saying what you would change"
+          ]
+        }
+      ]
+    }
   }
+
+
+
+
 }

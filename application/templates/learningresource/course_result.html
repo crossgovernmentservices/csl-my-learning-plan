@@ -40,22 +40,31 @@
           <p class="ref-number">{{ score|round|int }}%</p>
         </div>
       </div>
-
+      
       <h3 class="heading-medium">What happens next?</h3>
+      <p>Your <a href="{{ url_for('learningrecord.view_record') }}">learning record</a> has been updated.</p>
+      <p>You can help to improve the service by providing <a href="#">feedback</a> on this learning.</p>
+
       {% if source_course %}
         <p class="text">Now since you've completed the prerequisite course you can take:</p>
         <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
       {% else %}
-        <p>After completing this course, it may take up to 24 hours for your learning record to be updated.</p>
-        <div class="text">
+        <div>
           You may also be interested in these learning opportunities:
-          <ul>
-            {% for suggestion in course.completionSuggestions %}
-              <li><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></li>
-            {% endfor %}
-          </ul>
+          <table>
+            <tbody>
+              {% for suggestion in course.completionSuggestions %}
+                <tr>
+                  <td><a href="{{ suggestion.url }}">{{ suggestion.title }}</td>
+                  <td><a href="#">add to wishlist</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <p><a href="{{ url_for('learningresource.search') }}">See what else CSL has to offer</a></p>
+
+        <p><a href="{{ url_for('learningresource.search') }}">See what else CSL has to offer (here be dragons)</a></p>
+
       {% endif %}
 
     </main>
