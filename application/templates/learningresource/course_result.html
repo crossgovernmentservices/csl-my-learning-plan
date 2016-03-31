@@ -33,39 +33,71 @@
             Failed
           {% endif %}
           </h2>
+        <!-- <dl class="df-inline lede">
+          <dt>Course</dt>
+          <dd class="course-title">{{ course['title'] }}</dd>
+        </dl>
+        <dl class="df-inline lede">
+          <dt>Your score</dt>
+          <dd class="ref-number">{{ score|round|int }}%</dd>
+        </dl> -->
+
         <div class="lede">
-          <span>Course</span>
+          <span>{{ record['when']|format_date('%d/%m/%Y') }}</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
           <p class="ref-number">{{ score|round|int }}%</p>
         </div>
       </div>
       
-      <h3 class="heading-medium">What happens next?</h3>
-      <p>Your <a href="{{ url_for('learningrecord.view_record') }}">learning record</a> has been updated.</p>
-      <p>You can help to improve the service by providing <a href="#">feedback</a> on this learning.</p>
+      <section class="service-info">
+        <p>Your <a href="{{ url_for('learningrecord.view_record') }}">learning record</a> has been updated to show this completed learning.</p>
+        <p>You can help us improve our service by offering <a href="#">feedback</a> on this learning.</p>
+      </section>
 
-      {% if source_course %}
-        <p class="text">Now since you've completed the prerequisite course you can take:</p>
-        <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
-      {% else %}
-        <div>
-          You may also be interested in these learning opportunities:
-          <table>
-            <tbody>
-              {% for suggestion in course.completionSuggestions %}
+      <section class="next-steps text">      
+        <h2 class="heading-medium">Other learning to help you in your work</h2>
+        {% if source_course %}
+          <p>Now since you've completed the prerequisite course you can take:</p>
+          <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
+        {% else %}
+
+
+          {% for suggestion in course.completionSuggestions %}
+
+            <h3 class="heading-small">{{ suggestion.type }}</h3>
+            <ul class="suggested-resources">
+              {% for resource in suggestion.resources %}
+              <li class="grid-row resource">
+                <div class="column-two-thirds">
+                  <a href="{{ resource.url }}">{{ resource.title }}
+                </div>
+                <div class="column-third">
+                  <a href="#">add to wishlist</a>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+
+          {% endfor %}
+
+
+          <!--   <table>
+              <tbody>
+                {% for suggestion in course.completionSuggestions %}
                 <tr>
                   <td><a href="{{ suggestion.url }}">{{ suggestion.title }}</td>
                   <td><a href="#">add to wishlist</a></td>
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+                {% endfor %}
+              </tbody>
+            </table> -->
 
-        <p><a href="{{ url_for('learningresource.search') }}">See what else CSL has to offer (here be dragons)</a></p>
+          
+          <p>Take a look at <a href="{{ url_for('learningresource.search') }}">what else CSL has to offer.</a></p>
 
-      {% endif %}
+        {% endif %}
+      </section>
 
     </main>
 

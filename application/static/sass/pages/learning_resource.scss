@@ -28,7 +28,6 @@
   }
 }
 
-
 .next-step{
   padding-top: 3em;
 }
@@ -39,9 +38,24 @@
 }
 
 .list.audience{
+  padding-left: 1em;
   li {
-    margin-bottom: 0;
+    margin-bottom: 0.75em;
   }
 }
 
+.service-info {
+  margin-top: 1.875em;
+}
 
+.suggested-resources {
+  .resource {
+    padding: 0.25em 0 0.25em 1.25em;
+  }
+}
+
+.related-course-info {
+  dt, dd {
+    margin-bottom: 0.25em;
+  }
+}

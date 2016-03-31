@@ -14,32 +14,39 @@
       ]
     },
     "audience": [ "Operations" ],
-    
-    "relatedMaterials": [
-      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
-    ],
     "relatedOpportunities": [
       { "title": "Unconscious bias (e-learning)", "url": "#" },
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
       { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
     "completionSuggestions":[
-      { 
-        "title": "eLearning on customers with mental health conditions",
-        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/mental-health-conditions-and-dementia-support-customers"
+      {
+        "type": "Online learning",
+        "resources":[
+          { 
+            "title": "Customers with mental health conditions",
+            "url": "#"
+          },
+          { 
+            "title": "Written communications",
+            "url": "#"
+          }
+        ]
       },
-      { 
-        "title": "Workshop on adapting behaviours to suit customers",
-        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/operational-delivery-profession-adapting-your-behaviour-suit-customer"
-      },
-      { 
-        "title": "Workshop on writing to the public",
-        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/writing-public"
-      },
-      { 
-        "title": "eLearning on written communications",
-        "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/written-communications"
+      {
+        "type": "Workshops",
+        "resources":[
+          { 
+            "title": "Adapting behaviours to suit customers",
+            "url": "#"
+          },
+          { 
+            "title": "Writing to the public ",
+            "url": "#"
+          }
+        ]
       }
+      
     ],
     "course": {
       "pages": [
@@ -143,9 +150,6 @@
       "All staff in Operational roles",
       "Other staff who need an understanding of Operations"
     ],
-    "relatedMaterials": [
-      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
-    ],
     "relatedOpportunities": [
       { "title": "Unconscious bias (e-learning)", "url": "#" },
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
@@ -211,9 +215,6 @@
       ]
     },
     "audience": [ "Everybody", "Jonathan Ross" ],
-    "relatedMaterials": [
-      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
-    ],
     "relatedOpportunities": [
       { "title": "Unconscious bias (e-learning)", "url": "#" },
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
@@ -271,9 +272,6 @@
         "some point numero uno"
       ]
     },
-    "relatedMaterials": [
-      { "title": "Diversity on Virtual Ashridge", "url": "https://civilservicelearning.civilservice.gov.uk/learning-resources/diversity-virtual-ashridge-0" }
-    ],
     "relatedOpportunities": [
       { "title": "Unconscious bias (e-learning)", "url": "#" },
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
