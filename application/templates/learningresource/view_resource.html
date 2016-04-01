@@ -81,7 +81,7 @@
                     <div><span class="flag-done">Done</span></div>
                     <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_requisite['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
                   {% else %}
-                    <a href="#">add to wishlist</a>
+                    <a href="#" class="wishlist">add to wishlist</a>
                   {% endif %}
                 </div>
                 {% endif %}
@@ -161,7 +161,7 @@
               <dt>Type</dt>
               <dd>
                 {% if course.type == "elearning" %} 
-                Online + Test 
+                Online learning + Test 
                 {% else %}
                 {{ course.type }}
                 {% endif %}

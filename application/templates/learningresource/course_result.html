@@ -33,14 +33,6 @@
             Failed
           {% endif %}
           </h2>
-        <!-- <dl class="df-inline lede">
-          <dt>Course</dt>
-          <dd class="course-title">{{ course['title'] }}</dd>
-        </dl>
-        <dl class="df-inline lede">
-          <dt>Your score</dt>
-          <dd class="ref-number">{{ score|round|int }}%</dd>
-        </dl> -->
 
         <div class="lede">
           <span>{{ record['when']|format_date('%d/%m/%Y') }}</span>
@@ -67,34 +59,30 @@
           
           {% for suggestion in course.completionSuggestions %}
             <h3 class="heading-small">{{ suggestion.type }}</h3>
-            <ul class="suggested-resources">
+
+            <ul class="pre-req-list ">
               {% for resource in suggestion.resources %}
-              <li class="grid-row resource">
-                <div class="column-two-thirds">
-                  <a href="{{ resource.url }}">{{ resource.title }}
-                </div>
-                <div class="column-third">
-                  <a href="#">add to wishlist</a>
+              <li>
+                <div class="grid-row">
+                  <div class="column-two-thirds">
+                   <a href="{{ resource.url }}" class="course-name">{{ resource.title }}
+                  </div>
+
+                  <div class="column-third status-wrap">
+                    <a href="#" class="wishlist">add to wishlist</a>
+                  </div>
                 </div>
               </li>
               {% endfor %}
             </ul>
 
+
+
+
           {% endfor %}
 
 
-          <!--   <table>
-              <tbody>
-                {% for suggestion in course.completionSuggestions %}
-                <tr>
-                  <td><a href="{{ suggestion.url }}">{{ suggestion.title }}</td>
-                  <td><a href="#">add to wishlist</a></td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table> -->
-
-          <p>Take a look at <a href="{{ url_for('learningresource.search') }}">what else CSL has to offer.</a></p>
+          <p class="look-around">Take a look at <a href="{{ url_for('learningresource.search') }}">what else CSL has to offer.</a></p>
 
         {% endif %}
       </section>
