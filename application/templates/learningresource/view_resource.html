@@ -45,7 +45,7 @@
       </div>
       {% endif %}
       
-      {% if user_logged_in and pre_course and (not pre_course['learningRecord']) %}
+      {% if user_logged_in and pre_requisite and (not pre_requisite['learningRecord']) %}
       <div class="warning-banner">
         <p class="bold-small">
           You must complete all <a href="#prereq">pre learning</a> before doing this course.
@@ -64,7 +64,7 @@
 
         </details>
 
-        {% if pre_course %}
+        {% if pre_requisite %}
           <h2 id="prereq" class="heading-large">Pre learning</h2>
           <p>You must complete all of the following pre requisite courses before taking this course.</p>
           
@@ -72,13 +72,13 @@
             <li>
               <div class="grid-row">
                 <div class="column-two-thirds">
-                  <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}" class="course-name">{{ pre_course['title'] }}</a>
+                  <a href="{{ url_for('learningresource.view_resource', resource_id=pre_requisite.id, source=course.id) }}" class="course-name">{{ pre_requisite['title'] }}</a>
                 </div>
 
                 <div class="column-third status-wrap">
-                  {% if user_logged_in and pre_course['learningRecord'] %}
+                  {% if user_logged_in and pre_requisite['learningRecord'] %}
                   <div><span class="flag-done">Done</span></div>
-                  <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_course['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
+                  <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_requisite['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
                   {% else %}
                   <a href="#">add to wishlist</a>
                   {% endif %}
@@ -128,8 +128,8 @@
 
       <div class="course-actions">
         {% if user_logged_in %}
-          {% if pre_course %}
-            {% if pre_course['learningRecord'] %}
+          {% if pre_requisite %}
+            {% if pre_requisite['learningRecord'] %}
               <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
                 class="button button-start" role="button">Start now</a>
             {% else %}
@@ -163,32 +163,28 @@
               <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
               <dt>Type</dt>
               <dd>{{ course.type }} Online + Test</dd>
+              
+              {% if course.audience %}
               <dt>Audience</dt>
               <dd>
                 <ul class="list audience">
-                {% if course.audience is defined %}
                   {% for aud in course.audience %}
                   <li>{{ aud }}</li>
                   {% endfor %}
-                {% else %}
-                  <li>Administrative Level (AA/AO)</li>
-                  <li>First Line Managers (EO)</li>
-                  <li>Middle Managers (HEO/SEO)</li>
-                  <li>Senior Managers (Grade 6/7)</li>
-                  <li>Senior Civil Servants (SCS)</li>
-                {% endif %}
                 </ul>
               </dd>
+              {% endif %}
+
             </dl>  
           </nav>
         </div>
         
-        {% if course.preLearning %}
+        {% if pre_learning %}
         <div class="related-subsection">
           <h2 class="heading-medium">Pre learning</h2>
           <nav>
             <ul>
-              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}" class="course-name">{{ pre_course['title'] }}</a></li>
+              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
               <li>(required pre - reading)</li>
             </ul>
           </nav>
@@ -196,21 +192,19 @@
         {% endif %}
 
 
+        {% if course.relatedOpportunities %}
         <div class="related-subsection">
           <h2 class="heading-medium">Learning opportunities</h2>
           <nav>
             <ul>
-              {% if course.relatedOpportunities %}
                 {% for opp in course.relatedOpportunities %}
                   <li><a href="{{ opp.url }}">{{ opp.title }}</a></li>
                 {% endfor %}
-              {% else %}
-                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-listening-users">Digital skills - Listening to users</a></li>
-                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-starting-user-needs">Digital skills - Starting with user needs</a></li>
-              {% endif %}
             </ul>
           </nav>
         </div>
+        {% endif %}
+
       </aside>
 
 

@@ -1,7 +1,8 @@
 {
   "e7693080099f4ac19e646b45b7fdfb36": {
     "title": "Communicating with customers",
-    "prerequisites": "c0cb9ab77d8a4c55a14a5730109bbce2",
+
+    "preLearning": "c0cb9ab77d8a4c55a14a5730109bbce2",
     "desc": "<p>This learning explores the essential principles required by any operational delivery professional to best communicate with their customers. This learning package is divided into four topics and concludes with a quiz.</p><p>It will take approximately 45 minutes to complete this course.</p>",
     "descDetails": "<p>Some details about the course</p>",
     "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
@@ -201,7 +202,7 @@
 
   "04d181dccf4c11e59fa60242ac110001": {
     "title": "Ultimate Guide to Gmail",
-    "prerequisites": "d8e42a1ecf4d11e5ac3f0242ac110001",
+    "preRequisites": "d8e42a1ecf4d11e5ac3f0242ac110001",
     "descDetails": "<p>Some details about the course</p>",
     "priceAdditional": "<p>You can book this course as a group booking for up to 24 people and run it on your own premises at a total cost of £5,130, which could be as little as £213 each.</p><p>A group booking for up to 24 people at an external venue will cost £4,432 or as little as £184 each.</p><p>VAT is not included.</p>",
     "outcomes": {
