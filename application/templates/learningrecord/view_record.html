@@ -23,6 +23,7 @@
       <th>Date</th>
       <th>What</th>
       <th>Resource</th>
+      <th>Score</th>
     </thead>
     <tbody>
       {% for statement in records %}
@@ -34,6 +35,12 @@
             YouTube video (<a href="{{ statement.object.id }}" target="_blank">{{ statement.object.name }}</a>)
           {% else %}
             <a href="{{ statement.object.id }}" target="_blank">{{ statement.object.name }}</a>
+          {% endif %}
+        </td>
+        <td>
+          {% if statement.result and statement.result.score %}
+            {% set score=statement['result']['score']['raw']/statement['result']['score']['max']*100 %}
+            {{ score|round|int }}%
           {% endif %}
         </td>
       </tr>
