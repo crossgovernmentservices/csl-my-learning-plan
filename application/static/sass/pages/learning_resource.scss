@@ -29,13 +29,40 @@
 }
 
 
-.next-step{
-  padding-top: 3em;
+.pre-req-list {
+  margin-bottom: 1.875em;
+
+  .wishlist {
+    font-size: 16px;
+  }
 }
+
 
 // override gds resource locations
 .button.button-start{
   background-image: url('/static/icons/icon-pointer.png');
 }
 
+.list.audience{
+  padding-left: 1em;
+  li {
+    margin-bottom: 0.75em;
+  }
+}
 
+.service-info {
+  margin-top: 1.875em;
+}
+
+.suggested-resources {
+  margin-bottom: 1.5em;
+  .resource {
+    padding: 0.25em 0 0.25em 0;
+  }
+}
+
+.related-course-info {
+  dt, dd {
+    margin-bottom: 0.25em;
+  }
+}

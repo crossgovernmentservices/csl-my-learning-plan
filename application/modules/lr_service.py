@@ -12,8 +12,13 @@ logger = logging.getLogger()
 
 def get_course_prerequisites(course_id):
     course = get_resource(course_id)
-    pre_course = get_resource(course.get('prerequisites'))
-    return pre_course
+    pre_req = get_resource(course.get('preRequisites'))
+    return pre_req
+
+def get_course_prelearning(course_id):
+    course = get_resource(course_id)
+    pre_learning = get_resource(course.get('preLearning'))
+    return pre_learning
 
 
 def get_resource(resource_id):

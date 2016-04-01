@@ -47,10 +47,11 @@ def search():
 
 @learningresource.route('/learning-resource/course/<resource_id>')
 def view_resource(resource_id):
-    course = lr_service.get_resource(resource_id)
-    pre_course = lr_service.get_course_prerequisites(resource_id)
-
     source_course = request.args.get('source')
+
+    course = lr_service.get_resource(resource_id)
+    pre_requisite = lr_service.get_course_prerequisites(resource_id)
+    pre_learning = lr_service.get_course_prelearning(resource_id)
 
     if current_user.is_authenticated:
         learning_records = lrs_service.load_course_learning_records(
@@ -58,21 +59,36 @@ def view_resource(resource_id):
             course_uri=url_for('.view_resource', resource_id=course['id'], _external=True))
         course['learningRecord'] = learning_records[0] if learning_records else None
         
-        if pre_course:
+        if pre_requisite:
             pre_learning_records = lrs_service.load_course_learning_records(
                 email=current_user.email,
-                course_uri=url_for('.view_resource', resource_id=pre_course['id'], _external=True))
-            pre_course['learningRecord'] = pre_learning_records[0] if pre_learning_records else None
+                course_uri=url_for('.view_resource', resource_id=pre_requisite['id'], _external=True))
+            pre_requisite['learningRecord'] = pre_learning_records[0] if pre_learning_records else None
 
 
     return render_template('learningresource/view_resource.html',
-        course=course, pre_course=pre_course, user_logged_in=current_user.is_authenticated, source_course=source_course)
+        course=course, pre_requisite=pre_requisite, pre_learning=pre_learning,
+        user_logged_in=current_user.is_authenticated, source_course=source_course)
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required
 def start(resource_id):
-    resp = make_response(redirect(url_for('.view_course_page', 
-        resource_id=resource_id, res_type=TYPE_PAGE, number=0, source=request.args.get('source'))))
+    source_course_id = request.args.get('source')
+    course = lr_service.get_resource(resource_id)
+
+    resp = make_response(redirect(url_for('.view_course_page',
+        resource_id=resource_id, res_type=TYPE_PAGE, number=0, source=source_course_id)))
+
+    if course.get('preRequisites', None):
+        pre_req_records = lrs_service.load_course_learning_records(
+            email=current_user.email,
+            course_uri=url_for('.view_resource', resource_id=course.get('preRequisites', None), _external=True))
+        print(pre_req_records)
+
+        if not pre_req_records:
+            flash('You must complete all pre learning before doing this course')
+            resp = make_response(redirect(url_for('.view_resource', resource_id=course['id'], source=source_course_id)))
+    
     resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
     return resp
 
@@ -190,10 +206,20 @@ def view_course_result(resource_id):
         course_uri=url_for('.view_resource', resource_id=resource_id, _external=True))[0]
 
     source_course = lr_service.get_resource(request.args.get('source'))
+
+    if source_course and course['completionSuggestions']:
+        ecourses = next(resource for resource in course['completionSuggestions'] if resource['type'] == "Online learning")
+        ecourses['resources'].insert(0, {
+            'title': source_course['title'],
+            'url': url_for('learningresource.view_resource', resource_id=source_course['id'])
+        })
     
     current_app.logger.info(record)
 
-    return render_template('/learningresource/course_result.html', course=course, record=record, source_course=source_course)
+    back_to_source = source_course and source_course.get('preRequisites', None) == course['id']
+
+    return render_template('/learningresource/course_result.html',
+        course=course, record=record, source_course=source_course, back_to_source=back_to_source)
 
 
 

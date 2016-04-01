@@ -29,36 +29,42 @@
       </div>
 
       {% if user_logged_in and course['learningRecord'] %}
-        <div class="done-banner">
-          <h3 class="heading-medium heading">Passed</h3>
+      <div class="done-banner">
+        <h3 class="heading-medium heading">Passed</h3>
+        <dl class="df-inline">
+          <dt>Completed on</dt>
+          <dd>{{ course['learningRecord']['when']|format_date('%d/%m/%Y') }}</dd>
+        </dl>
+        {% if course['learningRecord']['result'] and course['learningRecord']['result']['score'] %}
+          {% set score = course['learningRecord']['result']['score'] %}
           <dl class="df-inline">
-            <dt>Completed on</dt>
-            <dd>{{ course['learningRecord']['when']|format_date('%d/%m/%Y') }}</dd>
+            <dt>Score</dt>
+            <dd>{{ ((score['raw']/(score['max'] or 5)) * 100)|round|int }}%</dd>
           </dl>
-          {% if course['learningRecord']['result'] and course['learningRecord']['result']['score'] %}
-            {% set score = course['learningRecord']['result']['score'] %}
-            <dl class="df-inline">
-              <dt>Score</dt>
-              <dd>{{ ((score['raw']/(score['max'] or 5)) * 100)|round|int }}%</dd>
-            </dl>
-          {% endif %}
-        </div>
+        {% endif %}
+      </div>
       {% endif %}
-
       
-      {% if user_logged_in and pre_course and (not pre_course['learningRecord']) %}
-        <div class="warning-banner">
-          <p class="bold-small">
-            You must complete all <a href="#prereq">pre learning</a> before doing this course.
-          </p>
-        </div>
+      {% if user_logged_in and pre_requisite and (not pre_requisite['learningRecord']) %}
+      <div class="warning-banner">
+        <p class="bold-small">
+          You must complete all <a href="#prereq">pre learning</a> before doing this course.
+        </p>
+      </div>
       {% endif %}
 
       <div class="course-description text">
         <h2 class="heading-large">Description</h2>
         {{ course.desc|safe }}
+        <details>
+          <summary><span class="summary">View the course details</span></summary>
+          <div class="panel-indent">
+            {{ course.descDetails|safe }}
+          </div>
 
-        {% if pre_course %}
+        </details>
+
+        {% if pre_requisite %}
           <h2 id="prereq" class="heading-large">Pre learning</h2>
           <p>You must complete all of the following pre requisite courses before taking this course.</p>
           
@@ -66,33 +72,23 @@
             <li>
               <div class="grid-row">
                 <div class="column-two-thirds">
-                  <a href="{{ url_for('learningresource.view_resource', resource_id=pre_course.id, source=course.id) }}" class="course-name">{{ pre_course['title'] }}</a>
+                  <a href="{{ url_for('learningresource.view_resource', resource_id=pre_requisite.id, source=course.id) }}" class="course-name">{{ pre_requisite['title'] }}</a>
                 </div>
-                {% if user_logged_in and pre_course['learningRecord'] %}
-                  <div class="column-third status-wrap">
+
+                {% if user_logged_in %} 
+                <div class="column-third status-wrap">
+                  {% if pre_requisite['learningRecord'] %}
                     <div><span class="flag-done">Done</span></div>
-                    <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_course['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
-                  </div>
+                    <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_requisite['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
+                  {% else %}
+                    <a href="#" class="wishlist">add to wishlist</a>
+                  {% endif %}
+                </div>
                 {% endif %}
               </div>
             </li>
           </ul>
         {% endif %}
-
-        <h2 class="heading-large">Who might find this useful</h2>
-        <ul class="list-bullet">
-        {% if course.audience is defined %}
-          {% for aud in course.audience %}
-          <li>{{ aud }}</li>
-          {% endfor %}
-        {% else %}
-          <li>Administrative Level (AA/AO)</li>
-          <li>First Line Managers (EO)</li>
-          <li>Middle Managers (HEO/SEO)</li>
-          <li>Senior Managers (Grade 6/7)</li>
-          <li>Senior Civil Servants (SCS)</li>
-        {% endif %}
-        </ul>
 
         {% if not (course.type == 'elearning') and course.price %}
         <h2 class="heading-large">Pricing</h2>
@@ -134,82 +130,82 @@
 
       <div class="course-actions">
         {% if user_logged_in %}
-          {% if pre_course %}
-            {% if pre_course['learningRecord'] %}
-              <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
-                class="button button-start" role="button">Start now</a>
-            {% else %}
-              <div class="warning-indent">
-                <i class="icon-important">
-                  <span class="visually-hidden">warning</span>
-                </i>
-                <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
-              </div>
-            {% endif %}
-
+          {% if pre_requisite and not pre_requisite['learningRecord'] %}
+            <div class="warning-indent">
+              <i class="icon-important"><span class="visually-hidden">warning</span></i>
+              <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
+            </div>
           {% else %}
             <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
               class="button button-start" role="button">Start now</a>
-
           {% endif %}
 
         {% else %}
-          <a href="{{ url_for('mylearning.login') }}" class="button">Sign in to do this training</a>
+          <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
+              class="button button-start" role="button">Sign in to do this training</a>
         {% endif %}
       </div>
-
-
     </div>
 
     <div class="column-third related-container">
       <aside class="related">
-        
+    
         <div class="related-subsection">
-          <h2 class="heading-medium">Information</h2>
+          <h2 class="heading-medium">Need to know</h2>
           <nav>
-            <dl class="definition-inline">
+            <dl class="definition-inline related-course-info">
               <dt>Product code</dt>
               <dd>DADD13</dd>
               <dt>Duration</dt>
               <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
               <dt>Type</dt>
-              <dd>{{ course.type }}</dd>
+              <dd>
+                {% if course.type == "elearning" %} 
+                Online learning + Test 
+                {% else %}
+                {{ course.type }}
+                {% endif %}
+              </dd>
+              
+              {% if course.audience %}
+              <dt>Audience</dt>
+              <dd>
+                <ul class="list audience">
+                  {% for aud in course.audience %}
+                  <li>{{ aud }}</li>
+                  {% endfor %}
+                </ul>
+              </dd>
+              {% endif %}
+
             </dl>  
           </nav>
         </div>
-      
+        
+        {% if pre_learning %}
         <div class="related-subsection">
-          <h2 class="heading-medium">Topics/keywords</h2>
+          <h2 class="heading-medium">Pre learning</h2>
           <nav>
             <ul>
-              {% if course.topics is defined %}
-                {% for topic in course.topics %}
-                <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">{{ topic }}</a></li>
-                {% endfor %}
-              {% else %}
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Core Skills</a></li>
-              <li><a href="https://civilservicelearning.civilservice.gov.uk/core-skills">Digital & IT</a></li>
-              {% endif %}
+              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
+              <li>(required pre - reading)</li>
             </ul>
           </nav>
         </div>
+        {% endif %}
 
-
+        {% if course.relatedOpportunities %}
         <div class="related-subsection">
           <h2 class="heading-medium">Learning opportunities</h2>
           <nav>
             <ul>
-              {% if course.relatedOpportunities %}
                 {% for opp in course.relatedOpportunities %}
                   <li><a href="{{ opp.url }}">{{ opp.title }}</a></li>
                 {% endfor %}
-              {% else %}
-                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-listening-users">Digital skills - Listening to users</a></li>
-                <li><a href="https://civilservicelearning.civilservice.gov.uk/learning-opportunities/digital-skills-starting-user-needs">Digital skills - Starting with user needs</a></li>
-              {% endif %}
             </ul>
           </nav>
         </div>
+        {% endif %}
       </aside>
 
 
