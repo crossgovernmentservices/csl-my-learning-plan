@@ -75,14 +75,16 @@
                   <a href="{{ url_for('learningresource.view_resource', resource_id=pre_requisite.id, source=course.id) }}" class="course-name">{{ pre_requisite['title'] }}</a>
                 </div>
 
+                {% if user_logged_in %} 
                 <div class="column-third status-wrap">
-                  {% if user_logged_in and pre_requisite['learningRecord'] %}
-                  <div><span class="flag-done">Done</span></div>
-                  <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_requisite['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
+                  {% if pre_requisite['learningRecord'] %}
+                    <div><span class="flag-done">Done</span></div>
+                    <span class="text-secondary"><a class="record-link" href="{{ url_for('learningrecord.view_record') }}">{{ pre_requisite['learningRecord']['when']|format_date('%d/%m/%Y') }}</a></span>
                   {% else %}
-                  <a href="#">add to wishlist</a>
+                    <a href="#">add to wishlist</a>
                   {% endif %}
                 </div>
+                {% endif %}
               </div>
             </li>
           </ul>
@@ -128,31 +130,26 @@
 
       <div class="course-actions">
         {% if user_logged_in %}
-          {% if pre_requisite %}
-            {% if pre_requisite['learningRecord'] %}
-              <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
-                class="button button-start" role="button">Start now</a>
-            {% else %}
-              <div class="warning-indent">
-                <i class="icon-important"><span class="visually-hidden">warning</span></i>
-                <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
-              </div>
-            {% endif %}
-
+          {% if pre_requisite and not pre_requisite['learningRecord'] %}
+            <div class="warning-indent">
+              <i class="icon-important"><span class="visually-hidden">warning</span></i>
+              <p class="warning-message">You must complete all pre requisites before you are able to take this course.</p>
+            </div>
           {% else %}
             <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
               class="button button-start" role="button">Start now</a>
           {% endif %}
 
         {% else %}
-          <a href="{{ url_for('mylearning.login') }}" class="button">Sign in to do this training</a>
+          <a href="{{ url_for('learningresource.start', resource_id=course.id, source=source_course) }}" 
+              class="button button-start" role="button">Sign in to do this training</a>
         {% endif %}
       </div>
     </div>
 
     <div class="column-third related-container">
       <aside class="related">
-        
+    
         <div class="related-subsection">
           <h2 class="heading-medium">Need to know</h2>
           <nav>
@@ -191,7 +188,6 @@
         </div>
         {% endif %}
 
-
         {% if course.relatedOpportunities %}
         <div class="related-subsection">
           <h2 class="heading-medium">Learning opportunities</h2>
@@ -204,7 +200,6 @@
           </nav>
         </div>
         {% endif %}
-
       </aside>
 
 

@@ -56,15 +56,16 @@
       </section>
 
       <section class="next-steps text">      
-        <h2 class="heading-medium">Other learning to help you in your work</h2>
-        {% if source_course %}
+          
+        {% if back_to_source %}
+          <h2 class="heading-medium">Next steps</h2>
           <p>Now since you've completed the prerequisite course you can take:</p>
           <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
+        
         {% else %}
-
-
+          <h2 class="heading-medium">Other learning to help you in your work</h2>
+          
           {% for suggestion in course.completionSuggestions %}
-
             <h3 class="heading-small">{{ suggestion.type }}</h3>
             <ul class="suggested-resources">
               {% for resource in suggestion.resources %}
@@ -93,7 +94,6 @@
               </tbody>
             </table> -->
 
-          
           <p>Take a look at <a href="{{ url_for('learningresource.search') }}">what else CSL has to offer.</a></p>
 
         {% endif %}

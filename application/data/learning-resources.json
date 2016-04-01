@@ -47,7 +47,6 @@
           }
         ]
       }
-      
     ],
     "course": {
       "pages": [
@@ -156,6 +155,34 @@
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
       { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
+    "completionSuggestions":[
+      {
+        "type": "Online learning",
+        "resources":[
+          { 
+            "title": "Customers with mental health conditions",
+            "url": "#"
+          },
+          { 
+            "title": "Written communications",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "type": "Workshops",
+        "resources":[
+          { 
+            "title": "Adapting behaviours to suit customers",
+            "url": "#"
+          },
+          { 
+            "title": "Writing to the public ",
+            "url": "#"
+          }
+        ]
+      }
+    ],
     "course": {
       "pages": [
         {
@@ -221,6 +248,17 @@
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
       { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
     ],
+    "completionSuggestions":[
+      {
+        "type": "Online learning",
+        "resources":[
+          {
+            "title": "Some more gmail stuff training",
+            "url": "#"
+          }
+        ]
+      }
+    ],
     "course": {
       "pages": [
         {
@@ -273,10 +311,22 @@
         "some point numero uno"
       ]
     },
+    "audience": [ "All your friends", "Obi-Wan Kenobi" ],
     "relatedOpportunities": [
       { "title": "Unconscious bias (e-learning)", "url": "#" },
       { "title": "Unconscious bias workshop for SCS", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/facetoface/unconscious-bias-workshop-scs" },
       { "title": "Equality and Diversity Essentials", "url": "https://civilservicelearning.civilservice.gov.uk/learning-opportunities/equality-and-diversity-essentials" }
+    ],
+    "completionSuggestions":[
+      {
+        "type": "Online learning",
+        "resources":[
+          {
+            "title": "Yet another HTML course",
+            "url": "#"
+          }
+        ]
+      }
     ],
     "course": {
       "pages": [
@@ -319,8 +369,6 @@
       ]
     }
   }
-
-
 
 
 }
