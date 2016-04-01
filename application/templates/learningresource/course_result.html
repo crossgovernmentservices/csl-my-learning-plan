@@ -33,30 +33,59 @@
             Failed
           {% endif %}
           </h2>
+
         <div class="lede">
-          <span>Course</span>
+          <span>{{ record['when']|format_date('%d/%m/%Y') }}</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
           <p class="ref-number">{{ score|round|int }}%</p>
         </div>
       </div>
+      
+      <section class="service-info">
+        <p>Your <a href="{{ url_for('learningrecord.view_record') }}">learning record</a> has been updated to show this completed learning.</p>
+        <p>You can help us improve our service by offering <a href="#">feedback</a> on this learning.</p>
+      </section>
 
-      <h3 class="heading-medium">What happens next?</h3>
-      {% if source_course %}
-        <p class="text">Now since you've completed the prerequisite course you can take:</p>
-        <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
-      {% else %}
-        <p>After completing this course, it may take up to 24 hours for your learning record to be updated.</p>
-        <div class="text">
-          You may also be interested in these learning opportunities:
-          <ul>
-            {% for suggestion in course.completionSuggestions %}
-              <li><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-        <p><a href="{{ url_for('learningresource.search') }}">See what else CSL has to offer</a></p>
-      {% endif %}
+      <section class="next-steps text">      
+          
+        {% if back_to_source %}
+          <h2 class="heading-medium">Next steps</h2>
+          <p>Now since you've completed the prerequisite course you can take:</p>
+          <a href="{{ url_for('learningresource.view_resource', resource_id=source_course.id) }}">{{ source_course.title }}</a>
+        
+        {% else %}
+          <h2 class="heading-medium">Other learning to help you in your work</h2>
+          
+          {% for suggestion in course.completionSuggestions %}
+            <h3 class="heading-small">{{ suggestion.type }}</h3>
+
+            <ul class="pre-req-list ">
+              {% for resource in suggestion.resources %}
+              <li>
+                <div class="grid-row">
+                  <div class="column-two-thirds">
+                   <a href="{{ resource.url }}" class="course-name">{{ resource.title }}
+                  </div>
+
+                  <div class="column-third status-wrap">
+                    <a href="#" class="wishlist">add to wishlist</a>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+
+
+
+
+          {% endfor %}
+
+
+          <p class="look-around">Take a look at <a href="{{ url_for('learningresource.search') }}">what else CSL has to offer.</a></p>
+
+        {% endif %}
+      </section>
 
     </main>
 
