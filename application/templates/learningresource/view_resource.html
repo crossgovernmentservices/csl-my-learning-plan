@@ -159,7 +159,13 @@
               <dt>Duration</dt>
               <dd>{% if course.duration %} {{ course.duration|format_duration }} {% endif %}</dd>
               <dt>Type</dt>
-              <dd>{{ course.type }} Online + Test</dd>
+              <dd>
+                {% if course.type == "elearning" %} 
+                Online + Test 
+                {% else %}
+                {{ course.type }}
+                {% endif %}
+              </dd>
               
               {% if course.audience %}
               <dt>Audience</dt>
