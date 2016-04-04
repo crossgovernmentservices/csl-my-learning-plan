@@ -24,6 +24,10 @@ mylearning = Blueprint('mylearning', __name__, template_folder='templates')
 def index():
     return render_template('index.html')
 
+@mylearning.route('/browse')
+def browse():
+    return render_template('browse.html')
+
 
 # temp solution
 @mylearning.route('/email_referrer')
