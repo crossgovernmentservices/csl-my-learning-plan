@@ -182,21 +182,9 @@
           </nav>
         </div>
         
-        {% if pre_learning %}
-        <div class="related-subsection">
-          <h2 class="heading-medium">Pre learning</h2>
-          <nav>
-            <ul>
-              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
-              <li>(required pre - reading)</li>
-            </ul>
-          </nav>
-        </div>
-        {% endif %}
-
         {% if course.relatedOpportunities %}
         <div class="related-subsection">
-          <h2 class="heading-medium">Learning opportunities</h2>
+          <h2 class="heading-medium">Pre learning</h2>
           <nav>
             <ul>
                 {% for opp in course.relatedOpportunities %}
@@ -206,6 +194,19 @@
           </nav>
         </div>
         {% endif %}
+
+
+        {% if pre_learning %}
+        <div class="related-subsection">
+          <h2 class="heading-medium">Similar learning</h2>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
+            </ul>
+          </nav>
+        </div>
+        {% endif %}
+
       </aside>
 
 
