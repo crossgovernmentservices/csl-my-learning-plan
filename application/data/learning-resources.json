@@ -58,6 +58,14 @@
           "content": "<p>You may have heard of the rules of Plain English, but do you always follow them? The principles are simple: use everyday words as if you are in conversation with the reader, avoid jargon, keep sentences short and, where possible, always choose active over passive.</p><p>These principles are incorporated into a simple formula that can help you to remember how to communicate professionally in your letters. It's called the five Cs.</p><p>The 5 Cs are as follows:</p><ul class='list-bullet'><li>Courteous</li><li>Complete</li><li>Concise</li><li>Clear</li><li>Correct</li></ul>"
         },
         {
+          "title": "Connecting with people",
+          "content": "<p>First impressions</p><p>You've probably heard the phrase \"You never get a second chance to make a first impression\", but how long do you think you have to create that first impression with a stranger?</p><p>The answer is just 17 seconds!</p>"
+        },
+        {
+          "title": "Make connections on the phone",
+          "content": "<p>Stages</p><p>It helps to think about a phone call as having four separate stages. This helps you to be consistent so all your customers are getting the same great service.</p><p>1. Welcome - First impressions count. So give your customer a warm welcome before running through the appropriate security checks.</p><p>2. Finding out - listen and ask - This stage is where you need to Listen and Ask in order to gather the information you need.</p><p>3. Showing how - educate and explain - Explain to the customer how their query will be resolved and any actions that need to be taken.</p><p>4. Closing the call - summarise and confirm - Having done all the hard work, make sure you leave the customer with a good impression by closing the call with the same friendly manner as you started it.</p>"
+        },
+        {
           "title": "Quiz: Communicating with Customers",
           "content": "<p>Welcome to this short quiz to test your knowledge.</p><p>Here you will answer ten questions to see how much you have learned about professional communications.</p><p>At the end of this quiz, you will be given a score and find out whether you are a clear communicator or need to take a second look at the topics. You must score 70% or higher to show your understanding of the core knowledge in this learning.</p>"
         }
@@ -126,6 +134,31 @@
             "Strong, male voices",
             "Upbeat, warm, clear and controlled voices",
             "Female voices"
+          ]
+        },
+        {
+          "title": "Question six",
+          "tag": "ugtg-6",
+          "multichoice": false,
+          "description": "Can you remember how long it takes for your customer to form an opinion of you?",
+          "guide": "Select one option",
+          "choices": [
+            "90 seconds",
+            "17 seconds",
+            "33 seconds",
+            "45 seconds"
+          ]
+        },
+        {
+          "title": "Question seven",
+          "tag": "ugtg-7",
+          "multichoice": false,
+          "description": "You read about the four key stages of communicating effectively on the telephone. The first, second and fourth stages are listed below, can you identify the third?<br/><ol class='list-number'><li>Welcome</li><li>Finding out - listen and ask</li><li>-------------------?</li><li>Closing the call - summarise and confirm</li></ol>",
+          "guide": "Select one option",
+          "choices": [
+            "Express your own opinions",
+            "Showing how - educate and explain",
+            "Making your own notes"
           ]
         }
       ]
