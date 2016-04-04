@@ -181,27 +181,26 @@
             </dl>  
           </nav>
         </div>
+
+        {% if pre_learning %}
+        <div class="related-subsection">
+          <h2 class="heading-medium">Pre learning</h2>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
+            </ul>
+          </nav>
+        </div>
+        {% endif %}
         
         {% if course.relatedOpportunities %}
         <div class="related-subsection">
-          <h2 class="heading-medium">Pre learning</h2>
+          <h2 class="heading-medium">Similar learning</h2>
           <nav>
             <ul>
                 {% for opp in course.relatedOpportunities %}
                   <li><a href="{{ opp.url }}">{{ opp.title }}</a></li>
                 {% endfor %}
-            </ul>
-          </nav>
-        </div>
-        {% endif %}
-
-
-        {% if pre_learning %}
-        <div class="related-subsection">
-          <h2 class="heading-medium">Similar learning</h2>
-          <nav>
-            <ul>
-              <li><a href="{{ url_for('learningresource.view_resource', resource_id=pre_learning.id, source=course.id) }}" class="course-name">{{ pre_learning['title'] }}</a></li>
             </ul>
           </nav>
         </div>
