@@ -15,7 +15,7 @@ from flask.ext.login import current_user
 import json
 
 import application.modules.lr_service as lr_service
-import application.modules.lrs_service as lrs_service
+import application.modules.openlrs_service as lrs_service
 from application.modules.models import *
 from functools import reduce
 
@@ -168,7 +168,7 @@ def view_course_complete(resource_id):
 
     score_sum = 0
     for key in cookie_answers:
-        answer = json.loads(cookie_answers.get(key, "{}"))
+        answer = json.loads(cookie_answers.get(key, '{}'))
         if answer:
             score_sum += answer.get('score', 0)
 
@@ -183,14 +183,15 @@ def view_course_complete(resource_id):
             resource_type=course['type'])).to_json()
 
     record['result'] = {
-        "score": {
-            "min": 0,
-            "max": 5,
-            "raw": final_score
+        'score': {
+            'min': 0,
+            'max': 5,
+            'raw': final_score
         }
     }
 
-    lrs_result = lrs_service.save_statement(record)
+    import application.modules.openlrs_service as olrs_service
+    lrs_result = olrs_service.save_statement(record)
 
     resp = make_response(redirect(url_for('.view_course_result', resource_id=resource_id, source=source_course_id)))
     resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
@@ -208,7 +209,7 @@ def view_course_result(resource_id):
     source_course = lr_service.get_resource(request.args.get('source'))
 
     if source_course and course['completionSuggestions']:
-        ecourses = next(resource for resource in course['completionSuggestions'] if resource['type'] == "Online learning")
+        ecourses = next(resource for resource in course['completionSuggestions'] if resource['type'] == 'Online learning')
         ecourses['resources'].insert(0, {
             'title': source_course['title'],
             'url': url_for('learningresource.view_resource', resource_id=source_course['id'])

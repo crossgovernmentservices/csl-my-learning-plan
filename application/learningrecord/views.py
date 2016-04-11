@@ -12,7 +12,7 @@ from flask import (
 from flask.ext.security import login_required
 from flask.ext.login import current_user
 
-import application.modules.lrs_service as lrs_service
+import application.modules.openlrs_service as lrs_service
 
 
 learningrecord = Blueprint('learningrecord', __name__)

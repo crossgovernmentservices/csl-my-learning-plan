@@ -31,6 +31,17 @@ class Config(object):
     LR_URL = os.environ.get('LR_URL', 'http://sandbox.learningregistry.org')
     LR_QUERY_URL = os.environ.get('LR_QUERY_URL', '/slice?any_tags=civil%20service%20learning')
 
+    OPEN_LRS_HOST = os.environ.get('OPEN_LRS_HOST')
+    OPEN_LRS_COMMAND_PORT = os.environ.get('OPEN_LRS_COMMAND_PORT')
+    OPEN_LRS_QUERY_PORT = os.environ.get('OPEN_LRS_QUERY_PORT')
+    OPEN_LRS_HTTPS_ENABLED = json.loads(os.environ.get('OPEN_LRS_HTTPS_ENABLED', 'false'))
+    OPEN_LRS_USER = os.environ.get('OPEN_LRS_USER')
+    OPEN_LRS_PASS = os.environ.get('OPEN_LRS_PASS')
+
+    OPEN_LRS_COMMAND_URL = os.environ.get('OPEN_LRS_COMMAND_URL')
+    OPEN_LRS_QUERY_URL = os.environ.get('OPEN_LRS_QUERY_URL')
+
+
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = Config.SECRET_KEY or 'local-dev-not-secret'
