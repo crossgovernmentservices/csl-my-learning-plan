@@ -5,6 +5,7 @@ import ssl
 import os
 import logging
 import requests
+import datetime
 
 from application.config import Config
 from application.modules.models import Statement
@@ -14,6 +15,8 @@ LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
 
 def save_statement(statement_json):
+    if not statement_json.get('timestamp'):
+        statement_json['timestamp'] = datetime.datetime.utcnow().isoformat()
     return _post(statement_json)
 
 
@@ -137,7 +140,7 @@ def _create_view_model_learning_record(record):
         'name': res_object.get('definition').get('name').get('en')
     }
 
-    result['when'] = record.get('timestamp') or record.get('stored')
+    result['when'] = record.get('timestamp')
     result['result'] = record.get('result')
 
     # 'object': {
