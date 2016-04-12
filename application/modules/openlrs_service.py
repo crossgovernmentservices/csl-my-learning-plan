@@ -5,7 +5,6 @@ import ssl
 import os
 import logging
 import requests
-import datetime
 
 from application.config import Config
 from application.modules.models import Statement
@@ -15,9 +14,24 @@ LEARNING_PLAN_DATA_FILEPATH = 'application/data/learning-plan.json'
 
 
 def save_statement(statement_json):
-    if not statement_json.get('timestamp'):
-        statement_json['timestamp'] = datetime.datetime.utcnow().isoformat()
     return _post(statement_json)
+
+
+def clean_learning_record(email):
+    result = []
+
+    records = load_user_records(email)
+    if records:
+        records_to_clean = [
+            Statement(
+                actor=email,
+                verb='void',
+                statement_obj=Statement.create_void_obj(record['statementId'])).to_json()
+            for record in records]
+
+        result = _post(records_to_clean)
+
+    return json.dumps(result)
 
 
 def load_course_learning_records(email, course_uri):
@@ -54,6 +68,7 @@ def load_course_learning_records(email, course_uri):
 
 def load_user_records(email):
     query = {
+        'size': 9999,
         'query': _create_match_learning_records_by(email),
         'sort': {'stored': {'order': 'desc'}}
     }
@@ -118,9 +133,9 @@ def _create_match_learning_records_by(email):
 
 def _create_view_model_learning_record(record):
     result = {}
-    result['statementId'] = record.get('id'),
+    result['statementId'] = record.get('id')
 
-    actor_mbox = record.get('actor')
+    actor_mbox = record.get('actor').get('mbox')
     actor_name = record.get('actor').get('account', {}).get('name')
     result['actor'] = {
         'id': actor_mbox or actor_name,
@@ -137,7 +152,7 @@ def _create_view_model_learning_record(record):
     res_object = record.get('object')
     result['object'] = {
         'id': res_object.get('id'),
-        'name': res_object.get('definition').get('name').get('en')
+        'name': res_object.get('definition', {}).get('name', {}).get('en') or record.get('id')
     }
 
     result['when'] = record.get('timestamp')

@@ -32,9 +32,15 @@ def clean_all():
     return render_template('learningrecord/clean.html', back_url=back_url)
 
 
-# JSON stuff here
-@learningrecord.route('/learning-record/json')
+# API stuff here
+@learningrecord.route('/api/learning-record/json')
 @login_required
 def view_record_json():
     records = lrs_service.load_user_records(current_user.email)
     return jsonify(records=records)
+
+
+@learningrecord.route('/api/learning-record/clean_learning_record')
+@login_required
+def api_clean_learning_record():
+    return jsonify(result=lrs_service.clean_learning_record(current_user.email))

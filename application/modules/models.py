@@ -2,6 +2,7 @@
 import json
 import uuid
 import math
+import datetime
 
 from copy import deepcopy
 
@@ -28,6 +29,10 @@ class Statement:
         'watch': {
             'id': 'http://activitystrea.ms/schema/1.0/watch',
             'display': {'en': 'watch'}
+        },
+        'void': {
+            'id': 'http://adlnet.gov/expapi/verbs/voided',
+            'display': {'en': 'voided'}
         }
     }
 
@@ -197,6 +202,7 @@ class Statement:
             result_batch_json.insert(0, result_json)
             return result_batch_json
         else:
+            result_json['timestamp'] = datetime.datetime.utcnow().isoformat()
             return result_json
 
     def _actor_to_json(self):
@@ -215,7 +221,8 @@ class Statement:
             return result_json
         else:
             result_json = self.statement_obj
-            result_json['objectType'] = 'Activity'
+
+            # result_json['objectType'] = 'Activity'
             return result_json
 
     def _result_to_json(self):
@@ -261,6 +268,13 @@ class Statement:
     @classmethod
     def create_substatement_obj(cls, statement):
         return statement
+
+    @classmethod
+    def create_void_obj(cls, statement_id):
+        return {
+            'objectType': 'StatementRef',
+            'id': statement_id
+        }
 
 
     @classmethod
