@@ -45,6 +45,7 @@ def search():
 
     return render_template('learningresource/search.html')
 
+
 @learningresource.route('/learning-resource/course/<resource_id>')
 def view_resource(resource_id):
     source_course = request.args.get('source')
@@ -69,6 +70,7 @@ def view_resource(resource_id):
     return render_template('learningresource/view_resource.html',
         course=course, pre_requisite=pre_requisite, pre_learning=pre_learning,
         user_logged_in=current_user.is_authenticated, source_course=source_course)
+
 
 @learningresource.route('/learning-resource/course/<resource_id>/start')
 @login_required
@@ -157,6 +159,7 @@ def view_course_page(resource_id, res_type, number):
     return render_template('/learningresource/course_page.html',
         res_type=res_type, course=course, page_number=page_number, page=current_page, page_count=page_count, source_course=source_course)
 
+
 @learningresource.route('/learning-resource/course/<resource_id>/complete')
 @login_required
 def view_course_complete(resource_id):
@@ -190,12 +193,12 @@ def view_course_complete(resource_id):
         }
     }
 
-    import application.modules.openlrs_service as olrs_service
-    lrs_result = olrs_service.save_statement(record)
+    lrs_result = lrs_service.save_statement(record)
 
     resp = make_response(redirect(url_for('.view_course_result', resource_id=resource_id, source=source_course_id)))
     resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
     return resp
+
 
 @learningresource.route('/learning-resource/course/<resource_id>/result')
 @login_required
@@ -221,7 +224,6 @@ def view_course_result(resource_id):
 
     return render_template('/learningresource/course_result.html',
         course=course, record=record, source_course=source_course, back_to_source=back_to_source)
-
 
 
 # API

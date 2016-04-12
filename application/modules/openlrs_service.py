@@ -5,7 +5,6 @@ import ssl
 import os
 import logging
 import requests
-import urllib.parse as url_parse
 
 from application.config import Config
 from application.modules.models import Statement
