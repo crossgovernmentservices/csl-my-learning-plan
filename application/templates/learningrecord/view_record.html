@@ -30,7 +30,7 @@
       <tr>
         <td>{{ statement.when | format_date  }}</td>
         <td>{{ statement.verb.name }}</td>
-        <td>
+        <td data-id="{{ statement.statementId }}">
           {% if 'www.youtube' in statement.object.id %}
             YouTube video (<a href="{{ statement.object.id }}" target="_blank">{{ statement.object.name }}</a>)
           {% else %}

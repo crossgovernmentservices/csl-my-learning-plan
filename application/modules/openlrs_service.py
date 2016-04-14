@@ -43,19 +43,19 @@ def load_course_learning_records(email, course_uri):
                     {
                         'nested': {
                             'path': 'actor',
-                            'query': {'match': {'actor.mbox': 'mailto:%s' % email}}
+                            'query': {'match_phrase': {'actor.mbox': 'mailto:%s' % email}}
                         }
                     },
                     {
                         'nested': {
                             'path': 'verb',
-                            'query': {'match': {'verb.id': verb['id']}}
+                            'query': {'match_phrase': {'verb.id': verb['id']}}
                         }
                     },
                     {
                         'nested': {
                             'path': 'object',
-                            'query': {'match': {'object.id': course_uri}}
+                            'query': {'match_phrase': {'object.id': course_uri}}
                         }
                     }
                 ]
@@ -122,8 +122,8 @@ def _create_match_learning_records_by(email):
             'query': {
                 'bool': {
                     'should': [
-                        {'match': {'actor.mbox': 'mailto:%s' % email}},
-                        {'match': {'actor.name':  email.split('@')[0]}}
+                        {'match_phrase': {'actor.mbox': 'mailto:%s' % email}},
+                        {'match_phrase': {'actor.name':  email.split('@')[0]}}
                     ]
                 }
             }
@@ -152,26 +152,12 @@ def _create_view_model_learning_record(record):
     res_object = record.get('object')
     result['object'] = {
         'id': res_object.get('id'),
-        'name': res_object.get('definition', {}).get('name', {}).get('en') or record.get('id')
+        'name': res_object.get('definition', {}).get('name', {}).get('en') or record.get('object')
     }
 
     result['when'] = record.get('timestamp')
     result['result'] = record.get('result')
 
-    # 'object': {
-    #   'id': '$statement.object.id',
-    #   'name': {'$ifNull': ['$statement.object.definition.name.en', '$statement.object.definition.name.en-US']}
-    # },
-    # 'when': '$statement.timestamp',
-    # 'result': {
-    #   'score': '$statement.result.score',
-    #   # 'max_score': '$statement.result.score',
-    #   'duration': '$statement.result.duration'
-    # },
     return result
 
 
-# 'sort' : [
-    # { 'post_date' : {'order' : 'asc'}},
-    # 'user',
-    # {
