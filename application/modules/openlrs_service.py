@@ -78,7 +78,18 @@ def load_user_records(email):
 
 def _get_lrs_result_from(query_response, take_first=False):
     result = query_response.get('hits', {}).get('hits')
-    result = [_create_view_model_learning_record(item.get('_source')) for item in result]
+
+    voided_ids = []
+    for raw_statement in result:
+        statement = raw_statement.get('_source')
+        if statement.get('verb').get('id') == Statement.VERBS['void']['id']:
+            voided_ids.append(raw_statement.get('_id'))
+            voided_ids.append(statement.get('object').get('id'))
+
+
+    result = [_create_view_model_learning_record(item.get('_source'))
+        for item in result
+        if item.get('_id') not in voided_ids]
 
     if result and take_first:
         result = next(result, None)

@@ -27,7 +27,7 @@ def view_record():
 @learningrecord.route('/learning-record/clean-all-records')
 @login_required
 def clean_all():
-    records = lrs_service.clean_learning_plans(current_user.email)
+    records = lrs_service.clean_learning_record(current_user.email)
     back_url = url_for('learningrecord.view_record')
     return render_template('learningrecord/clean.html', back_url=back_url)
 

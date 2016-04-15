@@ -91,7 +91,7 @@ def load_learning_plan_item_learning_records(email, plan_item_id):
 def save_learning_plan(learning_plan):
     return _post(learning_plan.to_json())
 
-def clean_learning_plans(email):
+def clean_learning_record(email):
     logger = logging.getLogger()
 
     username = Config.LRS_USER
