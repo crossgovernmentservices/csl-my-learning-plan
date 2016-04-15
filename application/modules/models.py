@@ -2,8 +2,8 @@
 import json
 import uuid
 import math
-import datetime
 
+import application.modules.dates as mls_dates
 from copy import deepcopy
 
 class Statement:
@@ -55,7 +55,7 @@ class Statement:
         }
     }
 
-    def __init__(self, actor=None, verb=None, statement_obj=None, datetime=None, grouping=None, planner_actor=None, duration=None, required=None):
+    def __init__(self, actor=None, verb=None, statement_obj=None, timestamp=None, grouping=None, planner_actor=None, duration=None, required=None):
         self._actor = None
         self.actor = actor
         self._verb = None
@@ -75,6 +75,9 @@ class Statement:
 
         self._required = None
         self.required = required
+
+        self._timestamp = None
+        self.timestamp = timestamp
 
     @property
     def actor(self):
@@ -143,6 +146,14 @@ class Statement:
     def required(self, required):
         self._required = required
 
+    @property
+    def timestamp(self):
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        self._timestamp = timestamp
+
 
     @property
     def planned_items(self):
@@ -202,7 +213,7 @@ class Statement:
             result_batch_json.insert(0, result_json)
             return result_batch_json
         else:
-            result_json['timestamp'] = datetime.datetime.utcnow().isoformat()
+            result_json['timestamp'] = self.timestamp or mls_dates.get_timestamp()
             return result_json
 
     def _actor_to_json(self):

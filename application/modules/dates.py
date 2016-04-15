@@ -1,5 +1,7 @@
 import re
+import datetime
 from dateutil.parser import *
+
 
 def convert_duration(duration):
     match = re.search('(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?(?:T)?(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?', duration)
@@ -28,3 +30,6 @@ def format_date(date, format=None):
         format = '%d %b %Y %H:%M'
 
     return native.strftime(format)
+
+def get_timestamp():
+    return datetime.datetime.utcnow().isoformat()

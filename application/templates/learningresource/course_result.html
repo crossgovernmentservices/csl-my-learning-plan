@@ -35,7 +35,7 @@
           </h2>
 
         <div class="lede">
-          <span>{{ record['when']|format_date('%d/%m/%Y') }}</span>
+          <span>{{ (record['timestamp'] or record['when'])|format_date('%d/%m/%Y') }}</span>
           <p class="course-title">{{ course['title'] }}</p>
           <span>Your score</span>
           <p class="ref-number">{{ score|round|int }}%</p>

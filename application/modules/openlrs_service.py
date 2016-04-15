@@ -77,7 +77,7 @@ def load_user_records(email):
 
 
 def _get_lrs_result_from(query_response, take_first=False):
-    result = query_response.get('hits').get('hits')
+    result = query_response.get('hits', {}).get('hits')
     result = [_create_view_model_learning_record(item.get('_source')) for item in result]
 
     if result and take_first:

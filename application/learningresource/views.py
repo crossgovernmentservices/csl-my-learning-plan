@@ -16,12 +16,15 @@ import json
 
 import application.modules.lr_service as lr_service
 import application.modules.openlrs_service as lrs_service
+import application.modules.dates as mls_dates
+
 from application.modules.models import *
 from functools import reduce
 
 learningresource = Blueprint('learningresource', __name__)
 
 COOKIE_ANSWERS = 'courseanswers'
+COOKIE_COMPLETED_COURSE = 'completedcourse'
 
 TYPE_PAGE = 'pages'
 TYPE_QUESTION = 'questions'
@@ -92,6 +95,7 @@ def start(resource_id):
             resp = make_response(redirect(url_for('.view_resource', resource_id=course['id'], source=source_course_id)))
     
     resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
+    resp.set_cookie(COOKIE_COMPLETED_COURSE, '', expires=0)
     return resp
 
 
@@ -195,7 +199,17 @@ def view_course_complete(resource_id):
 
     lrs_result = lrs_service.save_statement(record)
 
-    resp = make_response(redirect(url_for('.view_course_result', resource_id=resource_id, source=source_course_id)))
+    if type(lrs_result) is dict:
+        message = 'Error updating learning record: '+json.dumps(lrs_result.get('messages') or lrs_result)
+        status_code = lrs_result.get('status') or 500
+        resp = make_response(render_template('error.html', 
+            title='oops - %s' % status_code,
+            status_code=status_code,
+            message=message), status_code)
+    else:
+        resp = make_response(redirect(url_for('.view_course_result', resource_id=resource_id, source=source_course_id)))
+        resp.set_cookie(COOKIE_COMPLETED_COURSE, json.dumps(record), max_age=600)
+    
     resp.set_cookie(COOKIE_ANSWERS, '', expires=0)
     return resp
 
@@ -205,9 +219,8 @@ def view_course_complete(resource_id):
 def view_course_result(resource_id):
 
     course = lr_service.get_resource(resource_id)
-    record = lrs_service.load_course_learning_records(
-        email=current_user.email,
-        course_uri=url_for('.view_resource', resource_id=resource_id, _external=True))[0]
+
+    record = json.loads(request.cookies.get(COOKIE_COMPLETED_COURSE))
 
     source_course = lr_service.get_resource(request.args.get('source'))
 
