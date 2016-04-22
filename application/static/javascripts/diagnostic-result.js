@@ -49,7 +49,7 @@
         console.log(jqXHR);
         console.log(data);
         var redirectUrl = "/learning-plan";
-        var newPlanId = data && data['lrsResult'] && data['lrsResult'][0]
+        var newPlanId = data && data['lrsResult'] && data['lrsResult'][0];
         if(newPlanId){
           redirectUrl+= "?newplan=" + newPlanId;
         }

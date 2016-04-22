@@ -1,34 +1,40 @@
-{
+[
+  {
     "actor": {
-        "objectType": "Agent",
-        "mbox": "mailto:planner@test.com"
+      "objectType": "Agent",
+      "mbox": "mailto:planner@test.com"
     },
     "verb": {
-        "id": "http://www.tincanapi.co.uk/verbs/planned_learning",
-        "display": {
-            "en": "planned"
-        }
+      "id": "http://www.tincanapi.co.uk/verbs/planned_learning",
+      "display": {
+        "en": "planned"
+      }
     },
     "object": {
-        "objectType": "SubStatement",
-        "actor": {
-            "objectType": "Agent",
-            "mbox": "mailto:test@email.com"
-        },
-        "verb": {
-            "id": "http://activitystrea.ms/schema/1.0/read",
-            "display": {
-                "en": "read"
-            }
-        },
-        "object": {
-            "objectType": "Activity",
-            "id": "http://www.someurl.com",
-            "definition": {
-                "name": {
-                    "en": "Some website"
-                }
-            }
-        }
+      "objectType": "StatementRef",
+      "id": "12345678-1234-5678-1234-567812345678"
     }
-}
+  },
+  {
+    "id": "12345678-1234-5678-1234-567812345678",
+    "actor": {
+      "objectType": "Agent",
+      "mbox": "mailto:test@email.com"
+    },
+    "verb": {
+      "id": "http://activitystrea.ms/schema/1.0/read",
+      "display": {
+        "en": "read"
+      }
+    },
+    "object": {
+      "objectType": "Activity",
+      "id": "http://www.someurl.com",
+      "definition": {
+        "name": {
+          "en": "Some website"
+        }
+      }
+    }
+  }
+]

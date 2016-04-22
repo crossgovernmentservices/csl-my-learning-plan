@@ -26,7 +26,7 @@ def clean_learning_record(email):
             Statement(
                 actor=email,
                 verb='void',
-                statement_obj=Statement.create_void_obj(record['statementId'])).to_json()
+                statement_obj=Statement.create_reference_obj(record['statementId'])).to_json()
             for record in records]
 
         result = _post(records_to_clean)
@@ -75,26 +75,50 @@ def load_user_records(email):
 
     return _get_lrs_result_from(_execute_query(query))
 
+def load_user_learning_plans(email):
+    # all of them lines of code be here for now
+    with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
+        learning_plan = json.load(data_file)
+
+    # loaded_plans = load_learning_plans(email)
+    # for plan in loaded_plans:
+    #     learning_plan.insert(len(learning_plan)-1, _create_learning_plan_view_model(plan, email))
+
+    return learning_plan
+
+def load_learning_plans(email):
+    # query_response = _query([
+    #     _create_match_learning_plan_by_email(email),
+    #     PROJECTIONS['plan']
+    # ])
+    return [] #_get_lrs_result_from(query_response)
+
 
 def _get_lrs_result_from(query_response, take_first=False):
+    
+    def __should_be_hidden(statement):
+        return statement.get('verb').get('id') in [Statement.VERBS['void']['id'], Statement.VERBS['plan']['id']]
+
     result = query_response.get('hits', {}).get('hits')
 
-    voided_ids = []
-    for raw_statement in result:
-        statement = raw_statement.get('_source')
-        if statement.get('verb').get('id') == Statement.VERBS['void']['id']:
-            voided_ids.append(raw_statement.get('_id'))
-            voided_ids.append(statement.get('object').get('id'))
+    
+    if result:
+        statements_to_hide = []
+        for raw_statement in result:
+            statement = raw_statement.get('_source')
+            if __should_be_hidden(statement):
+                statements_to_hide.append(raw_statement.get('_id'))
+                statements_to_hide.append(statement.get('object').get('id'))
 
 
-    result = [_create_view_model_learning_record(item.get('_source'))
-        for item in result
-        if item.get('_id') not in voided_ids]
+        result = [_create_view_model_learning_record(item.get('_source'))
+            for item in result
+            if item.get('_id') not in statements_to_hide]
 
-    if result and take_first:
-        result = next(result, None)
+        if result and take_first:
+            result = next(result, None)
 
-    return result
+    return result or []
 
 
 def _execute_query(payload_json):

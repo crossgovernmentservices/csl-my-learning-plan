@@ -55,7 +55,7 @@ class Statement:
         }
     }
 
-    def __init__(self, actor=None, verb=None, statement_obj=None, timestamp=None, grouping=None, planner_actor=None, duration=None, required=None):
+    def __init__(self, actor=None, verb=None, statement_obj=None, timestamp=None, grouping=None, planner_actor=None, duration=None, required=None, id=None):
         self._actor = None
         self.actor = actor
         self._verb = None
@@ -78,6 +78,9 @@ class Statement:
 
         self._timestamp = None
         self.timestamp = timestamp
+
+        self._id = None
+        self.id = id        
 
     @property
     def actor(self):
@@ -154,6 +157,13 @@ class Statement:
     def timestamp(self, timestamp):
         self._timestamp = timestamp
 
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     @property
     def planned_items(self):
@@ -188,6 +198,7 @@ class Statement:
     # GENERATING JSON
     def to_json(self):
         result_json = {
+            'id': self.id,
             'actor': self._actor_to_json(),
             'verb': self._verb_to_json(),
             'object': self._statement_obj_to_json()
@@ -202,18 +213,26 @@ class Statement:
                     'grouping': self._grouping_to_json()
                 }
             }
+        
+        result_json['timestamp'] = self.timestamp or mls_dates.get_timestamp()
 
         if len(self.planned_items) > 0:
             result_batch_json = []
             for plan_item in self.planned_items:
-                result_batch_json.append(Statement(
-                    actor=self.planner_actor or self.DEFAULT_PLANNER_EMAIL,
+                plan_item.id = plan_item.id or Statement.create_id()
+
+                # we are forcing learning as planner for simplicity
+                ref_statement = Statement(
+                    actor=self.actor,
                     verb=Statement.create_verb('plan'),
-                    statement_obj=Statement.create_substatement_obj(plan_item)).to_json())
+                    statement_obj=Statement.create_reference_obj(plan_item.id)).to_json()
+
+                result_batch_json.append(ref_statement)
+                result_batch_json.append(plan_item.to_json())
+
             result_batch_json.insert(0, result_json)
             return result_batch_json
         else:
-            result_json['timestamp'] = self.timestamp or mls_dates.get_timestamp()
             return result_json
 
     def _actor_to_json(self):
@@ -281,12 +300,15 @@ class Statement:
         return statement
 
     @classmethod
-    def create_void_obj(cls, statement_id):
+    def create_reference_obj(cls, statement_id):
         return {
             'objectType': 'StatementRef',
             'id': statement_id
         }
 
+    @classmethod
+    def create_id(cls):
+        return str(uuid.uuid1())
 
     @classmethod
     def get_resource_type(cls, url):

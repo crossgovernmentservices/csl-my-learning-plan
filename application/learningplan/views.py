@@ -14,7 +14,7 @@ import json
 from flask.ext.security import login_required
 from flask.ext.login import current_user
 
-import application.modules.lrs_service as lrs_service
+import application.modules.openlrs_service as lrs_service
 from application.modules.models import Statement
 
 learningplan = Blueprint('learningplan', __name__)
@@ -57,14 +57,16 @@ def assign_learning_plan():
 
         learning_plan.add_planned_item(planned_item)
 
-    lrs_result = lrs_service.save_learning_plan(learning_plan)
+    current_app.logger.info(learning_plan.to_json())
+
+    lrs_result = lrs_service.save_statement(learning_plan.to_json())
 
     resp = jsonify({
         'postData': post_data,
         'plan': learning_plan.to_json(),
         'lrsResult': lrs_result
     })
-    resp.status_code = lrs_result.get('code', 200) if type(lrs_result) is dict else 200
+    resp.status_code = lrs_result.get('status', lrs_result.get('code', 200)) if type(lrs_result) is dict else 200
     return resp
 
 
@@ -73,7 +75,7 @@ def assign_learning_plan():
 @learningplan.route('/api/learning-plan/clean_learning_plans')
 @login_required
 def api_clean_learning_plans():
-    return json.dumps(lrs_service.clean_learning_plans(current_user.email))
+    return json.dumps(lrs_service.clean_learning_record(current_user.email))
 
 @learningplan.route('/api/learning-plan/load_learning_plans')
 @login_required

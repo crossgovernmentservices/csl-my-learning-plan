@@ -163,21 +163,21 @@ class StatementTests(unittest.TestCase):
         self.assertEqual(expected_json, sut_statement.to_json())
 
 
-    def test_to_json_for_planned_item(self):
-        with open('../data/statement-plan.json') as expected_activity:
-            expected_json = json.load(expected_activity)
-        sut_statement = Statement()
-        sut_statement.actor = 'planner@test.com'
-        sut_statement.verb = 'plan'
-        sut_statement.statement_obj = Statement.create_substatement_obj(
-            Statement(
-                actor='test@email.com',
-                verb='read',
-                statement_obj=Statement.create_activity_obj(
-                    uri='http://www.someurl.com',
-                    name='Some website')))
+    # def test_to_json_for_planned_item(self):
+    #     with open('../data/statement-plan.json') as expected_activity:
+    #         expected_json = json.load(expected_activity)
+    #     sut_statement = Statement()
+    #     sut_statement.actor = 'planner@test.com'
+    #     sut_statement.verb = 'plan'
+    #     sut_statement.statement_obj = Statement.create_substatement_obj(
+    #         Statement(
+    #             actor='test@email.com',
+    #             verb='read',
+    #             statement_obj=Statement.create_activity_obj(
+    #                 uri='http://www.someurl.com',
+    #                 name='Some website')))
 
-        self.assertEqual(expected_json, sut_statement.to_json())
+    #     self.assertEqual(expected_json, sut_statement.to_json())
 
 
     def test_to_json_for_learning_plan(self):
