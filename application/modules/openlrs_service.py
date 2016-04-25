@@ -80,18 +80,57 @@ def load_user_learning_plans(email):
     with open(LEARNING_PLAN_DATA_FILEPATH) as data_file:
         learning_plan = json.load(data_file)
 
-    # loaded_plans = load_learning_plans(email)
-    # for plan in loaded_plans:
-    #     learning_plan.insert(len(learning_plan)-1, _create_learning_plan_view_model(plan, email))
+    loaded_plans = load_learning_plans(email)
+    for plan in loaded_plans:
+        learning_plan.insert(len(learning_plan)-1, plan)
 
     return learning_plan
 
 def load_learning_plans(email):
-    # query_response = _query([
-    #     _create_match_learning_plan_by_email(email),
-    #     PROJECTIONS['plan']
-    # ])
-    return [] #_get_lrs_result_from(query_response)
+    query = {
+        'size': 9999,
+        'query': _create_match_learning_records_by(email),
+        'sort': {'stored': {'order': 'desc'}}
+    }
+
+    result = _execute_query(query).get('hits', {}).get('hits')
+
+    enroll_verb = Statement.VERBS['enroll']
+    plan_verb = Statement.VERBS['plan']
+
+
+    if result:
+        statements_to_hide = []
+        for raw_statement in result:
+            statement = raw_statement.get('_source')
+            if statement.get('verb').get('id') == Statement.VERBS['void']['id']:
+                statements_to_hide.append(raw_statement.get('_id'))
+                statements_to_hide.append(statement.get('object').get('id'))
+
+
+        result = [ item for item in result if item.get('_id') not in statements_to_hide]
+
+        plans = []
+        plan_items = {}
+
+
+
+        planned_statements = []
+        for raw_statement in result:
+            statement = raw_statement.get('_source')
+            
+            if statement.get('verb').get('id') == enroll_verb['id']:
+                plans.append(statement)
+
+            plan_group = statement.get('context', {}).get('contextActivities', {}).get('grouping')
+            if plan_group:
+                plan_id = plan_group[0]['id']
+
+                if not plan_items.get(plan_id):
+                    plan_items[plan_id] = []
+                plan_items[plan_id].append(statement)
+
+    return [ _create_learning_plan_view_model(plan, plan_items[plan['object']['id']]) for plan in plans ]
 
 
 def _get_lrs_result_from(query_response, take_first=False):
@@ -101,7 +140,6 @@ def _get_lrs_result_from(query_response, take_first=False):
 
     result = query_response.get('hits', {}).get('hits')
 
-    
     if result:
         statements_to_hide = []
         for raw_statement in result:
@@ -195,4 +233,51 @@ def _create_view_model_learning_record(record):
 
     return result
 
+def _create_learning_plan_view_model(plan_statement, item_statements):
+    print('---------- here be dragons ------')
+    print(json.dumps(plan_statement))
+    return {
+        'statementId': plan_statement['id'],
+        'title': plan_statement['object']['definition']['name']['en'],
+        'addedBy': 'diagnostic',
+        'descriptionLines': [],
+        'sections': [],
+        'items': [ _create_learning_plan_item_view_model(item) for item in item_statements]
+    }
 
+
+def _create_learning_plan_item_view_model(item_statement, learning_records=[]):
+    verb_name = item_statement['verb']['display']['en']
+    
+    info_lines = []
+    resource_type = Statement.get_resource_type(item_statement.get('object').get('definition').get('type'))
+    if resource_type:
+        resource_type = resource_type.get('name', '')
+        info_lines.append(resource_type)
+    
+    duration = item_statement.get('result', {}).get('duration')
+    if duration:
+        duration = 'Average time: ' + mls_dates.convert_duration(duration)
+        info_lines.append(duration)
+
+    actions = [{
+        'title': verb_name.capitalize() + (' again' if learning_records else ' now'),
+        'url': item_statement['object']['id']
+    }]
+
+    # taking the last one to display, done like this as who knows what they are going to come up with
+    # all learning_records may be required later
+    if learning_records:
+        learning_records = [learning_records[-1]]
+
+    planned_item = {
+        'statementId': item_statement['id'],
+        'records': learning_records,
+        'title': '%s %s' % (verb_name.capitalize(), item_statement['object']['definition']['name']['en']),
+        'required': item_statement.get('result', {}).get('completion', False),
+        'descriptionLines': [],
+        'infoLines': info_lines,
+        'actions': actions
+    }
+
+    return planned_item
