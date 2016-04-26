@@ -94,10 +94,8 @@ def load_learning_plans(email):
     }
 
     result = _execute_query(query).get('hits', {}).get('hits')
-
     enroll_verb = Statement.VERBS['enroll']
     plan_verb = Statement.VERBS['plan']
-
 
     if result:
         statements_to_hide = []
@@ -107,34 +105,29 @@ def load_learning_plans(email):
                 statements_to_hide.append(raw_statement.get('_id'))
                 statements_to_hide.append(statement.get('object').get('id'))
 
-
-        result = [ item for item in result if item.get('_id') not in statements_to_hide]
-
         plans = []
         plan_items = {}
 
-
-
-        planned_statements = []
         for raw_statement in result:
-            statement = raw_statement.get('_source')
-            
-            if statement.get('verb').get('id') == enroll_verb['id']:
-                plans.append(statement)
+            if raw_statement.get('_id') not in statements_to_hide:
+                statement = raw_statement.get('_source')
 
-            plan_group = statement.get('context', {}).get('contextActivities', {}).get('grouping')
-            if plan_group:
-                plan_id = plan_group[0]['id']
+                if statement.get('verb').get('id') == enroll_verb['id']:
+                    plans.append(statement)
+                else:
+                    plan_group = statement.get('context', {}).get('contextActivities', {}).get('grouping')
+                    if plan_group:
+                        plan_id = plan_group[0]['id']
 
-                if not plan_items.get(plan_id):
-                    plan_items[plan_id] = []
-                plan_items[plan_id].append(statement)
+                        if not plan_items.get(plan_id):
+                            plan_items[plan_id] = []
+                        plan_items[plan_id].append(statement)
 
-    return [ _create_learning_plan_view_model(plan, plan_items[plan['object']['id']]) for plan in plans ]
+    return [_create_learning_plan_view_model(plan, plan_items[plan['object']['id']]) for plan in plans]
 
 
 def _get_lrs_result_from(query_response, take_first=False):
-    
+
     def __should_be_hidden(statement):
         return statement.get('verb').get('id') in [Statement.VERBS['void']['id'], Statement.VERBS['plan']['id']]
 
@@ -161,7 +154,6 @@ def _get_lrs_result_from(query_response, take_first=False):
 
 def _execute_query(payload_json):
     query_url = _create_full_url(Config.OPEN_LRS_QUERY_URL, Config.OPEN_LRS_QUERY_PORT)
-    print(json.dumps(payload_json))
     return _post(payload_json, query_url)
 
 
@@ -233,9 +225,8 @@ def _create_view_model_learning_record(record):
 
     return result
 
+
 def _create_learning_plan_view_model(plan_statement, item_statements):
-    print('---------- here be dragons ------')
-    print(json.dumps(plan_statement))
     return {
         'statementId': plan_statement['id'],
         'title': plan_statement['object']['definition']['name']['en'],
