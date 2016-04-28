@@ -6,14 +6,14 @@ Service dependencies
 --------------------
 In order to fully run the prototype you have to have 2 other services configured and running, those are:
   - Learning Registry - [docker container](https://github.com/crossgovernmentservices/csl-learningregistry-containers)
-  - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP.*
+  - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP ([see docker-compose file](blob/documentation/docker-compose.yml#L31)).*
 
 
 Requirements
 ------------
 #### Running docker
- - [VirtualBox](https://www.virtualbox.org)
  - [Docker](https://www.docker.com)
+ - [VirtualBox](https://www.virtualbox.org) - *if running on Mac*
 
 #### Running Python virtual environment
 - Python 3
@@ -57,8 +57,7 @@ Change to the directory you checked out and install python requirements.
 pip install -r requirements.txt
 ```
 
-The base environment variables for running application locally are in environment.sh. See below for any private environment variables.
-
+The base environment variables for running application locally are in `environment.sh`.
 Once that this all done you can:
 
 Start mongo:
@@ -114,8 +113,4 @@ SASS_PATH='.'
 
 
 Known issues.  We have seen an issue where the buildpacks can get confused, resulting in the Python runtime not being setup.  Check the buildpacks from command `heroku buildpacks` both Ruby and Python are needed.  Ruby for sass.
-
-
-
-
 
