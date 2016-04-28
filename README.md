@@ -8,6 +8,7 @@ In order to fully run the prototype you have to have 2 other services configured
   - Learning Registry - [docker container](https://github.com/crossgovernmentservices/csl-learningregistry-containers)
   - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP ([see docker-compose file](docker-compose.yml#L31)).*
 
+For prototype version using [OpenLRS](http://apereo-learning-analytics-initiative.github.io/OpenLRS) instead of Learning Locker [switch to `cd-openlrs` branch](https://github.com/crossgovernmentservices/csl-my-learning-plan/tree/cd-openlrs).
 
 Requirements
 ------------
