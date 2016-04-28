@@ -1,13 +1,26 @@
 CSL - My Learning Plan (MLP)
-===============================
+============================
+
+
+Service dependencies
+--------------------
+In order to fully run the prototype you have to have 2 other services configured and running, those are:
+  - Learning Registry - [docker container](https://github.com/crossgovernmentservices/csl-learningregistry-containers)
+  - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP.*
 
 
 Requirements
 ------------
-- python 3
-- mongodb
-- sass (for flask assets)
+#### Running docker
+ - [VirtualBox](https://www.virtualbox.org)
+ - [Docker](https://www.docker.com)
+
+#### Running Python virtual environment
+- Python 3
+- MongoDb
+- SASS (for flask assets)
 - virtualenv and virtualenvwrapper (not a hard requirement but steps below assume you are using them)
+
 
 Quickstart
 ----------
@@ -15,16 +28,23 @@ Quickstart
 ### Docker
 Just run:
 ```
+docker-compose up
+```
+or
+```
 docker-compose up -d
 ```
-and there should be 2 containers: web and mongo.
+and there should be 5 containers: 
+  - webusers - *recreating prototype users*
+  - web - *the actual running prototype*
+  - lrs - *Learning Locker*
+  - mongo
+  - restore - *restoring basic Learning Locker configuration*
 
+You can access the prototype by navigating to your docker machine ip with port `8002`. You can find out your docker machine ip by running `docker-machine ip [machine name]` where default machine name is `default`.
 
 ### Python virtual environment
 
-Checkout this repo.
-
-Install the requirements above if you don't already have them installed.
 
 Then run the following commands to bootstrap your environment.
 
@@ -50,6 +70,8 @@ Then run app
 ```
 ./run.sh
 ```
+You can access the prototype by navigating to your localhost with port `8000`
+
 
 Heroku Deployment
 ----------
