@@ -1,9 +1,3 @@
-restore:
-  build: ./dockerllrestore/
-  command: mongorestore -h lrs /tmp/dump/
-  links:
-    - lrs
-
 webusers:
   build: .
   env_file: docker-local.env
@@ -19,7 +13,6 @@ web:
   links:
     - webusers
     - mongo
-    - lrs
   ports:
     - "8002:8000"
   volumes:
@@ -28,8 +21,4 @@ web:
 
 mongo:
   image: mongo:3.2
-lrs:
-  image: cmorandikainos/learninglocker:v0.0.1
-  ports:
-    - "8010:80"
-    - "445:443"
+
