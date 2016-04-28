@@ -6,7 +6,7 @@ Service dependencies
 --------------------
 In order to fully run the prototype you have to have 2 other services configured and running, those are:
   - Learning Registry - [docker container](https://github.com/crossgovernmentservices/csl-learningregistry-containers)
-  - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP ([see docker-compose file](blob/documentation/docker-compose.yml#L31)).*
+  - Learning Records Store ([Learning Locker](https://learninglocker.net/)) - [docker container](https://github.com/LearningLocker/docs/issues/15) or [installation instruction](http://docs.learninglocker.net/installation). *If you're running docker this container is included in MLP ([see docker-compose file](docker-compose.yml#L31)).*
 
 
 Requirements
