@@ -133,3 +133,22 @@ LRS_STATEMENTS_URL=/data/xAPI/statements
 #### Known issues
 We have seen an issue where the buildpacks can get confused, resulting in the Python runtime not being setup. Check the buildpacks from command `heroku buildpacks` both Ruby and Python are needed. Ruby for sass.
 
+Amazon Web Services based infrastructure
+----------
+AWS is hosting the Learner Record Store (stage.lrs.civilservice.digital, lrs.civilservice.digital) and the Learning Registry (stage.lr.civilservice.digital, lr.civilservice.digital)
+
+If necessary, access credentials can be obtained from the GDS/CSL Team that worked on the prototype.
+
+Once in AWS the EC2 nodes supporting the prototype are:
+
+For the Learner Record Store (LRS):
+- csl_lrs_node1, marked with tags staging and production
+- *csl_lrs_mongo_node1, marked with tags staging and production
+
+*The LRS service has gone down at one time.  This was due to MongoDB going down. A simple restart of this instance recovered the problem.
+
+For the Learning Registry (LR): 
+- csl_lr_node1, marked with tags staging and production
+- csl_lr_couchdb_node1, marked with tags staging and production
+
+The DNS entries are managed by AWS Route 53 within the civilservice.digital hosted zone.
