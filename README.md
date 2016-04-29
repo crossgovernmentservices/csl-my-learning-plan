@@ -116,3 +116,12 @@ A simple comparison of [Learning Locker](https://learninglocker.net) and [OpenLR
 | | For simplicity planner and learner are the same person |
 | | Marking planned item as ‘done’ has not implemented as it’s a overhead for this piece of functionality to be added without Context node in SubStatement object - 2 statements workaround |
 
+
+### Admin and setup
+
+| Learning Locker  | OpenLRS |
+| ---------------- | ------- |
+| Long winded PHP install routine with many PHP based dependencies | Need to build the package using Maven. Good if you are familiar with this routine. Generates a “fat jar” which should be setup elsewhere |
+| Comes as a complete packaged app with Admin Interface, Basic Reporting. Quite useful in general when starting to get to grips with an LRS | Once the jar or war file have been generated, the only dependency is the JVM itself, so deployment is quite simple |
+| Multiple LRS and Client support within the same instance | Only supports one user per LRS instance. Each instance is a new process | 
+| | No GUI, but the Apereo project has Dashboards and Other Applications that can plug-in in to create a more complete solution |
